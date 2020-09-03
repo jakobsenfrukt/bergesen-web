@@ -24,7 +24,14 @@ export default {
   },
   head() {
     return {
-      title: 'Bergesenstiftelsen'
+      title: 'Bergesenstiftelsen',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.entry.lead
+        }
+      ]
     }
   }
 }

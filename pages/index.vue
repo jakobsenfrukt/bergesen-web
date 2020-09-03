@@ -25,7 +25,13 @@ export default {
   head() {
     return {
       title: 'Bergesenstiftelsen',
-      description: this.entry.lead
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.entry.lead
+        }
+      ]
     }
   }
 }
