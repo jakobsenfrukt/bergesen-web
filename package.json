@@ -1,0 +1,22 @@
+{
+  "name": "bergesen-web",
+  "version": "1.0.0",
+  "description": "website for bergesenstiftelsen",
+  "author": "elisejakob",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/apollo": "^4.0.1-rc.3",
+    "graphql-tag": "^2.11.0",
+    "nuxt": "^2.14.0"
+  },
+  "devDependencies": {
+    "node-sass": "^4.14.1",
+    "sass-loader": "^10.0.2"
+  }
+}

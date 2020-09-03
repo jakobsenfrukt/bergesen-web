@@ -1,0 +1,26 @@
+<template>
+  <header>
+    <h1 class="page-title">{{ heading }}</h1>
+    <p class="lead">
+      {{ lead }}
+    </p>
+  </header>
+</template>
+
+<script>
+export default {
+  props: {
+    heading: String,
+    lead: String
+  }
+}
+</script>
+
+<style lang="scss" scoped>
+.page-title {
+  font-size: 2.8rem;
+}
+.lead {
+  font-size: 1.4rem;
+}
+</style>
