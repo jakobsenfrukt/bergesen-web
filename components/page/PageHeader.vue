@@ -1,10 +1,10 @@
 <template>
-  <header>
+  <div>
     <h1 class="page-title">{{ heading }}</h1>
     <p class="lead">
       {{ lead }}
     </p>
-  </header>
+  </div>
 </template>
 
 <script>
