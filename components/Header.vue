@@ -9,25 +9,40 @@
       </ul>
     </nav>
     <nav class="translate">
-      <NLink :to="slug">{{ language }}</NLink>
+      <NLink :to="languageLink">{{ language }}</NLink>
     </nav>
   </header>
 </template>
 
 <script>
 export default {
-  props: {
-    language: String
-  },
   data: function() {
     return {
       menuLinks: ['Hjem', 'Tildelinger', 'Aktuelt', 'Bergesenprisen', 'Kontakt', 'Om stiftelsen', 'Søk støtte' ]
     }
   },
   computed: {
+    language: function() {
+      const currentPath = this.$route.fullPath;
+      if (currentPath.substring(0, 3) == "/en") {
+        return 'no'
+      }
+      return 'en'
+    },
     slug: function() {
-      return '/' + this.language
+      const currentPath = this.$route.fullPath;
+      if (currentPath.substring(0, 3) == "/en") {
+        const newPath = currentPath.slice(4);
+        return '/' + newPath
+      }
+      return '/en' + currentPath
+    },
+    languageLink: function() {
+      return this.slug
     }
+  },
+  mounted() {
+    console.log('slug: ' + this.$route.fullPath);
   }
 }
 </script>
