@@ -21,6 +21,12 @@ export default {
         }
       }
     }`
+  },
+  head() {
+    return {
+      title: 'Bergesenstiftelsen',
+      description: this.entry.lead
+    }
   }
 }
 </script>

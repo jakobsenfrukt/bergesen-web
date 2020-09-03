@@ -21,6 +21,11 @@ export default {
         }
       }
     }`
+  },
+  head() {
+    return {
+      title: 'Bergesenstiftelsen'
+    }
   }
 }
 </script>
