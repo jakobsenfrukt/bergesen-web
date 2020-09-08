@@ -1,17 +1,48 @@
+/* FONTS — — — — — — — — — — — — */
+
+$serif: serif;
 $sans-serif: 'futura', helvetica, arial, sans-serif;
+
+
+/* COLORS — — — — — — — — — — — — */
 
 $color-white: #fff;
 $color-black: #000;
 
-$color-background: $color-white;
-$color-text: $color-black;
+$color-green: #6bc278;
+$color-lightgreen: #cce0bf;
+$color-lightestgreen: #edfce3;
+
+$color-red: #940000;
+$color-lightred: #bf6357;
+$color-lightestred: #ffa39c;
+
+$color-blue: #140d2b;
+$color-lightblue: #00304f;
+$color-lightestblue: #6b94a6;
+
+$color-darkgray: #64645a;
+$color-mediumgray: #c8c8be;
+$color-lightgray: #f0f0e6;
+
+
+/* WIDTHS — — — — — — — — — — — — */
 
 $width-xs: 21rem;
 $width-s: 30rem;
 $width-m: 42rem;
 $width-l: 56rem;
 
+
+/* MEDIA QUERIES — — — — — — — — — — — — */
+
 $media-s: 700px;
 $media-m: 900px;
 $media-l: 1200px;
 $media-xl: 1900px;
+
+
+/* IN USE — — — — — — — — — — — — */
+
+$color-background: $color-white;
+$color-text: $color-black;

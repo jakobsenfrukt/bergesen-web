@@ -8,7 +8,7 @@
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
 footer {
-  background: $color-text;
-  color: $color-background;
+  background: $color-blue;
+  color: $color-white;
 }
 </style>

@@ -1,15 +1,37 @@
 <template>
   <header>
-    <div class="logo">(logo)</div>
-    <nav class="site-nav">
+    <div class="logo">
+      <NLink to="/">
+        <img src="/logo.svg" class="logo-svg" />
+      </NLink>
+    </div>
+    <nav v-if="mainmenu && mainmenuEn" class="site-nav">
       <ul v-if="english">
-        <li v-for="(item, index) in menuItemsEn" :key="index">
+        <li>
+          <NLink to="/">Home</NLink>
+        </li>
+        <li v-for="(item, index) in mainmenuEn.menuitems" :key="index">
           <NLink :to="`/en/${item.slug}`">{{ item.title }}</NLink>
+        </li>
+        <li>
+          <a :href="mainmenu.facebook" target="_blank">Facebook</a>
+        </li>
+        <li>
+          <a :href="mainmenu.instagram" target="_blank">Instagram</a>
         </li>
       </ul>
       <ul v-else>
-        <li v-for="(item, index) in menuItems" :key="index">
+        <li>
+          <NLink to="/">Hjem</NLink>
+        </li>
+        <li v-for="(item, index) in mainmenu.menuitems" :key="index">
           <NLink :to="`/${item.slug}`">{{ item.title }}</NLink>
+        </li>
+        <li>
+          <a :href="mainmenu.facebook" target="_blank">Facebook</a>
+        </li>
+        <li>
+          <a :href="mainmenu.instagram" target="_blank">Instagram</a>
         </li>
       </ul>
     </nav>
@@ -20,6 +42,7 @@
 </template>
 
 <script>
+import gql from 'graphql-tag'
 export default {
   props: {
     english: {
@@ -29,36 +52,6 @@ export default {
   },
   data: function() {
     return {
-      menuItems: [
-        {
-          title: 'Hjem',
-          slug: ''
-        },
-        {
-          title: 'Tildelinger',
-          slug: 'tildelinger'
-        },
-        {
-          title: 'Aktuelt',
-          slug: 'aktuelt'
-        },
-        {
-          title: 'Bergesenprisen',
-          slug: 'bergesenprisen'
-        },
-        {
-          title: 'Kontakt',
-          slug: 'kontakt'
-        },
-        {
-          title: 'Om stiftelsen',
-          slug: 'om'
-        },
-        {
-          title: 'Søk støtte',
-          slug: 'sok-stotte'
-        }
-      ],
       menuItemsEn: [
         {
           title: 'Home',
@@ -110,7 +103,33 @@ export default {
     languageLink: function() {
       return this.slug
     }
-  }
+  },
+  apollo: {
+    mainmenu: gql`{
+      mainmenu: globalSet(title: "mainmenu") {
+        ... on mainmenu_GlobalSet {
+          menuitems {
+            title
+            slug
+          }
+          instagram
+          facebook
+        }
+      }
+    }`,
+    mainmenuEn: gql`{
+      mainmenuEn: globalSet(title: "mainmenu", site: "bergesenstiftelsenEn") {
+        ... on mainmenu_GlobalSet {
+          menuitems {
+            title
+            slug
+          }
+          instagram
+          facebook
+        }
+      }
+    }`
+  },
 }
 </script>
 
@@ -119,6 +138,9 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.logo-svg {
+  width: 120px;
 }
 .site-nav {
   ul {
