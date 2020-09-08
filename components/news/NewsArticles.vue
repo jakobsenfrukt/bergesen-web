@@ -25,11 +25,12 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 2rem;
-  margin-bottom: $margin-bottom;
+  margin-bottom: $spacing-m;
 }
 .article {
   &-image {
     width: 100%;
+    margin-bottom: $spacing-s;
   }
 }
 </style>

@@ -23,6 +23,6 @@ export default {
 }
 .lead {
   font-size: 1.4rem;
-  margin-bottom: $margin-bottom;
+  margin-bottom: $spacing-m;
 }
 </style>
