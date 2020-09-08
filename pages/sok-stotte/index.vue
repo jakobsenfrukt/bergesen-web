@@ -14,8 +14,8 @@ export default {
   },
   apollo: {
     entry: gql`{
-      entry(type: "home", site: "default") {
-        ... on home_home_Entry {
+      entry(type: "apply", site: "default") {
+        ... on apply_apply_Entry {
           title
           lead
         }
@@ -24,7 +24,7 @@ export default {
   },
   head() {
     return {
-      title: 'Bergesenstiftelsen',
+      title: this.entry.title + ' | Bergesenstiftelsen',
       meta: [
         {
           hid: 'description',

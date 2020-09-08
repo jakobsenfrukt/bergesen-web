@@ -1,6 +1,6 @@
 <template>
   <div class="grid">
-    <Header />
+    <Header english />
     <Nuxt />
     <Footer />
   </div>

@@ -2,9 +2,14 @@
   <header>
     <div class="logo">(logo)</div>
     <nav class="site-nav">
-      <ul>
-        <li v-for="(link, index) in menuLinks" :key="index">
-          <NLink to="/">{{ link }}</NLink>
+      <ul v-if="english">
+        <li v-for="(item, index) in menuItemsEn" :key="index">
+          <NLink :to="`/en/${item.slug}`">{{ item.title }}</NLink>
+        </li>
+      </ul>
+      <ul v-else>
+        <li v-for="(item, index) in menuItems" :key="index">
+          <NLink :to="`/${item.slug}`">{{ item.title }}</NLink>
         </li>
       </ul>
     </nav>
@@ -16,9 +21,74 @@
 
 <script>
 export default {
+  props: {
+    english: {
+      type: Boolean,
+      default: false
+    }
+  },
   data: function() {
     return {
-      menuLinks: ['Hjem', 'Tildelinger', 'Aktuelt', 'Bergesenprisen', 'Kontakt', 'Om stiftelsen', 'Søk støtte' ]
+      menuItems: [
+        {
+          title: 'Hjem',
+          slug: ''
+        },
+        {
+          title: 'Tildelinger',
+          slug: 'tildelinger'
+        },
+        {
+          title: 'Aktuelt',
+          slug: 'aktuelt'
+        },
+        {
+          title: 'Bergesenprisen',
+          slug: 'bergesenprisen'
+        },
+        {
+          title: 'Kontakt',
+          slug: 'kontakt'
+        },
+        {
+          title: 'Om stiftelsen',
+          slug: 'om'
+        },
+        {
+          title: 'Søk støtte',
+          slug: 'sok-stotte'
+        }
+      ],
+      menuItemsEn: [
+        {
+          title: 'Home',
+          slug: ''
+        },
+        {
+          title: 'Grants',
+          slug: 'grants'
+        },
+        {
+          title: 'News',
+          slug: 'news'
+        },
+        {
+          title: 'Bergesenprisen',
+          slug: 'bergesenprisen'
+        },
+        {
+          title: 'Contact',
+          slug: 'contact'
+        },
+        {
+          title: 'About',
+          slug: 'about'
+        },
+        {
+          title: 'Apply',
+          slug: 'apply'
+        }
+      ]
     }
   },
   computed: {
@@ -40,9 +110,6 @@ export default {
     languageLink: function() {
       return this.slug
     }
-  },
-  mounted() {
-    console.log('slug: ' + this.$route.fullPath);
   }
 }
 </script>

@@ -7,6 +7,7 @@
 <script>
 import gql from 'graphql-tag'
 export default {
+  layout: 'en',
   data: function() {
     return {
       entry: {}
@@ -14,7 +15,7 @@ export default {
   },
   apollo: {
     entry: gql`{
-      entry(site: "bergesenstiftelsenEn") {
+      entry(type: "home", site: "bergesenstiftelsenEn") {
         ... on home_home_Entry {
           title
           lead
