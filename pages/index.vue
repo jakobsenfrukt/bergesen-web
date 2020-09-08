@@ -1,6 +1,7 @@
 <template>
   <main>
     <PageHeader :heading="entry.title" :lead="entry.lead" />
+    <NewsArticles :articles="news" />
   </main>
 </template>
 
@@ -18,6 +19,17 @@ export default {
         ... on home_home_Entry {
           title
           lead
+        }
+      }
+    }`,
+    news: gql`{
+      news: entries(section: "newsarticles", limit: 3, site: "default") {
+        ... on newsarticles_newsarticle_Entry {
+          title
+          lead
+          mainimage {
+            url
+          }
         }
       }
     }`

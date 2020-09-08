@@ -17,10 +17,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/css/variables.scss';
 .page-title {
   font-size: 2.8rem;
 }
 .lead {
   font-size: 1.4rem;
+  margin-bottom: $margin-bottom;
 }
 </style>

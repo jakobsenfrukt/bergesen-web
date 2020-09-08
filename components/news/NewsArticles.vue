@@ -1,6 +1,6 @@
 <template>
-  <div className="news-articles">
-    <article v-for="(article, index) in articles" className="article" :key="index">
+  <div class="news-articles">
+    <article v-for="(article, index) in articles" class="article" :key="index">
       <img class="article-image" :src="article.mainimage[0].url" />
       <h1 class="article-title">{{ article.title }}</h1>
       <p v-if="article.lead" class="article-lead">
@@ -13,15 +13,23 @@
 <script>
 export default {
   props: {
-    articles: Array
+    articles: Array,
+    limit: Number
   }
 }
 </script>
 
 <style lang="scss" scoped>
-article {
-  width: 300px;
-  font-size: 14px;
-  margin-bottom: 3rem;
+@import '@/assets/css/variables.scss';
+.news-articles {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 2rem;
+  margin-bottom: $margin-bottom;
+}
+.article {
+  &-image {
+    width: 100%;
+  }
 }
 </style>
