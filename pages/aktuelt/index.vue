@@ -27,6 +27,7 @@ export default {
         ... on newsarticles_newsarticle_Entry {
           title
           lead
+          uri
           mainimage {
             url
           }
