@@ -1,32 +1,28 @@
 <template>
   <header>
     <div class="logo">
-      <NLink to="/">
+      <NLink :to="english ? '/en/' : '/'">
         <img src="/logo.svg" class="logo-svg" />
       </NLink>
     </div>
-    <nav v-if="mainmenu && mainmenuEn" class="site-nav">
-      <ul v-if="english">
-        <li>
-          <NLink to="/">Home</NLink>
-        </li>
-        <li v-for="(item, index) in mainmenuEn.menuitems" :key="index">
-          <NLink :to="`/en/${item.slug}`">{{ item.title }}</NLink>
-        </li>
-        <li>
-          <a :href="mainmenu.facebook" target="_blank">Facebook</a>
-        </li>
-        <li>
-          <a :href="mainmenu.instagram" target="_blank">Instagram</a>
-        </li>
-      </ul>
-      <ul v-else>
-        <li>
-          <NLink to="/">Hjem</NLink>
-        </li>
-        <li v-for="(item, index) in mainmenu.menuitems" :key="index">
-          <NLink :to="`/${item.slug}`">{{ item.title }}</NLink>
-        </li>
+    <nav v-if="mainmenu" class="site-nav">
+      <ul>
+        <template v-if="english">
+          <li>
+            <NLink to="/en/">Home</NLink>
+          </li>
+          <li v-for="(item, index) in mainmenu.menuitems" :key="index">
+            <NLink :to="`/en/${item.localized[0].slug}`">{{ item.localized[0].title }}</NLink>
+          </li>
+        </template>
+        <template v-else>
+          <li>
+            <NLink to="/">Hjem</NLink>
+          </li>
+          <li v-for="(item, index) in mainmenu.menuitems" :key="index">
+            <NLink :to="`/${item.slug}`">{{ item.title }}</NLink>
+          </li>
+        </template>
         <li>
           <a :href="mainmenu.facebook" target="_blank">Facebook</a>
         </li>
@@ -36,7 +32,7 @@
       </ul>
     </nav>
     <nav class="translate">
-      <NLink :to="languageLink">{{ language }}</NLink>
+      <NLink :to="newSlug">{{ language }}</NLink>
     </nav>
   </header>
 </template>
@@ -50,40 +46,6 @@ export default {
       default: false
     }
   },
-  data: function() {
-    return {
-      menuItemsEn: [
-        {
-          title: 'Home',
-          slug: ''
-        },
-        {
-          title: 'Grants',
-          slug: 'grants'
-        },
-        {
-          title: 'News',
-          slug: 'news'
-        },
-        {
-          title: 'Bergesenprisen',
-          slug: 'bergesenprisen'
-        },
-        {
-          title: 'Contact',
-          slug: 'contact'
-        },
-        {
-          title: 'About',
-          slug: 'about'
-        },
-        {
-          title: 'Apply',
-          slug: 'apply'
-        }
-      ]
-    }
-  },
   computed: {
     language: function() {
       const currentPath = this.$route.fullPath;
@@ -92,16 +54,25 @@ export default {
       }
       return 'en'
     },
-    slug: function() {
+    currentSlug: function() {
       const currentPath = this.$route.fullPath;
       if (currentPath.substring(0, 3) == "/en") {
         const newPath = currentPath.slice(4);
-        return '/' + newPath
+        return newPath
       }
-      return '/en' + currentPath
+      return currentPath.slice(1)
     },
-    languageLink: function() {
-      return this.slug
+    newSlug: function() {
+      if (this.$route.path === "/") {
+        return "/en/"
+      } else if (this.$route.path.substring(0, 3) == "/en") {
+        return "/"
+      }
+      const entry = this.entries.filter(entry => entry.slug === this.currentSlug);
+      if (this.english) {
+        return '/' + entry[0].slug
+      }
+      return '/en/' + entry[0].localized[0].slug
     }
   },
   apollo: {
@@ -111,21 +82,24 @@ export default {
           menuitems {
             title
             slug
+            localized {
+              title
+              slug
+            }
           }
           instagram
           facebook
         }
       }
     }`,
-    mainmenuEn: gql`{
-      mainmenuEn: globalSet(title: "mainmenu", site: "bergesenstiftelsenEn") {
-        ... on mainmenu_GlobalSet {
-          menuitems {
-            title
-            slug
-          }
-          instagram
-          facebook
+    entries: gql`{
+      entries {
+        id
+        slug
+        title
+        localized {
+          slug
+          title
         }
       }
     }`
