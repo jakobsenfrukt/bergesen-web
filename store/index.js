@@ -24,6 +24,11 @@ export const actions = {
         title
         slug
         uri
+        localized {
+          title
+          slug
+          uri
+        }
         ... on newsarticles_newsarticle_Entry {
           lead
           mainimage {

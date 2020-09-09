@@ -31,7 +31,7 @@
         </li>
       </ul>
     </nav>
-    <nav class="translate" v-if="entries">
+    <nav class="translate">
       <template v-if="!english">
         <span>NO</span> / <span @click="switchLanguage()"><NLink :to="newSlug">EN</NLink></span>
       </template>
@@ -63,7 +63,11 @@ export default {
       } else if (this.$route.path.substring(0, 3) == "/en" && this.$route.path.length < 5) {
         return "/"
       }
-      const entry = this.entries.find(entry => entry.uri === this.currentSlug || entry.localized[0].uri === this.currentSlug);
+      const entry = this.$store.state.entries.find(entry => entry.uri === this.currentSlug || entry.localized[0].uri === this.currentSlug);
+      console.log("entry: ", entry);
+      console.log("currentSlug: ", this.currentSlug);
+      console.log("uri: ", entry.uri);
+      console.log("localized uri: ", entry.localized[0].uri);
       if (this.english) {
         return '/' + entry.uri
       }
@@ -75,7 +79,7 @@ export default {
       this.$store.commit('setLanguage', !this.$store.state.english);
     }
   },
-  created() {
+  mounted() {
     if (this.$route.path.substring(0, 3) === "/en") {
       this.$store.commit('setLanguage', true);
     }
@@ -94,19 +98,6 @@ export default {
           }
           instagram
           facebook
-        }
-      }
-    }`,
-    entries: gql`{
-      entries {
-        id
-        title
-        slug
-        uri
-        localized {
-          title
-          slug
-          uri
         }
       }
     }`
