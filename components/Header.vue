@@ -63,11 +63,10 @@ export default {
       } else if (this.$route.path.substring(0, 3) == "/en" && this.$route.path.length < 5) {
         return "/"
       }
+      const entry = this.entries.find(entry => entry.uri === this.currentSlug || entry.localized[0].uri === this.currentSlug);
       if (this.english) {
-        const entry = this.entries.find(entry => entry.localized[0].uri === this.currentSlug || entry.uri === this.currentSlug);
         return '/' + entry.uri
       }
-      const entry = this.entries.find(entry => entry.uri === this.currentSlug || entry.localized[0].uri === this.currentSlug);
       return '/en/' + entry.localized[0].uri
     }
   },
