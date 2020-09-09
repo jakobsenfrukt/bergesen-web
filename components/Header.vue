@@ -32,7 +32,12 @@
       </ul>
     </nav>
     <nav class="translate" v-if="entries">
-      <NLink :to="newSlug">{{ language }}</NLink>
+      <template v-if="!english">
+        <span>NO</span> / <span @click="switchLanguage()"><NLink :to="newSlug">EN</NLink></span>
+      </template>
+      <template v-if="english">
+        <span @click="switchLanguage()"><NLink :to="newSlug">NO</NLink></span> / <span>EN</span>
+      </template>
     </nav>
   </header>
 </template>
@@ -40,20 +45,11 @@
 <script>
 import gql from 'graphql-tag'
 export default {
-  props: {
-    english: {
-      type: Boolean,
-      default: false
-    }
-  },
   computed: {
-    language: function() {
-      if (this.english) {
-        return 'no'
-      }
-      return 'en'
+    english() {
+      return this.$store.state.english
     },
-    currentSlug: function() {
+    currentSlug() {
       const currentPath = this.$route.fullPath;
       if (currentPath.substring(0, 3) == "/en") {
         const newPath = currentPath.slice(4);
@@ -61,17 +57,28 @@ export default {
       }
       return currentPath.slice(1)
     },
-    newSlug: function() {
+    newSlug() {
       if (this.$route.path === "/") {
         return "/en/"
-      } else if (this.$route.path.substring(0, 3) == "/en") {
+      } else if (this.$route.path.substring(0, 3) == "/en" && this.$route.path.length < 5) {
         return "/"
       }
-      const entry = this.entries.find(entry => entry.uri === this.currentSlug);
       if (this.english) {
+        const entry = this.entries.find(entry => entry.localized[0].uri === this.currentSlug || entry.uri === this.currentSlug);
         return '/' + entry.uri
       }
+      const entry = this.entries.find(entry => entry.uri === this.currentSlug || entry.localized[0].uri === this.currentSlug);
       return '/en/' + entry.localized[0].uri
+    }
+  },
+  methods: {
+    switchLanguage() {
+      this.$store.commit('setLanguage', !this.$store.state.english);
+    }
+  },
+  created() {
+    if (this.$route.path.substring(0, 3) === "/en") {
+      this.$store.commit('setLanguage', true);
     }
   },
   apollo: {
@@ -115,7 +122,8 @@ header {
   justify-content: space-between;
 }
 .logo-svg {
-  width: 120px;
+  width: 6.6rem;
+  margin-right: 1rem;
 }
 .site-nav {
   ul {
@@ -125,7 +133,7 @@ header {
 
     li {
       display: inline-block;
-      margin: 0 1rem;
+      margin: 0 1rem .5rem;
     }
   }
   a {

@@ -1,7 +1,7 @@
 <template>
   <main>
     <PageHeader :heading="entry.title" :lead="entry.lead" />
-    <NewsArticles :articles="news" />
+    <NewsArticles :articles="news" heading="Aktuelt" />
   </main>
 </template>
 

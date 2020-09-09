@@ -2,11 +2,15 @@ import gql from 'graphql-tag'
 
 export const state = () => ({
   entries: [],
+  english: false
 })
 
 export const mutations = {
   setEntries(state, entries) {
     state.entries = entries
+  },
+  setLanguage(state, english) {
+    state.english = english
   },
 }
 

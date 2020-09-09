@@ -7,7 +7,6 @@
 <script>
 import gql from 'graphql-tag'
 export default {
-  layout: 'en',
   data: function() {
     return {
       entry: {}
