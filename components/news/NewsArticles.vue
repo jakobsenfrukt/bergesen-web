@@ -1,12 +1,12 @@
 <template>
   <div class="news-articles">
-    <a v-for="(article, index) in articles" class="article" :href="article.uri" :key="index">
+    <NLink v-for="(article, index) in articles" class="article" :to="article.uri" :key="index">
       <img class="article-image" :src="article.mainimage[0].url" />
       <h1 class="article-title">{{ article.title }}</h1>
       <p v-if="article.lead" class="article-lead">
         {{ article.lead }}
       </p>
-    </a>
+    </NLink>
   </div>
 </template>
 
