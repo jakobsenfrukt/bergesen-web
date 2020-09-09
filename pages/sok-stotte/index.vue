@@ -1,15 +1,25 @@
 <template>
   <main>
     <PageHeader :heading="entry.title" :lead="entry.lead" />
+    <ul>
+      <li v-for="(page, index) in pages" :key="index">
+        <NLink :to="page.uri">{{ page.title }}</NLink>
+      </li>
+    </ul>
   </main>
 </template>
 
 <script>
 import gql from 'graphql-tag'
 export default {
-  data: function() {
+  data() {
     return {
       entry: {}
+    }
+  },
+  computed: {
+    pages() {
+      return this.$store.state.entries.filter(entry => entry.__typename === "applyPages_page_Entry");
     }
   },
   apollo: {

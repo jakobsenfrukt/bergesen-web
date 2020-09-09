@@ -1,0 +1,330 @@
+{
+  "__schema": {
+    "types": [
+      {
+        "name": "Query",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "String",
+        "kind": "SCALAR",
+        "possibleTypes": null
+      },
+      {
+        "name": "QueryArgument",
+        "kind": "SCALAR",
+        "possibleTypes": null
+      },
+      {
+        "name": "Boolean",
+        "kind": "SCALAR",
+        "possibleTypes": null
+      },
+      {
+        "name": "Int",
+        "kind": "SCALAR",
+        "possibleTypes": null
+      },
+      {
+        "name": "EntryInterface",
+        "kind": "INTERFACE",
+        "possibleTypes": [
+          {
+            "name": "home_home_Entry",
+            "description": null
+          },
+          {
+            "name": "grantlist_grant_Entry",
+            "description": null
+          },
+          {
+            "name": "award_award_Entry",
+            "description": null
+          },
+          {
+            "name": "awardwinners_awardwinner_Entry",
+            "description": null
+          },
+          {
+            "name": "newsarticles_newsarticle_Entry",
+            "description": null
+          },
+          {
+            "name": "aboutPages_page_Entry",
+            "description": null
+          },
+          {
+            "name": "news_news_Entry",
+            "description": null
+          },
+          {
+            "name": "grants_grants_Entry",
+            "description": null
+          },
+          {
+            "name": "contact_contact_Entry",
+            "description": null
+          },
+          {
+            "name": "applyPages_page_Entry",
+            "description": null
+          },
+          {
+            "name": "apply_apply_Entry",
+            "description": null
+          },
+          {
+            "name": "about_about_Entry",
+            "description": null
+          }
+        ]
+      },
+      {
+        "name": "ID",
+        "kind": "SCALAR",
+        "possibleTypes": null
+      },
+      {
+        "name": "DateTime",
+        "kind": "SCALAR",
+        "possibleTypes": null
+      },
+      {
+        "name": "UserInterface",
+        "kind": "INTERFACE",
+        "possibleTypes": [
+          {
+            "name": "User",
+            "description": null
+          }
+        ]
+      },
+      {
+        "name": "AssetInterface",
+        "kind": "INTERFACE",
+        "possibleTypes": [
+          {
+            "name": "assets_Asset",
+            "description": null
+          }
+        ]
+      },
+      {
+        "name": "Float",
+        "kind": "SCALAR",
+        "possibleTypes": null
+      },
+      {
+        "name": "GlobalSetInterface",
+        "kind": "INTERFACE",
+        "possibleTypes": [
+          {
+            "name": "mainmenu_GlobalSet",
+            "description": null
+          }
+        ]
+      },
+      {
+        "name": "Mutation",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "home_home_Entry",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "ElementInterface",
+        "kind": "INTERFACE",
+        "possibleTypes": [
+          {
+            "name": "home_home_Entry",
+            "description": null
+          },
+          {
+            "name": "grantlist_grant_Entry",
+            "description": null
+          },
+          {
+            "name": "award_award_Entry",
+            "description": null
+          },
+          {
+            "name": "awardwinners_awardwinner_Entry",
+            "description": null
+          },
+          {
+            "name": "newsarticles_newsarticle_Entry",
+            "description": null
+          },
+          {
+            "name": "aboutPages_page_Entry",
+            "description": null
+          },
+          {
+            "name": "news_news_Entry",
+            "description": null
+          },
+          {
+            "name": "grants_grants_Entry",
+            "description": null
+          },
+          {
+            "name": "contact_contact_Entry",
+            "description": null
+          },
+          {
+            "name": "applyPages_page_Entry",
+            "description": null
+          },
+          {
+            "name": "apply_apply_Entry",
+            "description": null
+          },
+          {
+            "name": "about_about_Entry",
+            "description": null
+          },
+          {
+            "name": "mainmenu_GlobalSet",
+            "description": null
+          },
+          {
+            "name": "assets_Asset",
+            "description": null
+          },
+          {
+            "name": "Element",
+            "description": null
+          },
+          {
+            "name": "User",
+            "description": null
+          }
+        ]
+      },
+      {
+        "name": "grantlist_grant_Entry",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "award_award_Entry",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "awardwinners_awardwinner_Entry",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "newsarticles_newsarticle_Entry",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "aboutPages_page_Entry",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "news_news_Entry",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "grants_grants_Entry",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "contact_contact_Entry",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "applyPages_page_Entry",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "apply_apply_Entry",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "about_about_Entry",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "mainmenu_GlobalSet",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "FileInput",
+        "kind": "INPUT_OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "assets_Asset",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "Element",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "User",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "__Schema",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "__Type",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "__TypeKind",
+        "kind": "ENUM",
+        "possibleTypes": null
+      },
+      {
+        "name": "__Field",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "__InputValue",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "__EnumValue",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "__Directive",
+        "kind": "OBJECT",
+        "possibleTypes": null
+      },
+      {
+        "name": "__DirectiveLocation",
+        "kind": "ENUM",
+        "possibleTypes": null
+      }
+    ]
+  }
+}

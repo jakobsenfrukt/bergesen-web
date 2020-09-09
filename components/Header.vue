@@ -67,11 +67,11 @@ export default {
       } else if (this.$route.path.substring(0, 3) == "/en") {
         return "/"
       }
-      const entry = this.entries.filter(entry => entry.uri === this.currentSlug);
+      const entry = this.entries.find(entry => entry.uri === this.currentSlug);
       if (this.english) {
-        return '/' + entry[0].uri
+        return '/' + entry.uri
       }
-      return '/en/' + entry[0].localized[0].uri
+      return '/en/' + entry.localized[0].uri
     }
   },
   apollo: {

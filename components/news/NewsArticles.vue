@@ -28,6 +28,13 @@ export default {
   margin-bottom: $spacing-m;
 }
 .article {
+  color: inherit;
+  text-decoration: none;
+
+  &:hover {
+    opacity: .5;
+  }
+
   &-image {
     width: 100%;
     margin-bottom: $spacing-s;

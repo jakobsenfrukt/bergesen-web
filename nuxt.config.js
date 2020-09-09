@@ -52,10 +52,9 @@ export default {
     '@nuxtjs/apollo',
   ],
   apollo: {
+    includeNodeModules: true,
     clientConfigs: {
-      default: {
-        httpEndpoint: 'https://test.bergesen-cms.444.no/api',
-      }
+      default: '@/apollo.config.js'
     }
   },
   /*
