@@ -50,12 +50,16 @@ export default {
       return this.$store.state.english
     },
     currentSlug() {
-      const currentPath = this.$route.fullPath;
+      let currentPath = this.$route.path;
       if (currentPath.substring(0, 3) == "/en") {
-        const newPath = currentPath.slice(4);
-        return newPath
+        currentPath = currentPath.slice(4);
+      } else {
+        currentPath = currentPath.slice(1)
       }
-      return currentPath.slice(1)
+      if (currentPath.substring(currentPath.length-1, currentPath.length) === "/") {
+        currentPath = currentPath.substring(0, currentPath.length-1)
+      }
+      return currentPath
     },
     newSlug() {
       if (this.$route.path === "/") {
@@ -64,10 +68,6 @@ export default {
         return "/"
       }
       const entry = this.$store.state.entries.find(entry => entry.uri === this.currentSlug || entry.localized[0].uri === this.currentSlug);
-      console.log("entry: ", entry);
-      console.log("currentSlug: ", this.currentSlug);
-      console.log("uri: ", entry.uri);
-      console.log("localized uri: ", entry.localized[0].uri);
       if (this.english) {
         return '/' + entry.uri
       }
