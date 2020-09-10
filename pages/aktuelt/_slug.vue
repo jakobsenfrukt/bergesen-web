@@ -1,15 +1,38 @@
 <template>
   <main>
     <PageHeader :heading="entry.title" :lead="entry.lead" />
-    <img :src="entry.mainimage[0].url" />
+    <img v-if="entry.mainimage" :src="entry.mainimage[0].url" />
   </main>
 </template>
 
 <script>
+import gql from 'graphql-tag'
 export default {
-  computed: {
-    entry() {
-      return this.$store.state.entries.find(entry => entry.slug === this.$route.params.slug);
+  data() {
+    return {
+      entry: {}
+    }
+  },
+  apollo: {
+    entry: {
+      query: gql`query GetEntryBySlug($slug: String!) {
+        entry(slug: [$slug], site: "default") {
+          ... on newsarticles_newsarticle_Entry {
+            title
+            lead
+            slug
+            uri
+            mainimage {
+              url
+            }
+          }
+        }
+      }`,
+      variables() {
+        return {
+          slug: this.$route.params.slug
+        }
+      }
     }
   }
 }

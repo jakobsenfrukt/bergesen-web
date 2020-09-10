@@ -1,3 +1,8 @@
+import fetch from 'node-fetch';
+import getApolloConfig from './apollo.config'
+import { execute, makePromise } from 'apollo-link';
+import { createHttpLink } from 'apollo-link-http';
+import gql from 'graphql-tag'
 
 export default {
   /*
@@ -55,6 +60,52 @@ export default {
     includeNodeModules: true,
     clientConfigs: {
       default: '@/apollo.config.js'
+    }
+  },
+  generate: {
+    routes: function () {
+      const config = getApolloConfig()
+      const uri = config.httpEndpoint
+      const httpLink = createHttpLink({
+        uri: uri,
+        fetch: fetch,
+        cache: config.cache,
+      });
+
+      const operation = {
+        query: gql`
+        query {
+          news: entries(section: "newsArticles" ) {
+            slug
+            localized {
+              slug
+            }
+          }
+          about: entries(section: "aboutPages") {
+            slug
+            localized {
+              slug
+            }
+          }
+          apply: entries(section: "applyPages") {
+            slug
+            localized {
+              slug
+            }
+          }
+        }`
+      }
+      return makePromise(execute(httpLink, operation))
+      .then(result => {
+        var newsArray = result.data.news.map(news => `/aktuelt/${news.slug}/`)
+        var aboutArray = result.data.about.map(about => `/om/${about.slug}/`)
+        var applyArray = result.data.apply.map(apply => `/sok-stotte/${apply.slug}/`)
+        var newsArrayEn = result.data.news.map(news => `/en/news/${news.localized[0].slug}/`)
+        var aboutArrayEn = result.data.about.map(about => `/en/about/${about.localized[0].slug}/`)
+        var applyArrayEn = result.data.apply.map(apply => `/en/apply/${apply.localized[0].slug}/`)
+        return newsArray.concat(newsArrayEn, aboutArray, aboutArrayEn, applyArray, applyArrayEn)
+      })
+      .catch(error => console.log(`received error ${error}`))
     }
   },
   /*
