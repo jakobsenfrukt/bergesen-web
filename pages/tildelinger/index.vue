@@ -1,6 +1,11 @@
 <template>
   <main>
     <PageHeader :heading="entry.title" :lead="entry.lead" />
+    <ul>
+      <li v-for="(grant, index) in grants" :key="index">
+        {{ grant.title }}
+      </li>
+    </ul>
   </main>
 </template>
 
@@ -10,6 +15,11 @@ export default {
   data: function() {
     return {
       entry: {}
+    }
+  },
+  computed: {
+    grants() {
+      return this.$store.state.entries.filter(entry => entry.__typename === "grantlist_grant_Entry");
     }
   },
   apollo: {

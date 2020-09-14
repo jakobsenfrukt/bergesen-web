@@ -1,6 +1,12 @@
 <template>
   <main>
     <PageHeader :heading="entry.title" :lead="entry.lead" />
+    <div v-html="entry.body"></div>
+    <ul>
+      <li v-for="(winner, index) in winners" :key="index">
+        {{ winner.title }}
+      </li>
+    </ul>
   </main>
 </template>
 
@@ -12,12 +18,18 @@ export default {
       entry: {}
     }
   },
+  computed: {
+    winners() {
+      return this.$store.state.entries.filter(entry => entry.__typename === "awardwinners_awardwinner_Entry");
+    }
+  },
   apollo: {
     entry: gql`{
       entry(type: "award", site: "default") {
         ... on award_award_Entry {
           title
           lead
+          body
         }
       }
     }`

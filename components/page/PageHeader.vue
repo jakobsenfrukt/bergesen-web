@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1 class="page-title">{{ heading }}</h1>
+    <Date v-if="date" :rawDate="date" />
     <p v-if="lead" class="lead">
       {{ lead }}
     </p>
@@ -11,7 +12,8 @@
 export default {
   props: {
     heading: String,
-    lead: String
+    lead: String,
+    date: String
   }
 }
 </script>

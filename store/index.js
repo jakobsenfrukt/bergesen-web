@@ -36,7 +36,10 @@ export const actions = {
           }
         }
         ... on applyPages_page_Entry {
-          title
+          body
+        }
+        ... on aboutPages_page_Entry {
+          body
         }
       }
     }`;

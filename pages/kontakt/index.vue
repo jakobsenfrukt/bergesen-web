@@ -1,6 +1,7 @@
 <template>
   <main>
     <PageHeader :heading="entry.title" :lead="entry.lead" />
+    <div v-html="entry.body"></div>
   </main>
 </template>
 
@@ -18,6 +19,7 @@ export default {
         ... on contact_contact_Entry {
           title
           lead
+          body
         }
       }
     }`

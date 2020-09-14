@@ -1,7 +1,8 @@
 <template>
   <main>
-    <PageHeader :heading="entry.title" :lead="entry.lead" />
+    <PageHeader :heading="entry.title" :lead="entry.lead" :date="entry.postDate" />
     <img v-if="entry.mainimage" :src="entry.mainimage[0].url" />
+    <div v-html="entry.body"></div>
   </main>
 </template>
 
@@ -20,6 +21,8 @@ export default {
           ... on newsarticles_newsarticle_Entry {
             title
             lead
+            body
+            postDate
             slug
             uri
             mainimage {

@@ -6,6 +6,7 @@
         <NLink :to="page.uri">{{ page.title }}</NLink>
       </li>
     </ul>
+    <div v-html="entry.body"></div>
   </main>
 </template>
 
@@ -28,6 +29,7 @@ export default {
         ... on about_about_Entry {
           title
           lead
+          body
         }
       }
     }`
