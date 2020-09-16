@@ -4,8 +4,8 @@
     <div class="news-grid">
       <NLink v-for="(article, index) in articles" class="article" :to="article.uri" :key="index">
         <img class="article-image" :src="article.mainimage[0].url" />
-        <Date :rawDate="article.postDate" />
         <h1 class="article-title">{{ article.title }}</h1>
+        <Date :rawDate="article.postDate" class="article-date" />
         <p v-if="article.lead" class="article-lead">
           {{ article.lead }}
         </p>
@@ -43,6 +43,22 @@ export default {
   &-image {
     width: 100%;
     margin-bottom: $spacing-s;
+    height: 16rem;
+    object-fit: cover;
+  }
+
+  &-title {
+    margin-bottom: 0;
+  }
+
+  &-lead {
+    font-family: $sans-serif;
+    font-weight: 500;
+  }
+
+  &-date {
+    opacity: .5;
+    font-size: .9rem;
   }
 }
 </style>

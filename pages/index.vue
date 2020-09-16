@@ -1,6 +1,6 @@
 <template>
   <main>
-    <PageHeader :heading="entry.title" :lead="entry.lead" />
+    <div class="index-lead">{{ entry.lead }}</div>
     <NewsArticles :articles="news" heading="Aktuelt" />
   </main>
 </template>
@@ -51,3 +51,14 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+@import '@/assets/css/variables.scss';
+.index-lead {
+  font-size: 2rem;
+  line-height: 1.3;
+  text-align: center;
+  margin: 0 auto $spacing-m;
+  max-width: 800px;
+}
+</style>

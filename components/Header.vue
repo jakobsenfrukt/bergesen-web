@@ -8,26 +8,24 @@
     <nav v-if="mainmenu" class="site-nav">
       <ul>
         <template v-if="english">
-          <li>
-            <NLink to="/en/">Home</NLink>
-          </li>
           <li v-for="(item, index) in mainmenu.menuitems" :key="index">
             <NLink :to="`/en/${item.localized[0].slug}`">{{ item.localized[0].title }}</NLink>
           </li>
         </template>
         <template v-else>
-          <li>
-            <NLink to="/">Hjem</NLink>
-          </li>
           <li v-for="(item, index) in mainmenu.menuitems" :key="index">
             <NLink :to="`/${item.slug}`">{{ item.title }}</NLink>
           </li>
         </template>
-        <li>
-          <a :href="mainmenu.facebook" target="_blank">Facebook</a>
+        <li class="some">
+          <a :href="mainmenu.facebook" target="_blank" class="some-link">
+            <img src="/graphics/icons/fb.svg" alt="Facebook logo" class="some-icon" />
+          </a>
         </li>
-        <li>
-          <a :href="mainmenu.instagram" target="_blank">Instagram</a>
+        <li class="some">
+          <a :href="mainmenu.instagram" target="_blank" class="some-link">
+            <img src="/graphics/icons/insta.svg" alt="Instagram logo" class="some-icon" />
+          </a>
         </li>
       </ul>
     </nav>
@@ -106,10 +104,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/css/variables.scss';
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-family: $sans-serif;
 }
 .logo-svg {
   width: 6.6rem;
@@ -124,6 +124,11 @@ header {
     li {
       display: inline-block;
       margin: 0 1rem .5rem;
+      vertical-align: middle;
+
+      &.some {
+        margin: 0 .24rem .5rem;
+      }
     }
   }
   a {
@@ -131,12 +136,19 @@ header {
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: .01em;
-    font-size: .8rem;
+    font-size: 1rem;
 
 
     &:hover {
       opacity: .5;
     }
+  }
+}
+.some {
+  &-icon {
+    width: 1rem;
+    height: 1rem;
+    vertical-align: middle;
   }
 }
 .translate {
