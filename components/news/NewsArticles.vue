@@ -86,6 +86,11 @@ export default {
     font-size: .9rem;
   }
 }
+@media (max-width: $media-m) {
+  .news-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 @media (max-width: $media-s) {
   .section-title {
     font-size: 1rem;
