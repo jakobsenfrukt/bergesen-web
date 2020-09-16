@@ -163,9 +163,6 @@ header {
 }
 .translate {
   display: inline-block;
-  position: absolute;
-  top: 0;
-  right: 2rem;
 
   a {
     text-decoration: underline;
@@ -201,6 +198,11 @@ header {
         }
       }
     }
+  }
+  .translate {
+    position: absolute;
+    top: 0;
+    right: 2rem;
   }
 }
 @media (max-width: $media-m) {
