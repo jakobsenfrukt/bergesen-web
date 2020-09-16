@@ -46,7 +46,13 @@ export default {
   text-decoration: none;
 
   &:hover {
-    opacity: .5;
+    .article-title {
+      color: $color-green;
+    }
+
+    .article-image img {
+      filter: grayscale(0);
+    }
   }
 
   &-image {
@@ -63,17 +69,22 @@ export default {
     img {
       display: block;
       width: 100%;
+      height: 100%;
       position: absolute;
       top: 0;
       right: 0;
       bottom: 0;
       left: 0;
       object-fit: cover;
+      object-position: top;
+      filter: grayscale(100%);
+      transition: all .3s ease;
     }
   }
 
   &-title {
     margin-bottom: 0;
+    transition: color .3s ease;
   }
 
   &-lead {
