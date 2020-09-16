@@ -7,6 +7,7 @@
 </template>
 
 <style lang="scss">
+@import '@/assets/css/variables.scss';
 .grid {
   min-height: 100vh;
   display: grid;
@@ -14,5 +15,10 @@
 }
 header, main, footer {
   padding: 2rem;
+}
+@media (max-width: $media-s) {
+  header, main, footer {
+    padding: 1rem;
+  }
 }
 </style>

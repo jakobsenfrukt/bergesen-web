@@ -17,7 +17,7 @@
           </li>
         </template>
         <template v-else>
-          <li v-for="(item, index) in mainmenu.menuitems" :key="index">
+          <li v-for="(item, index) in mainmenu.menuitems" :key="index" @click="open = false">
             <NLink :to="`/${item.slug}`">{{ item.title }}</NLink>
           </li>
         </template>
@@ -32,7 +32,7 @@
           </a>
         </li>
       </ul>
-      <div class="translate">
+      <div class="translate" @click="open = false">
         <template v-if="!english">
           <span>NO</span> / <span @click="switchLanguage()"><NLink :to="newSlug">EN</NLink></span>
         </template>
@@ -168,7 +168,7 @@ header {
   position: fixed;
   top: 0;
   right: 0;
-  z-index: 10;
+  z-index: 101;
   padding: 2rem;
   font-size: 3rem;
   cursor: pointer;
@@ -176,6 +176,9 @@ header {
   display: none;
 }
 @media (max-width: $media-m) {
+  .logo-svg {
+    width: 4rem;
+  }
   .menu-toggle {
     display: block;
     transition: color .2s ease;
@@ -191,6 +194,7 @@ header {
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: 100;
     padding: 8rem 2rem;
     background: $color-text;
     color: $color-background;
@@ -223,6 +227,20 @@ header {
     &-icon {
       width: 3rem;
       height: 3rem;
+    }
+  }
+}
+@media (max-width: $media-s) {
+  .menu-toggle {
+    padding: 1rem 2rem;
+  }
+  .site-nav {
+    font-size: 1.6rem;
+  }
+  .some {
+    &-icon {
+      width: 2rem;
+      height: 2rem;
     }
   }
 }

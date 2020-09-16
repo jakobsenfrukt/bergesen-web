@@ -61,4 +61,9 @@ export default {
   margin: 0 auto $spacing-m;
   max-width: 800px;
 }
+@media (max-width: $media-s) {
+  .index-lead {
+    font-size: 1.4rem;
+  }
+}
 </style>

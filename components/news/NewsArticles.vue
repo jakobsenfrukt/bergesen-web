@@ -3,12 +3,18 @@
     <h2 v-if="heading" class="section-title">{{ heading }}</h2>
     <div class="news-grid">
       <NLink v-for="(article, index) in articles" class="article" :to="article.uri" :key="index">
-        <img class="article-image" :src="article.mainimage[0].url" />
-        <h1 class="article-title">{{ article.title }}</h1>
-        <Date :rawDate="article.postDate" class="article-date" />
-        <p v-if="article.lead" class="article-lead">
-          {{ article.lead }}
-        </p>
+        <div class="article-image">
+          <div class="image-wrapper">
+            <img :src="article.mainimage[0].url" />
+          </div>
+        </div>
+        <div class="article-text">
+          <h1 class="article-title">{{ article.title }}</h1>
+          <Date :rawDate="article.postDate" class="article-date" />
+          <p v-if="article.lead" class="article-lead">
+            {{ article.lead }}
+          </p>
+        </div>
       </NLink>
     </div>
   </div>
@@ -26,6 +32,9 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
+.section-title {
+  color: $color-red;
+}
 .news-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -41,10 +50,26 @@ export default {
   }
 
   &-image {
-    width: 100%;
     margin-bottom: $spacing-s;
-    height: 16rem;
-    object-fit: cover;
+
+    .image-wrapper {
+      width: 100%;
+      padding-top: 80%;
+      position: relative;
+      margin-bottom: $spacing-s;
+      overflow: hidden;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      object-fit: cover;
+    }
   }
 
   &-title {
@@ -59,6 +84,32 @@ export default {
   &-date {
     opacity: .5;
     font-size: .9rem;
+  }
+}
+@media (max-width: $media-s) {
+  .section-title {
+    font-size: 1rem;
+  }
+  .news-grid {
+    grid-template-columns: 1fr;
+  }
+  .article {
+    display: grid;
+    grid-template-columns: 1fr 1.618fr;
+
+    &-image {
+      .image-wrapper {
+        padding-top: 100%;
+      }
+    }
+
+    &-text {
+      padding-left: 1rem;
+    }
+
+    &-title {
+      font-size: 1.4rem;
+    }
   }
 }
 </style>

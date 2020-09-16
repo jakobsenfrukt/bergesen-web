@@ -27,4 +27,13 @@ export default {
   font-size: 1.4rem;
   margin-bottom: $spacing-m;
 }
+@media (max-width: $media-s) {
+  .page-title {
+    font-size: 2rem;
+  }
+  .lead {
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+}
 </style>
