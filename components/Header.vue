@@ -12,21 +12,21 @@
     <nav v-if="mainmenu" class="site-nav" :class="{ open: open }">
       <ul>
         <template v-if="english">
-          <li v-for="(item, index) in mainmenu.menuitems" :key="index">
+          <li v-for="(item, index) in mainmenu.menuitems" :key="index" @click="open = false" :class="item.slug">
             <NLink :to="`/en/${item.localized[0].slug}`">{{ item.localized[0].title }}</NLink>
           </li>
         </template>
         <template v-else>
-          <li v-for="(item, index) in mainmenu.menuitems" :key="index" @click="open = false">
+          <li v-for="(item, index) in mainmenu.menuitems" :key="index" @click="open = false"  :class="item.slug">
             <NLink :to="`/${item.slug}`">{{ item.title }}</NLink>
           </li>
         </template>
-        <li class="some">
+        <li class="some fb">
           <a :href="mainmenu.facebook" target="_blank" class="some-link">
             <Facebook class="some-icon" />
           </a>
         </li>
-        <li class="some">
+        <li class="some insta">
           <a :href="mainmenu.instagram" target="_blank" class="some-link">
             <Instagram class="some-icon" />
           </a>
@@ -163,6 +163,13 @@ header {
 }
 .translate {
   display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 2rem;
+
+  a {
+    text-decoration: underline;
+  }
 }
 .menu-toggle {
   position: fixed;
@@ -175,9 +182,30 @@ header {
 
   display: none;
 }
+@media (min-width: $media-m) {
+  .site-nav {
+    ul {
+      width: 100%;
+      display: flex;
+      li {
+        /*&.sok-stotte {
+          color: $color-green;
+          padding: 0 .5rem;
+          margin: 0 0 0 auto;
+        }*/
+        &.some {
+          margin: 0 0 0 .5rem;
+          &.fb {
+            margin-left: auto;
+          }
+        }
+      }
+    }
+  }
+}
 @media (max-width: $media-m) {
   .logo-svg {
-    width: 4rem;
+    width: 5.4rem;
   }
   .menu-toggle {
     display: block;
@@ -200,7 +228,8 @@ header {
     color: $color-background;
     font-size: 2.4rem;
     transform: translateX(100%);
-    transition: transform .2s ease;
+    opacity: 0;
+    transition: all .2s ease;
 
     ul {
 
@@ -221,6 +250,7 @@ header {
 
     &.open {
       transform: translateX(0);
+      opacity: 1;
     }
   }
   .some {
@@ -231,6 +261,9 @@ header {
   }
 }
 @media (max-width: $media-s) {
+  .logo-svg {
+    width: 4.2rem;
+  }
   .menu-toggle {
     padding: 1rem 2rem;
   }
