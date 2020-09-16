@@ -1,12 +1,10 @@
 <template>
   <main>
-    <PageHeader :heading="entry.title" :lead="entry.lead" />
-    <ul>
-      <li v-for="(page, index) in pages" :key="index">
-        <NLink :to="page.uri">{{ page.title }}</NLink>
-      </li>
-    </ul>
-    <div v-html="entry.body"></div>
+    <div class="page-content">
+      <PageHeader :heading="entry.title" :lead="entry.lead" />
+      <div v-html="entry.body"></div>
+    </div>
+    <SideNav :menuItems="pages" class="page-nav" />
   </main>
 </template>
 
@@ -48,3 +46,17 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+main {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-column-gap: 4rem;
+}
+.page-content {
+  order: 2;
+}
+.page-nav {
+  order: 1;
+}
+</style>

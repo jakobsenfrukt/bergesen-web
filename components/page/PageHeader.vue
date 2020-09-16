@@ -26,6 +26,7 @@ export default {
 .lead {
   font-size: 1.4rem;
   margin-bottom: $spacing-m;
+  max-width: 42rem;
 }
 @media (max-width: $media-s) {
   .page-title {
