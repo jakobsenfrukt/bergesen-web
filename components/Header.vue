@@ -5,7 +5,11 @@
         <img src="/logo.svg" class="logo-svg" />
       </NLink>
     </div>
-    <nav v-if="mainmenu" class="site-nav">
+    <div class="menu-toggle" @click="open = !open" :class="{ open: open }">
+      <span v-if="open">&times;</span>
+      <span v-else>=</span>
+    </div>
+    <nav v-if="mainmenu" class="site-nav" :class="{ open: open }">
       <ul>
         <template v-if="english">
           <li v-for="(item, index) in mainmenu.menuitems" :key="index">
@@ -19,23 +23,23 @@
         </template>
         <li class="some">
           <a :href="mainmenu.facebook" target="_blank" class="some-link">
-            <img src="/graphics/icons/fb.svg" alt="Facebook logo" class="some-icon" />
+            <Facebook class="some-icon" />
           </a>
         </li>
         <li class="some">
           <a :href="mainmenu.instagram" target="_blank" class="some-link">
-            <img src="/graphics/icons/insta.svg" alt="Instagram logo" class="some-icon" />
+            <Instagram class="some-icon" />
           </a>
         </li>
       </ul>
-    </nav>
-    <nav class="translate">
-      <template v-if="!english">
-        <span>NO</span> / <span @click="switchLanguage()"><NLink :to="newSlug">EN</NLink></span>
-      </template>
-      <template v-if="english">
-        <span @click="switchLanguage()"><NLink :to="newSlug">NO</NLink></span> / <span>EN</span>
-      </template>
+      <div class="translate">
+        <template v-if="!english">
+          <span>NO</span> / <span @click="switchLanguage()"><NLink :to="newSlug">EN</NLink></span>
+        </template>
+        <template v-if="english">
+          <span @click="switchLanguage()"><NLink :to="newSlug">NO</NLink></span> / <span>EN</span>
+        </template>
+      </div>
     </nav>
   </header>
 </template>
@@ -43,6 +47,11 @@
 <script>
 import gql from 'graphql-tag'
 export default {
+  data() {
+    return {
+      open: true
+    }
+  },
   computed: {
     english() {
       return this.$store.state.english
@@ -108,7 +117,6 @@ export default {
 header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   font-family: $sans-serif;
 }
 .logo-svg {
@@ -116,6 +124,10 @@ header {
   margin-right: 1rem;
 }
 .site-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
   ul {
     list-style: none;
     margin: 0;
@@ -136,8 +148,6 @@ header {
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: .01em;
-    font-size: 1rem;
-
 
     &:hover {
       opacity: .5;
@@ -153,5 +163,67 @@ header {
 }
 .translate {
   display: inline-block;
+}
+.menu-toggle {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  padding: 2rem;
+  font-size: 3rem;
+  cursor: pointer;
+
+  display: none;
+}
+@media (max-width: $media-m) {
+  .menu-toggle {
+    display: block;
+    transition: color .2s ease;
+
+    &.open {
+      color: $color-background;
+    }
+  }
+  .site-nav {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 8rem 2rem;
+    background: $color-text;
+    color: $color-background;
+    font-size: 2.4rem;
+    transform: translateX(100%);
+    transition: transform .2s ease;
+
+    ul {
+
+      li {
+        display: block;
+        margin: .5rem 0;
+
+        &.some {
+          display: inline-block;
+          margin-top: 3rem;
+        }
+      }
+
+      a {
+        display: block;
+      }
+    }
+
+    &.open {
+      transform: translateX(0);
+    }
+  }
+  .some {
+    &-icon {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
 }
 </style>
