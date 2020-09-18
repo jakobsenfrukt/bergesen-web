@@ -1,0 +1,22 @@
+.site-main {
+  .page-header, .page-body {
+    width: 42rem;
+    max-width: 100%;
+    margin: auto;
+  }
+  &--with-aside {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-column-gap: 4rem;
+    .page-header {
+      margin: 0;
+    }
+    .page-content {
+      order: 2;
+      margin: 0;
+    }
+    .page-nav {
+      order: 1;
+    }
+  }
+}

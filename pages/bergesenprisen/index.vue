@@ -1,7 +1,7 @@
 <template>
-  <main>
+  <main class="site-main">
     <PageHeader :heading="entry.title" :lead="entry.lead" />
-    <div v-html="entry.body"></div>
+    <div v-html="entry.body" class="page-body"></div>
     <ul>
       <li v-for="(winner, index) in winners" :key="index">
         {{ winner.title }}

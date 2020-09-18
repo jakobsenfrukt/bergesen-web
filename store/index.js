@@ -20,6 +20,7 @@ export const actions = {
     const entries = gql`{
       entries {
         __typename
+        sectionId
         id
         title
         slug

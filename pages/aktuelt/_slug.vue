@@ -2,7 +2,7 @@
   <main>
     <PageHeader :heading="entry.title" :lead="entry.lead" :date="entry.postDate" />
     <img v-if="entry.mainimage" :src="entry.mainimage[0].url" />
-    <div v-html="entry.body"></div>
+    <div v-html="entry.body" class="page-body"></div>
   </main>
 </template>
 

@@ -5,7 +5,8 @@
 <script>
 export default {
   props: {
-    rawDate: String
+    rawDate: String,
+    short: Boolean
   },
   computed: {
     date() {
@@ -13,6 +14,9 @@ export default {
       const year = dateObject.getFullYear();
       const month = dateObject.getMonth() + 1;
       const day = dateObject.getDate();
+      if (this.short) {
+        return month + "." + year
+      }
       return day + "." + month + "." + year
     }
   }

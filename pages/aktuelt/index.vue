@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="site-main">
     <PageHeader :heading="entry.title" :lead="entry.lead" />
     <NewsArticles :articles="entries" />
   </main>

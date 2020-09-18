@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="page-header">
     <h1 class="page-title">{{ heading }}</h1>
-    <Date v-if="date" :rawDate="date" />
+    <Date v-if="date" short :rawDate="date" />
     <p v-if="lead" class="lead">
       {{ lead }}
     </p>
@@ -25,7 +25,7 @@ export default {
 }
 .lead {
   font-size: 1.4rem;
-  margin-bottom: $spacing-m;
+  margin-bottom: $spacing-l;
   max-width: 42rem;
 }
 @media (max-width: $media-s) {

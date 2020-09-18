@@ -10,7 +10,7 @@
         </div>
         <div class="article-text">
           <h1 class="article-title">{{ article.title }}</h1>
-          <Date :rawDate="article.postDate" class="article-date" />
+          <Date short :rawDate="article.postDate" class="article-date" />
           <p v-if="article.lead" class="article-lead">
             {{ article.lead }}
           </p>

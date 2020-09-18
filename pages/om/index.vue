@@ -1,10 +1,10 @@
 <template>
-  <main>
+  <main class="site-main--with-aside">
     <div class="page-content">
       <PageHeader :heading="entry.title" :lead="entry.lead" />
       <div v-html="entry.body"></div>
     </div>
-    <SideNav :menuItems="pages" class="page-nav" />
+    <SideNav :menuItems="pages" :parent="entry.uri" :parentTitle="entry.title" class="page-nav" />
   </main>
 </template>
 
@@ -28,6 +28,7 @@ export default {
           title
           lead
           body
+          uri
         }
       }
     }`
@@ -46,17 +47,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-main {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-column-gap: 4rem;
-}
-.page-content {
-  order: 2;
-}
-.page-nav {
-  order: 1;
-}
-</style>

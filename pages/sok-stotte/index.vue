@@ -1,9 +1,9 @@
 <template>
-  <main>
+  <main class="site-main--with-aside">
     <div class="page-content">
       <PageHeader :heading="entry.title" :lead="entry.lead" />
     </div>
-    <SideNav :menuItems="pages" class="page-nav" />
+    <SideNav :menuItems="pages" :parent="entry.uri" :parentTitle="entry.title" class="page-nav" />
   </main>
 </template>
 
@@ -26,6 +26,7 @@ export default {
         ... on apply_apply_Entry {
           title
           lead
+          uri
         }
       }
     }`
@@ -44,17 +45,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-main {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  grid-column-gap: 4rem;
-}
-.page-content {
-  order: 2;
-}
-.page-nav {
-  order: 1;
-}
-</style>
