@@ -1,7 +1,13 @@
 <template>
   <main>
-    <div class="index-lead">{{ entry.lead }}</div>
+    <section class="hero">
+      <div class="index-lead">{{ entry.lead }}</div>
+    </section>
     <NewsArticles :articles="news" heading="Aktuelt" />
+    <section class="apply">
+      <h2>Info om å søke støtte</h2>
+      <p>Her kommer det en fornuftig tekst og noen viktige lenker.</p>
+    </section>
   </main>
 </template>
 
@@ -58,12 +64,30 @@ export default {
   font-size: 2rem;
   line-height: 1.3;
   text-align: center;
-  margin: 0 auto $spacing-m;
+  margin: 0 auto;
   max-width: 800px;
+}
+section {
+  margin: 0 -2rem;
+  padding: 2rem;
+
+  &.hero {
+    background: $color-lightgreen;
+    padding: 5rem 2rem 5.5rem;
+    margin-bottom: 2rem;
+  }
+
+  &.apply {
+    background: $color-lightestred;
+  }
 }
 @media (max-width: $media-s) {
   .index-lead {
     font-size: 1.4rem;
+  }
+  section {
+    margin: 0 -1rem;
+    padding: 1rem;
   }
 }
 </style>

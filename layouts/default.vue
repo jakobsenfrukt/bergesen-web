@@ -16,6 +16,10 @@
 header, main, footer {
   padding: 2rem;
 }
+main {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 @media (max-width: $media-s) {
   header, main, footer {
     padding: 1rem;
