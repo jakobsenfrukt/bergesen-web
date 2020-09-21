@@ -1,9 +1,12 @@
 <template>
   <div class="news-articles">
-    <h2 v-if="heading" class="section-title">{{ heading }}</h2>
+    <h2 v-if="heading" class="section-title">
+      <NLink v-if="link" :to="link">{{ heading }}</NLink>
+      <template v-else>{{ heading }}</template>
+    </h2>
     <div class="news-grid">
       <NLink v-for="(article, index) in articles" class="article" :to="article.uri" :key="index">
-        <div class="article-image">
+        <div v-if="article.mainimage.length" class="article-image">
           <div class="image-wrapper">
             <img :src="article.mainimage[0].url" />
           </div>
@@ -25,7 +28,8 @@ export default {
   props: {
     articles: Array,
     limit: Number,
-    heading: String
+    heading: String,
+    link: String
   }
 }
 </script>
@@ -34,6 +38,11 @@ export default {
 @import '@/assets/css/variables.scss';
 .section-title {
   color: $color-red;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
 }
 .news-grid {
   display: grid;
@@ -44,6 +53,7 @@ export default {
 .article {
   color: inherit;
   text-decoration: none;
+  margin-bottom: $spacing-m;
 
   &:hover {
     .article-title {

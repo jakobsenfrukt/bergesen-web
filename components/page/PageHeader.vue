@@ -1,10 +1,10 @@
 <template>
   <div class="page-header">
     <h1 class="page-title">{{ heading }}</h1>
-    <Date v-if="date" short :rawDate="date" />
     <p v-if="lead" class="lead">
       {{ lead }}
     </p>
+    <Date v-if="date" short :rawDate="date" />
   </div>
 </template>
 
@@ -20,12 +20,14 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
+.page-header {
+  margin-bottom: $spacing-m;
+}
 .page-title {
   font-size: 2.8rem;
 }
 .lead {
   font-size: 1.4rem;
-  margin-bottom: $spacing-l;
   max-width: 42rem;
 }
 @media (max-width: $media-s) {

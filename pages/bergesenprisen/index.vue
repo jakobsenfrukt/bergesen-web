@@ -2,11 +2,7 @@
   <main class="site-main">
     <PageHeader :heading="entry.title" :lead="entry.lead" />
     <div v-html="entry.body" class="page-body"></div>
-    <ul>
-      <li v-for="(winner, index) in winners" :key="index">
-        {{ winner.title }}
-      </li>
-    </ul>
+    <WinnerList :winners="winners" heading="Vinnere av Bergesenprisen" />
   </main>
 </template>
 
@@ -18,11 +14,6 @@ export default {
       entry: {}
     }
   },
-  computed: {
-    winners() {
-      return this.$store.state.entries.filter(entry => entry.__typename === "awardwinners_awardwinner_Entry");
-    }
-  },
   apollo: {
     entry: gql`{
       entry(type: "award", site: "default") {
@@ -30,6 +21,20 @@ export default {
           title
           lead
           body
+        }
+      }
+    }`,
+    winners: gql`{
+      winners: entries(section: "awardwinners", site: "default") {
+        ... on awardwinners_awardwinner_Entry {
+          title
+          lead
+          mainimage {
+            url
+          }
+          postDate
+          slug
+          uri
         }
       }
     }`

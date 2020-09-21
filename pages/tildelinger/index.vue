@@ -1,41 +1,19 @@
 <template>
   <main class="site-main">
     <PageHeader :heading="entry.title" :lead="entry.lead" />
-    <nav class="grant-filter">
-      <div class="show-all">
-        <button>Vis alle</button>
-      </div>
-      <div class="grant-filter-year">
-        <label>
-          <span>År</span>
-          <select>
-            <option>2020</option>
-          </select>
-        </label>
-      </div>
-      <div class="grant-filter-month">
-        <label>
-          <span>Måned</span>
-          <select>
-            <option>August</option>
-          </select>
-        </label>
-      </div>
-      <div class="grant-filter-search">
-        <label>
-          <span>Søk</span>
-          <input type="text" />
-        </label>
-      </div>
-    </nav>
+    <GrantList :grants="mockgrants" />
+
+    Data fra publiseringssystemet
     <ul class="grant-list">
       <li v-for="(grant, index) in grants" :key="index" class="grant">
-        <span class="grant-date">{{ grant.date }}</span>
+        <span class="grant-date">
+          <Date :rawDate="grant.date" short />
+        </span>
         <div class="grant-details">
           <span class="grant-title">{{ grant.title }}</span>
-          <span class="grant-project">{{ grant.projectName }}</span>
+          <span class="grant-project">{{ grant.projectname }}</span>
         </div>
-        <span class="grant-amount">kr {{ grant.grant }}</span>
+        <span class="grant-amount">kr {{ grant.grantedsum }}</span>
       </li>
     </ul>
   </main>
@@ -47,7 +25,7 @@ export default {
   data: function() {
     return {
       entry: {},
-      grants: [
+      mockgrants: [
         {
           title: "Navn på søkeren",
           date: "August 2020",
@@ -112,6 +90,20 @@ export default {
           lead
         }
       }
+    }`,
+    grants: gql`{
+      grants: entries(section: "grantlist", site: "default") {
+        ... on grantlist_grant_Entry {
+          title
+          projectname
+          grantedsum
+          date
+          mainimage {
+            url
+          }
+          lead
+        }
+      }
     }`
   },
   head() {
@@ -143,7 +135,7 @@ export default {
   width: 100%;
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: 0 auto $spacing-l;
   border-top: 2px solid $color-text;
 }
 .grant {

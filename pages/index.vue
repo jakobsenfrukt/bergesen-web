@@ -3,7 +3,7 @@
     <section class="hero">
       <div class="index-lead">{{ entry.lead }}</div>
     </section>
-    <NewsArticles :articles="news" heading="Aktuelt" />
+    <NewsArticles :articles="news" heading="Aktuelt" link="/aktuelt" />
     <section class="apply">
       <h2>Info om å søke støtte</h2>
       <p>Her kommer det en fornuftig tekst og noen viktige lenker.</p>

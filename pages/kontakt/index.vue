@@ -1,7 +1,8 @@
 <template>
   <main class="site-main">
     <PageHeader :heading="entry.title" :lead="entry.lead" />
-    <div v-html="entry.body"></div>
+    <div v-html="entry.body" class="page-body"></div>
+    <PersonList v-if="people" :people="admin" heading="Kontakt administrasjonen" />
   </main>
 </template>
 
@@ -13,6 +14,14 @@ export default {
       entry: {}
     }
   },
+  computed: {
+    admin() {
+      if (!this.people) {
+        return
+      }
+      return this.people.people.filter(person => person.group === "admin");
+    }
+  },
   apollo: {
     entry: gql`{
       entry(type: "contact", site: "default") {
@@ -22,7 +31,27 @@ export default {
           body
         }
       }
-    }`
+    }`,
+    people: {
+      query: gql`{
+        people: entry(id: "295", site: "default") {
+          ... on aboutPages_people_Entry {
+            people {
+              ... on people_person_BlockType {
+                fullname
+                role
+                group
+                image {
+                  url
+                }
+                phone
+                email
+              }
+            }
+          }
+        }
+      }`
+    }
   },
   head() {
     return {

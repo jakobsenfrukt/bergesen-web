@@ -30,18 +30,6 @@ export const actions = {
           slug
           uri
         }
-        ... on newsarticles_newsarticle_Entry {
-          lead
-          mainimage {
-            url
-          }
-        }
-        ... on applyPages_page_Entry {
-          body
-        }
-        ... on aboutPages_page_Entry {
-          body
-        }
       }
     }`;
     await client.query({ query: entries }).then(response => {

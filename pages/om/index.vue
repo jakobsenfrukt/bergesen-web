@@ -2,7 +2,7 @@
   <main class="site-main--with-aside">
     <div class="page-content">
       <PageHeader :heading="entry.title" :lead="entry.lead" />
-      <div v-html="entry.body"></div>
+      <div v-html="entry.body" class="page-body"></div>
     </div>
     <SideNav :menuItems="pages" :parent="entry.uri" :parentTitle="entry.title" class="page-nav" />
   </main>
@@ -16,11 +16,6 @@ export default {
       entry: {}
     }
   },
-  computed: {
-    pages() {
-      return this.$store.state.entries.filter(entry => entry.__typename === "aboutPages_page_Entry");
-    }
-  },
   apollo: {
     entry: gql`{
       entry(type: "about", site: "default") {
@@ -30,6 +25,13 @@ export default {
           body
           uri
         }
+      }
+    }`,
+    pages: gql`{
+      pages: entries(section: "aboutpages", site: "default") {
+        title
+        slug
+        uri
       }
     }`
   },

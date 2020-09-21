@@ -7,7 +7,7 @@
     </div>
     <div class="menu-toggle" @click="open = !open" :class="{ open: open }">
       <span v-if="open">&times;</span>
-      <span v-else>=</span>
+      <span v-else>&#9776;</span>
     </div>
     <nav v-if="mainmenu" class="site-nav" :class="{ open: open }">
       <ul>

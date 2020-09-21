@@ -1,8 +1,11 @@
 .site-main {
   .page-header, .page-body {
-    width: 42rem;
-    max-width: 100%;
+    width: 100%;
+    max-width: 42rem;
     margin: auto;
+  }
+  .page-body {
+    padding-bottom: $spacing-s;
   }
   &--with-aside {
     display: grid;
@@ -14,9 +17,36 @@
     .page-content {
       order: 2;
       margin: 0;
+      padding-bottom: $spacing-l;
     }
     .page-nav {
       order: 1;
+    }
+  }
+}
+@media (max-width: $media-m) {
+  .site-main {
+    &--with-aside {
+      grid-template-columns: 1fr;
+      .page-content {
+        order: 1;
+      }
+      .page-nav {
+        order: 2;
+      }
+    }
+  }
+}
+@media (max-width: $media-s) {
+  .site-main {
+    &--with-aside {
+      grid-template-columns: 1fr;
+      .page-content {
+        order: 1;
+      }
+      .page-nav {
+        order: 2;
+      }
     }
   }
 }

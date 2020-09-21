@@ -1,7 +1,7 @@
 <template>
-  <main>
+  <main class="site-main">
     <PageHeader :heading="entry.title" :lead="entry.lead" :date="entry.postDate" />
-    <img v-if="entry.mainimage" :src="entry.mainimage[0].url" />
+    <img v-if="entry.mainimage" :src="entry.mainimage[0].url" class="article-mainimage" />
     <div v-html="entry.body" class="page-body"></div>
   </main>
 </template>
@@ -40,3 +40,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.article-mainimage {
+  display: block;
+  width: 100%;
+  max-width: 54rem;
+  margin: 0 auto;
+}
+</style>
