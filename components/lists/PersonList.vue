@@ -13,7 +13,7 @@
           <span class="person-role">{{ person.role }}</span>
           <p class="person-contact">
             <span class="person-phone">{{ person.phone }}</span>
-            <span class="person-email">{{ person.email }}</span>
+            <span class="person-email"><a :href="person.email" target="_blank">{{ person.email }}</a></span>
           </p>
         </div>
       </li>
@@ -91,6 +91,9 @@ export default {
       display: block;
       font-family: $sans-serif;
       font-weight: 500;
+    }
+    a {
+      color: inherit;
     }
   }
 }
