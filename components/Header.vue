@@ -139,6 +139,7 @@ header {
       display: inline-block;
       margin: 0 1rem .5rem;
       vertical-align: middle;
+      position: relative;
       line-height: 1.2;
 
       &.some {
@@ -150,11 +151,8 @@ header {
     color: inherit;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: .01em;
-
-    &:hover {
-      opacity: .5;
-    }
+    letter-spacing: .016em;
+    font-size: .96rem;
   }
 }
 .some-nav {
@@ -189,11 +187,31 @@ header {
   .site-nav {
     ul {
       li {
-        /*&.sok-stotte {
-          color: $color-green;
-          padding: 0 .5rem;
-          margin: 0 0 0 auto;
-        }*/
+        margin: 0 1rem;
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          bottom: -.1em;
+          left: 0;
+          height: .13em;
+          width: 0;
+          background: $color-blue;
+          transition: width .1s ease;
+        }
+        &:hover {
+          &:after {
+            width: 100%;
+            transition: width .36s ease;
+          }
+        }
+        &.sok-stotte {
+          color: $color-darkgreen;
+          margin: 0 1rem 0 2rem;
+          &:after {
+            background: $color-darkgreen;
+          }
+        }
         &.some {
           margin: 0 0 0 .5rem;
           &.fb {
