@@ -14,8 +14,8 @@ export default {
       entry: {}
     }
   },
-  apollo: {
-    entry: {
+  async asyncData({ app, route }) {
+    const { data } = await app.apolloProvider.defaultClient.query({
       query: gql`query GetEntryBySlug($slug: String!) {
         entry(slug: [$slug], site: "default") {
           ... on newsarticles_newsarticle_Entry {
@@ -31,13 +31,13 @@ export default {
           }
         }
       }`,
-      variables() {
-        return {
-          slug: this.$route.params.slug
-        }
+      variables: {
+        slug: route.params.slug
       }
-    }
-  }
+    })
+    return data
+  },
+  fetchOnServer: true
 }
 </script>
 

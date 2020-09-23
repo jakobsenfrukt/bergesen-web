@@ -35,18 +35,16 @@ export default {
       return this.people.people.filter(person => person.group === "admin");
     }
   },
-  apollo: {
-    entry: gql`{
-      entry(type: "contact", site: "default") {
-        ... on contact_contact_Entry {
-          title
-          lead
-          body
-        }
-      }
-    }`,
-    people: {
+  async asyncData({ app, route }) {
+    const { data } = await app.apolloProvider.defaultClient.query({
       query: gql`{
+        entry(type: "contact", site: "default") {
+          ... on contact_contact_Entry {
+            title
+            lead
+            body
+          }
+        }
         people: entry(id: "295", site: "default") {
           ... on aboutPages_people_Entry {
             people {
@@ -64,8 +62,10 @@ export default {
           }
         }
       }`
-    }
+    })
+    return data
   },
+  fetchOnServer: true,
   head() {
     return {
       title: this.entry.title + ' | Bergesenstiftelsen',

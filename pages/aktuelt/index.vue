@@ -13,30 +13,32 @@ export default {
       entry: {}
     }
   },
-  apollo: {
-    entry: gql`{
-      entry(type: "news", site: "default") {
-        ... on news_news_Entry {
-          title
-          lead
-        }
-      }
-    }`,
-    entries: gql`{
-      entries(section: "newsarticles", site: "default") {
-        ... on newsarticles_newsarticle_Entry {
-          title
-          lead
-          postDate
-          slug
-          uri
-          mainimage {
-            url
+  async asyncData({ app, route }) {
+    const { data } = await app.apolloProvider.defaultClient.query({
+      query: gql`{
+        entry(type: "news", site: "default") {
+          ... on news_news_Entry {
+            title
+            lead
           }
         }
-      }
-    }`
+        entries(section: "newsarticles", site: "default") {
+          ... on newsarticles_newsarticle_Entry {
+            title
+            lead
+            postDate
+            slug
+            uri
+            mainimage {
+              url
+            }
+          }
+        }
+      }`
+    })
+    return data
   },
+  fetchOnServer: true,
   head() {
     return {
       title: this.entry.title + ' | Bergesenstiftelsen',

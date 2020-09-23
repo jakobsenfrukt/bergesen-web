@@ -77,11 +77,6 @@ export default {
       ]
     }
   },
-  computed: {
-    grantsCRAFT() {
-      return this.$store.state.entries.filter(entry => entry.__typename === "grantlist_grant_Entry");
-    }
-  },
   async asyncData({ app, route }) {
     const { data } = await app.apolloProvider.defaultClient.query({
       query: gql`{
