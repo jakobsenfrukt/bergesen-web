@@ -41,10 +41,10 @@ export default {
         border-bottom: 1px solid $color-text;
         position: relative;
         transition: all .3s ease;
+        font-family: $sans-serif;
         &:before {
           content: "→";
           display: block;
-          font-family: $sans-serif;
           position: absolute;
           left: 0;
           opacity: 0;

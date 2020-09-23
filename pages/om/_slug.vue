@@ -33,8 +33,8 @@ export default {
       return this.entry.people.filter(person => person.group === "admin");
     }
   },
-  apollo: {
-    entry: {
+  async asyncData({ app, route }) {
+    const { data } = await app.apolloProvider.defaultClient.query({
       query: gql`query GetEntryBySlug($slug: String!) {
         entry(slug: [$slug], site: "default") {
           ... on aboutPages_page_Entry {
@@ -63,20 +63,25 @@ export default {
             uri
           }
         }
-      }`,
-      variables() {
-        return {
-          slug: this.$route.params.slug
+        pages: entries(section: "aboutpages", site: "default") {
+          ... on aboutPages_page_Entry {
+            title
+            slug
+            uri
+          }
+          ... on aboutPages_people_Entry {
+            title
+            slug
+            uri
+          }
         }
+      }`,
+      variables: {
+        slug: route.params.slug
       }
-    },
-    pages: gql`{
-      pages: entries(section: "aboutpages", site: "default") {
-        title
-        slug
-        uri
-      }
-    }`
-  }
+    })
+    return data
+  },
+  fetchOnServer: true
 }
 </script>

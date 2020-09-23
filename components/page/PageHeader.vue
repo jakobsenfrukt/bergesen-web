@@ -24,11 +24,14 @@ export default {
   margin-bottom: $spacing-m;
 }
 .page-title {
-  font-size: 2.8rem;
+  font-size: 3.2rem;
 }
 .lead {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   max-width: 42rem;
+  font-family: $sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
 }
 @media (max-width: $media-s) {
   .page-title {

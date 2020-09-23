@@ -16,25 +16,27 @@ export default {
       entry: {}
     }
   },
-  apollo: {
-    entry: gql`{
-      entry(type: "about", site: "default") {
-        ... on about_about_Entry {
+  async asyncData({ app, route }) {
+    const { data } = await app.apolloProvider.defaultClient.query({
+      query: gql`{
+        entry(type: "about", site: "default") {
+          ... on about_about_Entry {
+            title
+            lead
+            body
+            uri
+          }
+        }
+        pages: entries(section: "aboutpages", site: "default") {
           title
-          lead
-          body
+          slug
           uri
         }
-      }
-    }`,
-    pages: gql`{
-      pages: entries(section: "aboutpages", site: "default") {
-        title
-        slug
-        uri
-      }
-    }`
+      }`
+    })
+    return data
   },
+  fetchOnServer: true,
   head() {
     return {
       title: this.entry.title + ' | Bergesenstiftelsen',

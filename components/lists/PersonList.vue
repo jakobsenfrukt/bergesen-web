@@ -46,7 +46,7 @@ export default {
   }
 }
 .person {
-  margin: 0 0 $spacing-s;
+  margin: 0 0 $spacing-m;
 
   &-image {
     .image-wrapper {

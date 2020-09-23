@@ -2,6 +2,10 @@
   <main>
     <section class="hero">
       <div class="index-lead">{{ entry.lead }}</div>
+      <div class="index-deadline">
+        <h2>Neste søknadsfrist</h2>
+        <Date v-if="apply" :rawDate="nextDeadline.date" />
+      </div>
     </section>
     <NewsArticles :articles="news" heading="Aktuelt" link="/aktuelt" />
     <section class="apply">
@@ -19,30 +23,52 @@ export default {
       entry: {}
     }
   },
-  apollo: {
-    entry: gql`{
-      entry(type: "home", site: "default") {
-        ... on home_home_Entry {
-          title
-          lead
-        }
-      }
-    }`,
-    news: gql`{
-      news: entries(section: "newsarticles", limit: 3, site: "default") {
-        ... on newsarticles_newsarticle_Entry {
-          title
-          lead
-          postDate
-          slug
-          uri
-          mainimage {
-            url
+  computed: {
+    nextDeadline() {
+      var today = new Date();
+      var deadlines = this.apply.deadlines.filter(function(deadline) {
+        var deadlineDate = new Date(deadline.date);
+        return deadlineDate >= today;
+      });
+      return deadlines[0]
+    }
+  },
+  async asyncData({ app, route }) {
+    const { data } = await app.apolloProvider.defaultClient.query({
+      query: gql`{
+        entry(type: "home", site: "default") {
+          ... on home_home_Entry {
+            title
+            lead
           }
         }
-      }
-    }`
+        news: entries(section: "newsarticles", limit: 3, site: "default") {
+          ... on newsarticles_newsarticle_Entry {
+            title
+            lead
+            postDate
+            slug
+            uri
+            mainimage {
+              url
+            }
+          }
+        }
+        apply: entry(type: "apply", site: "default") {
+          ... on apply_apply_Entry {
+            deadlines {
+              ... on deadlines_deadline_BlockType {
+                date
+              }
+            }
+            uri
+          }
+        }
+      }`
+    })
+    return data
   },
+  fetchOnServer: true,
   head() {
     return {
       title: 'Bergesenstiftelsen',

@@ -82,6 +82,11 @@ export default {
     min-width: 10rem;
   }
 
+  &-date,
+  &-amount {
+    font-family: $sans-serif;
+  }
+
   &-details {
     flex: 1;
     font-size: 1.2rem;

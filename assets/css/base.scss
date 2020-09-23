@@ -25,6 +25,8 @@ body {
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.24;
   margin-top: 0;
+  font-family: $serif-fine;
+  font-weight: 400;
 }
 
 p {
@@ -35,8 +37,105 @@ img {
   max-width: 100%;
 }
 
+strong {
+  font-family: $sans-serif;
+}
+
 .page-body {
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 1.5em;
+  }
+  h4, h5, h6 {
+    font-family: $sans-serif;
+  }
+  h4 {
+    font-weight: 600;
+  }
+  h5, h6 {
+    font-weight: 700;
+  }
   a {
-    color: $color-red;
+    color: inherit;
+    font-family: $sans-serif;
+    font-weight: 700;
+    text-decoration: underline;
+    transition: color .3s ease;
+    &:hover {
+      color: $color-green;
+    }
+  }
+  p, ul, ol {
+    max-width: 36rem;
+  }
+  ul, ol {
+    margin: 0 auto $spacing-m $spacing-s;
+    li {
+      margin-bottom: .6em;
+    }
+  }
+  ul {
+    list-style: none;
+    li {
+      position: relative;
+      &:before {
+        content: url(/graphics/shapes/Bergesen2.svg);
+        width: .6em;
+        height: .6em;
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -1.4em;
+        overflow: visible;
+      }
+    }
+  }
+  ol {
+    list-style: none;
+    counter-reset: ol-counter;
+    li {
+      counter-increment: ol-counter;
+      position: relative;
+      &:before {
+        content: counter(ol-counter);
+        font-family: $sans-serif;
+        font-weight: 700;
+        position: absolute;
+        top: 0;
+        left: -1.4em;
+        color: $color-green;
+        display: block;
+        text-align: center;
+      }
+    }
+  }
+  blockquote {
+    font-size: 1.6rem;
+    font-style: italic;
+    position: relative;
+    padding-left: 1rem;
+    margin: 1.6rem 2rem 2rem;
+    &:before {
+      display: block;
+      content: " ";
+      background: url(/graphics/shapes/Bergesen11.svg);
+      background-size: 100% 100%;
+      width: 1rem;
+      height: 1rem;
+      position: absolute;
+      left: -1.5rem;
+      top: .6rem;
+    }
+  }
+  figure {
+    margin: 1rem auto .5rem;
+  }
+  figcaption {
+    color: $color-lightblue;
+    opacity: .8;
+    line-height: 1.4;
+    margin-bottom: $spacing-m;
+  }
+  strong {
+    font-family: $sans-serif;
   }
 }

@@ -33,19 +33,7 @@
       }
       .page-nav {
         order: 2;
-      }
-    }
-  }
-}
-@media (max-width: $media-s) {
-  .site-main {
-    &--with-aside {
-      grid-template-columns: 1fr;
-      .page-content {
-        order: 1;
-      }
-      .page-nav {
-        order: 2;
+        padding-bottom: $spacing-l;
       }
     }
   }

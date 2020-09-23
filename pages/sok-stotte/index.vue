@@ -2,6 +2,8 @@
   <main class="site-main--with-aside">
     <div class="page-content">
       <PageHeader :heading="entry.title" :lead="entry.lead" />
+      <DeadlineList v-if="entry.deadlines" :deadlines="entry.deadlines" />
+      <div v-html="entry.body" class="page-body"></div>
     </div>
     <SideNav :menuItems="pages" :parent="entry.uri" :parentTitle="entry.title" class="page-nav" />
   </main>
@@ -15,22 +17,34 @@ export default {
       entry: {}
     }
   },
-  computed: {
-    pages() {
-      return this.$store.state.entries.filter(entry => entry.__typename === "applyPages_page_Entry");
-    }
-  },
-  apollo: {
-    entry: gql`{
-      entry(type: "apply", site: "default") {
-        ... on apply_apply_Entry {
-          title
-          lead
-          uri
+  async asyncData({ app, route }) {
+    const { data } = await app.apolloProvider.defaultClient.query({
+      query: gql`{
+        entry(type: "apply", site: "default") {
+          ... on apply_apply_Entry {
+            title
+            deadlines {
+              ... on deadlines_deadline_BlockType {
+                date
+              }
+            }
+            lead
+            body
+            uri
+          }
         }
-      }
-    }`
+        pages: entries(section: "applypages", site: "default") {
+          ... on applyPages_page_Entry {
+            title
+            slug
+            uri
+          }
+        }
+      }`
+    })
+    return data
   },
+  fetchOnServer: true,
   head() {
     return {
       title: this.entry.title + ' | Bergesenstiftelsen',

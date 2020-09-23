@@ -82,30 +82,32 @@ export default {
       return this.$store.state.entries.filter(entry => entry.__typename === "grantlist_grant_Entry");
     }
   },
-  apollo: {
-    entry: gql`{
-      entry(type: "grants", site: "default") {
-        ... on grants_grants_Entry {
-          title
-          lead
-        }
-      }
-    }`,
-    grants: gql`{
-      grants: entries(section: "grantlist", site: "default") {
-        ... on grantlist_grant_Entry {
-          title
-          projectname
-          grantedsum
-          date
-          mainimage {
-            url
+  async asyncData({ app, route }) {
+    const { data } = await app.apolloProvider.defaultClient.query({
+      query: gql`{
+        entry(type: "grants", site: "default") {
+          ... on grants_grants_Entry {
+            title
+            lead
           }
-          lead
         }
-      }
-    }`
+        grants: entries(section: "grantlist", site: "default") {
+          ... on grantlist_grant_Entry {
+            title
+            projectname
+            grantedsum
+            date
+            mainimage {
+              url
+            }
+            lead
+          }
+        }
+      }`
+    })
+    return data
   },
+  fetchOnServer: true,
   head() {
     return {
       title: this.entry.title + ' | Bergesenstiftelsen',

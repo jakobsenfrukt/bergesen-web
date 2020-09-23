@@ -104,6 +104,7 @@ export default {
 
   &-date {
     opacity: .5;
+    font-family: $sans-serif;
     font-size: .9rem;
   }
 }
