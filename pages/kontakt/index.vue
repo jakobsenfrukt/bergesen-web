@@ -4,7 +4,6 @@
     <div v-html="entry.body" class="page-body"></div>
     <div style="max-width: 42rem; margin: 0 auto">
       <Button href="#" text="Last ned søknadsskjema" />
-      <Button href="#" text="Les om noe mindre viktig" secondary />
       <div class="featured featured-info">
         Hvis du har noen spørsmål knyttet til søknadsskjemaet, ta gjerne kontakt med oss på <a href="mailto:post@bergesenstiftelsen.no" target="_blank">post@bergesenstiftelsen.no</a> eller per telefon <strong>+47 21 03 05 00</strong>.
       </div>
