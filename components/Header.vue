@@ -152,11 +152,7 @@ header {
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: .016em;
-    font-size: .96rem;
   }
-}
-.some-nav {
-  width: 4rem;
 }
 .some {
   &-icon {
@@ -220,6 +216,9 @@ header {
         }
       }
     }
+  }
+  .some-nav {
+    width: 4rem;
   }
   .translate {
     position: absolute;

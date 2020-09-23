@@ -1,5 +1,5 @@
 <template>
-  <main>
+  <main class="site-main">
     <section class="hero">
       <div class="background">
         <img src="/graphics/shapes/Bergesen15.svg" />

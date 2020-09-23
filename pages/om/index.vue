@@ -1,5 +1,5 @@
 <template>
-  <main class="site-main--with-aside">
+  <main class="site-main site-main--with-aside">
     <div class="page-content">
       <PageHeader :heading="entry.title" :lead="entry.lead" />
       <div v-html="entry.body" class="page-body"></div>

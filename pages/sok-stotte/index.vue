@@ -1,5 +1,5 @@
 <template>
-  <main class="site-main--with-aside">
+  <main class="site-main site-main--with-aside">
     <div class="page-content">
       <PageHeader :heading="entry.title" :lead="entry.lead" />
       <DeadlineList v-if="entry.deadlines" :deadlines="entry.deadlines" />

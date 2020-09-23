@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <p>(footer, kontakt, etc)</p>
+    <p>Organisasjonsnummer: 943 026 165</p>
   </footer>
 </template>
 
