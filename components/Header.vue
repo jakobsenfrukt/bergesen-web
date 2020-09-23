@@ -194,7 +194,7 @@ header {
           position: absolute;
           bottom: -.1em;
           left: 0;
-          height: .13em;
+          height: 1px;
           width: 0;
           background: $color-blue;
           transition: width .1s ease;

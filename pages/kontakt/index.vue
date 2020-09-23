@@ -4,15 +4,30 @@
     <div v-html="entry.body" class="page-body"></div>
     <div style="max-width: 42rem; margin: 0 auto">
       <Button href="#" text="Last ned søknadsskjema" />
+
       <div class="featured featured-info">
-        Hvis du har noen spørsmål knyttet til søknadsskjemaet, ta gjerne kontakt med oss på <a href="mailto:post@bergesenstiftelsen.no" target="_blank">post@bergesenstiftelsen.no</a> eller per telefon <strong>+47 21 03 05 00</strong>.
+        <p>Hvis du har noen spørsmål knyttet til søknadsskjemaet, ta gjerne kontakt med oss på <a href="mailto:post@bergesenstiftelsen.no" target="_blank">post@bergesenstiftelsen.no</a> eller per telefon <strong>+47 21 03 05 00</strong>.</p>
       </div>
       <div class="featured featured-warning">
-        Hvis du har noen spørsmål knyttet til søknadsskjemaet, ta gjerne kontakt med oss på <a href="mailto:post@bergesenstiftelsen.no" target="_blank">post@bergesenstiftelsen.no</a> eller per telefon <strong>+47 21 03 05 00</strong>.
+        <p>Hvis du har noen spørsmål knyttet til søknadsskjemaet, ta gjerne kontakt med oss på <a href="mailto:post@bergesenstiftelsen.no" target="_blank">post@bergesenstiftelsen.no</a> eller per telefon <strong>+47 21 03 05 00</strong>.</p>
       </div>
       <div class="featured featured-warning-option">
-        Hvis du har noen spørsmål knyttet til søknadsskjemaet, ta gjerne kontakt med oss på <a href="mailto:post@bergesenstiftelsen.no" target="_blank">post@bergesenstiftelsen.no</a> eller per telefon <strong>+47 21 03 05 00</strong>.
+        <p>Hvis du har noen spørsmål knyttet til søknadsskjemaet, ta gjerne kontakt med oss på <a href="mailto:post@bergesenstiftelsen.no" target="_blank">post@bergesenstiftelsen.no</a> eller per telefon <strong>+47 21 03 05 00</strong>.</p>
       </div>
+
+      <div class="featured featured-info">
+        <p><strong>Kjenner du til en verdig mottaker av Bergesenprisen?</strong><br />Offentligheten inviteres til å nominere mulige prismottakere i en åpen nominasjonsrunde ved årets begynnelse. Styret i Bergesenstiftelsen beslutter prismottaker. Prisen kan ved styrets beslutning deles mellom flere personer/institusjoner.</p>
+        <Button href="#" text="Nominér en kandidat" />
+      </div>
+      <div class="featured featured-warning">
+        <p><strong>Kjenner du til en verdig mottaker av Bergesenprisen?</strong><br />Offentligheten inviteres til å nominere mulige prismottakere i en åpen nominasjonsrunde ved årets begynnelse. Styret i Bergesenstiftelsen beslutter prismottaker. Prisen kan ved styrets beslutning deles mellom flere personer/institusjoner.</p>
+        <Button href="#" text="Nominér en kandidat" />
+      </div>
+      <div class="featured featured-warning-option">
+        <p><strong>Kjenner du til en verdig mottaker av Bergesenprisen?</strong><br />Offentligheten inviteres til å nominere mulige prismottakere i en åpen nominasjonsrunde ved årets begynnelse. Styret i Bergesenstiftelsen beslutter prismottaker. Prisen kan ved styrets beslutning deles mellom flere personer/institusjoner.</p>
+        <Button href="#" text="Nominér en kandidat" />
+      </div>
+
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt diam nunc, vel facilisis est gravida nec. In dignissim, ligula vitae sollicitudin lobortis, neque libero fermentum augue, vel commodo elit leo sit amet elit. Etiam in porttitor nisi, elementum aliquet magna. Donec et ipsum pretium, ultrices arcu vel, malesuada nisl.</p>
     </div>
     <PersonList v-if="people" :people="admin" heading="Kontakt administrasjonen" />
@@ -98,6 +113,18 @@ export default {
     &:hover {
       color: $color-green;
     }
+    &.button {
+      font-family: $serif;
+      font-weight: 400;
+      text-decoration: none;
+      margin-bottom: 0;
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+  p {
+    margin: 0;
   }
 
   &-info {
@@ -110,6 +137,13 @@ export default {
     a {
       &:hover {
         color: $color-red;
+      }
+      &.button {
+        background: $color-white;
+        color: $color-red;
+        &:hover {
+          color: $color-red;
+        }
       }
     }
   }
