@@ -1,6 +1,6 @@
 <template>
   <footer>
-    (footer, kontakt, etc)
+    <p>(footer, kontakt, etc)</p>
   </footer>
 </template>
 
@@ -10,5 +10,8 @@
 footer {
   background: $color-blue;
   color: $color-white;
+  display: flex;
+  align-items: center;
+  min-height: 24rem;
 }
 </style>

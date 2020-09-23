@@ -10,7 +10,7 @@
       <span v-else>&#9776;</span>
     </div>
     <nav v-if="mainmenu" class="site-nav" :class="{ open: open }">
-      <ul>
+      <ul class="main-nav">
         <template v-if="english">
           <li v-for="(item, index) in mainmenu.menuitems" :key="index" @click="open = false" :class="item.slug">
             <NLink :to="`/en/${item.localized[0].slug}`">{{ item.localized[0].title }}</NLink>
@@ -21,6 +21,8 @@
             <NLink :to="`/${item.slug}`">{{ item.title }}</NLink>
           </li>
         </template>
+      </ul>
+      <ul class="some-nav">
         <li class="some fb">
           <a :href="mainmenu.facebook" target="_blank" class="some-link">
             <Facebook class="some-icon" />
@@ -125,7 +127,7 @@ header {
 }
 .site-nav {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   flex: 1;
   ul {
@@ -137,6 +139,7 @@ header {
       display: inline-block;
       margin: 0 1rem .5rem;
       vertical-align: middle;
+      line-height: 1.2;
 
       &.some {
         margin: 0 .24rem .5rem;
@@ -153,6 +156,9 @@ header {
       opacity: .5;
     }
   }
+}
+.some-nav {
+  width: 4rem;
 }
 .some {
   &-icon {
@@ -182,8 +188,6 @@ header {
 @media (min-width: $media-m) {
   .site-nav {
     ul {
-      width: 100%;
-      display: flex;
       li {
         /*&.sok-stotte {
           color: $color-green;

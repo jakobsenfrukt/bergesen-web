@@ -48,7 +48,7 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 2rem;
-  margin-bottom: $spacing-m;
+  margin-bottom: $spacing-s;
 }
 .article {
   color: inherit;

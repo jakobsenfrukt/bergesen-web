@@ -1,6 +1,11 @@
 <template>
   <main>
     <section class="hero">
+      <div class="background">
+        <img src="/graphics/shapes/Bergesen15.svg" />
+        <img src="/graphics/shapes/Bergesen18.svg" />
+        <img src="/graphics/shapes/Bergesen24.svg" />
+      </div>
       <div class="index-lead">{{ entry.lead }}</div>
       <div class="index-deadline">
         <h2>Neste søknadsfrist</h2>
@@ -9,8 +14,12 @@
     </section>
     <NewsArticles :articles="news" heading="Aktuelt" link="/aktuelt" />
     <section class="apply">
-      <h2>Info om å søke støtte</h2>
-      <p>Her kommer det en fornuftig tekst og noen viktige lenker.</p>
+      <div class="content">
+        <h2 class="section-title">{{ apply.title }}</h2>
+        <p>{{ apply.lead }}</p>
+        <Button href="#" text="Last ned søknadsskjema" />
+      </div>
+      <SideNav :menuItems="applypages" :parent="apply.uri" :parentTitle="apply.title" class="side-nav" />
     </section>
   </main>
 </template>
@@ -56,11 +65,20 @@ export default {
         }
         apply: entry(type: "apply", site: "default") {
           ... on apply_apply_Entry {
+            title
+            lead
             deadlines {
               ... on deadlines_deadline_BlockType {
                 date
               }
             }
+            uri
+          }
+        }
+        applypages: entries(section: "applypages", site: "default") {
+          ... on applyPages_page_Entry {
+            title
+            slug
             uri
           }
         }
@@ -86,6 +104,13 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
+.index {
+  &-lead,
+  &-deadline {
+    position: relative;
+    z-index: 1;
+  }
+}
 .index-lead {
   font-size: 2rem;
   line-height: 1.3;
@@ -93,6 +118,7 @@ export default {
   margin: 0 auto;
   max-width: 800px;
   font-family: $serif-fine;
+  color: $color-white;
 }
 .index-deadline {
   background: $color-white;
@@ -105,15 +131,27 @@ export default {
 section {
   margin: 0 -2rem;
   padding: 2rem;
+  position: relative;
+
+  .section-title {
+    font-size: 2.8rem;
+    margin-bottom: $spacing-s;
+  }
 
   &.hero {
-    background: $color-lightgreen;
+    background: transparent;
     padding: 5rem 2rem 5.5rem;
     margin-bottom: 2rem;
   }
 
   &.apply {
-    background: $color-lightestred;
+    background: $color-lightgreen;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-column-gap: 4rem;
+    .content {
+      margin: 0;
+    }
   }
 }
 @media (max-width: $media-s) {
@@ -123,6 +161,20 @@ section {
   section {
     margin: 0 -1rem;
     padding: 1rem;
+  }
+}
+
+.background {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 0;
+
+  img {
+    flex: 1;
   }
 }
 </style>
