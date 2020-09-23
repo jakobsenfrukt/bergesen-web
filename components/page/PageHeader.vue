@@ -4,7 +4,7 @@
     <p v-if="lead" class="lead">
       {{ lead }}
     </p>
-    <Date v-if="date" short :rawDate="date" />
+    <Date v-if="date" short :rawDate="date" class="date" />
   </div>
 </template>
 
@@ -32,6 +32,9 @@ export default {
   font-family: $sans-serif;
   font-weight: 400;
   line-height: 1.4;
+}
+.date {
+  font-family: $sans-serif;
 }
 @media (max-width: $media-s) {
   .page-title {

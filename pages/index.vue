@@ -4,7 +4,7 @@
       <div class="index-lead">{{ entry.lead }}</div>
       <div class="index-deadline">
         <h2>Neste søknadsfrist</h2>
-        <Date v-if="apply" :rawDate="nextDeadline.date" />
+        <Date v-if="apply" :rawDate="nextDeadline.date" class="date" />
       </div>
     </section>
     <NewsArticles :articles="news" heading="Aktuelt" link="/aktuelt" />
@@ -92,6 +92,15 @@ export default {
   text-align: center;
   margin: 0 auto;
   max-width: 800px;
+  font-family: $serif-fine;
+}
+.index-deadline {
+  background: $color-white;
+  display: inline-block;
+  padding: 2rem;
+  .date {
+    font-family: $sans-serif;
+  }
 }
 section {
   margin: 0 -2rem;
