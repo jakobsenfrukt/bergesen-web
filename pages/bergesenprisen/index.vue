@@ -2,7 +2,7 @@
   <main class="site-main">
     <PageHeader :heading="entry.title" :lead="entry.lead" />
     <div v-html="entry.body" class="page-body"></div>
-    <WinnerList :winners="winners" heading="Vinnere av Bergesenprisen" />
+    <WinnerList :winners="winners" heading="Mottakere av Bergesenprisen" />
   </main>
 </template>
 

@@ -95,7 +95,7 @@ export default {
     }
   }
   &-title {
-    font-weight: 700;
+    font-weight: 400;
     &:after {
       content: ": ";
     }
