@@ -1,5 +1,5 @@
 <template>
-  <main class="site-main site-main--with-aside">
+  <main class="site-main">
     <div class="page-content">
       <PageHeader :heading="entry.title" :lead="entry.lead" />
       <img v-if="entry.mainimage" :src="entry.mainimage[0].url" class="article-mainimage" />
