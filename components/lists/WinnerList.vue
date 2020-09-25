@@ -11,7 +11,7 @@
         <Date :rawDate="winner.postDate" yearonly class="winner-year" />
         <h3 class="winner-name">{{ winner.title }}</h3>
         <p class="winner-lead">{{ winner.lead }}</p>
-        <NLink :to="winner.slug" class="winner-link">Styrets begrunnelse</NLink>
+        <NLink :to="`/bergesenprisen/${winner.slug}`" class="winner-link">Styrets begrunnelse</NLink>
       </div>
     </li>
   </ul>

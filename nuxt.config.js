@@ -93,6 +93,12 @@ export default {
               slug
             }
           }
+          winners: entries(section: "awardwinners") {
+            slug
+            localized {
+              slug
+            }
+          }
         }`
       }
       return makePromise(execute(httpLink, operation))
@@ -100,10 +106,12 @@ export default {
         var newsArray = result.data.news.map(news => `/aktuelt/${news.slug}/`)
         var aboutArray = result.data.about.map(about => `/om/${about.slug}/`)
         var applyArray = result.data.apply.map(apply => `/sok-stotte/${apply.slug}/`)
+        var winnersArray = result.data.about.map(about => `/bergesenprisen/${winner.slug}/`)
         var newsArrayEn = result.data.news.map(news => `/en/news/${news.localized[0].slug}/`)
         var aboutArrayEn = result.data.about.map(about => `/en/about/${about.localized[0].slug}/`)
         var applyArrayEn = result.data.apply.map(apply => `/en/apply/${apply.localized[0].slug}/`)
-        return newsArray.concat(newsArrayEn, aboutArray, aboutArrayEn, applyArray, applyArrayEn)
+        var winnersArrayEn = result.data.about.map(about => `/en/bergesenprisen/${winner.slug}/`)
+        return newsArray.concat(newsArrayEn, aboutArray, aboutArrayEn, applyArray, applyArrayEn, winnersArray, winnersArrayEn)
       })
       .catch(error => console.log(`received error ${error}`))
     }
