@@ -1,7 +1,7 @@
 <template>
   <main class="site-main">
     <PageHeader :heading="entry.title" :lead="entry.lead" :date="entry.postDate" />
-    <img v-if="entry.mainimage" :src="entry.mainimage[0].url" class="article-mainimage" />
+    <img v-if="entry.mainimage.length" :src="entry.mainimage[0].url" class="article-mainimage" />
     <div v-html="entry.body" class="page-body"></div>
   </main>
 </template>

@@ -3,7 +3,7 @@
     <div class="page-content">
       <div>Bergesenprisen <Date :rawDate="entry.postDate" yearonly class="winner-year" /></div>
       <PageHeader :heading="entry.title" :lead="entry.lead" />
-      <img v-if="entry.mainimage" :src="entry.mainimage[0].url" class="article-mainimage" />
+      <img v-if="entry.mainimage.length" :src="entry.mainimage[0].url" class="article-mainimage" />
       <div v-html="entry.body" class="page-body"></div>
     </div>
   </main>
