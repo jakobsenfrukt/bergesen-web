@@ -5,7 +5,6 @@
       <img v-if="entry.mainimage" :src="entry.mainimage[0].url" class="article-mainimage" />
       <div v-html="entry.body" class="page-body"></div>
     </div>
-    <SideNav :menuItems="pages" parent="/om" parentTitle="Om stiftelsen" class="page-nav" />
   </main>
 </template>
 
