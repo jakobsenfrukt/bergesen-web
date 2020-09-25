@@ -16,6 +16,9 @@
 header, main, footer {
   padding: 2rem;
 }
+header {
+  padding: 1rem 2rem;
+}
 main {
   padding-top: 0;
   padding-bottom: 0;

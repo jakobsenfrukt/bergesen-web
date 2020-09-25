@@ -1,5 +1,5 @@
 <template>
-  <main class="site-main">
+  <main class="site-main front-page">
     <section class="hero">
       <div class="background">
         <img src="/graphics/shapes/Bergesen15.svg" />
@@ -15,7 +15,9 @@
     <NewsArticles :articles="news" heading="Aktuelt" link="/aktuelt" />
     <section class="apply">
       <div class="content">
-        <h2 class="section-title">{{ apply.title }}</h2>
+        <h2 class="section-title">
+          <NLink :to="apply.uri">{{ apply.title }}</NLink>
+        </h2>
         <p>{{ apply.lead }}</p>
         <Button href="#" text="Last ned søknadsskjema" />
       </div>
@@ -51,7 +53,7 @@ export default {
             lead
           }
         }
-        news: entries(section: "newsarticles", limit: 3, site: "default") {
+        news: entries(section: "newsarticles", limit: 4, site: "default") {
           ... on newsarticles_newsarticle_Entry {
             title
             lead
@@ -136,6 +138,11 @@ section {
   .section-title {
     font-size: 2.8rem;
     margin-bottom: $spacing-s;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
   }
 
   &.hero {

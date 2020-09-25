@@ -29,10 +29,9 @@
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.926715618733!2d10.6913284160961!3d59.91676358186823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416dcb35f01549%3A0x1e04e8f4336a18e6!2sFr%C3%B8yas%20gate%2015%2C%200273%20Oslo!5e0!3m2!1sen!2sno!4v1600883898718!5m2!1sen!2sno" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
       </div>
     </div>
-    Organisasjonsnummer: 943 026 165<br />
     <div v-html="entry.body" class="page-body"></div>
     <div style="max-width: 42rem; margin: 0 auto">
-      <Button href="#" text="Last ned søknadsskjema" />
+      <Button href="#" text="Last ned søknadsskjema" secondary />
 
       <div class="featured featured-info">
         <p>Hvis du har noen spørsmål knyttet til søknadsskjemaet, ta gjerne kontakt med oss på <a href="mailto:post@bergesenstiftelsen.no" target="_blank">post@bergesenstiftelsen.no</a> eller per telefon <strong>+47 21 03 05 00</strong>.</p>
@@ -58,7 +57,7 @@
       </div>
       <h2>Kjenner du til en verdig mottaker av Bergesenprisen?</h2>
       <p>Offentligheten inviteres til å nominere mulige prismottakere i en åpen nominasjonsrunde ved årets begynnelse. Styret i Bergesenstiftelsen beslutter prismottaker. Prisen kan ved styrets beslutning deles mellom flere personer/institusjoner.</p>
-        <Button href="#" text="Nominér en kandidat" />
+        <Button href="#" text="Nominér en kandidat" secondary />
 
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt diam nunc, vel facilisis est gravida nec. In dignissim, ligula vitae sollicitudin lobortis, neque libero fermentum augue, vel commodo elit leo sit amet elit. Etiam in porttitor nisi, elementum aliquet magna. Donec et ipsum pretium, ultrices arcu vel, malesuada nisl.</p>
     </div>

@@ -121,9 +121,15 @@ header {
   align-items: center;
   font-family: $sans-serif;
 }
-.logo-svg {
-  width: 6.6rem;
+.logo {
+  width: 6rem;
   margin-right: 1rem;
+  a {
+    display: block;
+  }
+  &-svg {
+    width: 100%;
+  }
 }
 .site-nav {
   display: flex;
@@ -203,7 +209,7 @@ header {
         }
         &.sok-stotte {
           color: $color-darkgreen;
-          margin: 0 1rem 0 2rem;
+          margin: 0 1rem 0 4rem;
           &:after {
             background: $color-darkgreen;
           }

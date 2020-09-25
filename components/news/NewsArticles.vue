@@ -34,9 +34,9 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '@/assets/css/variables.scss';
-.section-title {
+.news-articles .section-title {
   color: $color-red;
 
   a {
@@ -70,7 +70,7 @@ export default {
 
     .image-wrapper {
       width: 100%;
-      padding-top: 80%;
+      padding-top: 100%;
       position: relative;
       margin-bottom: $spacing-s;
       overflow: hidden;
@@ -94,6 +94,7 @@ export default {
 
   &-title {
     margin-bottom: 0;
+    font-size: 2rem;
     transition: color .3s ease;
   }
 
@@ -106,6 +107,11 @@ export default {
     opacity: .5;
     font-family: $sans-serif;
     font-size: .9rem;
+  }
+}
+@media (min-width: $media-l) {
+  .news-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
 @media (max-width: $media-m) {
@@ -136,6 +142,20 @@ export default {
 
     &-title {
       font-size: 1.4rem;
+    }
+  }
+}
+@media (max-width: $media-l) {
+  .front-page .news-grid {
+    .article:last-child {
+      display: none;
+    }
+  }
+}
+@media (max-width: $media-m) {
+  .front-page .news-grid {
+    .article:last-child {
+      display: block;
     }
   }
 }
