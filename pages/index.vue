@@ -1,17 +1,6 @@
 <template>
   <main class="site-main front-page">
-    <section class="hero">
-      <div class="background">
-        <img src="/graphics/shapes/Bergesen15.svg" />
-        <img src="/graphics/shapes/Bergesen18.svg" />
-        <img src="/graphics/shapes/Bergesen24.svg" />
-      </div>
-      <div class="index-lead">{{ entry.lead }}</div>
-      <div class="index-deadline">
-        <h2>Neste søknadsfrist</h2>
-        <Date v-if="apply" :rawDate="nextDeadline.date" class="date" />
-      </div>
-    </section>
+    <Hero :lead="entry.lead" :deadline="nextDeadline" :link="apply.uri" />
     <NewsArticles :articles="news" heading="Aktuelt" link="/aktuelt" />
     <section class="apply">
       <div class="content">
@@ -106,30 +95,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
-.index {
-  &-lead,
-  &-deadline {
-    position: relative;
-    z-index: 1;
-  }
-}
-.index-lead {
-  font-size: 2rem;
-  line-height: 1.3;
-  text-align: center;
-  margin: 0 auto;
-  max-width: 800px;
-  font-family: $serif-fine;
-  color: $color-white;
-}
-.index-deadline {
-  background: $color-white;
-  display: inline-block;
-  padding: 2rem;
-  .date {
-    font-family: $sans-serif;
-  }
-}
 section {
   margin: 0 -2rem;
   padding: 2rem;
@@ -145,12 +110,6 @@ section {
     }
   }
 
-  &.hero {
-    background: transparent;
-    padding: 5rem 2rem 5.5rem;
-    margin-bottom: 2rem;
-  }
-
   &.apply {
     background: $color-lightgreen;
     display: grid;
@@ -162,26 +121,9 @@ section {
   }
 }
 @media (max-width: $media-s) {
-  .index-lead {
-    font-size: 1.4rem;
-  }
   section {
     margin: 0 -1rem;
     padding: 1rem;
-  }
-}
-
-.background {
-  display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 0;
-
-  img {
-    flex: 1;
   }
 }
 </style>

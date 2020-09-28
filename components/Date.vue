@@ -25,7 +25,7 @@ export default {
       const day = dateObject.getDate();
       const monthnumber = dateObject.getMonth() +1;
       if (this.short) {
-        if (this.en) {
+        if (this.english) {
           return this.monthnames.en[month] + " " + year
         } else {
           return this.monthnames.no[month] + " " + year
@@ -35,6 +35,9 @@ export default {
         return year
       }
       return day + "." + monthnumber + "." + year
+    },
+    english() {
+      return this.$store.state.english
     }
   }
 }
