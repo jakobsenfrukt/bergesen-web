@@ -4,18 +4,7 @@
     <GrantList :grants="mockgrants" />
 
     Data fra publiseringssystemet
-    <ul class="grant-list">
-      <li v-for="(grant, index) in grants" :key="index" class="grant">
-        <span class="grant-date">
-          <Date :rawDate="grant.date" short />
-        </span>
-        <div class="grant-details">
-          <span class="grant-title">{{ grant.title }}</span>
-          <span class="grant-project">{{ grant.projectname }}</span>
-        </div>
-        <span class="grant-amount">kr {{ grant.grantedsum }}</span>
-      </li>
-    </ul>
+    <GrantList :grants="grants" />
   </main>
 </template>
 
@@ -30,49 +19,53 @@ export default {
           title: "Navn på søkeren",
           date: "August 2020",
           projectName: "Prosjekttittel",
-          grant: "100 000"
+          grantedsum: "100 000",
+          lead: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt diam nunc, vel facilisis est gravida nec. In dignissim, ligula vitae sollicitudin lobortis, neque libero fermentum augue, vel commodo elit leo sit amet elit.",
+          image: true
         },
         {
           title: "Et lengre navn på søkeren",
           date: "August 2020",
           projectName: "Prosjekttittel",
-          grant: "100 000"
+          grantedsum: "100 000",
+          lead: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt diam nunc, vel facilisis est gravida nec. In dignissim, ligula vitae sollicitudin lobortis, neque libero fermentum augue, vel commodo elit leo sit amet elit."
         },
         {
           title: "Navn på søkeren",
           date: "August 2020",
           projectName: "En lengre prosjekttittel",
-          grant: "100 000"
+          grantedsum: "100 000"
         },
         {
           title: "Navn på søkeren igjen",
           date: "August 2020",
           projectName: "Prosjekt",
-          grant: "100 000"
+          grantedsum: "100 000",
+          lead: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt diam nunc, vel facilisis est gravida nec. In dignissim, ligula vitae sollicitudin lobortis, neque libero fermentum augue, vel commodo elit leo sit amet elit."
         },
         {
           title: "Navn på søkeren",
           date: "August 2020",
           projectName: "Prosjekttittel",
-          grant: "100 000"
+          grantedsum: "100 000"
         },
         {
           title: "Et lengre navn på søkeren",
           date: "August 2020",
           projectName: "Prosjekttittel",
-          grant: "100 000"
+          grantedsum: "100 000"
         },
         {
           title: "Navn på søkeren",
           date: "August 2020",
           projectName: "En lengre prosjekttittel",
-          grant: "100 000"
+          grantedsum: "100 000"
         },
         {
           title: "Navn på søkeren igjen",
           date: "August 2020",
           projectName: "Prosjekt",
-          grant: "100 000"
+          grantedsum: "100 000"
         }
       ]
     }
