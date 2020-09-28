@@ -2,6 +2,9 @@
   <section class="hero">
     <div class="hero-background">
       <div class="image-wrapper">
+        <img src="/graphics/shapes/Bergesen24.svg" />
+      </div>
+      <div class="image-wrapper">
         <img src="/graphics/shapes/Bergesen15.svg" />
       </div>
       <div class="image-wrapper">
@@ -162,6 +165,24 @@ export default {
       left: 0;
       object-fit: cover;
       object-position: top;
+    }
+  }
+}
+@media (min-width: $media-xl) {
+  .hero {
+    &-background {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+  }
+}
+@media (max-width: $media-xl) {
+  .hero {
+    &-background {
+      .image-wrapper {
+        &:first-of-type {
+          display: none;
+        }
+      }
     }
   }
 }
