@@ -96,12 +96,10 @@ export default {
   .section-title {
     font-size: 1rem;
   }
-  .news-grid {
-    grid-template-columns: 1fr;
-  }
   .winner {
     display: grid;
-    grid-template-columns: 1fr 1.618fr;
+    grid-template-columns: 1fr 2fr;
+    grid-column-gap: 0;
 
     &-image {
       .image-wrapper {
@@ -113,8 +111,19 @@ export default {
       padding-left: 1rem;
     }
 
-    &-title {
+    &-name {
       font-size: 1.4rem;
+    }
+
+    &-year {
+      font-size: 1.6rem;
+      line-height: 1;
+      display: block;
+      margin-bottom: 1rem;
+    }
+
+    &-lead {
+      line-height: 1.4;
     }
   }
 }
