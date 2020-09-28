@@ -16,6 +16,7 @@
     </div>
     <div class="hero-text">
       <div class="hero-text-wrapper">
+        <div></div>
         <div class="hero-lead">
           <p>{{ lead }}</p>
         </div>
@@ -93,7 +94,7 @@ export default {
 
     &-wrapper {
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 1fr 2fr 1fr;
       align-items: center;
       width: 100%;
       margin: 2rem auto 3rem;
