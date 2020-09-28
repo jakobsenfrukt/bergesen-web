@@ -2,7 +2,7 @@
   <main class="site-main site-main--with-aside">
     <div class="page-content">
       <PageHeader :heading="entry.title" :lead="entry.lead" />
-      <div v-html="entry.body" class="page-body"></div>
+      <div v-if="entry.body" v-html="entry.body" class="page-body"></div>
       <PersonList v-if="entry.people" :people="board" heading="Styret" />
       <PersonList v-if="entry.people" :people="admin" heading="Administrasjon" />
     </div>
