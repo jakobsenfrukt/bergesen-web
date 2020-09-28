@@ -1,6 +1,8 @@
 <template>
   <main class="site-main">
     <PageHeader :heading="entry.title" :lead="entry.lead" :date="entry.postDate" />
+    <RelatedEntry :winner="entry.relatedWinner[0]" />
+    <RelatedEntry :grant="entry.relatedGrant[0]" />
     <img v-if="entry.mainimage.length" :src="entry.mainimage[0].url" class="article-mainimage" />
     <div v-html="entry.body" class="page-body"></div>
   </main>
@@ -22,6 +24,28 @@ export default {
             title
             lead
             body
+            relatedWinner {
+              ... on awardwinners_awardwinner_Entry {
+                id
+                title
+                lead
+                body
+                postDate
+                slug
+                uri
+              }
+            }
+            relatedGrant {
+              ... on grantlist_grant_Entry {
+                title
+                projectname
+                date
+                grantedsum
+                lead
+                slug
+                uri
+              }
+            }
             postDate
             slug
             uri
