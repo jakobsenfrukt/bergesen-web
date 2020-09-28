@@ -63,4 +63,9 @@ export default {
     margin-top: -$spacing-m;
   }
 }
+@media (max-width: $media-s) {
+  .button {
+    font-size: 1.2rem;
+  }
+}
 </style>

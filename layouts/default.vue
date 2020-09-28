@@ -27,5 +27,8 @@ main {
   header, main, footer {
     padding: 1rem;
   }
+  main {
+    padding: 0 1rem;
+  }
 }
 </style>

@@ -16,7 +16,7 @@
     </div>
     <div class="hero-text">
       <div class="hero-text-wrapper">
-        <div></div>
+        <div class="clear"></div>
         <div class="hero-lead">
           <p>{{ lead }}</p>
         </div>
@@ -189,10 +189,39 @@ export default {
 }
 @media (max-width: $media-s) {
   .hero {
-    margin: 0 -1rem;
-    padding: 1rem;
+    margin: -.5rem -1rem 2rem;
+    &-background {
+      grid-template-columns: 1fr;
+      .image-wrapper {
+        &:first-of-type,
+        &:last-of-type {
+          display: none;
+        }
+      }
+    }
+    &-text {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: flex;
+
+      &-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        align-items: center;
+        width: 100%;
+        padding: 0 2rem;
+        margin: 0;
+
+        .clear {
+          display: none;
+        }
+      }
+    }
     &-lead {
-      font-size: 1.4rem;
+      font-size: 1.8rem;
     }
   }
 }

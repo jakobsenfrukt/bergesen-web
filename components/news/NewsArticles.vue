@@ -159,4 +159,11 @@ export default {
     }
   }
 }
+@media (max-width: $media-s) {
+  .front-page .news-grid {
+    .article:last-child {
+      display: none;
+    }
+  }
+}
 </style>

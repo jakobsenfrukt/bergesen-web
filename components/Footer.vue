@@ -28,4 +28,9 @@ footer {
   min-height: 24rem;
   width: 100%;
 }
+@media (max-width: $media-s) {
+  footer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 </style>
