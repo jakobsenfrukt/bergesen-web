@@ -1,9 +1,8 @@
 <template>
   <main class="site-main">
     <div class="page-content">
-      <div>Bergesenprisen <Date :rawDate="entry.postDate" yearonly class="winner-year" /></div>
-      <PageHeader :heading="entry.title" :lead="entry.lead" />
-      <img v-if="entry.mainimage.length" :src="entry.mainimage[0].url" class="article-mainimage" />
+      <PageHeader v-if="entry.mainimage.length" :heading="entry.title" :lead="entry.lead" :year="entry.postDate" :image="entry.mainimage[0].url" />
+      <PageHeader v-else :heading="entry.title" :lead="entry.lead" />
       <div v-html="entry.body" class="page-body"></div>
       <RelatedArticle v-if="entry.relatedarticle[0]" :article="entry.relatedarticle[0]" />
     </div>
