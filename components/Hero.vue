@@ -2,7 +2,7 @@
   <section class="hero">
     <div class="hero-background">
       <div class="image-wrapper">
-        <img src="/graphics/shapes/Bergesen24.svg" />
+        <img src="/graphics/shapes/Bergesen14.svg" />
       </div>
       <div class="image-wrapper">
         <img src="/graphics/shapes/Bergesen15.svg" />
