@@ -5,6 +5,7 @@
       <PageHeader :heading="entry.title" :lead="entry.lead" />
       <img v-if="entry.mainimage.length" :src="entry.mainimage[0].url" class="article-mainimage" />
       <div v-html="entry.body" class="page-body"></div>
+      <RelatedArticle v-if="entry.relatedarticle[0]" :article="entry.relatedarticle[0]" />
     </div>
   </main>
 </template>
@@ -27,6 +28,18 @@ export default {
             body
             mainimage {
               url
+            }
+            relatedarticle {
+              ... on newsarticles_newsarticle_Entry {
+                title
+                lead
+                postDate
+                mainimage {
+                  url
+                }
+                slug
+                uri
+              }
             }
             postDate
             slug
