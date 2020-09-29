@@ -3,12 +3,17 @@
     <span class="grant-date">{{ grant.date }}</span>
     <div class="grant-text">
       <span class="grant-title">{{ grant.title }}</span>
-      <span class="grant-project">{{ grant.projectName }}</span>
+      <span class="grant-project">{{ grant.projectname }}</span>
       <div class="grant-expand" v-if="grant.lead" @click="open = !open">&darr;</div>
       <div class="grant-details" :class="{ open: open }" v-if="grant.lead">
         <div class="wrapper">
-          <img v-if="grant.image" src="https://test.bergesen-cms.444.no/assets/bilder/Edvard_Munch_-_Red_and_White_-_Google_Art_Project.jpg" />
-          <p v-if="grant.lead">{{ grant.lead }}</p>
+          <div v-if="grant.image" class="grant-image">
+            <img src="https://test.bergesen-cms.444.no/assets/bilder/Edvard_Munch_-_Red_and_White_-_Google_Art_Project.jpg" />
+          </div>
+          <div class="grant-details-text">
+            <p v-if="grant.lead">{{ grant.lead }}</p>
+            <NLink to="#" class="grant-article">Artikkel</NLink>
+          </div>
         </div>
       </div>
     </div>
@@ -53,7 +58,7 @@ export default {
     font-family: $sans-serif;
     font-weight: 700;
     color: $color-darkgreen;
-    line-height: 2rem;
+    line-height: 2.2rem;
   }
 
   &-text {
@@ -85,13 +90,14 @@ export default {
     }
   }
   &-details {
+    max-width: 42rem;
     display: none;
 
     .wrapper {
       padding: 1rem 0 1.2rem;
       display: flex;
-      img {
-        width: 20%;
+      .grant-image {
+        width: 20rem;
         margin-right: 1.2rem;
       }
       p {
@@ -102,6 +108,12 @@ export default {
     &.open {
       display: flex;
     }
+  }
+  &-article {
+    display: block;
+    background: $color-lightestgray;
+    margin: 1rem 0;
+    padding: .3rem 1rem;
   }
 }
 @media (max-width: $media-s) {

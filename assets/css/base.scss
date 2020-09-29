@@ -140,3 +140,61 @@ strong {
     font-family: $sans-serif;
   }
 }
+.featured {
+  background: $color-lightestgreen;
+  padding: 2rem 2.6rem 2.4rem;
+  margin: 1rem auto $spacing-m;
+  font-family: $serif-fine;
+  font-size: 1.4rem;
+  a {
+    color: inherit;
+    font-family: $sans-serif;
+    font-weight: 700;
+    text-decoration: underline;
+    transition: color .3s ease;
+    &:hover {
+      color: $color-green;
+    }
+    &.button {
+      font-family: $serif;
+      font-weight: 400;
+      text-decoration: none;
+      margin-bottom: 0;
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+  p {
+    margin: 0;
+  }
+
+  &-info {
+    background: $color-lightestgreen;
+  }
+  &-warning {
+    background: $color-lightestred;
+    font-family: $sans-serif;
+    font-weight: 400;
+    a {
+      &:hover {
+        color: $color-red;
+      }
+      &.button {
+        background: $color-white;
+        color: $color-red;
+        &:hover {
+          color: $color-red;
+        }
+      }
+    }
+  }
+  &-warning-option {
+    background: $color-lightestgray;
+    a {
+      &:hover {
+        color: $color-red;
+      }
+    }
+  }
+}

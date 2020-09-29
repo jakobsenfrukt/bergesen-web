@@ -30,6 +30,18 @@ export const actions = {
           slug
           uri
         }
+        ... on contact_contact_Entry {
+          email {
+            ... on email_emailBlock_BlockType {
+              address
+              label
+            }
+          }
+          addressPostal
+          addressVisitor
+          orgNumber
+          phone
+        }
       }
     }`;
     await client.query({ query: entries }).then(response => {
