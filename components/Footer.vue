@@ -1,25 +1,32 @@
 <template>
   <footer>
     <div class="contact">
+      <h2>Kontakt oss</h2>
       <div class="email">
-        <strong>E-POST</strong>
         <div v-for="(email, index) in contact.email" :key="index" class="email-block">
-          <span>{{ email.label }}</span>
-          <a :href="`mailto:${email.address}`">{{ email.address }}</a>
+          <strong>{{ email.label }}</strong>
+          <a :href="`mailto:${email.address}`" target="_blank">{{ email.address }}</a>
         </div>
       </div>
       <div>
-        <strong>TELEFON</strong>
+        <strong>Telefon</strong>
         {{ contact.phone }}
       </div>
     </div>
     <div class="address">
-      <strong>Besøksadresse</strong>
-      <pre>{{ contact.addressVisitor }}</pre>
-      <strong>Postadresse</strong>
-      <pre>{{ contact.addressPostal }}</pre>
+      <h2>&nbsp;</h2>
+      <div class="address-visitor">
+        <strong>Besøksadresse</strong>
+        <pre>{{ contact.addressVisitor }}</pre>
+        <a href="https://goo.gl/maps/j6osNkyAc3Esf5gx8" target="_blank">Se i kart</a>
+      </div>
+      <div class="address-postal">
+        <strong>Postadresse</strong>
+        <pre>{{ contact.addressPostal }}</pre>
+      </div>
     </div>
     <div>
+      <h2>&nbsp;</h2>
       <div>
         Organisasjonsnummer:<br />
         {{ contact.orgNumber }}
@@ -60,6 +67,10 @@ footer {
   width: 100%;
   font-family: $sans-serif;
 
+  h2 {
+    font-family: $serif;
+  }
+
   strong {
     display: block;
   }
@@ -74,9 +85,16 @@ footer {
     }
   }
 
+  .address {
+    &-visitor,
+    &-postal {
+      margin-bottom: 1rem;
+    }
+  }
+
   pre {
     font-family: inherit;
-    margin: 0 0 1rem;
+    margin: 0;
   }
 }
 .mf-logo-wrapper {

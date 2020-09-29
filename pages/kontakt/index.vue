@@ -10,7 +10,7 @@
         <h2>E-POST</h2>
         <div v-for="(email, index) in entry.email" :key="index">
           <h3>{{ email.label }}</h3>
-          <a :href="`mailto:${email.address}`">{{ email.address }}</a>
+          <a :href="`mailto:${email.address}`" target="_blank">{{ email.address }}</a>
         </div>
       </div>
     </div>
