@@ -2,16 +2,16 @@
   <main class="site-main">
     <PageHeader :heading="entry.title" :lead="entry.lead" />
     <div class="contact">
-      <div>
-        <h2>TELEFON</h2>
-        {{ entry.phone }}
-      </div>
       <div class="email">
         <h2>E-POST</h2>
-        <div v-for="(email, index) in entry.email" :key="index">
+        <div v-for="(email, index) in entry.email" :key="index" class="email-block">
           <h3>{{ email.label }}</h3>
           <a :href="`mailto:${email.address}`" target="_blank">{{ email.address }}</a>
         </div>
+      </div>
+      <div class="phone">
+        <h2>TELEFON</h2>
+        <strong>{{ entry.phone }}</strong>
       </div>
     </div>
     <div class="address">
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div v-if="entry.body" v-html="entry.body" class="page-body"></div>
-    <PersonList v-if="people" :people="admin" heading="Kontakt administrasjonen" class="people" />
+    <PersonList v-if="people" :people="admin" heading="Kontakt administrasjonen" class="people" contactpage />
   </main>
 </template>
 
@@ -108,17 +108,45 @@ export default {
   font-family: $sans-serif;
 
   h2 {
-    margin-bottom: .5rem;
+    margin-bottom: $spacing-s;
     font-size: 1.4rem;
   }
 }
 .contact {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
   width: 100%;
-  max-width: 54rem;
+  max-width: 42rem;
   margin: 1rem auto $spacing-m;
-  padding: 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 2rem;
+
+  .email,
+  .phone {
+    margin-bottom: $spacing-m;
+    font-size: 1.2rem;
+  }
+
+  h3 {
+    margin-bottom: 0;
+    font-family: $sans-serif;
+  }
+
+  .email {
+    &-block {
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  strong, a {
+    font-weight: 700;
+    color: inherit;
+  }
+  a {
+    transition: color .3s ease;
+    &:hover {
+      color: $color-green;
+    }
+  }
 }
 .address {
   display: grid;

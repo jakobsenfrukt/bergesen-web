@@ -1,7 +1,7 @@
 <template>
   <section>
     <h2 v-if="heading" class="person-list__heading">{{ heading }}</h2>
-    <ul class="person-list">
+    <ul class="person-list" :class="{ contactpage: contactpage }">
       <li v-for="(person, index) in people" :key="index" class="person">
         <div class="person-image">
           <div class="image-wrapper">
@@ -25,7 +25,8 @@
 export default {
   props: {
     people: Array,
-    heading: String
+    heading: String,
+    contactpage: Boolean
   }
 }
 </script>
@@ -100,6 +101,9 @@ export default {
 @media (min-width: $media-l) {
   .person-list {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    &.contactpage {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
   }
 }
 @media (max-width: $media-s) {
