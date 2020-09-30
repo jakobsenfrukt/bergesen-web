@@ -7,7 +7,6 @@
         <span class="date-month">{{ formatDate(nextDeadline.date).month }}</span>
         <span class="date-time">kl. 12.00</span>
       </div>
-      <Button href="#" text="Last ned søknadsskjema" />
     </div>
     <h2>Kommende søknadsfrister</h2>
     <ul class="deadline-list">
@@ -15,10 +14,10 @@
         <div class="date">
           <span class="date-day">{{ formatDate(deadline.date).day }}.</span>
           <span class="date-month">{{ formatDate(deadline.date).month }}</span>
-          <span class="date-time">kl. 12.00</span>
         </div>
       </li>
     </ul>
+    <Button href="#" text="Last ned søknadsskjema" />
   </div>
 </template>
 
@@ -77,11 +76,20 @@ export default {
 @import '@/assets/css/variables.scss';
 .deadline-list {
   width: 100%;
+  max-width: 36rem;
   list-style: none;
   padding: 0;
-  margin: 0 auto $spacing-l;
+  margin: 0 0 $spacing-m;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: $color-lightestgray;
 
   .deadline {
+    text-align: center;
+    border-right: 2px solid $color-background;
+    &:last-of-type {
+      border-right: none;
+    }
     &:first-of-type {
       display: none;
     }
@@ -93,14 +101,14 @@ export default {
 
   &-title {
     margin-bottom: .5rem;
-    color: $color-darkgreen;
     font-family: $serif-extended;
     font-size: 2rem;
+    color: $color-darkgreen;
   }
 
   .date {
     font-family: $sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 700;
     line-height: 1.2;
     text-transform: lowercase;
@@ -112,9 +120,21 @@ export default {
     }
 
     &-next {
-      color: $color-red;
+      font-family: $sans-serif;
       font-size: 2rem;
+      font-weight: 700;
+
+      .date-time {
+        display: inline;
+        font-size: 2rem;
+      }
     }
+  }
+  &-next {
+    background: $color-lightestgreen;
+    margin-bottom: $spacing-m;
+    max-width: 36rem;
+    padding: 1.4rem 2rem 2rem;
   }
 }
 @media (max-width: $media-s) {

@@ -141,7 +141,7 @@ strong {
   }
 }
 .featured {
-  background: $color-lightestgreen;
+  background: $color-lightestgray;
   padding: 2rem 2.6rem 2.4rem;
   margin: 1rem auto $spacing-m;
   font-family: $serif-fine;
@@ -160,6 +160,7 @@ strong {
       font-weight: 400;
       text-decoration: none;
       margin-bottom: 0;
+      background: $color-green;
       &:hover {
         color: inherit;
       }
@@ -171,6 +172,11 @@ strong {
 
   &-info {
     background: $color-lightestgreen;
+    a {
+      &:hover {
+        color: $color-green;
+      }
+    }
   }
   &-warning {
     background: $color-lightestred;
@@ -186,14 +192,6 @@ strong {
         &:hover {
           color: $color-red;
         }
-      }
-    }
-  }
-  &-warning-option {
-    background: $color-lightestgray;
-    a {
-      &:hover {
-        color: $color-red;
       }
     }
   }

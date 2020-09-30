@@ -25,7 +25,7 @@
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.926715618733!2d10.6913284160961!3d59.91676358186823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416dcb35f01549%3A0x1e04e8f4336a18e6!2sFr%C3%B8yas%20gate%2015%2C%200273%20Oslo!5e0!3m2!1sen!2sno!4v1600883898718!5m2!1sen!2sno" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
       </div>
     </div>
-    <div v-html="entry.body" class="page-body"></div>
+    <div v-if="entry.body" v-html="entry.body" class="page-body"></div>
     <PersonList v-if="people" :people="admin" heading="Kontakt administrasjonen" class="people" />
   </main>
 </template>
@@ -125,7 +125,7 @@ export default {
   grid-template-columns: 1fr 2fr;
   width: 100%;
   max-width: 54rem;
-  margin: 1rem auto $spacing-m;
+  margin: 1rem auto $spacing-l;
 
   &-text {
     background: $color-lightestgray;

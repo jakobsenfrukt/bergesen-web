@@ -21,8 +21,8 @@ export default {
   display: inline-block;
   min-width: 51%;
   max-width: 32rem;
-  margin: 1rem auto $spacing-s;
-  background: $color-green;
+  margin: 1rem auto $spacing-m;
+  background: $color-lightgreen;
   padding: 1rem 6rem 1rem 2rem;
   color: $color-blue;
   text-decoration: none;

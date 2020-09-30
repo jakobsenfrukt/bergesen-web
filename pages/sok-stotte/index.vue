@@ -23,7 +23,7 @@ export default {
         entry(type: "apply", site: "default") {
           ... on apply_apply_Entry {
             title
-            deadlines {
+            deadlines(limit: 5) {
               ... on deadlines_deadline_BlockType {
                 date
               }

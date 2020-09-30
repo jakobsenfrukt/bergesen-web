@@ -118,6 +118,9 @@ section {
     .content {
       margin: 0;
     }
+    .button {
+      background-color: $color-green;
+    }
   }
 }
 @media (max-width: $media-s) {
