@@ -34,11 +34,9 @@ export default {
           }
         }
         pages: entries(section: "applypages", site: "default") {
-          ... on applyPages_page_Entry {
-            title
-            slug
-            uri
-          }
+          title
+          slug
+          uri
         }
       }`
     })

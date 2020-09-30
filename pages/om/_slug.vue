@@ -5,6 +5,7 @@
       <div v-if="entry.body" v-html="entry.body" class="page-body"></div>
       <PersonList v-if="entry.people" :people="board" heading="Styret" />
       <PersonList v-if="entry.people" :people="admin" heading="Administrasjon" />
+      <DownloadList v-if="entry.downloadFiles" :files="entry.downloadFiles" />
     </div>
     <SideNav :menuItems="pages" parent="/om" parentTitle="Om stiftelsen" class="page-nav" />
   </main>
@@ -41,6 +42,10 @@ export default {
             title
             lead
             body
+            downloadFiles {
+              title
+              url
+            }
             slug
             uri
           }

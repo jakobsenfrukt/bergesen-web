@@ -2,7 +2,8 @@
   <main class="site-main site-main--with-aside">
     <div class="page-content">
       <PageHeader :heading="entry.title" :lead="entry.lead" />
-      <div v-html="entry.body" class="page-body"></div>
+      <div v-if="entry.body" v-html="entry.body" class="page-body"></div>
+      <FaqList v-if="entry.faq" :faq="entry.faq" />
     </div>
     <SideNav :menuItems="pages" parent="/sok-stotte" parentTitle="Søk støtte" class="page-nav" />
   </main>
@@ -27,13 +28,22 @@ export default {
             slug
             uri
           }
-        }
-        pages: entries(section: "applypages", site: "default") {
-          ... on applyPages_page_Entry {
+          ... on applyPages_faq_Entry {
             title
+            faq {
+              ... on faq_questionBlock_BlockType {
+                question
+                answer
+              }
+            }
             slug
             uri
           }
+        }
+        pages: entries(section: "applypages", site: "default") {
+          title
+          slug
+          uri
         }
       }`,
       variables: {
