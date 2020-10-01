@@ -89,6 +89,9 @@ export default {
             date
             mainimage {
               url
+              ... on assets_Asset {
+                alt
+              }
             }
             lead
           }

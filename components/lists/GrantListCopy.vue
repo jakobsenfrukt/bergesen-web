@@ -9,6 +9,7 @@
           <span>År</span>
           <select>
             <option>2020</option>
+            <option>1992</option>
           </select>
         </label>
       </div>
@@ -17,13 +18,15 @@
           <span>Måned</span>
           <select>
             <option>August</option>
+            <option>Nei</option>
           </select>
         </label>
       </div>
       <div class="grant-filter-search">
         <label>
           <span>Søk</span>
-          <input type="text" />
+          <input type="text" v-model="searchInput" @input="search" />
+          {{ searchInput }}
         </label>
       </div>
     </nav>
@@ -38,30 +41,41 @@ import gql from 'graphql-tag'
 export default {
   data: function() {
     return {
-      searchInput: "hello",
+      searchInput: "",
       grants: []
     }
   },
-  apollo: {
-    grants: gql`query GetSearchResult($searchInput: String!) {
-      grants: entries(search: [$searchInput], section: "grantlist", site: "default") {
-        ... on grantlist_grant_Entry {
-          title
-          projectname
-          grantedsum
-          date
-          mainimage {
-            url
+  methods: {
+    async search() {
+      console.log('søker')
+      try {
+        const result = await this.$apollo.query({
+          query: gql`query GetSearchResult($searchInput: String!) {
+            grants: entries(search: $searchInput, section: "grantlist", site: "default") {
+              ... on grantlist_grant_Entry {
+                title
+                projectname
+                grantedsum
+                date
+                mainimage {
+                  url
+                  ... on assets_Asset {
+                    alt
+                  }
+                }
+                lead
+              }
+            }
+          }`,
+          variables: {
+            searchInput: this.searchInput
           }
-          lead
-        }
+        }).then(({data}) => data && data.grants)
+        this.grants = result
+      } catch (e) {
+        console.error(e)
       }
-    }`,
-    variables() {
-      return {
-        searchInput: this.searchInput
-      }
-    }
+    },
   }
 }
 </script>

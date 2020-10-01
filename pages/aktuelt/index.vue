@@ -31,6 +31,9 @@ export default {
             uri
             mainimage {
               url
+              ... on assets_Asset {
+                alt
+              }
             }
           }
         }

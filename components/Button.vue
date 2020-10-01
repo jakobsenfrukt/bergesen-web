@@ -1,6 +1,6 @@
 <template>
   <a class="button" :class="{ secondary: secondary }" :href="href">
-    <span class="button-text">{{ text }}</span>
+    {{ text }}
   </a>
 </template>
 
@@ -15,7 +15,7 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
+<style lang="scss">
 @import '@/assets/css/variables.scss';
 .button {
   display: inline-block;
@@ -24,19 +24,16 @@ export default {
   margin: 1rem auto $spacing-m;
   background: $color-lightgreen;
   padding: 1rem 6rem 1rem 2rem;
+  padding-left: 2rem;
   color: $color-blue;
   text-decoration: none;
   border-radius: 2em;
   position: relative;
   font-size: 1.4rem;
+  transition: all .3s ease;
 
   &.secondary {
     background: $color-lightgreen;
-  }
-
-  span {
-    display: block;
-    transition: all .3s ease;
   }
 
   &:before {
@@ -50,9 +47,7 @@ export default {
     transition: all .3s ease;
   }
   &:hover {
-    span {
-      transform: translateX(1.5em);
-    }
+    padding-left: 3.5rem;
     &:before {
       opacity: 1;
       transform: translateX(0);
