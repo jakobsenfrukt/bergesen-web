@@ -2,23 +2,34 @@
   <div class="grants">
     <nav class="grant-filter">
       <div class="show-all">
-        <button>Vis alle</button>
+        <button @click="reset">Vis alle</button>
       </div>
       <div class="grant-filter-year">
         <label>
           <span>År</span>
-          <select>
+          <select v-model="year" @change="search">
             <option>2020</option>
             <option>1992</option>
+            <option>1993</option>
+            <option>1994</option>
+            <option>1995</option>
           </select>
         </label>
       </div>
       <div class="grant-filter-month">
         <label>
           <span>Måned</span>
-          <select>
-            <option>August</option>
-            <option>Nei</option>
+          <select v-model="month" @change="search">
+            <option value="01">Januar</option>
+            <option value="02">Februar</option>
+            <option value="03">Mars</option>
+            <option value="04">April</option>
+            <option value="05">Mai</option>
+            <option value="06">Juni</option>
+            <option value="07">Juli</option>
+            <option value="08">August</option>
+            <option value="12">Desember</option>
+            <option value="">Nei</option>
           </select>
         </label>
       </div>
@@ -27,9 +38,11 @@
           <span>Søk</span>
           <input type="text" v-model="searchInput" @input="search" />
           {{ searchInput }}
+          date: {{ dateFilter }}
         </label>
       </div>
     </nav>
+    <div v-if="searching">vent</div>
     <ul class="grant-list">
       <GrantItem v-for="(grant, index) in grants" :key="index" :grant="grant" />
     </ul>
@@ -42,16 +55,45 @@ export default {
   data: function() {
     return {
       searchInput: "",
-      grants: []
+      grants: [],
+      year: "",
+      month: "",
+      limit: 20,
+      offset: 0,
+      searching: false,
     }
   },
+  computed: {
+    dateFilter() {
+      const zeroPad = (num, places) => String(num).padStart(places, '0')
+      const year = this.year && parseInt(this.year)
+      const month = this.month && parseInt(this.month)
+      if (year && !this.month) {
+        return ["and", `>= ${year}-01-01T00:00:00Z`, `< ${year + 1}-01-01T00:00:00Z`]
+      }
+      if (year && this.month) {
+        return ["and", `>= ${year}-${zeroPad(month, 2)}-01T00:00:00Z`, `< ${year}-${zeroPad(month + 1, 2)}-01T00:00:00Z`]
+      }
+      return []
+    },
+  },
+  mounted() {
+    this.search()
+  },
   methods: {
+    reset() {
+      this.year = ""
+      this.month = ""
+      this.searchInput = ""
+      this.search()
+    },
     async search() {
-      console.log('søker')
+      this.searching = true
+      console.log('søker etter', this.searchInput, 'med', this.dateFilter)
       try {
         const result = await this.$apollo.query({
-          query: gql`query GetSearchResult($searchInput: String!) {
-            grants: entries(search: $searchInput, section: "grantlist", site: "default") {
+          query: gql`query GetSearchResult($searchInput: String!, $date: [QueryArgument]) {
+            grants: entries(search: $searchInput, section: "grantlist", site: "default", date: $date, orderBy: "date DESC") {
               ... on grantlist_grant_Entry {
                 title
                 projectname
@@ -68,12 +110,15 @@ export default {
             }
           }`,
           variables: {
-            searchInput: this.searchInput
+            searchInput: this.searchInput,
+            date: this.dateFilter,
           }
         }).then(({data}) => data && data.grants)
         this.grants = result
       } catch (e) {
         console.error(e)
+      } finally {
+        this.searching = false
       }
     },
   }
