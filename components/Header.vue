@@ -12,12 +12,12 @@
     <nav v-if="mainmenu" class="site-nav" :class="{ open: open }">
       <ul class="main-nav">
         <template v-if="english">
-          <li v-for="(item, index) in mainmenu.menuitems" :key="index" @click="open = false" :class="item.slug">
+          <li v-for="(item, index) in menu" :key="index" @click="open = false" :class="item.slug">
             <NLink :to="`/en/${item.localized[0].slug}`">{{ item.localized[0].title }}</NLink>
           </li>
         </template>
         <template v-else>
-          <li v-for="(item, index) in mainmenu.menuitems" :key="index" @click="open = false"  :class="item.slug">
+          <li v-for="(item, index) in menu" :key="index" @click="open = false"  :class="item.slug">
             <NLink :to="`/${item.slug}`">{{ item.title }}</NLink>
           </li>
         </template>
@@ -34,12 +34,15 @@
           </a>
         </li>
       </ul>
+      <!--english: {{ english }}<br>
+      currentPath: {{ currentPath }}<br>
+      newPath: {{ newPath }}<br />-->
       <div class="translate" @click="open = false">
-        <template v-if="!english">
-          <span>NO</span> / <span @click="switchLanguage()"><NLink :to="newSlug">EN</NLink></span>
+        <template v-if="!english && newPath">
+          <span>NO</span> / <span @click="switchLanguage()"><NLink :to="newPath">EN</NLink></span>
         </template>
-        <template v-if="english">
-          <span @click="switchLanguage()"><NLink :to="newSlug">NO</NLink></span> / <span>EN</span>
+        <template v-if="english && newPath">
+          <span @click="switchLanguage()"><NLink :to="newPath">NO</NLink></span> / <span>EN</span>
         </template>
       </div>
     </nav>
@@ -58,29 +61,36 @@ export default {
     english() {
       return this.$store.state.english
     },
-    currentSlug() {
-      let currentPath = this.$route.path;
-      if (currentPath.substring(0, 3) == "/en") {
-        currentPath = currentPath.slice(4);
-      } else {
-        currentPath = currentPath.slice(1)
+    menu() {
+      if (this.english) {
+        return this.mainmenu.menuitems.filter(item => item.localized.length)
       }
-      if (currentPath.substring(currentPath.length-1, currentPath.length) === "/") {
-        currentPath = currentPath.substring(0, currentPath.length-1)
-      }
-      return currentPath
+      return this.mainmenu.menuitems
     },
-    newSlug() {
+    currentPath() {
+      return this.$route.path.slice(1)
+    },
+    newPath() {
       if (this.$route.path === "/") {
         return "/en/"
-      } else if (this.$route.path.substring(0, 3) == "/en" && this.$route.path.length < 5) {
+      } else if (this.english && this.$route.path.length < 5) {
         return "/"
       }
-      const entry = this.$store.state.entries.find(entry => entry.uri === this.currentSlug || entry.localized[0].uri === this.currentSlug);
       if (this.english) {
+        const entry = this.$store.state.entries.find(entry => entry.localized.length && entry.localized[0].uri === this.currentPath)
+        if (!entry) {
+          return false
+        }
         return '/' + entry.uri
       }
-      return '/en/' + entry.localized[0].uri
+      const entry = this.$store.state.entries.find(entry => entry.uri === this.currentPath)
+      if (!entry) {
+        return false
+      }
+      if (entry.localized.length) {
+        return '/' + entry.localized[0].uri
+      }
+      return false
     }
   },
   methods: {
@@ -88,7 +98,7 @@ export default {
       this.$store.commit('setLanguage', !this.$store.state.english);
     }
   },
-  mounted() {
+  beforeMount() {
     if (this.$route.path.substring(0, 3) === "/en") {
       this.$store.commit('setLanguage', true);
     }
