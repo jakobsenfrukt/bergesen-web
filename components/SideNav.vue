@@ -2,7 +2,7 @@
   <nav v-if="menuItems" class="side-nav">
     <ul>
       <li v-if="parent" class="parent">
-        <NLink :to="parent">{{ parentTitle }}</NLink>
+        <NLink :to="`/${parent}`">{{ parentTitle }}</NLink>
       </li>
       <li v-for="(item, index) in menuItems" :key="index" class="child">
         <NLink :to="`/${item.uri}`">{{ item.title }}</NLink>
