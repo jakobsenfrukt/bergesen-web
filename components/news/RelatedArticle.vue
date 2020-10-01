@@ -2,7 +2,7 @@
   <article class="article">
     <div class="article-image">
       <div class="image-wrapper">
-        <img :src="article.mainimage[0].url" />
+        <img :src="article.mainimage[0].url" :alt="article.mainimage[0].alt" />
       </div>
     </div>
     <div class="article-text">

@@ -1,6 +1,8 @@
 <template>
   <main class="site-main">
     <PageHeader :heading="entry.title" :lead="entry.lead" />
+    <GrantListCopy />
+
     <GrantList :grants="mockgrants" />
 
     Data fra publiseringssystemet

@@ -30,6 +30,9 @@ export default {
             lead
             mainimage {
               url
+              ... on assets_Asset {
+                alt
+              }
             }
             postDate
             slug

@@ -8,7 +8,7 @@
       <div class="grant-details" :class="{ open: open }" v-if="grant.lead">
         <div class="wrapper">
           <div v-if="grant.image" class="grant-image">
-            <img src="https://test.bergesen-cms.444.no/assets/bilder/Edvard_Munch_-_Red_and_White_-_Google_Art_Project.jpg" />
+            <img src="https://test.bergesen-cms.444.no/assets/bilder/Edvard_Munch_-_Red_and_White_-_Google_Art_Project.jpg" alt="Alternativ tekst" />
           </div>
           <div class="grant-details-text">
             <p v-if="grant.lead">{{ grant.lead }}</p>

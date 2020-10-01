@@ -3,7 +3,7 @@
     <PageHeader :heading="entry.title" :lead="entry.lead" :date="entry.postDate" />
     <RelatedEntry v-if="entry.relatedWinner[0]" :winner="entry.relatedWinner[0]" />
     <RelatedEntry v-if="entry.relatedGrant[0]" :grant="entry.relatedGrant[0]" />
-    <img v-if="entry.mainimage.length" :src="entry.mainimage[0].url" class="article-mainimage" />
+    <img v-if="entry.mainimage.length" :src="entry.mainimage[0].url" :alt="entry.mainimage[0].alt" class="article-mainimage" />
     <div v-html="entry.body" class="page-body"></div>
   </main>
 </template>
@@ -51,6 +51,9 @@ export default {
             uri
             mainimage {
               url
+              ... on assets_Asset {
+                alt
+              }
             }
           }
         }

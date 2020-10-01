@@ -2,16 +2,16 @@
   <section class="hero">
     <div class="hero-background">
       <div class="image-wrapper">
-        <img src="/graphics/shapes/Bergesen14.svg" />
+        <img src="/graphics/shapes/Bergesen14.svg" alt="Grafiske former i Bergesenstiftelsens farger" />
       </div>
       <div class="image-wrapper">
-        <img src="/graphics/shapes/Bergesen15.svg" />
+        <img src="/graphics/shapes/Bergesen15.svg" alt="Grafiske former i Bergesenstiftelsens farger" />
       </div>
       <div class="image-wrapper">
-        <img src="/graphics/shapes/Bergesen18.svg" />
+        <img src="/graphics/shapes/Bergesen18.svg" alt="Grafiske former i Bergesenstiftelsens farger" />
       </div>
       <div class="image-wrapper">
-        <img src="/graphics/shapes/Bergesen24.svg" />
+        <img src="/graphics/shapes/Bergesen24.svg" alt="Grafiske former i Bergesenstiftelsens farger" />
       </div>
     </div>
     <div class="hero-text">

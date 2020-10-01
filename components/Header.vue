@@ -2,7 +2,7 @@
   <header>
     <div class="logo">
       <NLink :to="english ? '/en/' : '/'">
-        <img src="/logo.svg" class="logo-svg" />
+        <img src="/logo.svg" class="logo-svg" alt="Bergesenstiftelsen logo" />
       </NLink>
     </div>
     <div class="menu-toggle" @click="open = !open" :class="{ open: open }">

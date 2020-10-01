@@ -11,7 +11,7 @@
         </p>
         <Date v-if="date" short :rawDate="date" class="date" />
       </div>
-      <img v-if="image" :src="image" class="image" />
+      <img v-if="image" :src="image.url" class="image" :alt="image.alt" />
     </div>
   </div>
 </template>
@@ -22,7 +22,7 @@ export default {
     heading: String,
     lead: String,
     date: String,
-    image: String,
+    image: Object,
     year: String
   }
 }

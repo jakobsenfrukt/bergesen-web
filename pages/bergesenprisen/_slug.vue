@@ -1,7 +1,7 @@
 <template>
   <main class="site-main">
     <div class="page-content">
-      <PageHeader v-if="entry.mainimage.length" :heading="entry.title" :lead="entry.lead" :year="entry.postDate" :image="entry.mainimage[0].url" />
+      <PageHeader v-if="entry.mainimage.length" :heading="entry.title" :lead="entry.lead" :year="entry.postDate" :image="entry.mainimage[0]" />
       <PageHeader v-else :heading="entry.title" :lead="entry.lead" />
       <div v-html="entry.body" class="page-body"></div>
       <RelatedArticle v-if="entry.relatedarticle[0]" :article="entry.relatedarticle[0]" />
@@ -27,6 +27,9 @@ export default {
             body
             mainimage {
               url
+              ... on assets_Asset {
+                alt
+              }
             }
             relatedarticle {
               ... on newsarticles_newsarticle_Entry {
@@ -35,6 +38,9 @@ export default {
                 postDate
                 mainimage {
                   url
+                  ... on assets_Asset {
+                    alt
+                  }
                 }
                 slug
                 uri

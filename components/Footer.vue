@@ -26,7 +26,7 @@
       <pre>{{ contact.addressPostal }}</pre>
     </div>
     <div class="mf-logo-wrapper">
-      <img src="/graphics/mf-logo.svg" class="mf-logo" />
+      <img src="/graphics/mf-logo.svg" class="mf-logo" alt="Miljøfyrtårn logo" />
     </div>
     <div class="meta">
       Organisasjonsnummer:
