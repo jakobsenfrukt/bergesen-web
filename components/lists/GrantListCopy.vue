@@ -38,11 +38,14 @@
           <input type="text" v-model="searchInput" @input="search" />
         </label>
       </div>
+      <div v-if="searching">vent</div>
     </nav>
-    <div v-if="searching">vent</div>
-    <ul class="grant-list">
+    <ul v-if="grants.length" class="grant-list">
       <GrantItem v-for="(grant, index) in grants" :key="index" :grant="grant" />
     </ul>
+    <div v-else class="no-results">
+      <p>Ingen tildelinger matcher ditt søk.</p>
+    </div>
   </div>
 </template>
 
@@ -138,5 +141,18 @@ export default {
   padding: 0;
   margin: 0 auto $spacing-l;
   border-top: 2px solid $color-text;
+}
+.no-results {
+  padding: 2rem 0;
+  max-width: none;
+  margin: 0 auto $spacing-l;
+  border-top: 2px solid $color-text;
+  border-bottom: 1px solid $color-text;
+
+  p {
+    font-style: italic;
+    font-size: 1.4rem;
+    margin: 0;
+  }
 }
 </style>

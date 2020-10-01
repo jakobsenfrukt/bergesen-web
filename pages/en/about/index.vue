@@ -19,7 +19,7 @@ export default {
   async asyncData({ app, route }) {
     const { data } = await app.apolloProvider.defaultClient.query({
       query: gql`{
-        entry(type: "about", site: "BergesenstiftelsenEn") {
+        entry(type: "about", site: "bergesenstiftelsenEn") {
           ... on about_about_Entry {
             title
             lead
@@ -27,7 +27,7 @@ export default {
             uri
           }
         }
-        pages: entries(section: "aboutpages", site: "BergesenstiftelsenEn") {
+        pages: entries(section: "aboutpages", site: "bergesenstiftelsenEn") {
           title
           slug
           uri

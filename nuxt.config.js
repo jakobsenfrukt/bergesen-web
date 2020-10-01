@@ -75,43 +75,19 @@ export default {
       const operation = {
         query: gql`
         query {
-          news: entries(section: "newsArticles" ) {
-            slug
-            localized {
-              slug
-            }
+          default: entries(site: "default" ) {
+            uri
           }
-          about: entries(section: "aboutPages") {
-            slug
-            localized {
-              slug
-            }
-          }
-          apply: entries(section: "applyPages") {
-            slug
-            localized {
-              slug
-            }
-          }
-          winners: entries(section: "awardwinners") {
-            slug
-            localized {
-              slug
-            }
+          english: entries(site: "bergesenstiftelsenEn" ) {
+            uri
           }
         }`
       }
       return makePromise(execute(httpLink, operation))
       .then(result => {
-        var newsArray = result.data.news.map(news => `/aktuelt/${news.slug}/`)
-        var aboutArray = result.data.about.map(about => `/om/${about.slug}/`)
-        var applyArray = result.data.apply.map(apply => `/sok-stotte/${apply.slug}/`)
-        var winnersArray = result.data.winners.map(winner => `/bergesenprisen/${winner.slug}/`)
-        var newsArrayEn = result.data.news.map(news => `/en/news/${news.localized[0].slug}/`)
-        var aboutArrayEn = result.data.about.map(about => `/en/about/${about.localized[0].slug}/`)
-        var applyArrayEn = result.data.apply.map(apply => `/en/apply/${apply.localized[0].slug}/`)
-        var winnersArrayEn = result.data.winners.map(winner => `/en/bergesenprisen/${winner.slug}/`)
-        return newsArray.concat(newsArrayEn, aboutArray, aboutArrayEn, applyArray, applyArrayEn, winnersArray, winnersArrayEn)
+        var defaultPages = result.data.default.map(page => `/${page.uri}`)
+        var englishPages = result.data.english.map(page => `/${page.uri}`)
+        return defaultPages.concat(englishPages)
       })
       .catch(error => console.log(`received error ${error}`))
     }
