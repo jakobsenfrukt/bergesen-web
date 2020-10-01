@@ -13,12 +13,12 @@
       <ul class="main-nav">
         <template v-if="english">
           <li v-for="(item, index) in menu" :key="index" @click="open = false" :class="item.slug">
-            <NLink :to="`/en/${item.localized[0].slug}`">{{ item.localized[0].title }}</NLink>
+            <NLink :to="`/${item.localized[0].uri}`">{{ item.localized[0].title }}</NLink>
           </li>
         </template>
         <template v-else>
           <li v-for="(item, index) in menu" :key="index" @click="open = false"  :class="item.slug">
-            <NLink :to="`/${item.slug}`">{{ item.title }}</NLink>
+            <NLink :to="`/${item.uri}`">{{ item.title }}</NLink>
           </li>
         </template>
       </ul>
@@ -110,9 +110,11 @@ export default {
           menuitems {
             title
             slug
+            uri
             localized {
               title
               slug
+              uri
             }
           }
           instagram
