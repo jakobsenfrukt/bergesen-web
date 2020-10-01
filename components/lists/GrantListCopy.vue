@@ -29,7 +29,6 @@
             <option value="07">Juli</option>
             <option value="08">August</option>
             <option value="12">Desember</option>
-            <option value="">Nei</option>
           </select>
         </label>
       </div>
@@ -37,8 +36,6 @@
         <label>
           <span>Søk</span>
           <input type="text" v-model="searchInput" @input="search" />
-          {{ searchInput }}
-          date: {{ dateFilter }}
         </label>
       </div>
     </nav>
