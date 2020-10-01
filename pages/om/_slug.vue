@@ -30,7 +30,6 @@ export default {
       if (!this.entry.people) {
         return
       }
-      console.log(this.entry.people[0])
       return this.entry.people.filter(person => person.group === "admin");
     }
   },

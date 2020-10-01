@@ -7,7 +7,7 @@
       <PersonList v-if="entry.people" :people="admin" heading="Administrasjon" />
       <DownloadList v-if="entry.downloadFiles" :files="entry.downloadFiles" />
     </div>
-    <SideNav :menuItems="pages" parent="/om" parentTitle="Om stiftelsen" class="page-nav" />
+    <SideNav :menuItems="pages" parent="/en/about" parentTitle="About the foundation" class="page-nav" />
   </main>
 </template>
 
@@ -30,7 +30,6 @@ export default {
       if (!this.entry.people) {
         return
       }
-      console.log(this.entry.people[0])
       return this.entry.people.filter(person => person.group === "admin");
     }
   },
