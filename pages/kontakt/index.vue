@@ -1,17 +1,16 @@
 <template>
   <main class="site-main">
     <PageHeader :heading="entry.title" :lead="entry.lead" />
-    <div class="page-body">
-      <div class="contact">
+    <div class="page-body contact">
+      <div class="contact-info">
         <div class="email">
-          <h2>E-post</h2>
           <div v-for="(email, index) in entry.email" :key="index" class="email-block">
             <h3>{{ email.label }}</h3>
             <a :href="`mailto:${email.address}`" target="_blank">{{ email.address }}</a>
           </div>
         </div>
         <div class="phone">
-          <h2>Telefon</h2>
+          <h3>Telefon</h3>
           <strong>{{ entry.phone }}</strong>
         </div>
       </div>
@@ -106,7 +105,14 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
-.contact, .address {
+.page-body.contact {
+  grid-column: 1 / span 12;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 2rem;
+}
+.contact-info, .address {
+  grid-column: 1 / span 12;
   font-family: $sans-serif;
 
   h2 {
@@ -116,31 +122,45 @@ export default {
     font-weight: 700;
   }
 }
-.contact {
-  margin: 1rem auto $spacing-m;
+.contact-info {
+  grid-column: 3 / span 8;
+  margin: 1rem 0 $spacing-m;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(9, 1fr);
   grid-column-gap: 2rem;
 
   h2 {
-    margin-bottom: .5rem;
+    margin: 0 0 .5rem;
   }
 
   .email,
   .phone {
-    margin-bottom: $spacing-m;
-    font-size: 1.2rem;
+    margin-bottom: $spacing-s;
   }
 
   h3 {
-    margin-bottom: 0;
+    margin: 0;
     font-family: $sans-serif;
   }
 
   .email {
+    grid-column: 1 / span 6;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-column-gap: 2rem;
     &-block {
+      grid-column: 1 / span 3;
       margin-bottom: 1.5rem;
+      h3 {
+        grid-column: 1 / span 6;
+      }
+      &:nth-of-type(even) {
+        grid-column: 4 / span 3;
+      }
     }
+  }
+  .phone {
+    grid-column: 7 / span 2;
   }
 
   strong, a {
@@ -156,13 +176,15 @@ export default {
 }
 .address {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  width: 100%;
-  margin: 1rem auto $spacing-m;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 2rem;
+  margin: 1rem -2rem $spacing-s;
 
   &-text {
+    grid-column: 1 / span 4;
     background: $color-lightestgray;
     padding: 2rem 2rem $spacing-l;
+    margin-right: -2rem;
     pre {
       font-family: inherit;
       margin: 0 0 1.5rem;
@@ -170,6 +192,7 @@ export default {
   }
 
   &-map {
+    grid-column: 5 / span 8;
     iframe {
       width: 100%;
       height: 100%;
@@ -177,7 +200,7 @@ export default {
   }
 }
 .people {
-  grid-column: 3 / span 7;
+  grid-column: 3 / span 6;
   margin: 0 0 2rem;
 }
 </style>

@@ -24,13 +24,16 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
 .article {
+  grid-column: 2 / span 10;
+  align-self: start;
   display: grid;
-  grid-template-columns: 1fr 1.618fr;
+  grid-template-columns: repeat(10, 1fr);
+  grid-column-gap: 2rem;
   width: 100%;
-  max-width: 54rem;
-  margin: 1rem auto $spacing-m;
+  margin: 1rem auto $spacing-l;
 
   &-image {
+    grid-column: 1 / span 4;
     .image-wrapper {
       width: 100%;
       padding-top: 100%;
@@ -55,8 +58,10 @@ export default {
   }
 
   &-text {
+    grid-column: 5 / span 6;
     background: $color-lightestgray;
-    padding: 1rem 1.6rem 2rem;
+    padding: 1rem 2rem 2rem;
+    margin-left: -2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;

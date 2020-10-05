@@ -39,7 +39,7 @@
     </div>
     <div class="meta">
       Organisasjonsnummer:
-      <strong>{{ contact.orgNumber }}</strong>
+      <strong>{{ contact.orgNumber }}</strong><br />
       <NLink to="/cookies">Personvern og cookies</NLink>
     </div>
   </footer>
@@ -140,6 +140,9 @@ footer {
         margin: 0 1rem;
       }
     }
+    br {
+      display: none;
+    }
   }
 
   .newsletter-wrapper {
@@ -158,30 +161,55 @@ footer {
 }
 @media (max-width: $media-m) {
   footer {
-    grid-template-columns: repeat(2, 1fr);
     .logo {
       grid-column: 1 / span 2;
     }
     .logo, .contact, .address {
       margin-bottom: 2rem;
     }
+    .contact {
+      grid-column: 3 / span 4;
+    }
+    .address {
+      grid-column: 7 / span 4;
+    }
+    .newsletter-wrapper {
+      grid-column: 3 / span 6;
+      margin-top: 2rem;
+    }
     .meta {
-      grid-column: 1;
-      text-align: left;
+      grid-column: 3 / span 6;
       strong:after {
         display: none;
+      }
+      br {
+        display: block;
       }
     }
   }
 }
 @media (max-width: $media-s) {
   footer {
-    grid-template-columns: 1fr;
+    padding: 2rem;
     .logo {
-      grid-column: 1 / span 1;
+      grid-column: 1 / span 3;
+    }
+    .contact {
+      grid-column: 1 / span 12;
+    }
+    .address {
+      grid-column: 1 / span 12;
+    }
+    .newsletter-wrapper {
+      grid-column: 1 / span 10;
+      margin-top: 2rem;
     }
     .meta {
-      grid-column: 1 / span 1;
+      grid-column: 1 / span 8;
+    }
+    .mf-logo-wrapper {
+      bottom: 1rem;
+      right: 1rem;
     }
   }
 }

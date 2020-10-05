@@ -31,8 +31,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
 .page-header {
-  grid-column: 3 / span 6;
-  margin-bottom: $spacing-m;
+  grid-column: 3 / span 7;
 
   &.split {
     grid-column: 1 / span 12;
@@ -74,6 +73,8 @@ export default {
   font-family: $sans-serif;
   font-weight: 400;
   line-height: 1.4;
+  max-width: none;
+  margin-bottom: $spacing-s;
 }
 .date {
   font-family: $sans-serif;

@@ -37,6 +37,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
 .news-articles {
+  margin-top: 2rem;
   grid-column: 1 / span 12;
   .section-title {
     color: $color-red;

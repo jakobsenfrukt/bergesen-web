@@ -34,9 +34,6 @@
           </a>
         </li>
       </ul>
-      <!--english: {{ english }}<br>
-      currentPath: {{ currentPath }}<br>
-      newPath: {{ newPath }}<br />-->
       <div class="translate" @click="open = false">
         <template v-if="!english && newPath">
           <span>NO</span> / <span @click="switchLanguage()"><NLink :to="newPath">EN</NLink></span>
@@ -129,12 +126,15 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
 header {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 2rem;
+  align-items: start;
   font-family: $sans-serif;
 }
 .logo {
   width: 6rem;
+  grid-column: 1 / span 2;
   margin-right: 1rem;
   a {
     display: block;
@@ -144,9 +144,9 @@ header {
   }
 }
 .site-nav {
+  grid-column: 3 / span 10;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
   flex: 1;
   ul {
     list-style: none;
@@ -159,10 +159,6 @@ header {
       vertical-align: middle;
       position: relative;
       line-height: 1.2;
-
-      &.some {
-        margin: 0 .24rem .5rem;
-      }
     }
   }
   a {
@@ -174,9 +170,10 @@ header {
 }
 .some {
   &-icon {
-    width: 1rem;
-    height: 1rem;
+    width: 1.1rem;
+    height: 1.1rem;
     vertical-align: middle;
+    margin-bottom: .1rem;
   }
 }
 .translate {
@@ -197,11 +194,23 @@ header {
 
   display: none;
 }
-@media (min-width: $media-m) {
+@media (min-width: 1400px) {
   .site-nav {
     ul {
       li {
-        margin: 0 1rem;
+        &.sok-stotte {
+          margin: 0 1rem 0 4rem;
+        }
+      }
+    }
+  }
+}
+@media (min-width: $media-m) {
+  .site-nav {
+    padding-top: 2.4rem;
+    ul {
+      li {
+        margin: 0 1.8rem 0 0;
         &:after {
           content: "";
           display: block;
@@ -221,22 +230,15 @@ header {
         }
         &.sok-stotte {
           color: $color-darkgreen;
-          margin: 0 1rem 0 4rem;
           &:after {
             background: $color-darkgreen;
           }
         }
         &.some {
           margin: 0 0 0 .5rem;
-          &.fb {
-            margin-left: auto;
-          }
         }
       }
     }
-  }
-  .some-nav {
-    width: 4rem;
   }
   .translate {
     position: absolute;

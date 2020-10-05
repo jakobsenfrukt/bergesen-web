@@ -79,7 +79,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
 .hero {
-  margin: 0 -2rem 2rem;
+  margin: 0 -2rem;
   grid-column: 1 / span 12;
   position: relative;
   background: transparent;

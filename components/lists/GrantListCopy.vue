@@ -133,9 +133,23 @@ export default {
 .grant-filter {
   display: flex;
   margin: $spacing-l 0 1rem;
+  font-family: $sans-serif;
 
   div {
     margin-right: 1rem;
+  }
+
+  select, input, button {
+    font-family: $sans-serif;
+    font-size: 1rem;
+    padding: .3rem .5rem;
+    margin: 0 1rem 0 .5rem;
+    border: 1px solid $color-text;
+    background: $color-lightestgray;
+  }
+  button {
+    margin-left: 0;
+    padding: .3rem 1rem;
   }
 }
 .grant-list {

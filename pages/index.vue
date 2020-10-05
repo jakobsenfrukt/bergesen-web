@@ -136,6 +136,9 @@ section {
 
     &.apply {
       grid-template-columns: 1fr;
+      .content, .side-nav {
+        grid-column: 1 / span 1;
+      }
     }
   }
 }

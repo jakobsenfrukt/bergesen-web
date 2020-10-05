@@ -11,11 +11,13 @@ $sans-serif: 'Futura-PT', helvetica, arial, sans-serif;
 
 $color-white: #fff;
 $color-black: #000;
+/*
 $color-darkgreen: #378643;
 
 $color-green: #6bc278;
 $color-lightgreen: #cce0bf;
 $color-lightestgreen: #edfce3;
+*/
 
 $color-red: #940000;
 $color-lightred: #bf6357;
@@ -28,6 +30,14 @@ $color-lightestblue: #6b94a6;
 $color-gray: #64645a;
 $color-lightgray: #c8c8be;
 $color-lightestgray: #f0f0e6;
+
+
+
+$color-darkgreen: $color-gray;
+
+$color-green: $color-gray;
+$color-lightgreen: $color-lightgray;
+$color-lightestgreen: $color-lightestgray;
 
 
 /* WIDTHS & SPACING — — — — — — — — — — — — */
@@ -45,7 +55,7 @@ $spacing-s: 1rem;
 /* MEDIA QUERIES — — — — — — — — — — — — */
 
 $media-s: 700px;
-$media-m: 960px;
+$media-m: 1160px;
 $media-l: 1540px;
 $media-xl: 1700px;
 

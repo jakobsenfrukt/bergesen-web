@@ -1,6 +1,8 @@
 <template>
   <li class="grant">
-    <span class="grant-date">{{ grant.date }}</span>
+    <span class="grant-date">
+      <Date :rawDate="grant.date" short />
+    </span>
     <div class="grant-text">
       <span class="grant-title">{{ grant.title }}</span>
       <span class="grant-project">{{ grant.projectname }}</span>

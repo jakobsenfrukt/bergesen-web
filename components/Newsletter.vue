@@ -69,16 +69,21 @@ export default {
     width: 100%;
     border-radius: 2rem;
     margin-bottom: .5rem;
-    border: 1px solid $color-background;
+    border: 2px solid $color-background;
     background: transparent;
     color: $color-background;
-    &:focus {
-      border-color: $color-green;
-      outline: none;
-    }
     &::placeholder {
       color: $color-background;
       opacity: .6;
+      transition: opacity .3s ease;
+    }
+    &:focus {
+      border-color: $color-green;
+      outline: none;
+      &::placeholder {
+        color: $color-background;
+        opacity: 0;
+      }
     }
   }
   .button {
