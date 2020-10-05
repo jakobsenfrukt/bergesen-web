@@ -35,15 +35,19 @@ export default {
 @import '@/assets/css/variables.scss';
 .person-list {
   list-style: none;
-  margin: 0 auto $spacing-m;
+  margin: 0 0 $spacing-m;
   padding: 0;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 2rem;
 
   &__heading {
     font-style: italic;
+  }
+
+  &.contactpage {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 .person {
@@ -100,9 +104,9 @@ export default {
 }
 @media (min-width: $media-l) {
   .person-list {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     &.contactpage {
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 }

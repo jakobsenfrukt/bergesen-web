@@ -28,8 +28,9 @@ export default {
           ... on awardwinners_awardwinner_Entry {
             title
             lead
+            body
             mainimage {
-              url
+              url(transform: "thumb")
               ... on assets_Asset {
                 alt
               }

@@ -30,7 +30,7 @@ export default {
             slug
             uri
             mainimage {
-              url
+              url(transform: "thumb")
               ... on assets_Asset {
                 alt
               }

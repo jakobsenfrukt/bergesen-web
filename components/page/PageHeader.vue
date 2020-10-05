@@ -31,9 +31,11 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
 .page-header {
+  grid-column: 3 / span 6;
   margin-bottom: $spacing-m;
 
   &.split {
+    grid-column: 1 / span 12;
     width: calc(100% + 4rem);
     max-width: none;
     background: $color-lightestgray;
@@ -69,7 +71,6 @@ export default {
 }
 .lead {
   font-size: 1.5rem;
-
   font-family: $sans-serif;
   font-weight: 400;
   line-height: 1.4;

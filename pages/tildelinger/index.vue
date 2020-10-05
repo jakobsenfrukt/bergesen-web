@@ -4,9 +4,6 @@
     <GrantListCopy />
 
     <GrantList :grants="mockgrants" />
-
-    Data fra publiseringssystemet
-    <GrantList :grants="grants" />
   </main>
 </template>
 
@@ -88,7 +85,7 @@ export default {
             grantedsum
             date
             mainimage {
-              url
+              url(transform: "small")
               ... on assets_Asset {
                 alt
               }

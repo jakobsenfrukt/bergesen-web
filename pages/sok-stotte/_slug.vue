@@ -52,6 +52,18 @@ export default {
     })
     return data
   },
-  fetchOnServer: true
+  fetchOnServer: true,
+  head() {
+    return {
+      title: this.entry.title + ' | Bergesenstiftelsen',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.entry.lead
+        }
+      ]
+    }
+  }
 }
 </script>

@@ -11,7 +11,7 @@
         <Date :rawDate="winner.postDate" yearonly class="winner-year" />
         <h3 class="winner-name">{{ winner.title }}</h3>
         <p class="winner-lead">{{ winner.lead }}</p>
-        <NLink :to="`/bergesenprisen/${winner.slug}`" class="winner-link">Styrets begrunnelse</NLink>
+        <NLink v-if="winner.body" :to="`/bergesenprisen/${winner.slug}`" class="winner-link">Les styrets begrunnelse</NLink>
       </div>
     </li>
   </ul>
@@ -30,21 +30,22 @@ export default {
 @import '@/assets/css/variables.scss';
 .winner-list {
   list-style: none;
-  margin: 0 auto $spacing-l;
+  margin: 0 0 $spacing-l;
   padding: 0;
-  width: 100%;
-  max-width: 54rem;
+  grid-column: 2 / span 10;
 }
 .winner {
   display: grid;
-  grid-template-columns: 1fr 1.618fr;
+  width: 100%;
+  grid-template-columns: repeat(10, 1fr);
   grid-column-gap: 2rem;
   margin: 0 0 $spacing-m;
 
   &-image {
+    grid-column: 1 / span 4;
     .image-wrapper {
       width: 100%;
-      padding-top: 80%;
+      padding-top: 100%;
       position: relative;
       overflow: hidden;
     }
@@ -63,6 +64,10 @@ export default {
       filter: grayscale(100%);
       transition: all .3s ease;
     }
+  }
+
+  &-text {
+    grid-column: 5 / span 6;
   }
 
   &-name {

@@ -100,7 +100,7 @@ export default {
                 grantedsum
                 date
                 mainimage {
-                  url
+                  url(transform: "thumb")
                   ... on assets_Asset {
                     alt
                   }
@@ -127,6 +127,9 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
+.grants {
+  grid-column: 1 / span 12;
+}
 .grant-filter {
   display: flex;
   margin: $spacing-l 0 1rem;

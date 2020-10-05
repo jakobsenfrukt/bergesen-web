@@ -1,10 +1,10 @@
 <template>
   <main class="site-main">
-    <PageHeader :heading="entry.title" :lead="entry.lead" :date="entry.postDate" />
+    <PageHeader v-if="entry.mainimage.length" :heading="entry.title" :lead="entry.lead" :date="entry.postDate" :image="entry.mainimage[0]" />
+    <PageHeader v-else :heading="entry.title" :lead="entry.lead" :date="entry.postDate" />
+    <div v-html="entry.body" class="page-body"></div>
     <RelatedEntry v-if="entry.relatedWinner[0]" :winner="entry.relatedWinner[0]" />
     <RelatedEntry v-if="entry.relatedGrant[0]" :grant="entry.relatedGrant[0]" />
-    <img v-if="entry.mainimage.length" :src="entry.mainimage[0].url" :alt="entry.mainimage[0].alt" class="article-mainimage" />
-    <div v-html="entry.body" class="page-body"></div>
   </main>
 </template>
 
@@ -50,7 +50,7 @@ export default {
             slug
             uri
             mainimage {
-              url
+              url(transform: "full")
               ... on assets_Asset {
                 alt
               }
@@ -64,7 +64,19 @@ export default {
     })
     return data
   },
-  fetchOnServer: true
+  fetchOnServer: true,
+  head() {
+    return {
+      title: this.entry.title + ' | Bergesenstiftelsen',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.entry.lead
+        }
+      ]
+    }
+  }
 }
 </script>
 

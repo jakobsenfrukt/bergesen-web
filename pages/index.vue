@@ -50,7 +50,7 @@ export default {
             slug
             uri
             mainimage {
-              url
+              url(transform: "thumb")
               ... on assets_Asset {
                 alt
               }
@@ -100,6 +100,7 @@ section {
   margin: 0 -2rem;
   padding: 2rem;
   position: relative;
+  grid-column: 1 / span 12;
 
   .section-title {
     font-size: 2.8rem;
@@ -114,10 +115,14 @@ section {
   &.apply {
     background: $color-lightgreen;
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    grid-column-gap: 4rem;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: 2rem;
     .content {
+      grid-column: 1 / span 8;
       margin: 0;
+    }
+    .side-nav {
+      grid-column: 10 / span 3;
     }
     .button {
       background-color: $color-green;

@@ -36,12 +36,15 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
-.news-articles .section-title {
-  color: $color-red;
+.news-articles {
+  grid-column: 1 / span 12;
+  .section-title {
+    color: $color-red;
 
-  a {
-    text-decoration: none;
-    color: inherit;
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
   }
 }
 .news-grid {

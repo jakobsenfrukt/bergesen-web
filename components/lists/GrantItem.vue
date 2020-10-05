@@ -10,7 +10,7 @@
           <div v-if="grant.image" class="grant-image">
             <img src="https://test.bergesen-cms.444.no/assets/bilder/Edvard_Munch_-_Red_and_White_-_Google_Art_Project.jpg" alt="Alternativ tekst" />
           </div>
-          <div class="grant-details-text">
+          <div class="grant-details-text" :class="{ noimage: !grant.image}">
             <p v-if="grant.lead">{{ grant.lead }}</p>
             <NLink to="#" class="grant-article">Artikkel</NLink>
           </div>
@@ -40,7 +40,9 @@ export default {
   width: 100%;
   padding: 1rem 0;
   border-bottom: 1px solid $color-text;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 2rem;
   justify-content: space-between;
   align-items: flex-start;
 
@@ -49,8 +51,7 @@ export default {
   }
 
   &-date {
-    width: 16%;
-    min-width: 10rem;
+    grid-column: 1 / span 2;
   }
 
   &-date,
@@ -62,7 +63,7 @@ export default {
   }
 
   &-text {
-    flex: 1;
+    grid-column: 3 / span 7;
     padding-right: 2rem;
     span {
       display: inline-block;
@@ -90,14 +91,14 @@ export default {
     }
   }
   &-details {
-    max-width: 42rem;
     display: none;
 
     .wrapper {
       padding: 1rem 0 1.2rem;
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
       .grant-image {
-        width: 20rem;
+        grid-column: 1 / span 2;
         margin-right: 1.2rem;
       }
       p {
@@ -105,9 +106,20 @@ export default {
         margin: 0;
       }
     }
+    &-text {
+      grid-column: 3 / span 4;
+
+      &.noimage {
+        grid-column: 1 / span 4;
+      }
+    }
     &.open {
       display: flex;
     }
+  }
+  &-amount {
+    grid-column: 10 / span 3;
+    text-align: right;
   }
   &-article {
     display: block;

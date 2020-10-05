@@ -19,6 +19,11 @@ body {
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    &:focus {
+      border: 2px solid $color-green;
+      outline: none;
+    }
   }
 }
 
@@ -62,6 +67,17 @@ strong {
     transition: color .3s ease;
     &:hover {
       color: $color-green;
+    }
+    &.button {
+      text-decoration: none;
+      font-family: $serif;
+      font-weight: 400;
+      padding: 1rem 6rem 1rem 2rem;
+      transition: all .3s ease;
+      &:hover {
+        color: inherit;
+        padding: 1rem 4rem 1rem 4rem;
+      }
     }
   }
   p, ul, ol {
@@ -127,17 +143,35 @@ strong {
       top: .6rem;
     }
   }
-  figure {
-    margin: 1rem auto .5rem;
-  }
   figcaption {
     color: $color-lightblue;
     opacity: .8;
     line-height: 1.4;
     margin-bottom: $spacing-m;
   }
+  figure {
+    margin: 1rem auto 2rem;
+  }
   strong {
     font-family: $sans-serif;
+  }
+  .embed-responsive-video figure {
+    margin: 2rem auto;
+    padding: 57% 0 0;
+    position: relative;
+    width: 100%;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100% !important;
+      height: 100% !important;
+    }
   }
 }
 .featured {

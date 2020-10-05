@@ -1,11 +1,9 @@
 <template>
   <main class="site-main">
-    <div class="page-content">
-      <PageHeader v-if="entry.mainimage.length" :heading="entry.title" :lead="entry.lead" :year="entry.postDate" :image="entry.mainimage[0]" />
-      <PageHeader v-else :heading="entry.title" :lead="entry.lead" />
-      <div v-html="entry.body" class="page-body"></div>
-      <RelatedArticle v-if="entry.relatedarticle[0]" :article="entry.relatedarticle[0]" />
-    </div>
+    <PageHeader v-if="entry.mainimage.length" :heading="entry.title" :lead="entry.lead" :year="entry.postDate" :image="entry.mainimage[0]" />
+    <PageHeader v-else :heading="entry.title" :lead="entry.lead" />
+    <div v-html="entry.body" class="page-body"></div>
+    <RelatedArticle v-if="entry.relatedarticle[0]" :article="entry.relatedarticle[0]" />
   </main>
 </template>
 
@@ -26,7 +24,7 @@ export default {
             lead
             body
             mainimage {
-              url
+              url(transform: "full")
               ... on assets_Asset {
                 alt
               }
@@ -37,7 +35,7 @@ export default {
                 lead
                 postDate
                 mainimage {
-                  url
+                  url(transform: "thumb")
                   ... on assets_Asset {
                     alt
                   }
@@ -58,6 +56,18 @@ export default {
     })
     return data
   },
-  fetchOnServer: true
+  fetchOnServer: true,
+  head() {
+    return {
+      title: this.entry.title + ' | Bergesenstiftelsen',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.entry.lead
+        }
+      ]
+    }
+  }
 }
 </script>

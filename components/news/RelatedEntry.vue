@@ -29,7 +29,8 @@ export default {
 .related {
   color: $color-darkgreen;
   width: 100%;
-  max-width: 24rem;
+  grid-column: 9 / span 3;
+  align-self: start;
   margin: 1rem 0 $spacing-m;
   border: 1px solid $color-darkgreen;
   padding: 1rem 1.6rem 2rem;
@@ -38,7 +39,7 @@ export default {
   .winner {
     &-name {
       font-style: italic;
-      font-size: 2rem;
+      font-size: 1.8rem;
       margin-bottom: .5rem;
     }
     &-meta {

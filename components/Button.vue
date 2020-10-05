@@ -47,7 +47,7 @@ export default {
     transition: all .3s ease;
   }
   &:hover {
-    padding-left: 3.5rem;
+    padding: 1rem 4rem 1rem 4rem;
     &:before {
       opacity: 1;
       transform: translateX(0);
