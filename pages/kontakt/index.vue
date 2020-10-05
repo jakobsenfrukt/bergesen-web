@@ -182,7 +182,7 @@ export default {
 
   &-text {
     grid-column: 1 / span 4;
-    background: $color-lightestgray;
+    background: $color-lightgreen;
     padding: 2rem 2rem $spacing-l;
     margin-right: -2rem;
     pre {
@@ -192,6 +192,7 @@ export default {
   }
 
   &-map {
+    background: $color-lightestgray;
     grid-column: 5 / span 8;
     iframe {
       width: 100%;
