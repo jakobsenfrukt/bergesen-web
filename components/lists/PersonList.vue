@@ -43,7 +43,7 @@ export default {
   grid-column-gap: 2rem;
 
   &__heading {
-    font-style: italic;
+    font-size: 2rem;
   }
 
   &.contactpage {
