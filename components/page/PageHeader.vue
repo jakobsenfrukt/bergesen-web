@@ -74,7 +74,7 @@ export default {
   font-weight: 400;
   line-height: 1.4;
   max-width: none;
-  margin-bottom: $spacing-s;
+  margin-bottom: 2rem;
 }
 .date {
   font-family: $sans-serif;
