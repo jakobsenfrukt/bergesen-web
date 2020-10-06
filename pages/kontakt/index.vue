@@ -11,7 +11,7 @@
         </div>
         <div class="phone">
           <h3>Telefon</h3>
-          <strong>{{ entry.phone }}</strong>
+          <a :href="`tel:${entry.phone}`">{{ entry.phone }}</a>
         </div>
       </div>
       <div class="address">

@@ -15,7 +15,7 @@
       </div>
       <div class="phone">
         Telefon
-        <strong>{{ contact.phone }}</strong>
+        <a :href="`tel:${contact.phone}`">{{ contact.phone }}</a>
       </div>
     </div>
     <div class="address">
@@ -208,8 +208,7 @@ footer {
       grid-column: 1 / span 8;
     }
     .mf-logo-wrapper {
-      bottom: 1rem;
-      right: 1rem;
+      bottom: 1.5rem;
     }
   }
 }
