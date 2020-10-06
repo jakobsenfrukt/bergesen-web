@@ -6,7 +6,7 @@
         <form action="https://bergesenstiftelsen.us2.list-manage.com/subscribe/post?u=8e079514aef908ccba6b3518c&amp;id=b1781df422" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
           <div id="mc_embed_signup_scroll">
             <div class="mc-field-group">
-              <label for="mce-EMAIL">E-post</label>
+              <label for="mce-EMAIL">{{ t.label }}</label>
               <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" :placeholder="t.placeholder">
             </div>
             <div id="mce-responses" class="clear">
@@ -15,7 +15,7 @@
             </div>
             <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
             <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_8e079514aef908ccba6b3518c_b1781df422" tabindex="-1" value=""></div>
-            <div class="clear button-wrapper"><input type="submit" value="Meld deg på" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+            <div class="clear button-wrapper"><input type="submit" :value="t.button" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
           </div>
         </form>
       </div>
@@ -32,12 +32,16 @@ export default {
   data() {
     return {
       no: {
-        privacy: "Ved å melde deg på samtykker du til å motta vårt nyhetsbrev på e-post. Du kan når som helst melde deg av.",
-        placeholder: "Din e-postadresse"
+        privacy: "Skriv inn din e-post for å holde deg oppdatert om søknadsfrister, tildelinger mm. Med dette samtykker du til å få informasjon fra oss på e-post. Du kan når som helst melde deg av.",
+        placeholder: "Din e-postadresse",
+        label: "E-post",
+        button: "Meld deg på"
       },
       en: {
-        privacy: "By signing up, you agree to receiving our newsletter by e-mail. You can unsubscribe at any time.",
-        placeholder: "Your e-mail"
+        privacy: "Sign up to receive updates on application deadlines, grants, etc. By signing up you agree to receiving information from us by e-mail. You can unsubscribe at any time.",
+        placeholder: "Your e-mail",
+        label: "E-mail",
+        button: "Sign up"
       }
     }
   },

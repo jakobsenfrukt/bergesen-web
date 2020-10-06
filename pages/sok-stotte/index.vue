@@ -2,8 +2,8 @@
   <main class="site-main site-main--with-aside">
     <div class="page-content">
       <PageHeader :heading="entry.title" :lead="entry.lead" />
-      <DeadlineList v-if="entry.deadlines" :deadlines="entry.deadlines" />
       <div v-html="entry.body" class="page-body"></div>
+      <DeadlineList v-if="entry.deadlines" :deadlines="entry.deadlines" />
     </div>
     <SideNav :menuItems="pages" :parent="entry.uri" :parentTitle="entry.title" class="page-nav" />
   </main>

@@ -16,7 +16,7 @@
           </select>
         </label>
       </div>
-      <div class="grant-filter-month">
+      <div v-if="year" class="grant-filter-month">
         <label>
           <span>Måned</span>
           <select v-model="month" @change="search">
@@ -34,7 +34,7 @@
       </div>
       <div class="grant-filter-search">
         <label>
-          <span>Søk</span>
+          <span>Søk på fritekst</span>
           <input type="text" v-model="searchInput" @input="search" />
         </label>
       </div>

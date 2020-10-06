@@ -3,8 +3,8 @@
     <div class="page-content">
       <PageHeader :heading="entry.title" :lead="entry.lead" />
       <div v-if="entry.body" v-html="entry.body" class="page-body"></div>
-      <PersonList v-if="entry.people" :people="board" heading="Styre" />
-      <PersonList v-if="entry.people" :people="admin" heading="Administrasjon" />
+      <PersonList v-if="entry.people" :people="board" />
+      <!--<PersonList v-if="entry.people" :people="admin" heading="Administrasjon" />-->
       <DownloadList v-if="entry.downloadFiles" :files="entry.downloadFiles" />
     </div>
     <SideNav :menuItems="pages" parent="/om" parentTitle="Om stiftelsen" class="page-nav" />

@@ -5,7 +5,7 @@
       <div v-if="entry.body" v-html="entry.body" class="page-body"></div>
       <FaqList v-if="entry.faq" :faq="entry.faq" />
     </div>
-    <SideNav :menuItems="pages" parent="/sok-stotte" parentTitle="Søk støtte" class="page-nav" />
+    <SideNav :menuItems="pages" parent="sok-stotte" parentTitle="Søk støtte" class="page-nav" />
   </main>
 </template>
 

@@ -132,7 +132,7 @@ export default {
   }
   &-next {
     background: $color-lightestgreen;
-    margin-bottom: $spacing-m;
+    margin: 2rem 0 $spacing-m;
     max-width: 36rem;
     padding: 1.4rem 2rem 2rem;
   }
