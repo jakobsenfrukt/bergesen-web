@@ -107,7 +107,7 @@ export default {
     z-index: 1;
   }
   &-lead {
-    font-size: 2rem;
+    font-size: 2.8rem;
     line-height: 1.3;
     text-align: center;
     margin: 0 auto;

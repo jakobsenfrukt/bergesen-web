@@ -3,7 +3,7 @@
     <div class="page-content">
       <PageHeader :heading="entry.title" :lead="entry.lead" />
       <div v-if="entry.body" v-html="entry.body" class="page-body"></div>
-      <PersonList v-if="entry.people" :people="board" heading="Styret" />
+      <PersonList v-if="entry.people" :people="board" heading="Styre" />
       <PersonList v-if="entry.people" :people="admin" heading="Administrasjon" />
       <DownloadList v-if="entry.downloadFiles" :files="entry.downloadFiles" />
     </div>
@@ -51,6 +51,7 @@ export default {
           ... on aboutPages_people_Entry {
             title
             lead
+            body
             people {
               ... on people_person_BlockType {
                 fullname

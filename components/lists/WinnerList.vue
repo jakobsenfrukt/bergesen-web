@@ -32,17 +32,17 @@ export default {
   list-style: none;
   margin: 0 0 $spacing-l;
   padding: 0;
-  grid-column: 2 / span 10;
+  grid-column: 3 / span 8;
 }
 .winner {
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: repeat(8, 1fr);
   grid-column-gap: 2rem;
   margin: 0 0 $spacing-m;
 
   &-image {
-    grid-column: 1 / span 4;
+    grid-column: 1 / span 3;
     .image-wrapper {
       width: 100%;
       padding-top: 100%;
@@ -67,7 +67,7 @@ export default {
   }
 
   &-text {
-    grid-column: 5 / span 6;
+    grid-column: 4 / span 5;
   }
 
   &-name {

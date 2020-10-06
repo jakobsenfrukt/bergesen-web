@@ -44,6 +44,9 @@ strong {
 .page-body {
   h1, h2, h3, h4, h5, h6 {
     margin-top: 1.5em;
+    &:first-child {
+      margin-top: 0;
+    }
   }
   h4, h5, h6 {
     font-family: $sans-serif;
@@ -172,9 +175,16 @@ strong {
 .featured {
   background: $color-lightestgray;
   padding: 2rem 2.6rem 2.4rem;
-  margin: 1rem auto $spacing-m;
-  font-family: $serif-fine;
-  font-size: 1.4rem;
+  margin: 1.5rem auto $spacing-m;
+  font-family: $sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  font-size: 1.3rem;
+  h1, h2, h3, h4, h5, h6, strong {
+    display: inline-block;
+    line-height: 1.2;
+    margin-bottom: .5rem;
+  }
   a {
     color: inherit;
     font-family: $sans-serif;

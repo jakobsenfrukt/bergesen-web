@@ -31,7 +31,7 @@ export default {
   width: 100%;
   grid-column: 9 / span 3;
   align-self: start;
-  margin: 1rem 0 $spacing-m;
+  margin: 0 0 $spacing-m;
   border: 1px solid $color-darkgreen;
   padding: 1rem 1.6rem 2rem;
 

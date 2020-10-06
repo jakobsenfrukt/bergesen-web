@@ -2,7 +2,7 @@
   <main class="site-main">
     <PageHeader :heading="entry.title" :lead="entry.lead" />
     <div v-html="entry.body" class="page-body"></div>
-    <div style="max-width: 42rem; margin: 0 auto">
+    <div class="page-body">
       <Button href="#" text="Last ned søknadsskjema" secondary />
 
       <div class="featured featured-info">
@@ -16,15 +16,15 @@
       </div>
 
       <div class="featured featured-info">
-        <p><strong>Kjenner du til en verdig mottaker av Bergesenprisen?</strong><br />Offentligheten inviteres til å nominere mulige prismottakere i en åpen nominasjonsrunde ved årets begynnelse. Styret i Bergesenstiftelsen beslutter prismottaker. Prisen kan ved styrets beslutning deles mellom flere personer/institusjoner.</p>
+        <p><strong>Kjenner du til en verdig mottaker av Bergesenprisen?</strong>Offentligheten inviteres til å nominere mulige prismottakere i en åpen nominasjonsrunde ved årets begynnelse. Styret i Bergesenstiftelsen beslutter prismottaker. Prisen kan ved styrets beslutning deles mellom flere personer/institusjoner.</p>
         <Button href="#" text="Nominér en kandidat" />
       </div>
       <div class="featured featured-warning">
-        <p><strong>Kjenner du til en verdig mottaker av Bergesenprisen?</strong><br />Offentligheten inviteres til å nominere mulige prismottakere i en åpen nominasjonsrunde ved årets begynnelse. Styret i Bergesenstiftelsen beslutter prismottaker. Prisen kan ved styrets beslutning deles mellom flere personer/institusjoner.</p>
+        <p><strong>Kjenner du til en verdig mottaker av Bergesenprisen?</strong>Offentligheten inviteres til å nominere mulige prismottakere i en åpen nominasjonsrunde ved årets begynnelse. Styret i Bergesenstiftelsen beslutter prismottaker. Prisen kan ved styrets beslutning deles mellom flere personer/institusjoner.</p>
         <Button href="#" text="Nominér en kandidat" />
       </div>
       <div class="featured featured-warning-option">
-        <p><strong>Kjenner du til en verdig mottaker av Bergesenprisen?</strong><br />Offentligheten inviteres til å nominere mulige prismottakere i en åpen nominasjonsrunde ved årets begynnelse. Styret i Bergesenstiftelsen beslutter prismottaker. Prisen kan ved styrets beslutning deles mellom flere personer/institusjoner.</p>
+        <p><strong>Kjenner du til en verdig mottaker av Bergesenprisen?</strong>Offentligheten inviteres til å nominere mulige prismottakere i en åpen nominasjonsrunde ved årets begynnelse. Styret i Bergesenstiftelsen beslutter prismottaker. Prisen kan ved styrets beslutning deles mellom flere personer/institusjoner.</p>
         <Button href="#" text="Nominér en kandidat" />
       </div>
       <h2>Kjenner du til en verdig mottaker av Bergesenprisen?</h2>
