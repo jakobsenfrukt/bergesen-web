@@ -49,7 +49,7 @@ export default {
   align-items: flex-start;
 
   span {
-    display: block;
+    display: inline-block;
   }
 
   &-date {

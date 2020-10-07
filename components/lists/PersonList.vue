@@ -39,7 +39,7 @@ export default {
   padding: 0;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   grid-column-gap: 2rem;
 
   &__heading {
@@ -47,16 +47,17 @@ export default {
   }
 
   &.contactpage {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
 }
 .person {
+  grid-column: span 2;
   margin: 0 0 $spacing-m;
 
   &-image {
     .image-wrapper {
       width: 100%;
-      padding-top: 133.333%;
+      padding-top: 150%;
       position: relative;
       overflow: hidden;
       margin-bottom: $spacing-s;
@@ -79,7 +80,7 @@ export default {
   }
 
   &-name {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-bottom: .24rem;
   }
 
@@ -87,6 +88,7 @@ export default {
     font-size: 1.1rem;
     color: $color-red;
     font-family: $sans-serif;
+    font-weight: 400;
     line-height: 1;
   }
 

@@ -1,9 +1,7 @@
 <template>
   <main class="site-main">
     <PageHeader :heading="entry.title" :lead="entry.lead" />
-    <GrantListCopy />
-
-    <GrantList :grants="mockgrants" />
+    <GrantList />
   </main>
 </template>
 
@@ -12,61 +10,7 @@ import gql from 'graphql-tag'
 export default {
   data: function() {
     return {
-      entry: {},
-      mockgrants: [
-        {
-          title: "Navn på søkeren",
-          date: "August 2020",
-          projectname: "Prosjekttittel",
-          grantedsum: "100 000",
-          lead: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt diam nunc, vel facilisis est gravida nec. In dignissim, ligula vitae sollicitudin lobortis, neque libero fermentum augue, vel commodo elit leo sit amet elit.",
-          image: true
-        },
-        {
-          title: "Et lengre navn på søkeren",
-          date: "August 2020",
-          projectname: "Prosjekttittel",
-          grantedsum: "100 000",
-          lead: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt diam nunc, vel facilisis est gravida nec. In dignissim, ligula vitae sollicitudin lobortis, neque libero fermentum augue, vel commodo elit leo sit amet elit."
-        },
-        {
-          title: "Navn på søkeren",
-          date: "August 2020",
-          projectname: "En lengre prosjekttittel",
-          grantedsum: "100 000"
-        },
-        {
-          title: "Navn på søkeren igjen",
-          date: "August 2020",
-          projectname: "Prosjekt",
-          grantedsum: "100 000",
-          lead: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tincidunt diam nunc, vel facilisis est gravida nec. In dignissim, ligula vitae sollicitudin lobortis, neque libero fermentum augue, vel commodo elit leo sit amet elit."
-        },
-        {
-          title: "Navn på søkeren",
-          date: "August 2020",
-          projectname: "Prosjekttittel",
-          grantedsum: "100 000"
-        },
-        {
-          title: "Et lengre navn på søkeren",
-          date: "August 2020",
-          projectname: "Prosjekttittel",
-          grantedsum: "100 000"
-        },
-        {
-          title: "Navn på søkeren",
-          date: "August 2020",
-          projectname: "En lengre prosjekttittel",
-          grantedsum: "100 000"
-        },
-        {
-          title: "Navn på søkeren igjen",
-          date: "August 2020",
-          projectname: "Prosjekt",
-          grantedsum: "100 000"
-        }
-      ]
+      entry: {}
     }
   },
   async asyncData({ app, route }) {
