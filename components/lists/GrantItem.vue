@@ -19,7 +19,7 @@
         </div>
       </div>
     </div>
-    <span class="grant-amount">kr {{ grant.grantedsum }}</span>
+    <span class="grant-amount">{{ isNaN(grant.grantedsum) ? "" : "kr " + Number(grant.grantedsum).toLocaleString('nb-NO') }}</span>
   </li>
 </template>
 
