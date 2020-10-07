@@ -61,7 +61,7 @@ export default {
   span {
     color: $color-green;
     font-size: 1.4rem;
-    font-family: $serif-extended;
+    font-family: $sans-serif;
     display: block;
     span {
       display: inline-block;

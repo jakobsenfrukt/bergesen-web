@@ -11,7 +11,7 @@
         <Date :rawDate="winner.postDate" yearonly class="winner-year" />
         <h3 class="winner-name">{{ winner.title }}</h3>
         <p class="winner-lead">{{ winner.lead }}</p>
-        <NLink v-if="winner.body" :to="`/bergesenprisen/${winner.slug}`" class="winner-link">Les styrets begrunnelse</NLink>
+        <NLink v-if="winner.body" :to="`/bergesenprisen/${winner.slug}`" class="winner-link">Les mer</NLink>
       </div>
     </li>
   </ul>
@@ -73,7 +73,6 @@ export default {
   &-name {
     font-size: 2rem;
     margin-bottom: $spacing-s;
-    font-style: italic;
   }
 
   &-lead {
@@ -82,8 +81,8 @@ export default {
   }
 
   &-year {
-    font-size: 2rem;
-    font-family: $serif-extended;
+    font-size: 1.6rem;
+    font-family: $sans-serif;
     color: $color-green;
   }
 

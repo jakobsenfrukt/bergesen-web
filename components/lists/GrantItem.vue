@@ -9,12 +9,15 @@
       <div class="grant-expand" v-if="grant.lead" @click="open = !open">&darr;</div>
       <div class="grant-details" :class="{ open: open }" v-if="grant.lead">
         <div class="wrapper">
-          <div v-if="grant.image" class="grant-image">
-            <img src="https://test.bergesen-cms.444.no/assets/bilder/Edvard_Munch_-_Red_and_White_-_Google_Art_Project.jpg" alt="Alternativ tekst" />
+          <div v-if="grant.mainimage" class="grant-image">
+            <img :src="grant.mainimage[0].url" alt="Alternativ tekst" />
           </div>
-          <div class="grant-details-text" :class="{ noimage: !grant.image}">
+          <div class="grant-details-text" :class="{ noimage: !grant.mainimage}">
             <p v-if="grant.lead">{{ grant.lead }}</p>
-            <NLink to="#" class="grant-article">Artikkel</NLink>
+            <div class="grant-article">
+              Artikkel:
+              <NLink v-if="grant.relatedarticle" to="#" class="grant-article-link">{{ grant.relatedarticle[0].title }}</NLink>
+            </div>
           </div>
         </div>
       </div>
@@ -126,8 +129,35 @@ export default {
   &-article {
     display: block;
     background: $color-lightestgray;
+    font-family: $sans-serif;
+    font-weight: 400;
     margin: 1rem 0;
     padding: .3rem 1rem;
+    &-link {
+      color: $color-text;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      position: relative;
+      transition: all .3s ease;
+      &:before {
+        content: "→";
+        display: inline;
+        font-family: $sans-serif;
+        position: absolute;
+        left: .5rem;
+        opacity: 0;
+        transform: translateX(-100%);
+        transition: all .3s ease;
+      }
+      &:hover {
+        padding-left: 2rem;
+        &:before {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    }
   }
 }
 @media (max-width: $media-s) {

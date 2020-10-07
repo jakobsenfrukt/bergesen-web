@@ -34,7 +34,7 @@
       </div>
       <div class="grant-filter-search">
         <label>
-          <span>Søk på fritekst</span>
+          <span>Søk</span>
           <input type="text" v-model="searchInput" @input="search" />
         </label>
       </div>
@@ -103,6 +103,21 @@ export default {
                   url(transform: "thumb")
                   ... on assets_Asset {
                     alt
+                  }
+                }
+                relatedarticle {
+                  ... on newsarticles_newsarticle_Entry {
+                    title
+                    lead
+                    postDate
+                    mainimage {
+                      url(transform: "thumb")
+                      ... on assets_Asset {
+                        alt
+                      }
+                    }
+                    slug
+                    uri
                   }
                 }
                 lead

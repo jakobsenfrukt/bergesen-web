@@ -35,7 +35,7 @@ export default {
         privacy: "Skriv inn din e-post for å holde deg oppdatert om søknadsfrister, tildelinger mm. Med dette samtykker du til å få informasjon fra oss på e-post. Du kan når som helst melde deg av.",
         placeholder: "Din e-postadresse",
         label: "E-post",
-        button: "Meld deg på"
+        button: "Send inn"
       },
       en: {
         privacy: "Sign up to receive updates on application deadlines, grants, etc. By signing up you agree to receiving information from us by e-mail. You can unsubscribe at any time.",
@@ -96,7 +96,8 @@ export default {
     background: $color-background;
     border: none;
     font-size: 1rem;
-    font-family: $serif;
+    font-family: $sans-serif;
+    font-weight: 500;
     width: 100%;
     max-width: none;
     padding: .75rem 3rem .75rem 1.5rem;
@@ -104,7 +105,7 @@ export default {
     border-radius: 2rem;
     &:hover {
       cursor: pointer;
-      padding: .75rem 1.5rem .75rem 3rem;
+      padding: .75rem 2rem .75rem 2.5rem;
     }
     &-wrapper {
       position: relative;
@@ -115,8 +116,8 @@ export default {
         color: $color-text;
         position: absolute;
         left: 0;
-        top: .75rem;
-        line-height: 1;
+        top: 50%;
+        transform: translateY(-50%);
         z-index: 100;
         opacity: 0;
         transition: all .3s ease;
@@ -124,7 +125,7 @@ export default {
       &:hover {
         &:before {
           opacity: 1;
-          left: 1.5rem;
+          left: 1rem;
         }
       }
     }

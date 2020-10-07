@@ -7,7 +7,8 @@
         <h2 class="section-title">
           <NLink :to="apply.uri">{{ apply.title }}</NLink>
         </h2>
-        <p>{{ apply.lead }}</p>
+        <p class="apply-lead">{{ apply.lead }}</p>
+        <div v-if="apply.body" v-html="apply.body" class="apply-body"></div>
         <Button href="#" text="Last ned søknadsskjema" />
       </div>
       <SideNav :menuItems="applypages" :parent="apply.uri" :parentTitle="apply.title" class="side-nav" />

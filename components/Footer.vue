@@ -6,7 +6,7 @@
       </NLink>
     </div>
     <div class="contact">
-      <h2>Kontakt oss</h2>
+      <h2>{{ t.contact }}</h2>
       <div class="email">
         <div v-for="(email, index) in contact.email" :key="index" class="email-block">
           {{ email.label }}
@@ -31,11 +31,13 @@
       </div>
     </div>
     <div class="newsletter-wrapper">
-      <h2>Nyhetsbrev</h2>
+      <h2>{{ t.newsletter }}</h2>
       <Newsletter />
     </div>
     <div class="mf-logo-wrapper">
-      <img src="/graphics/mf-logo.svg" class="mf-logo" alt="Miljøfyrtårn logo" />
+      <a href="https://www.miljofyrtarn.no/" target="_blank" class="mf-logo">
+        <img src="/graphics/mf-logo.svg" alt="Miljøfyrtårn logo" />
+      </a>
     </div>
     <div class="meta">
       Organisasjonsnummer:
@@ -48,12 +50,30 @@
 <script>
 import gql from 'graphql-tag'
 export default {
+  data() {
+    return {
+      no: {
+        newsletter: "Få informasjon",
+        contact: "Kontakt oss"
+      },
+      en: {
+        newsletter: "Stay updated",
+        contact: "Contact us"
+      }
+    }
+  },
   computed: {
     english() {
       return this.$store.state.english
     },
     contact() {
       return this.$store.state.entries.find(entry => entry.slug === 'kontakt');
+    },
+    t() {
+      if (this.english) {
+        return this.en
+      }
+      return this.no
     }
   }
 }

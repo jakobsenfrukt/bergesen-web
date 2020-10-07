@@ -1,6 +1,7 @@
 <template>
   <main class="site-main">
     <PageHeader :heading="entry.title" :lead="entry.lead" />
+    <div v-if="entry.body" v-html="entry.body" class="page-body"></div>
     <GrantList />
   </main>
 </template>
@@ -20,6 +21,7 @@ export default {
           ... on grants_grants_Entry {
             title
             lead
+            body
           }
         }
         grants: entries(section: "grantlist", site: "default") {

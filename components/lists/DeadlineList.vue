@@ -101,7 +101,7 @@ export default {
 
   &-title {
     margin-bottom: .5rem;
-    font-family: $serif-extended;
+    font-family: $sans-serif;
     font-size: 2rem;
     color: $color-darkgreen;
   }

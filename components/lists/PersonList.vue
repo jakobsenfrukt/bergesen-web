@@ -106,9 +106,9 @@ export default {
 }
 @media (min-width: $media-l) {
   .person-list {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     &.contactpage {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(6, 1fr);
     }
   }
 }

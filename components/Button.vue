@@ -31,6 +31,7 @@ export default {
   position: relative;
   font-size: 1.4rem;
   transition: all .3s ease;
+  font-family: $sans-serif;
 
   &.secondary {
     background: $color-lightgreen;
