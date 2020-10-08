@@ -167,4 +167,10 @@ export default {
     margin: 0;
   }
 }
+
+@media (min-width: $media-xl) {
+  .grants {
+    grid-column: 2 / span 10;
+  }
+}
 </style>

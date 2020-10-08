@@ -1,7 +1,7 @@
 <template>
   <main class="site-main site-main--with-aside">
     <div class="page-content">
-      <PageHeader :heading="entry.title" :lead="entry.lead" />
+      <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
       <div v-html="entry.body" class="page-body"></div>
     </div>
     <SideNav :menuItems="pages" :parent="entry.uri" :parentTitle="entry.title" class="page-nav" />

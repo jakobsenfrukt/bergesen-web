@@ -7,6 +7,7 @@
         <span class="date-month">{{ formatDate(nextDeadline.date).month }}</span>
         <span class="date-time">kl. 12.00</span>
       </div>
+      <span class="deadline-details">{{ nextDeadline.details}}</span>
     </div>
     <h2>Kommende søknadsfrister</h2>
     <ul class="deadline-list">
@@ -15,6 +16,7 @@
           <span class="date-day">{{ formatDate(deadline.date).day }}.</span>
           <span class="date-month">{{ formatDate(deadline.date).month }}</span>
         </div>
+        <span class="deadline-details">{{ deadline.details }}</span>
       </li>
     </ul>
   </div>
@@ -73,19 +75,19 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
-.deadlines h2 {
+.deadlines h2, .deadline-details {
   font-family: $sans-serif;
+  font-weight: 400;
 }
 .deadline-list {
   width: 100%;
   list-style: none;
   padding: 0;
   margin: 0 0 $spacing-m 2rem;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
 
   .deadline {
     position: relative;
+    margin-bottom: 1rem;
     &:before {
       content: url(/graphics/shapes/Bergesen2.svg);
       width: .6em;
@@ -111,7 +113,7 @@ export default {
     margin-bottom: .5rem;
     font-family: $sans-serif;
     font-size: 2rem;
-    color: $color-darkgreen;
+    color: $color-text;
   }
 
   .date {
@@ -124,13 +126,14 @@ export default {
     &-time {
       display: block;
       font-size: 1.2rem;
-      font-weight: 500;
+      font-weight: 400;
     }
 
     &-next {
       font-family: $sans-serif;
       font-size: 2rem;
       font-weight: 700;
+      margin-bottom: .6rem;
 
       .date-time {
         display: inline;

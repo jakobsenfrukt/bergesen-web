@@ -1,5 +1,5 @@
 <template>
-  <main class="site-main">
+  <main class="site-main contact-page">
     <PageHeader :heading="entry.title" :lead="entry.lead" />
     <div class="page-body contact">
       <div class="contact-info">

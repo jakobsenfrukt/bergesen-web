@@ -76,17 +76,19 @@ export default {
   }
   &-title,
   &-project {
+    font-family: $sans-serif;
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
   &-title {
+    font-weight: 500;
     margin: 0;
     &:after {
       content: ": ";
     }
   }
   &-project {
-    font-style: italic;
+    font-weight: 400;
   }
   &-expand {
     display: inline-block;

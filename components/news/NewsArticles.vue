@@ -11,6 +11,11 @@
             <img :src="article.mainimage[0].url" :alt="article.mainimage[0].alt" :title="article.mainimage[0].credit" />
           </div>
         </div>
+        <div v-else-if="article.graphic.length" class="article-image">
+          <div class="image-wrapper">
+            <img :src="article.graphic[0].url" alt="Grafiske former i Bergesenstiftelsens farger" class="color" />
+          </div>
+        </div>
         <div class="article-text">
           <h1 class="article-title">{{ article.title }}</h1>
           <p v-if="article.lead" class="article-lead">
@@ -93,6 +98,10 @@ export default {
       object-position: top;
       filter: grayscale(100%);
       transition: all .3s ease;
+
+      &.color {
+        filter: none;
+      }
     }
   }
 

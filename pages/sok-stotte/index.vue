@@ -1,7 +1,7 @@
 <template>
   <main class="site-main site-main--with-aside">
     <div class="page-content">
-      <PageHeader :heading="entry.title" :lead="entry.lead" />
+      <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
       <div v-html="entry.body" class="page-body"></div>
       <DeadlineList v-if="entry.deadlines" :deadlines="entry.deadlines" />
     </div>
@@ -26,6 +26,7 @@ export default {
             deadlines(limit: 5) {
               ... on deadlines_deadline_BlockType {
                 date
+                details
               }
             }
             lead

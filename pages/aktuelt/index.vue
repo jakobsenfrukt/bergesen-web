@@ -1,6 +1,6 @@
 <template>
   <main class="site-main">
-    <PageHeader :heading="entry.title" :lead="entry.lead" />
+    <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
     <NewsArticles :articles="entries" />
   </main>
 </template>
@@ -35,6 +35,9 @@ export default {
                 alt
                 credit
               }
+            }
+            graphic {
+              url(transform: "thumb")
             }
           }
         }

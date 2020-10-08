@@ -1,5 +1,5 @@
 <template>
-  <div class="page-header" :class="classes">
+  <div class="page-header">
     <div class="wrapper">
       <div class="text">
         <h1 class="page-title">
@@ -10,12 +10,6 @@
           {{ lead }}
         </p>
         <Date v-if="date" short :rawDate="date" class="date" />
-      </div>
-      <div v-if="image" class="image">
-        <img :src="image.url" :alt="image.alt" :title="image.credit" />
-      </div>
-      <div v-else-if="graphic" class="graphic">
-        <img :src="graphic.url" alt="Grafiske former i Bergesenstiftelsens farger" />
       </div>
     </div>
   </div>
@@ -28,7 +22,6 @@ export default {
     lead: String,
     date: String,
     image: Object,
-    graphic: Object,
     year: String
   },
   data() {
@@ -50,15 +43,6 @@ export default {
         return this.en
       }
       return this.no
-    },
-    classes() {
-      if (this.image) {
-        return 'split image'
-      }
-      if (this.graphic) {
-        return 'split graphic'
-      }
-      return
     }
   }
 }
@@ -67,48 +51,7 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
 .page-header {
-  grid-column: 1 / span 12;
-  width: calc(100% + 4rem);
-  margin: 0 -2rem 2rem;
-  padding: 0 2rem;
-  max-width: none;
-  background: $color-lightestgray;
-
-  &.split {
-    background: $color-lightestgray;
-    .wrapper {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-column-gap: 2rem;
-    }
-    .text {
-      grid-column: 3 / span 6;
-      padding: 2rem 5rem 2rem 0;
-    }
-
-    .image, .graphic {
-      grid-column: 9 / span 3;
-      display: block;
-      position: relative;
-    }
-    .graphic {
-      padding-top: 100%;
-      img {
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
-    }
-  }
-  .wrapper {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-column-gap: 2rem;
-  }
-  .text {
-    grid-column: 3 / span 6;
-    padding: 2rem 0;
-  }
+  grid-column: 3 / span 7;
 }
 .page-title {
   font-size: 3.2rem;
