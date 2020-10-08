@@ -57,6 +57,9 @@ export default {
                 credit
               }
             }
+            graphic {
+              url(transform: "thumb")
+            }
           }
         }
         apply: entry(type: "apply", site: "default") {

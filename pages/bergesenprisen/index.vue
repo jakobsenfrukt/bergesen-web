@@ -1,6 +1,7 @@
 <template>
   <main class="site-main">
-    <PageHeader :heading="entry.title" :lead="entry.lead" />
+    <BackgroundShape page="award" />
+    <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
     <div v-html="entry.body" class="page-body"></div>
     <WinnerList :winners="winners" heading="Mottakere av Bergesenprisen" />
   </main>

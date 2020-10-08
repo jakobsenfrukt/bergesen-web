@@ -129,6 +129,8 @@ header {
   grid-column-gap: 2rem;
   align-items: center;
   font-family: $sans-serif;
+  position: relative;
+  z-index: 1;
 }
 .logo {
   width: 6rem;

@@ -1,6 +1,7 @@
 <template>
   <main class="site-main contact-page">
-    <PageHeader :heading="entry.title" :lead="entry.lead" />
+    <BackgroundShape page="contact" />
+    <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
     <div class="page-body contact">
       <div class="contact-info">
         <div class="email">
@@ -140,6 +141,7 @@ export default {
 
   h3 {
     margin: 0;
+    font-size: 1.2rem;
     font-family: $sans-serif;
   }
 
@@ -183,7 +185,7 @@ export default {
   &-text {
     grid-column: 1 / span 4;
     background: $color-lightestgreen;
-    padding: 2rem 2rem $spacing-l;
+    padding: 2rem 2rem 7rem;
     margin-right: -2rem;
     pre {
       font-family: inherit;

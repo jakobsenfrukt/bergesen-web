@@ -6,18 +6,18 @@
     <div class="grant-text">
       <span class="grant-title">{{ grant.title }}</span>
       <span class="grant-project">{{ grant.projectname }}</span>
-      <div class="grant-expand" v-if="grant.lead" @click="open = !open">&darr;</div>
-      <div class="grant-details" :class="{ open: open }" v-if="grant.lead">
+      <div class="grant-expand" v-if="hasContent" @click="open = !open">&darr;</div>
+      <div class="grant-details" :class="{ open: open }" v-if="hasContent">
         <div class="wrapper">
-          <div v-if="grant.mainimage" class="grant-image">
+          <div v-if="grant.mainimage.length" class="grant-image">
             <img :src="grant.mainimage[0].url" :alt="grant.mainimage[0].alt" :title="grant.mainimage[0].credit" />
           </div>
           <div class="grant-details-text" :class="{ noimage: !grant.mainimage}">
             <p v-if="grant.lead">{{ grant.lead }}</p>
-            <div class="grant-article">
-              Artikkel:
-              <NLink v-if="grant.relatedarticle" to="#" class="grant-article-link">{{ grant.relatedarticle[0].title }}</NLink>
-            </div>
+          </div>
+          <div v-if="grant.relatedarticle.length" class="grant-article">
+            Artikkel:
+            <NLink :to="grant.relatedarticle[0].uri" class="grant-article-link">{{ grant.relatedarticle[0].title }}</NLink>
           </div>
         </div>
       </div>
@@ -34,6 +34,13 @@ export default {
   data() {
     return {
       open: false
+    }
+  },
+  computed: {
+    hasContent() {
+      if (this.grant.lead || this.grant.mainimage.length || this.grant.relatedarticle.length) {
+        return true
+      }
     }
   }
 }
@@ -117,11 +124,11 @@ export default {
       grid-column: 3 / span 4;
 
       &.noimage {
-        grid-column: 1 / span 4;
+        grid-column: 1 / span 6;
       }
     }
     &.open {
-      display: flex;
+      display: block;
     }
   }
   &-amount {
@@ -129,6 +136,7 @@ export default {
     text-align: right;
   }
   &-article {
+    grid-column: 1 / span 6;
     display: block;
     background: $color-lightestgray;
     font-family: $sans-serif;
@@ -159,6 +167,31 @@ export default {
           transform: translateX(0);
         }
       }
+    }
+  }
+}
+@media (min-width: $media-grantlist) {
+  .grant {
+    grid-template-columns: repeat(10, 1fr);
+    &-date {
+      grid-column: 1 / span 2;
+    }
+    &-text {
+      grid-column: 3 / span 6;
+    }
+    &-details {
+      .wrapper {
+        grid-template-columns: repeat(5, 1fr);
+        .grant-image {
+          grid-column: 1 / span 2;
+        }
+      }
+    }
+    &-amount {
+      grid-column: 9 / span 2;
+    }
+    &-article {
+      grid-column: 1 / span 10;
     }
   }
 }

@@ -82,6 +82,12 @@ export default {
           }
         }
       }
+
+      &:last-child {
+        a {
+          border: none;
+        }
+      }
     }
   }
 }

@@ -3,9 +3,9 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-column-gap: 2rem;
-  margin-bottom: 7rem;
+  padding-bottom: 7rem;
   &.contact-page, &.front-page {
-    margin-bottom: 0;
+    padding-bottom: 0;
   }
   .page-header, .page-body {
     grid-column: 1 / span 12;

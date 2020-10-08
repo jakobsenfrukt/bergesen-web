@@ -55,6 +55,7 @@ export default {
 }
 .page-title {
   font-size: 3.2rem;
+  line-height: 1.1;
   span {
     color: $color-darkgreen;
     font-size: 1.6rem;

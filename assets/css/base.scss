@@ -10,6 +10,7 @@ body {
   min-height: 100%;
   color: $color-text;
   background: $color-background;
+  overflow-x: hidden;
 
   font-family: $serif;
   font-weight: 500;
@@ -43,10 +44,17 @@ strong {
 
 .page-body {
   h1, h2, h3, h4, h5, h6 {
-    margin-top: 1.5em;
+    margin-top: 1.6em;
+    margin-bottom: 1rem;
     &:first-child {
       margin-top: 0;
     }
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+  h3 {
+    font-size: 1.4rem;
   }
   h4, h5, h6 {
     font-family: $sans-serif;

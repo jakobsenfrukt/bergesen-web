@@ -27,19 +27,18 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
 .related {
-  color: $color-darkgreen;
+  color: $color-darkestgreen;
   width: 100%;
   grid-column: 9 / span 3;
   align-self: start;
   margin: 0 0 $spacing-m;
-  border: 1px solid $color-darkgreen;
+  border: 1px solid $color-darkestgreen;
   padding: 1rem 1.6rem 2rem;
 
 
   .winner {
     &-name {
-      font-style: italic;
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       margin-bottom: .5rem;
     }
     &-meta {
@@ -53,7 +52,7 @@ export default {
 
   .grant {
     &-title {
-      font-style: italic;
+      font-size: 1.4rem;
       margin-bottom: .5rem;
     }
     &-meta,

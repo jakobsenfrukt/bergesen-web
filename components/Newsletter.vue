@@ -93,8 +93,8 @@ export default {
   .button {
     margin: 0;
     outline: none;
-    background: $color-background;
     border: none;
+    background: transparent;
     font-size: 1rem;
     font-family: $sans-serif;
     font-weight: 500;
@@ -102,13 +102,14 @@ export default {
     max-width: none;
     padding: .75rem 3rem .75rem 1.5rem;
     text-align: left;
-    border-radius: 2rem;
     &:hover {
       cursor: pointer;
       padding: .75rem 2rem .75rem 2.5rem;
     }
     &-wrapper {
       position: relative;
+      background: $color-background;
+      border-radius: 2rem;
       &:before {
         content: "→";
         display: block;
@@ -118,7 +119,6 @@ export default {
         left: 0;
         top: 50%;
         transform: translateY(-50%);
-        z-index: 100;
         opacity: 0;
         transition: all .3s ease;
       }
