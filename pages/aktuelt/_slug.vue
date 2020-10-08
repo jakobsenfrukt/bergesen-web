@@ -53,6 +53,7 @@ export default {
               url(transform: "full")
               ... on assets_Asset {
                 alt
+                credit
               }
             }
           }

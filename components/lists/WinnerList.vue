@@ -4,7 +4,7 @@
     <li v-for="(winner, index) in winners" :key="index" class="winner">
       <div class="winner-image">
         <div class="image-wrapper">
-          <img v-if="winner.mainimage.length" :src="winner.mainimage[0].url" :alt="winner.mainimage[0].alt" />
+          <img v-if="winner.mainimage.length" :src="winner.mainimage[0].url" :alt="winner.mainimage[0].alt" :title="winner.mainimage[0].credit" />
         </div>
       </div>
       <div class="winner-text">

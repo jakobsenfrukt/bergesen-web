@@ -34,6 +34,7 @@ export default {
               url(transform: "small")
               ... on assets_Asset {
                 alt
+                credit
               }
             }
             lead

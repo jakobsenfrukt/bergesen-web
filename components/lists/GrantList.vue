@@ -16,22 +16,6 @@
           </select>
         </label>
       </div>
-      <div v-if="year" class="grant-filter-month">
-        <label>
-          <span>Måned</span>
-          <select v-model="month" @change="search">
-            <option value="01">Januar</option>
-            <option value="02">Februar</option>
-            <option value="03">Mars</option>
-            <option value="04">April</option>
-            <option value="05">Mai</option>
-            <option value="06">Juni</option>
-            <option value="07">Juli</option>
-            <option value="08">August</option>
-            <option value="12">Desember</option>
-          </select>
-        </label>
-      </div>
       <div class="grant-filter-search">
         <label>
           <span>Søk</span>
@@ -57,7 +41,6 @@ export default {
       searchInput: "",
       grants: [],
       year: "",
-      month: "",
       limit: 20,
       offset: 0,
       searching: false,
@@ -67,12 +50,8 @@ export default {
     dateFilter() {
       const zeroPad = (num, places) => String(num).padStart(places, '0')
       const year = this.year && parseInt(this.year)
-      const month = this.month && parseInt(this.month)
-      if (year && !this.month) {
+      if (year) {
         return ["and", `>= ${year}-01-01T00:00:00Z`, `< ${year + 1}-01-01T00:00:00Z`]
-      }
-      if (year && this.month) {
-        return ["and", `>= ${year}-${zeroPad(month, 2)}-01T00:00:00Z`, `< ${year}-${zeroPad(month + 1, 2)}-01T00:00:00Z`]
       }
       return []
     },
@@ -83,7 +62,6 @@ export default {
   methods: {
     reset() {
       this.year = ""
-      this.month = ""
       this.searchInput = ""
       this.search()
     },
@@ -103,6 +81,7 @@ export default {
                   url(transform: "thumb")
                   ... on assets_Asset {
                     alt
+                    credit
                   }
                 }
                 relatedarticle {
@@ -114,6 +93,7 @@ export default {
                       url(transform: "thumb")
                       ... on assets_Asset {
                         alt
+                        credit
                       }
                     }
                     slug

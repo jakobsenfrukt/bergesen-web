@@ -36,6 +36,7 @@ export default {
     }
     a {
       font-family: $sans-serif;
+      font-weight: 400;
       color: inherit;
     }
   }

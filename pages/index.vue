@@ -54,6 +54,7 @@ export default {
               url(transform: "thumb")
               ... on assets_Asset {
                 alt
+                credit
               }
             }
           }

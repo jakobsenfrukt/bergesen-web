@@ -11,7 +11,7 @@
         </p>
         <Date v-if="date" short :rawDate="date" class="date" />
       </div>
-      <img v-if="image" :src="image.url" class="image" :alt="image.alt" />
+      <img v-if="image" :src="image.url" class="image" :alt="image.alt" :title="image.credit" />
     </div>
   </div>
 </template>

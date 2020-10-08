@@ -5,7 +5,7 @@
       <li v-for="(person, index) in people" :key="index" class="person">
         <div class="person-image">
           <div class="image-wrapper">
-            <img v-if="person.image.length" :src="person.image[0].url" :alt="`Portrettbilde av ${person.fullname}`" />
+            <img v-if="person.image.length" :src="person.image[0].url" :alt="`Portrettbilde av ${person.fullname}`" :title="person.image[0].credit" />
           </div>
         </div>
         <div class="person-text">

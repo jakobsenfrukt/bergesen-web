@@ -27,6 +27,7 @@ export default {
               url(transform: "full")
               ... on assets_Asset {
                 alt
+                credit
               }
             }
             relatedarticle {
@@ -38,6 +39,7 @@ export default {
                   url(transform: "thumb")
                   ... on assets_Asset {
                     alt
+                    credit
                   }
                 }
                 slug

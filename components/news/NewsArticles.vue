@@ -8,7 +8,7 @@
       <NLink v-for="(article, index) in articles" class="article" :to="article.uri" :key="index">
         <div v-if="article.mainimage.length" class="article-image">
           <div class="image-wrapper">
-            <img :src="article.mainimage[0].url" :alt="article.mainimage[0].alt" />
+            <img :src="article.mainimage[0].url" :alt="article.mainimage[0].alt" :title="article.mainimage[0].credit" />
           </div>
         </div>
         <div class="article-text">

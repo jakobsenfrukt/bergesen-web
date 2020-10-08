@@ -10,7 +10,7 @@
       <div class="grant-details" :class="{ open: open }" v-if="grant.lead">
         <div class="wrapper">
           <div v-if="grant.mainimage" class="grant-image">
-            <img :src="grant.mainimage[0].url" alt="Alternativ tekst" />
+            <img :src="grant.mainimage[0].url" :alt="grant.mainimage[0].alt" :title="grant.mainimage[0].credit" />
           </div>
           <div class="grant-details-text" :class="{ noimage: !grant.mainimage}">
             <p v-if="grant.lead">{{ grant.lead }}</p>
