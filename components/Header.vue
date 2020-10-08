@@ -22,25 +22,23 @@
           </li>
         </template>
       </ul>
-      <ul class="some-nav">
-        <li class="some fb">
-          <a :href="mainmenu.facebook" target="_blank" class="some-link">
-            <Facebook class="some-icon" />
-          </a>
-        </li>
-        <li class="some insta">
-          <a :href="mainmenu.instagram" target="_blank" class="some-link">
-            <Instagram class="some-icon" />
-          </a>
-        </li>
-      </ul>
-      <div class="translate" @click="open = false">
-        <template v-if="!english && newPath">
-          <span>NO</span> / <span @click="switchLanguage()"><NLink :to="newPath">EN</NLink></span>
-        </template>
-        <template v-if="english && newPath">
-          <span @click="switchLanguage()"><NLink :to="newPath">NO</NLink></span> / <span>EN</span>
-        </template>
+      <div class="meta-nav">
+        <div class="translate" @click="open = false">
+          <template v-if="!english && newPath">
+            <span>NO</span> /
+            <span @click="switchLanguage()" class="link"><NLink :to="newPath">EN</NLink></span>
+          </template>
+          <template v-if="english && newPath">
+            <span @click="switchLanguage()" class="link"><NLink :to="newPath">NO</NLink></span> /
+            <span>EN</span>
+          </template>
+        </div>
+        <a :href="mainmenu.facebook" target="_blank" class="some-icon">
+          <Facebook />
+        </a>
+        <a :href="mainmenu.instagram" target="_blank" class="some-icon">
+          <Instagram />
+        </a>
       </div>
     </nav>
   </header>
@@ -129,7 +127,7 @@ header {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-column-gap: 2rem;
-  align-items: start;
+  align-items: center;
   font-family: $sans-serif;
 }
 .logo {
@@ -146,13 +144,14 @@ header {
 .site-nav {
   grid-column: 3 / span 10;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   flex: 1;
   ul {
     list-style: none;
     margin: 0;
     padding: 0;
-
+  }
+  .main-nav {
     li {
       display: inline-block;
       margin: 0 1rem .5rem;
@@ -168,17 +167,21 @@ header {
     letter-spacing: .016em;
   }
 }
-.some {
-  &-icon {
-    width: 1.1rem;
-    height: 1.1rem;
-    vertical-align: middle;
-    margin-bottom: .1rem;
+.some-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1.2rem;
+  height: 1.2rem;
+  position: relative;
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 }
 .translate {
   display: inline-block;
-
+  vertical-align: middle;
   a {
     text-decoration: underline;
   }
@@ -207,8 +210,7 @@ header {
 }
 @media (min-width: $media-m) {
   .site-nav {
-    padding-top: 2.4rem;
-    ul {
+    .main-nav {
       li {
         margin: 0 1.8rem 0 0;
         &:after {
@@ -234,16 +236,22 @@ header {
             background: $color-darkgreen;
           }
         }
-        &.some {
-          margin: 0 0 0 .5rem;
-        }
       }
     }
   }
-  .translate {
+  .meta-nav {
     position: absolute;
-    top: 0;
+    top: 1rem;
     right: 2rem;
+    display: flex;
+    align-items: center;
+  }
+  .translate {
+    margin-right: .6rem;
+    line-height: 1;
+  }
+  .some-icon {
+    margin-left: .5rem;
   }
 }
 @media (max-width: $media-m) {
@@ -266,7 +274,7 @@ header {
     bottom: 0;
     left: 0;
     z-index: 100;
-    padding: 8rem 2rem;
+    padding: 7rem 2rem;
     background: $color-text;
     color: $color-background;
     font-size: 2.4rem;
@@ -274,15 +282,13 @@ header {
     opacity: 0;
     transition: all .2s ease;
 
-    ul {
-
+    .main-nav {
+      flex-direction: column;
       li {
         display: block;
-        margin: .5rem 0;
-
-        &.some {
-          display: inline-block;
-          margin-top: 3rem;
+        margin: .5rem 0 .75rem;
+        &:last-of-type {
+          margin-bottom: 5rem;
         }
       }
 
@@ -296,11 +302,21 @@ header {
       opacity: 1;
     }
   }
-  .some {
-    &-icon {
-      width: 3rem;
-      height: 3rem;
-    }
+  .some-icon {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 1rem;
+  }
+  .translate {
+    display: block;
+    margin-left: auto;
+    order: 3;
+  }
+  .meta-nav {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 @media (max-width: $media-s) {
@@ -313,11 +329,9 @@ header {
   .site-nav {
     font-size: 1.6rem;
   }
-  .some {
-    &-icon {
-      width: 2rem;
-      height: 2rem;
-    }
+  .some-icon {
+    width: 2.2rem;
+    height: 2.2rem;
   }
 }
 </style>

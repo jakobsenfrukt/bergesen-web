@@ -2,16 +2,13 @@
   <section class="hero">
     <div class="hero-background">
       <div class="image-wrapper">
-        <img src="/graphics/shapes/Bergesen14.svg" alt="Grafiske former i Bergesenstiftelsens farger" />
+        <img src="/graphics/hero/bergesen-hero-1.svg" alt="Grafiske former i Bergesenstiftelsens farger" />
       </div>
       <div class="image-wrapper">
-        <img src="/graphics/shapes/Bergesen15.svg" alt="Grafiske former i Bergesenstiftelsens farger" />
+        <img src="/graphics/hero/bergesen-hero-2.svg" alt="Grafiske former i Bergesenstiftelsens farger" />
       </div>
       <div class="image-wrapper">
-        <img src="/graphics/shapes/Bergesen18.svg" alt="Grafiske former i Bergesenstiftelsens farger" />
-      </div>
-      <div class="image-wrapper">
-        <img src="/graphics/shapes/Bergesen24.svg" alt="Grafiske former i Bergesenstiftelsens farger" />
+        <img src="/graphics/hero/bergesen-hero-3.svg" alt="Grafiske former i Bergesenstiftelsens farger" />
       </div>
     </div>
     <div class="hero-text">
@@ -22,7 +19,7 @@
         </div>
         <div class="hero-deadline">
           <NLink :to="link" class="hero-deadline-wrapper">
-            <h2 class="hero-deadline-title">Neste<br />søknadsfrist</h2>
+            <h2 class="hero-deadline-title">Neste søknadsfrist</h2>
             <div class="date">
               <span class="date-day">{{ date.day }}.</span>
               <span class="date-month">{{ date.month }}</span>
@@ -95,10 +92,10 @@ export default {
 
     &-wrapper {
       display: grid;
-      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       align-items: center;
       width: 100%;
-      margin: 2rem auto 3rem;
+      margin: 0;
     }
   }
   &-lead,
@@ -107,11 +104,11 @@ export default {
     z-index: 1;
   }
   &-lead {
-    font-size: 2.8rem;
+    font-size: 2rem;
     line-height: 1.3;
     text-align: center;
     margin: 0 auto;
-    max-width: 800px;
+    padding: 0 2rem;
     font-family: $serif-fine;
     color: $color-white;
   }
@@ -126,16 +123,14 @@ export default {
       color: inherit;
     }
     &-title {
-      margin-bottom: .5rem;
-      color: $color-darkgreen;
-      font-family: $serif-extended;
+      margin-bottom: 0;
+      font-family: $sans-serif;
     }
     .date {
       font-family: $sans-serif;
       font-size: 1.8rem;
       font-weight: 700;
-      line-height: 1.2;
-      color: $color-red;
+      line-height: 1.4;
       text-transform: lowercase;
 
       &-time {
@@ -151,7 +146,7 @@ export default {
     width: 100%;
 
     .image-wrapper {
-      padding-top: 100%;
+      padding-top: 63%;
       position: relative;
       overflow: hidden;
     }
@@ -170,20 +165,22 @@ export default {
     }
   }
 }
-@media (min-width: $media-xl) {
+@media (max-width: $media-m) {
   .hero {
     &-background {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-    }
-  }
-}
-@media (max-width: $media-xl) {
-  .hero {
-    &-background {
+      grid-template-columns: 1fr 1fr;
       .image-wrapper {
         &:first-of-type {
           display: none;
         }
+      }
+    }
+    &-text {
+      &-wrapper {
+        grid-template-columns: 1fr 1fr;
+      }
+      .clear {
+        display: none;
       }
     }
   }
@@ -192,29 +189,27 @@ export default {
   .hero {
     margin: -.5rem -1rem 2rem;
     &-background {
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       .image-wrapper {
-        &:first-of-type,
-        &:last-of-type {
-          display: none;
+        &:first-of-type {
+          display: block;
         }
       }
     }
     &-text {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      display: flex;
+      position: static;
+      display: block;
+      width: 100%;
+      margin-top: -2px;
 
       &-wrapper {
         display: grid;
         grid-template-columns: 1fr;
         align-items: center;
         width: 100%;
-        padding: 0 2rem;
+        padding: 0;
         margin: 0;
+        background: $color-blue;
 
         .clear {
           display: none;
@@ -223,6 +218,37 @@ export default {
     }
     &-lead {
       font-size: 1.8rem;
+      width: 100%;
+    }
+    &-deadline {
+      &-wrapper {
+        background: $color-lightgreen;
+        display: block;
+        padding: 1.5rem 1.5rem 2rem;
+        margin: 0 auto;
+        text-decoration: none;
+        color: inherit;
+      }
+      &-title {
+        margin-bottom: .5rem;
+        font-family: $sans-serif;
+        display: inline-block;
+        margin-right: 1rem;
+      }
+      .date {
+        display: inline-block;
+        font-family: $sans-serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 1.2;
+        text-transform: lowercase;
+
+        &-time {
+          display: inline-block;
+          font-size: 1.2rem;
+          font-weight: 500;
+        }
+      }
     }
   }
 }

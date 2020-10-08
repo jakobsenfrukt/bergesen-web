@@ -42,7 +42,10 @@
     <div class="meta">
       Organisasjonsnummer:
       <strong>{{ contact.orgNumber }}</strong><br />
-      <NLink to="/cookies">Personvern og cookies</NLink>
+      <NLink to="/cookies" class="cookies">Personvern og cookies</NLink><br />
+      <div class="credit">
+        Design og nettside: <a href="https://bransjen.no" target="_blank">Bransjen</a> + <a href="https://jakobsenfrukt.no" target="_blank">JF&amp;G</a>
+      </div>
     </div>
   </footer>
 </template>
@@ -143,17 +146,17 @@ footer {
   }
 
   .meta {
-    grid-column: 3 / span 6;
+    grid-column: 3 / span 8;
     width: 100%;
     opacity: .6;
     margin-top: 6rem;
     font-weight: 500;
 
-    strong, a {
+    strong, a, .credit {
       display: inline-block;
       font-weight: 500;
     }
-    strong {
+    strong, .cookies {
       &:after {
         content: "|";
         display: inline-block;
@@ -178,6 +181,18 @@ footer {
 }
 .mf-logo {
   width: 5.2rem;
+}
+@media (max-width: 1352px) {
+  footer {
+     .meta {
+      .cookies:after {
+        display: none;
+      }
+      br:last-of-type {
+        display: block;
+      }
+    }
+  }
 }
 @media (max-width: $media-m) {
   footer {

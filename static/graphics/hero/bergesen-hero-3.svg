@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="480px" height="303px" viewBox="0 0 480 303" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="480px" height="302px" viewBox="0 0 480 302" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g id="bergesen-hero-3">
-      <rect id="Rectangle" fill="#8F302B" x="0" y="0" width="480" height="303"></rect>
+      <rect id="Rectangle" fill="#8F302B" x="0" y="0" width="480" height="302"></rect>
       <path d="M9.37916411e-13,0 L9.37916411e-13,302.112212 L74.7783006,302.112212 C224.20957,302.112212 345.763475,180.379262 345.763475,30.7331385 C345.763475,20.3395545 345.15472,10.0892068 344.017782,0 L9.37916411e-13,0 Z" id="Path" fill="#8CC5B0"></path>
   </g>
 </svg>

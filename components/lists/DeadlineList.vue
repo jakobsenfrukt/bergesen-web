@@ -17,7 +17,6 @@
         </div>
       </li>
     </ul>
-    <Button href="#" text="Last ned søknadsskjema" />
   </div>
 </template>
 
@@ -74,19 +73,29 @@ export default {
 
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
+.deadlines h2 {
+  font-family: $sans-serif;
+}
 .deadline-list {
   width: 100%;
-  max-width: 36rem;
   list-style: none;
   padding: 0;
-  margin: 0 0 $spacing-m;
+  margin: 0 0 $spacing-m 2rem;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background: $color-lightestgray;
 
   .deadline {
-    text-align: center;
-    border-right: 2px solid $color-background;
+    position: relative;
+    &:before {
+      content: url(/graphics/shapes/Bergesen2.svg);
+      width: .6em;
+      height: .6em;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: -1.4em;
+      overflow: visible;
+    }
     &:last-of-type {
       border-right: none;
     }
@@ -97,7 +106,6 @@ export default {
 }
 .deadline {
   width: 100%;
-  padding: 1rem 0;
 
   &-title {
     margin-bottom: .5rem;
