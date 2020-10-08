@@ -42,7 +42,7 @@
     <div class="meta">
       {{ t.orgNr }}:
       <strong>{{ contact.orgNumber }}</strong><br />
-      <NLink to="/cookies" class="cookies">{{ t.cookies }}</NLink><br />
+      <NLink :to="`${ english ? '/en/cookies' : '/cookies'}`" class="cookies">{{ t.cookies }}</NLink><br />
       <div class="credit">
         {{ t.credit }}: <a href="https://bransjen.no" target="_blank">Bransjen</a> + <a href="https://jakobsenfrukt.no" target="_blank">JF&amp;G</a>
       </div>

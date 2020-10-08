@@ -16,7 +16,7 @@ export default {
   async asyncData({ app, route }) {
     const { data } = await app.apolloProvider.defaultClient.query({
       query: gql`{
-        entry(type: "cookies", site: "default") {
+        entry(type: "cookies", site: "bergesenstiftelsenEn") {
           ... on cookies_cookies_Entry {
             title
             lead
