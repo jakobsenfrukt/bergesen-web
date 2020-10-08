@@ -219,33 +219,39 @@ export default {
     &-lead {
       font-size: 1.8rem;
       width: 100%;
+      padding: .6rem 2rem;
     }
     &-deadline {
       &-wrapper {
-        background: $color-lightgreen;
+        font-family: $sans-serif;
+        font-size: 1.4rem;
+        background: $color-green;
+        color: $color-text;
         display: block;
-        padding: 1.5rem 1.5rem 2rem;
+        padding: 1rem 2rem 1.2rem;
         margin: 0 auto;
         text-decoration: none;
-        color: inherit;
       }
       &-title {
-        margin-bottom: .5rem;
-        font-family: $sans-serif;
-        display: inline-block;
-        margin-right: 1rem;
+        font-family: inherit;
+        display: inline;
+        color: inherit;
+        font-size: inherit;
+        &:after {
+          content: ":";
+        }
       }
       .date {
-        display: inline-block;
-        font-family: $sans-serif;
-        font-size: 1.8rem;
+        display: inline;
+        color: inherit;
+        font-family: inherit;
+        font-size: inherit;
         font-weight: 700;
-        line-height: 1.2;
         text-transform: lowercase;
 
         &-time {
-          display: inline-block;
-          font-size: 1.2rem;
+          display: inline;
+          font-size: inherit;
           font-weight: 500;
         }
       }

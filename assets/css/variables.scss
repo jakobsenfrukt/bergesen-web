@@ -7,8 +7,9 @@ $serif-condensed: 'GT Alpina Condensed', serif;
 $sans-serif: 'Futura-PT', helvetica, arial, sans-serif;
 
 
-/* COLORS — — — — — — — — — — — — */
+/* OLD COLORS — — — — — — — — — — — — */
 
+/*
 $color-white: #fff;
 $color-black: #000;
 $color-darkgreen: #378643;
@@ -30,6 +31,31 @@ $color-lightestblue: #6b94a6;
 $color-gray: #64645a;
 $color-lightgray: #c8c8be;
 $color-lightestgray: #f0f0e6;
+*/
+
+/* COLORS — — — — — — — — — — — — */
+
+$color-white: #fff;
+$color-black: #000;
+
+$color-darkgreen: #4fa188;
+$color-darkestgreen: #40826e;
+
+$color-green: #8cc5b0;
+$color-lightgreen: #add6cc;
+$color-lightestgreen: #cde9df;
+
+$color-red: #8f302b;
+$color-lightred: #b6655c;
+$color-lightestred: #e7ae9e;
+
+$color-blue: #001e32;
+$color-lightblue: #004059;
+$color-lightestblue: #83a3b0;
+
+$color-gray: #646464;
+$color-lightgray: #c8c8c8;
+$color-lightestgray: #f0f0f0;
 
 
 /* WIDTHS & SPACING — — — — — — — — — — — — */

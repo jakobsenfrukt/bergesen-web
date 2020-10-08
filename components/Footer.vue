@@ -14,19 +14,19 @@
         </div>
       </div>
       <div class="phone">
-        Telefon
+        {{ t.phone }}
         <a :href="`tel:${contact.phone}`">{{ contact.phone }}</a>
       </div>
     </div>
     <div class="address">
       <h2>&nbsp;</h2>
       <div class="address-visitor">
-        Besøksadresse
+        {{ t.addressVisitor }}
         <pre>{{ contact.addressVisitor }}</pre>
-        <a href="https://goo.gl/maps/j6osNkyAc3Esf5gx8" target="_blank">Se i kart</a>
+        <a href="https://goo.gl/maps/j6osNkyAc3Esf5gx8" target="_blank">{{ t.map }}</a>
       </div>
       <div class="address-postal">
-        Postadresse
+        {{ t.addressPostal }}
         <pre>{{ contact.addressPostal }}</pre>
       </div>
     </div>
@@ -40,11 +40,11 @@
       </a>
     </div>
     <div class="meta">
-      Organisasjonsnummer:
+      {{ t.orgNr }}:
       <strong>{{ contact.orgNumber }}</strong><br />
-      <NLink to="/cookies" class="cookies">Personvern og cookies</NLink><br />
+      <NLink to="/cookies" class="cookies">{{ t.cookies }}</NLink><br />
       <div class="credit">
-        Design og nettside: <a href="https://bransjen.no" target="_blank">Bransjen</a> + <a href="https://jakobsenfrukt.no" target="_blank">JF&amp;G</a>
+        {{ t.credit }}: <a href="https://bransjen.no" target="_blank">Bransjen</a> + <a href="https://jakobsenfrukt.no" target="_blank">JF&amp;G</a>
       </div>
     </div>
   </footer>
@@ -57,11 +57,25 @@ export default {
     return {
       no: {
         newsletter: "Få informasjon",
-        contact: "Kontakt oss"
+        contact: "Kontakt oss",
+        phone: "Telefon",
+        addressVisitor: "Besøksadresse",
+        addressPostal: "Postadresse",
+        map: "Se i kart",
+        orgNr: "Organisasjonsnummer",
+        cookies: "Personvern og cookies",
+        credit: "Design og nettside"
       },
       en: {
         newsletter: "Stay updated",
-        contact: "Contact us"
+        contact: "Contact us",
+        phone: "Phone",
+        addressVisitor: "Visitor address",
+        addressPostal: "Postal address",
+        map: "View on map",
+        orgNr: "Organisation number",
+        cookies: "Privacy and cookies",
+        credit: "Design and website"
       }
     }
   },
@@ -70,6 +84,10 @@ export default {
       return this.$store.state.english
     },
     contact() {
+      if (this.english) {
+        const entry = this.$store.state.entries.find(entry => entry.slug === 'kontakt');
+        return entry.localized[0]
+      }
       return this.$store.state.entries.find(entry => entry.slug === 'kontakt');
     },
     t() {

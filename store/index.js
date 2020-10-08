@@ -29,6 +29,18 @@ export const actions = {
           title
           slug
           uri
+          ... on contact_contact_Entry {
+            email {
+              ... on email_emailBlock_BlockType {
+                address
+                label
+              }
+            }
+            addressPostal
+            addressVisitor
+            orgNumber
+            phone
+          }
         }
         ... on contact_contact_Entry {
           email {

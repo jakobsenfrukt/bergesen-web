@@ -231,9 +231,10 @@ header {
           }
         }
         &.sok-stotte {
-          color: $color-darkgreen;
+          color: $color-darkestgreen;
+          font-weight: bold;
           &:after {
-            background: $color-darkgreen;
+            background: $color-darkestgreen;
           }
         }
       }
@@ -283,17 +284,21 @@ header {
     transition: all .2s ease;
 
     .main-nav {
+      display: flex;
       flex-direction: column;
       li {
         display: block;
         margin: .5rem 0 .75rem;
-        &:last-of-type {
-          margin-bottom: 5rem;
+        &.sok-stotte {
+          order: -1;
         }
       }
 
       a {
         display: block;
+        &:hover {
+          opacity: .5;
+        }
       }
     }
 
@@ -301,6 +306,9 @@ header {
       transform: translateX(0);
       opacity: 1;
     }
+  }
+  .meta-nav {
+    margin-top: 5rem;
   }
   .some-icon {
     width: 3rem;

@@ -61,7 +61,7 @@ export default {
 
   &:hover {
     .article-title {
-      color: $color-green;
+      color: $color-darkgreen;
     }
 
     .article-image img {

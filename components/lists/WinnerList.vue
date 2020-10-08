@@ -83,7 +83,7 @@ export default {
   &-year {
     font-size: 1.6rem;
     font-family: $sans-serif;
-    color: $color-green;
+    color: $color-darkgreen;
   }
 
   &-link {

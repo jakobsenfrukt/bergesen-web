@@ -114,7 +114,7 @@ section {
   }
 
   &.apply {
-    background: $color-lightgreen;
+    background: $color-lightestgreen;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-column-gap: 2rem;
@@ -127,6 +127,7 @@ section {
     }
     .button {
       background-color: $color-green;
+      font-weight: 400;
     }
   }
 }
