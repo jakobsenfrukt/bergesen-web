@@ -206,4 +206,27 @@ export default {
   grid-column: 3 / span 6;
   margin: 0 0 2rem;
 }
+
+@media (max-width: $media-s) {
+  .contact-info {
+    grid-column: 1 / span 12;
+    display: block;
+
+    .email {
+      display: block;
+    }
+  }
+  .address {
+    &-text, &-map {
+      grid-column: 1 / span 12;
+    }
+    &-text {
+      padding-bottom: 2rem;
+    }
+  }
+  .people {
+    grid-column: 1 / span 12;
+    margin-bottom: 0;
+  }
+}
 </style>

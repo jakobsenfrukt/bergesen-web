@@ -80,4 +80,14 @@ export default {
     margin-top: 1rem;
   }
 }
+@media (max-width: $media-s) {
+  .article {
+    grid-column: 1 / span 12;
+    display: block;
+    &-text {
+      margin: 0;
+      padding-top: 1.5rem;
+    }
+  }
+}
 </style>

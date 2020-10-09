@@ -79,6 +79,9 @@ export default {
   font-family: $sans-serif;
 }
 @media (max-width: $media-s) {
+  .page-header {
+    grid-column: 1 / span 12;
+  }
   .page-title {
     font-size: 2rem;
   }

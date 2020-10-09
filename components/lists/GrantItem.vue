@@ -87,7 +87,7 @@ export default {
     cursor: pointer;
     &:hover {
       color: $color-darkgreen;
-      box-shadow: 0 0 0 1px $color-green;
+      box-shadow: 0 0 0 2px $color-green;
     }
     &.open {
       &:hover {

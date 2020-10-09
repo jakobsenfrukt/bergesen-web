@@ -1,13 +1,16 @@
 <template>
   <div class="grants-wrapper">
     <div class="grants">
-      <nav class="grant-filter">
+      <div class="filter-toggle" @click="open = !open" :class="{open: open}">
+        <span>{{ open ? t.hide : t.show }}</span>
+      </div>
+      <nav class="grant-filter" :class="{open: open}">
         <div class="show-all">
-          <button @click="reset">Vis alle</button>
+          <button @click="reset">{{ t.reset }}</button>
         </div>
         <div class="grant-filter-year">
           <label>
-            <span>År</span>
+            <span>{{ t.year }}</span>
             <select v-model="year" @change="search">
               <option>2020</option>
               <option>1992</option>
@@ -19,7 +22,7 @@
         </div>
         <div class="grant-filter-search">
           <label>
-            <span>Søk</span>
+            <span>{{ t.search }}</span>
             <input type="text" v-model="searchInput" @input="search" />
           </label>
         </div>
@@ -39,7 +42,7 @@
         <GrantItemAlt2 v-for="(grant, index) in grants" :key="index" :grant="grant" />
       </ul>
       <div v-else class="no-results">
-        <p>Ingen tildelinger matcher ditt søk.</p>
+        <p>{{ t.noresults }}</p>
       </div>
     </div>
   </div>
@@ -56,6 +59,23 @@ export default {
       limit: 20,
       offset: 0,
       searching: false,
+      open: false,
+      no: {
+        show: "Vis søkefilter",
+        hide: "Skjul søkefilter",
+        reset: "Vis alle",
+        search: "Søk",
+        year: "År",
+        noresults: "Ingen tildelinger matcher ditt søk."
+      },
+      en: {
+        show: "Show search filter",
+        hide: "Hide search filter",
+        reset: "Show all",
+        search: "Search",
+        year: "Year",
+        noresults: "No grants match your search."
+      }
     }
   },
   computed: {
@@ -67,6 +87,15 @@ export default {
       }
       return []
     },
+    english() {
+      return this.$store.state.english
+    },
+    t() {
+      if (this.english) {
+        return this.en
+      }
+      return this.no
+    }
   },
   mounted() {
     this.search()
@@ -142,10 +171,10 @@ export default {
   grid-template-columns: repeat(12, 1fr);
   background: $color-lightestgray;
   width: calc(100% + 4rem);
-  margin: 0 -2rem 0;
+  margin: 2rem -2rem 0;
   padding: 2rem;
 
-  background-image: url('/graphics/shapes/Bergesen1.svg');
+  //background-image: url('/graphics/shapes/Bergesen1.svg');
   background-repeat: no-repeat;
   background-position: top right;
   background-size: 50%;
@@ -170,6 +199,7 @@ export default {
     margin: 0 1rem 0 .5rem;
     border: 2px solid $color-green;
     background: $color-lightestgray;
+    box-shadow: none;
   }
   input, select {
     display: inline-block;
@@ -209,6 +239,41 @@ export default {
       cursor: pointer;
     }
   }
+}
+.filter-toggle {
+  font-family: $sans-serif;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+  cursor: pointer;
+  span {
+    display: inline-block;
+    position: relative;
+    &:before {
+      content: url(/graphics/shapes/Bergesen4.svg);
+      width: .6em;
+      height: .6em;
+      display: block;
+      position: absolute;
+      top: .4em;
+      left: -1em;
+      overflow: visible;
+      transform: rotate(90deg);
+      transform-origin: center center;
+      transition: all .3s ease;
+    }
+  }
+  &.open {
+    span {
+      &:before {
+        transform: rotate(180deg);
+        transform-origin: center center;
+        top: .9em;
+        left: -1.5em;
+      }
+    }
+  }
+  display: none;
 }
 .grant-list {
   width: 100%;
@@ -250,6 +315,27 @@ export default {
 @media (min-width: $media-grantlist) {
   .grants {
     grid-column: 2 / span 10;
+  }
+}
+
+@media (max-width: $media-s) {
+  .filter-toggle {
+    display: block;
+  }
+  .grant-filter {
+    display: none;
+
+    &.open {
+      display: block;
+    }
+    select, input, button {
+      display: block;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+    span {
+      margin-left: 1.2rem;
+    }
   }
 }
 </style>

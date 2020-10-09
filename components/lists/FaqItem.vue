@@ -53,7 +53,6 @@ export default {
   &-question {
     font-family: $sans-serif;
     font-weight: 500;
-    text-decoration: underline;
     line-height: 1.4;
     &:hover {
       cursor: pointer;

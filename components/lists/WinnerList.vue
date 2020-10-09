@@ -91,27 +91,24 @@ export default {
     font-family: $sans-serif;
   }
 }
-@media (max-width: $media-m) {
-  .news-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
 @media (max-width: $media-s) {
   .section-title {
     font-size: 1rem;
   }
+  .winner-list {
+    grid-column: 1 / span 12;
+  }
   .winner {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
     grid-column-gap: 0;
-
     &-image {
+      grid-column: 1 / span 2;
       .image-wrapper {
         padding-top: 100%;
       }
     }
 
     &-text {
+      grid-column: 3 / span 6;
       padding-left: 1rem;
     }
 

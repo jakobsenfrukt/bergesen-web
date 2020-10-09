@@ -142,7 +142,7 @@ export default {
     }
   }
   &-next {
-    background: $color-lightestgreen;
+    background: $color-lightgreen;
     margin: 2rem 0 $spacing-m;
     max-width: 36rem;
     padding: 1.4rem 2rem 2rem;
@@ -151,6 +151,9 @@ export default {
 @media (max-width: $media-s) {
   .deadline {
     display: block;
+    &-next {
+      padding: 1rem 1.5rem;;
+    }
   }
 }
 </style>

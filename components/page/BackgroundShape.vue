@@ -43,5 +43,7 @@ export default {
   &.contact {
     background-image: url('/graphics/shapes/Bergesen7.svg');
   }
+
+  display: none;
 }
 </style>

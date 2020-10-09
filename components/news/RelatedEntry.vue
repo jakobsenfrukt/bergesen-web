@@ -70,4 +70,9 @@ export default {
     margin-top: 1rem;
   }
 }
+@media (max-width: $media-s) {
+  .related {
+    grid-column: 1 / span 12;
+  }
+}
 </style>

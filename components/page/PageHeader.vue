@@ -165,6 +165,9 @@ export default {
 }
 
 @media (max-width: $media-s) {
+  .page-header {
+    display: block;
+  }
   .page-title {
     font-size: 2rem;
   }

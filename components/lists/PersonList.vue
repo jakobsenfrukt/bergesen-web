@@ -126,6 +126,9 @@ export default {
 @media (max-width: $media-s) {
   .person-list {
     grid-template-columns: 1fr 1fr;
+    .person {
+      grid-column: span 1;
+    }
   }
 }
 </style>

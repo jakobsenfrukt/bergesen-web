@@ -91,4 +91,15 @@ export default {
     }
   }
 }
+@media (max-width: $media-s) {
+  .side-nav {
+    ul {
+      li {
+        a {
+          padding: 1rem 0;
+        }
+      }
+    }
+  }
+}
 </style>

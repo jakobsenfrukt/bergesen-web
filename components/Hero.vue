@@ -187,7 +187,7 @@ export default {
 }
 @media (max-width: $media-s) {
   .hero {
-    margin: -.5rem -1rem 2rem;
+    margin: 0 -1rem 2rem;
     &-background {
       grid-template-columns: 1fr 1fr 1fr;
       .image-wrapper {
@@ -224,7 +224,7 @@ export default {
     &-deadline {
       &-wrapper {
         font-family: $sans-serif;
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         background: $color-green;
         color: $color-text;
         display: block;
@@ -252,7 +252,7 @@ export default {
         &-time {
           display: inline;
           font-size: inherit;
-          font-weight: 500;
+          font-weight: 400;
         }
       }
     }

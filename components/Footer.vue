@@ -243,7 +243,6 @@ footer {
 }
 @media (max-width: $media-s) {
   footer {
-    padding: 2rem;
     .logo {
       grid-column: 1 / span 3;
     }
