@@ -124,7 +124,7 @@ export default {
   }
 }
 .contact-info {
-  grid-column: 3 / span 8;
+  grid-column: 3 / span 9;
   margin: 1rem 0 $spacing-s;
   display: grid;
   grid-template-columns: repeat(9, 1fr);

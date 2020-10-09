@@ -47,7 +47,7 @@ export default {
   }
 
   &.contactpage {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 .person {
@@ -76,6 +76,9 @@ export default {
       object-position: top;
       filter: grayscale(100%);
       transition: all .3s ease;
+      &:hover {
+        filter: grayscale(0);
+      }
     }
   }
 
@@ -101,6 +104,14 @@ export default {
     }
     a {
       color: inherit;
+    }
+  }
+}
+.contactpage {
+  .person-image {
+    .image-wrapper {
+      width: 100%;
+      padding-top: 100%;
     }
   }
 }

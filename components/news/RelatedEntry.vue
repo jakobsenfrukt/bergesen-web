@@ -9,7 +9,7 @@
     <template v-else>
       <span class="grant-meta">Tildeling <Date :rawDate="grant.date" short /></span>
       <h2 class="grant-title">{{ grant.title }}: {{ grant.projectname }}</h2>
-      <span class="grant-sum">kr {{ grant.grantedsum }}</span>
+      <span class="grant-sum">kr {{ Number(grant.grantedsum).toLocaleString('nb-NO') }}</span>
       <NLink to="/tildelinger" class="grant-link">Se alle tildelinger</NLink>
     </template>
   </aside>

@@ -107,7 +107,7 @@ export default {
 
   &-title {
     margin-bottom: 0;
-    font-size: 2rem;
+    font-size: 1.9rem;
     transition: color .3s ease;
   }
 

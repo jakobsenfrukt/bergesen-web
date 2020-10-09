@@ -105,7 +105,6 @@ export default {
   &-amount {
     font-weight: 700;
     color: $color-red;
-    line-height: 3rem;
   }
 
   &-text {
@@ -114,8 +113,7 @@ export default {
   }
   &-header {
     display: flex;
-    min-height: 3rem;
-    align-items: center;
+    align-items: flex-start;
   }
   &-heading {
     max-width: 80%;
