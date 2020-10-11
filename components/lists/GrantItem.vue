@@ -5,9 +5,9 @@
     </span>
     <div class="grant-text">
       <div class="grant-header" @click="open = !open">
-        <div class="grant-heading">
+        <div class="grant-heading" v-bind:class="{ 'grant-show-project-name': grant.projectname && grant.projectname.trim().toLowerCase() !== 'bidrag' }">
           <span class="grant-title">{{ grant.title }}</span>
-          <span class="grant-project">{{ grant.projectname }}</span>
+          <span class="grant-project" v-if="grant.projectname && grant.projectname.trim().toLowerCase() !== 'bidrag'">{{ grant.projectname }}</span>
         </div>
         <span v-if="hasContent" class="grant-expand">{{ open ? t.hide : t.show }}</span>
       </div>
@@ -131,7 +131,7 @@ export default {
   &-title {
     font-weight: 500;
     margin: 0;
-    &:after {
+    .grant-show-project-name &:after {
       content: ": ";
     }
   }
