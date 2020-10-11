@@ -1,6 +1,5 @@
 <template>
   <main class="site-main grants-page">
-    <BackgroundShape />
     <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
     <div v-if="entry.body" v-html="entry.body" class="page-body"></div>
     <GrantList :filterableYears="filterableYears" />
