@@ -41,10 +41,6 @@
         <GrantItemAlt v-for="(grant, index) in grants" :key="index" :grant="grant" />
         <LoadMore />
       </ul>
-      <ul v-if="grants.length" class="grant-list">
-        <GrantItemAlt2 v-for="(grant, index) in grants" :key="index" :grant="grant" />
-        <LoadMore />
-      </ul>
       <div v-else class="no-results">
         <p>{{ t.noresults }}</p>
       </div>

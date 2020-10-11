@@ -1,6 +1,6 @@
 <template>
   <main class="site-main">
-    <PageHeader :heading="entry.title" :lead="entry.lead" />
+    <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
     <div v-html="entry.body" class="page-body"></div>
   </main>
 </template>

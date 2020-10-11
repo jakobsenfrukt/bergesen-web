@@ -9,7 +9,7 @@
         </h2>
         <p class="apply-lead">{{ apply.lead }}</p>
         <div v-if="apply.body" v-html="apply.body" class="apply-body"></div>
-        <Button href="#" text="Last ned søknadsskjema" />
+        <Button :href="apply.applicationForm[0].url" text="Last ned søknadsskjema" />
       </div>
       <SideNav :menuItems="applypages" :parent="apply.uri" :parentTitle="apply.title" class="side-nav" />
     </section>
@@ -70,6 +70,9 @@ export default {
               ... on deadlines_deadline_BlockType {
                 date
               }
+            }
+            applicationForm {
+              url
             }
             uri
           }

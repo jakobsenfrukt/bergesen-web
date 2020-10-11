@@ -40,5 +40,11 @@ export default {
   &.about {
     background-image: url('/graphics/backgrounds/bg7.svg');
   }
+  &.apply {
+    background-image: url('/graphics/backgrounds/bg3.svg');
+  }
+  &.article {
+    background-image: url('/graphics/backgrounds/bg2.svg');
+  }
 }
 </style>
