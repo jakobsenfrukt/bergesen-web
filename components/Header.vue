@@ -6,8 +6,12 @@
       </NLink>
     </div>
     <div class="menu-toggle" @click="open = !open" :class="{ open: open }">
-      <span v-if="open">&times;</span>
-      <span v-else>&#9776;</span>
+      <div v-if="open" class="menu-toggle-icon">
+        <img src="/graphics/icons/close-menu.svg" />
+      </div>
+      <div v-else class="menu-toggle-icon">
+        <img src="/graphics/icons/open-menu.svg" />
+      </div>
     </div>
     <nav v-if="mainmenu" class="site-nav" :class="{ open: open }">
       <ul class="main-nav">
@@ -196,6 +200,10 @@ header {
   padding: 2rem;
   font-size: 3rem;
   cursor: pointer;
+  &-icon {
+    width: 2rem;
+    height: 2rem;
+  }
 
   display: none;
 }
