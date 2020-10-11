@@ -375,6 +375,7 @@ export default {
 
   &-meta {
     font-family: $sans-serif;
+    font-weight: 400;
     opacity: .6;
     font-size: .9rem;
   }
