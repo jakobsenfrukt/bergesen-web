@@ -32,7 +32,7 @@
       <ul v-if="grants.length" class="grant-list">
         <GrantItem v-for="(grant, index) in grants" :key="index" :grant="grant" />
         <div>Viser {{ grants.length }} av {{ searchCount }}</div>
-        <LoadMore v-if="hasMore" @click.native="moreResults" />
+        <LoadMore v-if="hasMore" :loading="$apollo.queries.grants.loading" @click.native="moreResults" />
       </ul>
       <div v-else class="no-results">
         <p>{{ t.noresults }}</p>
@@ -178,10 +178,13 @@ export default {
           variables: {
             offset: this.grants.length
           },
-          updateQuery: (previousResult, { fetchMoreResult }) => {
+          updateQuery: (previous, { fetchMoreResult }) => {
+            if (!fetchMoreResult || !fetchMoreResult.grants) {
+              return previous
+            }
             return {
-              ...previousResult,
-              grants: [...previousResult.grants, ...fetchMoreResult.grants],
+              ...previous,
+              grants: [...previous.grants, ...fetchMoreResult.grants],
             }
           },
         })

@@ -1,11 +1,14 @@
 <template>
   <button class="loadmore">
-    {{ t.load }}
+    {{ loading ? 'Vent...' : t.load }}
   </button>
 </template>
 
 <script>
 export default {
+  props: {
+    loading: Boolean
+  },
   data() {
     return {
       no: {
