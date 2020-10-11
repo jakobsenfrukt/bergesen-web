@@ -1,7 +1,7 @@
 <template>
   <main class="site-main">
     <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
-    <NewsArticles :articles="entries" />
+    <NewsArticles :articles="entries" allowMore />
   </main>
 </template>
 

@@ -5,7 +5,7 @@
       <template v-else>{{ heading }}</template>
     </h2>
     <div class="news-grid">
-      <NLink v-for="(article, index) in articles" class="article" :to="article.uri" :key="index">
+      <NLink v-for="(article, index) in visibleArticles" class="article" :to="article.uri" :key="index">
         <div v-if="article.mainimage.length" class="article-image">
           <div class="image-wrapper">
             <img :src="article.mainimage[0].url" :alt="article.mainimage[0].alt" :title="article.mainimage[0].credit" />
@@ -25,6 +25,7 @@
         </div>
       </NLink>
     </div>
+    <LoadMore v-if="!hideShowMore && allowMore && hasMore" @click.native="loadMore" />
   </div>
 </template>
 
@@ -32,9 +33,34 @@
 export default {
   props: {
     articles: Array,
-    limit: Number,
     heading: String,
-    link: String
+    link: String,
+    allowMore: Boolean,
+  },
+  data() {
+    return {
+      hideShowMore: false,
+      limit: 12,
+      currentLimit: 12
+    }
+  },
+  computed: {
+    hasMore() {
+      return this.articles.length > this.currentLimit
+    },
+    visibleArticles() {
+      if (!this.limit) {
+        return this.articles
+      }
+      return this.articles.slice(0, this.currentLimit)
+    }
+  },
+  methods: {
+    loadMore() {
+      this.hideShowMore = true
+      this.currentLimit = this.currentLimit + 12
+      setTimeout(() => this.hideShowMore = false, 10)
+    }
   }
 }
 </script>
