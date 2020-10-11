@@ -13,10 +13,10 @@
   "dependencies": {
     "@nuxtjs/apollo": "^4.0.1-rc.3",
     "graphql-tag": "^2.11.0",
-    "nuxt": "^2.14.0"
+    "nuxt": "^2.14.6"
   },
   "devDependencies": {
     "node-sass": "^4.14.1",
-    "sass-loader": "^10.0.2"
+    "sass-loader": "^10.0.3"
   }
 }
