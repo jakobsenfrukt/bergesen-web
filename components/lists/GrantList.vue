@@ -31,7 +31,7 @@
       </nav>
       <ul v-if="grants.length" class="grant-list">
         <GrantItem v-for="(grant, index) in grants" :key="index" :grant="grant" />
-        <div class="grant-list-meta">Viser {{ grants.length }} av {{ searchCount }}</div>
+        <div class="grant-list-meta">{{ t.showing }} {{ grants.length }} {{ t.of }} {{ searchCount }} {{ t.grants }}</div>
         <LoadMore v-if="hasMore && !loading" :loading="loading" @click.native="moreResults" />
         <div v-if="loading" class="loading bottom">
           <div class="loading-icon">
@@ -69,7 +69,10 @@ export default {
         reset: "Vis alle",
         search: "Søk",
         year: "År",
-        noresults: "Ingen tildelinger matcher ditt søk."
+        noresults: "Ingen tildelinger matcher ditt søk.",
+        showing: "Viser",
+        of: "av",
+        grants: "tildelinger"
       },
       en: {
         show: "Show search filter",
@@ -77,7 +80,10 @@ export default {
         reset: "Show all",
         search: "Search",
         year: "Year",
-        noresults: "No grants match your search."
+        noresults: "No grants match your search.",
+        showing: "Showing",
+        of: "of",
+        grants: "grants"
       },
     }
   },
