@@ -7,15 +7,7 @@ export default {
   props: {
     page: String
   },
-  data() {
-    return {
-      shapes: []
-    }
-  },
   computed: {
-    english() {
-      return this.$store.state.english
-    },
     classes() {
       return this.page
     }
@@ -27,23 +19,26 @@ export default {
 @import '@/assets/css/variables.scss';
 .background {
   position: fixed;
-  right: -2rem;
-  top: 10rem;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
   height: 100%;
-  width: 46%;
+  width: 100%;
   z-index: -1;
-  background-image: url('/graphics/shapes/Bergesen1.svg');
+  background-image: url('/graphics/backgrounds/bg5.svg');
   background-repeat: no-repeat;
-  background-position: top right;
+  background-position: bottom right;
   background-size: 100%;
 
   &.award {
-    background-image: url('/graphics/shapes/Bergesen6.svg');
+    background-image: url('/graphics/backgrounds/bg4.svg');
   }
   &.contact {
-    background-image: url('/graphics/shapes/Bergesen7.svg');
+    background-image: url('/graphics/backgrounds/bg6.svg');
   }
-
-  display: none;
+  &.about {
+    background-image: url('/graphics/backgrounds/bg7.svg');
+  }
 }
 </style>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900px" height="900px" viewBox="0 0 900 900" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>bg6</title>
+    <desc>Created with Sketch.</desc>
+    <g id="bg6" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Bergesen-nyanser1-nyanser" transform="translate(570.000000, 570.000000) scale(-1, 1) translate(-570.000000, -570.000000) translate(240.000000, 239.000000)" fill-rule="nonzero">
+            <g id="Layer_2">
+                <rect id="Rectangle" x="0" y="0" width="660" height="660"></rect>
+            </g>
+            <g id="Layer_1" transform="translate(0.000000, 195.333333)" fill="#8CC5B0">
+                <path d="M105.581667,0.299444444 L0,0.299444444 L0,177.356667 L105.581667,177.356667 C260.278333,177.356667 386.118333,303.202778 386.118333,457.893333 C386.118333,460.490556 386.075556,463.081667 386.008333,465.666667 L563.114444,465.666667 C563.157222,463.081667 563.187778,460.490556 563.187778,457.893333 C563.187778,205.577778 357.897222,0.299444444 105.581667,0.299444444 Z" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>

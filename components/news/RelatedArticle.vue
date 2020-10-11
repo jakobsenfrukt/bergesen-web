@@ -8,7 +8,7 @@
     <div class="article-text">
       <h2 class="article-title">{{ article.title }}</h2>
       <p class="article-lead">{{ article.lead }}</p>
-      <NLink :to="`/${article.uri}`" class="article-link">Les artikkelen</NLink>
+      <NLink :to="`/${article.uri}`" class="article-link read-more">Les artikkelen</NLink>
     </div>
   </article>
 </template>

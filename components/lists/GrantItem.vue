@@ -1,10 +1,10 @@
 <template>
-  <li class="grant" :class="{ hasContent: hasContent, open: open }" @click="open = !open">
+  <li class="grant" :class="{ hasContent: hasContent, open: open }">
     <span class="grant-date">
       <Date :rawDate="grant.date" short />
     </span>
     <div class="grant-text">
-      <div class="grant-header">
+      <div class="grant-header" @click="open = !open">
         <div class="grant-heading">
           <span class="grant-title">{{ grant.title }}</span>
           <span class="grant-project">{{ grant.projectname }}</span>
@@ -84,7 +84,9 @@ export default {
   font-family: $sans-serif;
 
   &.hasContent {
-    cursor: pointer;
+    .grant-header {
+      cursor: pointer;
+    }
     &:hover {
       color: $color-darkgreen;
       box-shadow: 0 0 0 2px $color-green;

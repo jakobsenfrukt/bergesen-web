@@ -206,7 +206,16 @@ export default {
   grid-column: 3 / span 6;
   margin: 0 0 2rem;
 }
+@media (max-width: $media-m) {
+  .contact-info {
+    grid-column: 3 / span 8;
+    display: block;
 
+    .email {
+      display: block;
+    }
+  }
+}
 @media (max-width: $media-s) {
   .contact-info {
     grid-column: 1 / span 12;

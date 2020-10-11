@@ -1,5 +1,6 @@
 <template>
   <main class="site-main site-main--with-aside">
+    <BackgroundShape page="apply" />
     <div class="page-content">
       <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
       <div v-html="entry.body" class="page-body"></div>

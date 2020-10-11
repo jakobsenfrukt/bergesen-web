@@ -1,5 +1,6 @@
 <template>
   <div class="grants-wrapper">
+    <div class="background"></div>
     <div class="grants">
       <div class="filter-toggle" @click="open = !open" :class="{open: open}">
         <span>{{ open ? t.hide : t.show }}</span>
@@ -34,12 +35,15 @@
       </nav>
       <ul v-if="grants.length" class="grant-list">
         <GrantItem v-for="(grant, index) in grants" :key="index" :grant="grant" />
+        <LoadMore />
       </ul>
       <ul v-if="grants.length" class="grant-list">
         <GrantItemAlt v-for="(grant, index) in grants" :key="index" :grant="grant" />
+        <LoadMore />
       </ul>
       <ul v-if="grants.length" class="grant-list">
         <GrantItemAlt2 v-for="(grant, index) in grants" :key="index" :grant="grant" />
+        <LoadMore />
       </ul>
       <div v-else class="no-results">
         <p>{{ t.noresults }}</p>
@@ -174,11 +178,25 @@ export default {
   margin: 2rem -2rem 0;
   padding: 2rem;
 
-  //background-image: url('/graphics/shapes/Bergesen1.svg');
+  background-image: url('/graphics/backgrounds/bg8-big-dark.svg');
   background-repeat: no-repeat;
-  background-position: top right;
-  background-size: 50%;
+  background-position: bottom right;
+  background-size: 100%;
   background-attachment: fixed;
+}
+.background {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  background-image: url('/graphics/backgrounds/bg8-big.svg');
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  background-size: 100%;
 }
 .grant-filter {
   display: flex;
@@ -208,8 +226,8 @@ export default {
     font-size: 1rem;
     font-family: $sans-serif;
     border-radius: 2rem;
-    background: transparent;
     color: $color-text;
+    transition: all .3s ease;
     &::placeholder {
       color: $color-text;
       opacity: .6;
@@ -224,19 +242,44 @@ export default {
       }
     }
   }
+  select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    &::-ms-expand {
+      display: none;
+    }
+    padding-right: 3rem;
+    background-color: $color-lightestgray;
+    background-image: url(/graphics/icons/arrow-down.svg);
+    background-position: center right;
+    background-size: 2rem 2rem;
+    background-repeat: no-repeat;
+    &:focus {
+      background-color: $color-background;
+      background-image: url(/graphics/icons/arrow-down.svg);
+      background-position: center right;
+      background-size: 2rem 2rem;
+      background-repeat: no-repeat;
+    }
+  }
   button {
     margin-left: 0;
     padding: .5rem 1rem;
     margin: 0;
     outline: none;
     border-radius: 2rem;
-    background: $color-green;
+    border-color: $color-lightgreen;
+    background: $color-lightgreen;
     font-size: 1rem;
     font-family: $sans-serif;
     font-weight: 500;
     width: 100%;
+    transition: all .3s ease;
     &:hover {
       cursor: pointer;
+      border-color: $color-green;
+      background: $color-green;
     }
   }
 }

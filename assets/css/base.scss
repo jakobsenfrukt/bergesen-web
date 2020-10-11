@@ -244,6 +244,37 @@ strong {
   }
 }
 
+.read-more {
+  display: inline-block;
+  margin: 0;
+  font-size: 1rem;
+  font-family: $sans-serif;
+  font-weight: 700;
+  padding: .75rem 3rem .75rem 0;
+  position: relative;
+  transition: all .3s ease;
+  &:before {
+    content: "→";
+    display: block;
+    font-family: $sans-serif;
+    color: $color-text;
+    position: absolute;
+    left: -1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0;
+    transition: all .3s ease;
+  }
+  &:hover {
+    cursor: pointer;
+    padding: .75rem 2rem .75rem 1.5rem;
+    &:before {
+      opacity: 1;
+      left: 0;
+    }
+  }
+}
+
 @media (max-width: $media-s) {
   .page-body {
     ol, ul {

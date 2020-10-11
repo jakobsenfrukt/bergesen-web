@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="900px" height="900px" viewBox="0 0 900 900" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>bg7</title>
+    <desc>Created with Sketch.</desc>
+    <g id="bg7" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Bergesen-nyanser1-nyanser" transform="translate(570.000000, 569.709991) scale(-1, 1) translate(-570.000000, -569.709991) translate(240.000000, 239.209991)" fill-rule="nonzero">
+            <g id="Layer_2">
+                <rect id="Rectangle" x="0" y="0.790009251" width="660" height="660"></rect>
+            </g>
+        </g>
+        <g id="Bergesen1" transform="translate(417.665217, 339.209991)" fill="#8CC5B0" fill-rule="nonzero">
+            <path d="M395.432148,197.886122 C395.549448,100.519892 324.710341,17.5855474 228.523111,2.47881112 C132.335881,-12.6279251 39.4838569,44.5978219 9.74807197,137.312329 C-19.987713,230.026835 22.2600441,330.58235 109.290918,374.238091 L109.290918,571.846078 L286.450274,571.846078 L286.450274,374.238091 C353.169007,340.755127 395.327446,272.535217 395.432148,197.886122 Z M197.870596,115.843174 C243.181665,115.843174 279.913544,152.575053 279.913544,197.886122 C279.913544,243.197191 243.181665,279.92907 197.870596,279.92907 C152.559526,279.92907 115.827647,243.197191 115.827647,197.886122 C115.878987,152.596336 152.580809,115.894513 197.870596,115.843174 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>
