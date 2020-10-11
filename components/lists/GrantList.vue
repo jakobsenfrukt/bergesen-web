@@ -13,11 +13,7 @@
           <label>
             <span>{{ t.year }}</span>
             <select v-model="year" @change="search">
-              <option>2020</option>
-              <option>1992</option>
-              <option>1993</option>
-              <option>1994</option>
-              <option>1995</option>
+              <option v-for="(yearOption, index) in filterableYears" :key="index">{{ yearOption }}</option>
             </select>
           </label>
         </div>
@@ -27,7 +23,7 @@
             <input type="text" v-model="searchInput" @input="search" />
           </label>
         </div>
-        <div v-if="searching" class="loading">
+        <div v-if="$apollo.queries.grants.loading" class="loading">
           <div class="loading-icon">
             <img src="/graphics/icons/loading.svg" alt="Loading..." />
           </div>
@@ -35,11 +31,8 @@
       </nav>
       <ul v-if="grants.length" class="grant-list">
         <GrantItem v-for="(grant, index) in grants" :key="index" :grant="grant" />
-        <LoadMore />
-      </ul>
-      <ul v-if="grants.length" class="grant-list">
-        <GrantItemAlt v-for="(grant, index) in grants" :key="index" :grant="grant" />
-        <LoadMore />
+        <div>Viser {{ grants.length }} av {{ searchCount }}</div>
+        <LoadMore v-if="hasMore" @click.native="moreResults" />
       </ul>
       <div v-else class="no-results">
         <p>{{ t.noresults }}</p>
@@ -50,15 +43,20 @@
 
 <script>
 import gql from 'graphql-tag'
+
 export default {
+  props: {
+    filterableYears: Array,
+  },
   data: function() {
     return {
       searchInput: "",
+      searchCount: null,
       grants: [],
+      internalGrants: [],
       year: "",
-      limit: 20,
-      offset: 0,
-      searching: false,
+      limit: 10,
+      step: 10,
       open: false,
       no: {
         show: "Vis søkefilter",
@@ -75,7 +73,7 @@ export default {
         search: "Search",
         year: "Year",
         noresults: "No grants match your search."
-      }
+      },
     }
   },
   computed: {
@@ -87,6 +85,12 @@ export default {
       }
       return []
     },
+    hasMore() {
+      if (!this.searchCount) {
+        return false
+      }
+      return this.searchCount > this.grants.length
+    },
     english() {
       return this.$store.state.english
     },
@@ -97,8 +101,63 @@ export default {
       return this.no
     }
   },
-  mounted() {
-    this.search()
+  fetchOnServer: true,
+  apollo: {
+    grants: {
+      query: gql`
+        query GetSearchResult($searchInput: String!, $date: [QueryArgument], $limit: Int!, $offset: Int!) {
+          __typename
+          grants: entries(search: $searchInput, section: "grantlist", site: "default", date: $date, orderBy: "date DESC", limit: $limit, offset: $offset) {
+            __typename
+            ... on grantlist_grant_Entry {
+              title
+              projectname
+              grantedsum
+              date
+              mainimage {
+                url(transform: "thumb")
+                ... on assets_Asset {
+                  alt
+                  credit
+                }
+              }
+              relatedarticle {
+                ... on newsarticles_newsarticle_Entry {
+                  title
+                  lead
+                  postDate
+                  mainimage {
+                    url(transform: "thumb")
+                    ... on assets_Asset {
+                      alt
+                      credit
+                    }
+                  }
+                  slug
+                  uri
+                }
+              }
+              lead
+            }
+          }
+          searchCount: entryCount(search: $searchInput, section: "grantlist", site: "default", date: $date)
+        }
+      `,
+      variables () {
+        return {
+          searchInput: this.searchInput,
+          date: this.dateFilter,
+          limit: this.limit,
+          offset: 0,
+        }
+      },
+      result ({ data, loading }) {
+        if (!loading) {
+          this.grants = data.grants
+          this.searchCount = data.searchCount
+        }
+      }
+    }
   },
   methods: {
     reset() {
@@ -107,56 +166,30 @@ export default {
       this.search()
     },
     async search() {
-      this.searching = true
-      console.log('søker etter', this.searchInput, 'med', this.dateFilter)
-      try {
-        const result = await this.$apollo.query({
-          query: gql`query GetSearchResult($searchInput: String!, $date: [QueryArgument]) {
-            grants: entries(search: $searchInput, section: "grantlist", site: "default", date: $date, orderBy: "date DESC") {
-              ... on grantlist_grant_Entry {
-                title
-                projectname
-                grantedsum
-                date
-                mainimage {
-                  url(transform: "thumb")
-                  ... on assets_Asset {
-                    alt
-                    credit
-                  }
-                }
-                relatedarticle {
-                  ... on newsarticles_newsarticle_Entry {
-                    title
-                    lead
-                    postDate
-                    mainimage {
-                      url(transform: "thumb")
-                      ... on assets_Asset {
-                        alt
-                        credit
-                      }
-                    }
-                    slug
-                    uri
-                  }
-                }
-                lead
-              }
-            }
-          }`,
-          variables: {
-            searchInput: this.searchInput,
-            date: this.dateFilter,
-          }
-        }).then(({data}) => data && data.grants)
-        this.grants = result
-      } catch (e) {
-        console.error(e)
-      } finally {
-        this.searching = false
-      }
+      this.$apollo.queries.grants.refresh()
     },
+    async moreResults() {
+      if (!this.hasMore) {
+        return
+      }
+
+      try {
+        this.$apollo.queries.grants.fetchMore({
+          variables: {
+            offset: this.grants.length
+          },
+          updateQuery: (previousResult, { fetchMoreResult }) => {
+            return {
+              ...previousResult,
+              grants: [...previousResult.grants, ...fetchMoreResult.grants],
+            }
+          },
+        })
+      }
+      catch (e) {
+        return e
+      }
+    }
   }
 }
 </script>

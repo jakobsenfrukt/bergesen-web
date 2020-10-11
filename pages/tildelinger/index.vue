@@ -3,7 +3,7 @@
     <BackgroundShape />
     <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
     <div v-if="entry.body" v-html="entry.body" class="page-body"></div>
-    <GrantList />
+    <GrantList :filterableYears="filterableYears" />
   </main>
 </template>
 
@@ -13,6 +13,14 @@ export default {
   data: function() {
     return {
       entry: {}
+    }
+  },
+  computed: {
+    filterableYears() {
+      const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step));
+      const first = Number(this.earliest[0].date.slice(0, 4))
+      const last = Number(this.latest[0].date.slice(0, 4))
+      return range(first, last, 1)
     }
   },
   async asyncData({ app, route }) {
@@ -39,6 +47,16 @@ export default {
               }
             }
             lead
+          }
+        }
+        earliest: entries(section: "grantlist", site: "default", orderBy: "date ASC", limit: 1) {
+          ... on grantlist_grant_Entry {
+            date
+          }
+        }
+        latest: entries(section: "grantlist", site: "default", orderBy: "date DESC", limit: 1) {
+          ... on grantlist_grant_Entry {
+            date
           }
         }
       }`
