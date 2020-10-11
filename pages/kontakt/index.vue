@@ -184,7 +184,7 @@ export default {
 
   &-text {
     grid-column: 1 / span 4;
-    background: $color-lightestgreen;
+    background: $color-lightgreen;
     padding: 2rem 2rem 7rem;
     margin-right: -2rem;
     pre {
