@@ -53,7 +53,8 @@ import gql from 'graphql-tag'
 export default {
   data() {
     return {
-      open: false
+      open: false,
+      mainmenu: []
     }
   },
   computed: {
