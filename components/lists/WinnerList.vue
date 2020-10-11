@@ -63,6 +63,9 @@ export default {
       object-position: top;
       filter: grayscale(100%);
       transition: all .3s ease;
+      &:hover {
+        filter: grayscale(0);
+      }
     }
   }
 

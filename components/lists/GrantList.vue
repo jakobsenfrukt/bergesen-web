@@ -258,6 +258,9 @@ export default {
       background-size: 2rem 2rem;
       background-repeat: no-repeat;
     }
+    &:hover {
+      cursor: pointer;
+    }
   }
   button {
     margin-left: 0;
