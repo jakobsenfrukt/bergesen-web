@@ -23,7 +23,7 @@
             <input type="text" v-model="searchInput" @input="search" />
           </label>
         </div>
-        <div v-if="$apollo.queries.grants.loading" class="loading">
+        <div v-if="loading" class="loading">
           <div class="loading-icon">
             <img src="/graphics/icons/loading.svg" alt="Loading..." />
           </div>
@@ -31,8 +31,13 @@
       </nav>
       <ul v-if="grants.length" class="grant-list">
         <GrantItem v-for="(grant, index) in grants" :key="index" :grant="grant" />
-        <div>Viser {{ grants.length }} av {{ searchCount }}</div>
-        <LoadMore v-if="hasMore" :loading="$apollo.queries.grants.loading" @click.native="moreResults" />
+        <div class="grant-list-meta">Viser {{ grants.length }} av {{ searchCount }}</div>
+        <LoadMore v-if="hasMore && !loading" :loading="loading" @click.native="moreResults" />
+        <div v-if="loading" class="loading bottom">
+          <div class="loading-icon">
+            <img src="/graphics/icons/loading.svg" alt="Loading..." />
+          </div>
+        </div>
       </ul>
       <div v-else class="no-results">
         <p>{{ t.noresults }}</p>
@@ -90,6 +95,9 @@ export default {
         return false
       }
       return this.searchCount > this.grants.length
+    },
+    loading() {
+      return this.$apollo.queries.grants.loading
     },
     english() {
       return this.$store.state.english
@@ -358,6 +366,12 @@ export default {
   list-style: none;
   padding: 0;
   margin: 0 auto $spacing-l;
+
+  &-meta {
+    font-family: $sans-serif;
+    opacity: .6;
+    font-size: .9rem;
+  }
 }
 .loading {
   width: 2rem;
@@ -368,6 +382,9 @@ export default {
       animation: load 1.7s linear infinite;
       transform-origin: center center;
     }
+  }
+  &.bottom {
+    margin: 2rem auto;
   }
 }
 @keyframes load {
