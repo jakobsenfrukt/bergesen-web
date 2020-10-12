@@ -117,17 +117,19 @@ export default {
 
     &-name {
       font-size: 1.4rem;
+      margin-bottom: .5rem;
     }
 
     &-year {
       font-size: 1.6rem;
       line-height: 1;
       display: block;
-      margin-bottom: 1rem;
+      margin-bottom: .24rem;
     }
 
     &-lead {
       line-height: 1.4;
+      margin: .5rem 0;
     }
   }
 }

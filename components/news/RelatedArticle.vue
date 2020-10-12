@@ -2,7 +2,8 @@
   <article class="article">
     <div class="article-image">
       <div class="image-wrapper">
-        <img :src="article.mainimage[0].url" :alt="article.mainimage[0].alt" :title="article.mainimage[0].credit" />
+        <img v-if="article.mainimage[0]" :src="article.mainimage[0].url" :alt="article.mainimage[0].alt" :title="article.mainimage[0].credit" />
+        <img v-else-if="article.graphic[0]" :src="article.graphic[0].url" alt="Grafisk form i Bergesenstiftelsens farger" class="graphic" />
       </div>
     </div>
     <div class="article-text">
@@ -54,6 +55,10 @@ export default {
       object-position: top;
       filter: grayscale(100%);
       transition: all .3s ease;
+
+      &.graphic {
+        filter: grayscale(0);
+      }
     }
   }
   &:hover {

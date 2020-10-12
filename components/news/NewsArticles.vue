@@ -185,6 +185,10 @@ export default {
     &-title {
       font-size: 1.4rem;
     }
+
+    &-lead {
+      margin: .5rem 0;
+    }
   }
 }
 @media (max-width: $media-l) {

@@ -42,6 +42,9 @@ export default {
                     credit
                   }
                 }
+                graphic {
+                  url(transform: "thumb")
+                }
                 slug
                 uri
               }
