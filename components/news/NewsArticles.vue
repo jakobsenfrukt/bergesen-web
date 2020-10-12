@@ -5,7 +5,7 @@
       <template v-else>{{ heading }}</template>
     </h2>
     <div class="news-grid">
-      <NLink v-for="(article, index) in visibleArticles" class="article" :to="article.uri" :key="index">
+      <NLink v-for="(article, index) in visibleArticles" class="article" :to="`/${article.uri}`" :key="index">
         <div v-if="article.mainimage.length" class="article-image">
           <div class="image-wrapper">
             <img :src="article.mainimage[0].url" :alt="article.mainimage[0].alt" :title="article.mainimage[0].credit" />
