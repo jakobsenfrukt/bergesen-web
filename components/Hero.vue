@@ -189,8 +189,10 @@ export default {
   .hero {
     margin: 0 -1rem 2rem;
     &-background {
-      grid-template-columns: 1fr 1fr 1fr;
+      display: flex;
       .image-wrapper {
+        width: 33.3333333333%;
+        padding-top: 22%;
         &:first-of-type {
           display: block;
         }
@@ -228,7 +230,7 @@ export default {
         background: $color-green;
         color: $color-text;
         display: block;
-        padding: 1rem 2rem 1.2rem;
+        padding: 1rem 1rem 1.2rem;
         margin: 0 auto;
         text-decoration: none;
       }

@@ -141,7 +141,7 @@ section {
 @media (max-width: $media-s) {
   section {
     margin: 0 -1rem;
-    padding: 2rem;
+    padding: 2rem 1rem;
 
     &.apply {
       grid-template-columns: 1fr;

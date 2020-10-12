@@ -56,6 +56,11 @@ export default {
       transition: all .3s ease;
     }
   }
+  &:hover {
+    .article-image img {
+      filter: grayscale(0);
+    }
+  }
 
   &-text {
     grid-column: 5 / span 6;

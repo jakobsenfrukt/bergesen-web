@@ -159,8 +159,11 @@ export default {
   }
 }
 @media (max-width: $media-s) {
+  .news-articles {
+    margin-top: 1rem;
+  }
   .section-title {
-    font-size: 1rem;
+    font-size: 1.6rem;
   }
   .news-grid {
     grid-template-columns: 1fr;
