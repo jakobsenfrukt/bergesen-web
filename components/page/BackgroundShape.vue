@@ -46,5 +46,8 @@ export default {
   &.article {
     background-image: url('/graphics/backgrounds/bg2.svg');
   }
+  &.cookies {
+    background-image: url('/graphics/backgrounds/bg6.svg');
+  }
 }
 </style>

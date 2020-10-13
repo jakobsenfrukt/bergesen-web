@@ -4,7 +4,7 @@
       <span class="winner-meta">Mottaker av Bergesenprisen <Date :rawDate="winner.postDate" yearonly class="date" /></span>
       <h2 class="winner-name">{{ winner.title }}</h2>
       <p class="winner-lead">{{ winner.lead }}</p>
-      <NLink :to="`/${winner.uri}`" class="winner-link">Les styrets begrunnelse</NLink>
+      <NLink :to="`/${winner.uri}`" class="winner-link">Les mer</NLink>
     </template>
     <template v-else>
       <span class="grant-meta">Tildeling <Date :rawDate="grant.date" short class="date" /></span>

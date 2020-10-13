@@ -5,6 +5,7 @@
       <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
       <div v-if="entry.body" v-html="entry.body" class="page-body"></div>
       <FaqList v-if="entry.faq" :faq="entry.faq" />
+      <DownloadList v-if="entry.downloadFiles" :files="entry.downloadFiles" />
     </div>
     <SideNav :menuItems="pages" parent="sok-stotte" parentTitle="Søk støtte" class="page-nav" />
   </main>
@@ -26,6 +27,10 @@ export default {
             title
             lead
             body
+            downloadFiles {
+              title
+              url
+            }
             slug
             uri
           }

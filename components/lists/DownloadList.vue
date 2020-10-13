@@ -1,7 +1,7 @@
 <template>
   <ul class="download-list">
     <li v-for="(file, index) in files" :key="index">
-      <a :href="file.url" download target="_blank">{{ file.title }}</a>
+      <a :href="file.url" :download="file.title" target="_blank">{{ file.title }}</a>
     </li>
   </ul>
 </template>

@@ -189,12 +189,12 @@ export default {
   .hero {
     margin: 0 -1rem 2rem;
     &-background {
-      display: flex;
+      display: block;
       .image-wrapper {
-        width: 33.3333333333%;
-        padding-top: 22%;
-        &:first-of-type {
-          display: block;
+        width: 100%;
+        &:first-of-type,
+        &:last-of-type {
+          display: none;
         }
       }
     }
@@ -202,7 +202,6 @@ export default {
       position: static;
       display: block;
       width: 100%;
-      margin-top: -2px;
 
       &-wrapper {
         display: grid;
@@ -211,7 +210,6 @@ export default {
         width: 100%;
         padding: 0;
         margin: 0;
-        background: $color-blue;
 
         .clear {
           display: none;
@@ -219,9 +217,15 @@ export default {
       }
     }
     &-lead {
-      font-size: 1.8rem;
       width: 100%;
       padding: .6rem 2rem;
+      position: absolute;
+      top: 0;
+      bottom: 3.8rem;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
     }
     &-deadline {
       &-wrapper {

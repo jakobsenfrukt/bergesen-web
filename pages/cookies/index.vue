@@ -1,5 +1,6 @@
 <template>
   <main class="site-main">
+    <BackgroundShape page="cookies" />
     <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
     <div v-html="entry.body" class="page-body"></div>
   </main>
