@@ -3,8 +3,7 @@
     <div class="page-content">
       <PageHeader :heading="entry.title" :lead="entry.lead" />
       <div v-if="entry.body" v-html="entry.body" class="page-body"></div>
-      <PersonList v-if="entry.people" :people="board" heading="Styret" />
-      <PersonList v-if="entry.people" :people="admin" heading="Administrasjon" />
+      <BoardList v-if="entry.people" :people="board" />
       <DownloadList v-if="entry.downloadFiles" :files="entry.downloadFiles" />
     </div>
     <SideNav :menuItems="pages" parent="/en/about" parentTitle="About the foundation" class="page-nav" />
@@ -35,8 +34,8 @@ export default {
   },
   async asyncData({ app, route }) {
     const { data } = await app.apolloProvider.defaultClient.query({
-      query: gql`query GetEntryBySlug($slug: String!) {
-        entry(slug: [$slug], site: "bergesenstiftelsenEn") {
+      query: gql`query GetEntryByUri($uri: String!) {
+        entry(uri: [$uri], site: "bergesenstiftelsenEn") {
           ... on aboutPages_page_Entry {
             title
             lead
@@ -81,7 +80,7 @@ export default {
         }
       }`,
       variables: {
-        slug: route.params.slug
+        uri: route.path.slice(1)
       }
     })
     return data

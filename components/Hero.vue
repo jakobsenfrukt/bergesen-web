@@ -19,11 +19,11 @@
         </div>
         <div class="hero-deadline">
           <NLink :to="link" class="hero-deadline-wrapper">
-            <h2 class="hero-deadline-title">Neste søknadsfrist</h2>
+            <h2 class="hero-deadline-title">{{ t.nextDeadline }}</h2>
             <div class="date">
               <span class="date-day">{{ date.day }}.</span>
               <span class="date-month">{{ date.month }}</span>
-              <span class="date-time">kl. 12.00</span>
+              <span class="date-time">{{ t.hour }}</span>
             </div>
           </NLink>
         </div>
@@ -44,6 +44,14 @@ export default {
       monthnames: {
         no: ["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Desember"],
         en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+      },
+      no: {
+        nextDeadline: "Neste søknadsfrist",
+        hour: "kl. 12.00"
+      },
+      en: {
+        nextDeadline: "Next deadline",
+        hour: "12:00"
       }
     }
   },
@@ -68,6 +76,12 @@ export default {
     },
     english() {
       return this.$store.state.english
+    },
+    t() {
+      if (this.english) {
+        return this.en
+      }
+      return this.no
     }
   }
 }

@@ -12,7 +12,7 @@
         {{ article.title }}
       </h2>
       <p class="article-lead">{{ article.lead }}</p>
-      <NLink :to="`/${article.uri}`" class="article-link read-more">Les artikkelen</NLink>
+      <NLink :to="`/${article.uri}`" class="article-link read-more">{{ t.readmore }}</NLink>
     </div>
   </article>
 </template>
@@ -25,10 +25,12 @@ export default {
   data() {
     return {
       no: {
-        meta: "Relatert artikkel"
+        meta: "Relatert artikkel",
+        readmore: "Les artikkelen"
       },
       en: {
-        meta: "Related article"
+        meta: "Related article",
+        readmore: "Read more"
       },
     }
   },

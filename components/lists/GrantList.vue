@@ -32,7 +32,7 @@
       <ul v-if="grants.length" class="grant-list">
         <GrantItem v-for="(grant, index) in grants" :key="index" :grant="grant" />
         <div class="grant-list-meta">{{ t.showing }} {{ grants.length }} {{ t.of }} {{ searchCount }} {{ t.grants }}</div>
-        <LoadMore v-if="hasMore && !loading" :loading="loading" @click.native="moreResults" />
+        <LoadMore v-if="hasMore && !loading" @click.native="moreResults" />
         <div v-if="loading" class="loading bottom">
           <div class="loading-icon">
             <img src="/graphics/icons/loading.svg" alt="Loading..." />

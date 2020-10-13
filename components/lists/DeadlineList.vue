@@ -1,15 +1,15 @@
 <template>
   <div class="deadlines">
     <div class="deadline deadline-next">
-      <h2 class="deadline-title">Neste søknadsfrist</h2>
+      <h2 class="deadline-title">{{ t.nextDeadline }}</h2>
       <div class="date date-next">
         <span class="date-day">{{ formatDate(nextDeadline.date).day }}.</span>
         <span class="date-month">{{ formatDate(nextDeadline.date).month }}</span>
-        <span class="date-time">kl. 12.00</span>
+        <span class="date-time">{{ t.hour }}</span>
       </div>
       <span class="deadline-details">{{ nextDeadline.details}}</span>
     </div>
-    <h2>Kommende søknadsfrister</h2>
+    <h2>{{ t.comingDeadlines }}</h2>
     <ul class="deadline-list">
       <li v-for="(deadline, index) in futureDeadlines" :key="index" class="deadline">
         <div class="date">
@@ -32,6 +32,16 @@ export default {
       monthnames: {
         no: ["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Desember"],
         en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+      },
+      no: {
+        nextDeadline: 'Neste søknadsfrist',
+        comingDeadlines: 'Kommende søknadsfrister',
+        hour: 'kl. 12.00'
+      },
+      en: {
+        nextDeadline: 'Next deadline',
+        comingDeadlines: 'Coming deadlines',
+        hour: '12:00'
       }
     }
   },
@@ -48,6 +58,12 @@ export default {
     },
     english() {
       return this.$store.state.english
+    },
+    t() {
+      if (this.english) {
+        return this.en
+      }
+      return this.no
     }
   },
   methods: {

@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h2 class="person-list__heading">Styret</h2>
+    <h2 class="person-list__heading">{{ t.board }}</h2>
     <ul class="person-list">
       <li v-for="(person, index) in people" :key="index" class="person">
         <div class="person-image">
@@ -21,6 +21,27 @@
 export default {
   props: {
     people: Array
+  },
+  data() {
+    return {
+      no: {
+        board: "Styret"
+      },
+      en: {
+        board: "Board members"
+      }
+    }
+  },
+  computed: {
+    english() {
+      return this.$store.state.english
+    },
+    t() {
+      if (this.english) {
+        return this.en
+      }
+      return this.no
+    }
   }
 }
 </script>

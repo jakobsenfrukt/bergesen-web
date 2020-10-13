@@ -22,8 +22,8 @@ export default {
   },
   async asyncData({ app, route }) {
     const { data } = await app.apolloProvider.defaultClient.query({
-      query: gql`query GetEntryBySlug($slug: String!) {
-        entry(slug: [$slug], site: "default") {
+      query: gql`query GetEntryByUri($uri: String!) {
+        entry(uri: [$uri], site: "default") {
           ... on applyPages_page_Entry {
             title
             lead
@@ -62,7 +62,7 @@ export default {
         }
       }`,
       variables: {
-        slug: route.params.slug
+        uri: route.path.slice(1)
       }
     })
     return data
