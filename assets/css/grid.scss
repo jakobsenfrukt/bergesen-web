@@ -39,6 +39,9 @@
 @media (max-width: $media-m) {
   .site-main {
     padding-bottom: 2rem;
+    .page-body {
+      grid-column: 3 / span 8;
+    }
     &--with-aside {
       .page-content {
         order: 1;

@@ -9,7 +9,7 @@
                 <rect id="Rectangle" x="0" y="0.790009251" width="660" height="660"></rect>
             </g>
         </g>
-        <g id="Bergesen11" transform="translate(649.000000, 649.500000) rotate(-180.000000) translate(-649.000000, -649.500000) translate(398.000000, 399.000000)" fill="#8CC5B0" fill-rule="nonzero">
+        <g id="Bergesen11" transform="translate(649.000000, 649.500000) rotate(-180.000000) translate(-649.000000, -649.500000) translate(398.000000, 399.000000)" fill="#CDE9DF" fill-rule="nonzero">
             <path d="M268.02091,0 C268.02091,147.784177 147.784177,268.02091 0,268.02091 L0,501 C276.270849,501 501.020421,276.250428 501.020421,0 L268.02091,0 Z" id="Path"></path>
         </g>
     </g>

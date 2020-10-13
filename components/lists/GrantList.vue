@@ -440,4 +440,20 @@ export default {
     }
   }
 }
+
+@media (max-width: $media-xs) {
+  .grants-wrapper {
+    background-image: url('/graphics/backgrounds/square/bg8-big-dark.svg');
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 100%;
+    background-attachment: fixed;
+  }
+  .background {
+    background-image: url('/graphics/backgrounds/square/bg8-big.svg');
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 100%;
+  }
+}
 </style>

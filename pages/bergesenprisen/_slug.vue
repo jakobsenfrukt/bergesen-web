@@ -2,7 +2,7 @@
   <main class="site-main">
     <BackgroundShape page="award" />
     <PageHeader v-if="entry.mainimage.length" :heading="entry.title" :lead="entry.lead" :year="entry.postDate" :image="entry.mainimage[0]" />
-    <PageHeader v-else :heading="entry.title" :lead="entry.lead" />
+    <PageHeader v-else :heading="entry.title" :lead="entry.lead" :year="entry.postDate" />
     <div v-html="entry.body" class="page-body"></div>
     <RelatedEntry :entry="parent" />
     <RelatedArticle v-if="entry.relatedarticle[0]" :article="entry.relatedarticle[0]" />

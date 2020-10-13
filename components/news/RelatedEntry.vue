@@ -1,21 +1,21 @@
 <template>
   <aside class="related" :class="{ winner: winner, grant: grant, entry: entry }">
     <template v-if="winner">
-      <span class="winner-meta">Mottaker av Bergesenprisen <Date :rawDate="winner.postDate" yearonly class="date" /></span>
+      <span class="winner-meta">{{ t.winner }} <Date :rawDate="winner.postDate" yearonly class="date" /></span>
       <h2 class="winner-name">{{ winner.title }}</h2>
       <p class="winner-lead">{{ winner.lead }}</p>
-      <NLink :to="`/${winner.uri}`" class="winner-link">Les mer</NLink>
+      <NLink :to="`/${winner.uri}`" class="winner-link">{{ t.readmore }}</NLink>
     </template>
     <template v-else-if="grant">
-      <span class="grant-meta">Tildeling <Date :rawDate="grant.date" short class="date" /></span>
+      <span class="grant-meta">{{ t.grant }} <Date :rawDate="grant.date" short class="date" /></span>
       <h2 class="grant-title">{{ grant.title }}: {{ grant.projectname }}</h2>
       <span class="grant-sum">kr {{ Number(grant.grantedsum).toLocaleString('nb-NO') }}</span>
-      <NLink to="/tildelinger" class="grant-link">Se alle tildelinger</NLink>
+      <NLink to="/tildelinger" class="grant-link">{{ t.viewall }}</NLink>
     </template>
     <template v-else>
       <h2 class="entry-name">{{ entry.title }}</h2>
       <p class="entry-lead">{{ entry.lead }}</p>
-      <NLink to="/bergesenprisen" class="entry-link">Les mer</NLink>
+      <NLink to="/bergesenprisen" class="entry-link">{{ t.readmore }}</NLink>
     </template>
   </aside>
 </template>
@@ -26,7 +26,34 @@ export default {
     winner: Object,
     grant: Object,
     entry: Object
-  }
+  },
+  data() {
+    return {
+      no: {
+        readmore: 'Les mer',
+        winner: 'Mottaker av Bergesenprisen',
+        grant: 'Tildeling',
+        viewall: 'Se alle tildelinger'
+      },
+      en: {
+        readmore: 'Read more',
+        winner: 'Recipient of Bergesenprisen',
+        grant: 'Granted',
+        viewall: 'View all grants'
+      },
+    }
+  },
+  computed: {
+    english() {
+      return this.$store.state.english
+    },
+    t() {
+      if (this.english) {
+        return this.en
+      }
+      return this.no
+    }
+  },
 }
 </script>
 
@@ -88,6 +115,12 @@ export default {
     font-weight: 700;
     display: block;
     margin-top: 1rem;
+  }
+}
+@media (max-width: $media-m) {
+  .related {
+    grid-column: 2 / span 10;
+    order: 100;
   }
 }
 @media (max-width: $media-s) {

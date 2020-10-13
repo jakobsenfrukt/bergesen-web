@@ -59,6 +59,7 @@ export default {
 
   &-image {
     grid-column: 1 / span 4;
+    background: $color-green;
     .image-wrapper {
       width: 100%;
       padding-top: 100%;

@@ -78,6 +78,11 @@ export default {
 .date {
   font-family: $sans-serif;
 }
+@media (max-width: $media-m) {
+  .page-header {
+    grid-column: 3 / span 8;
+  }
+}
 @media (max-width: $media-s) {
   .page-header {
     grid-column: 1 / span 12;

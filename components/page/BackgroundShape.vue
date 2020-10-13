@@ -50,4 +50,31 @@ export default {
     background-image: url('/graphics/backgrounds/bg6.svg');
   }
 }
+@media (max-width: $media-xs) {
+  .background {
+    background-image: url('/graphics/backgrounds/square/bg5.svg');
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 100%;
+
+    &.award {
+      background-image: url('/graphics/backgrounds/square/bg4.svg');
+    }
+    &.contact {
+      background-image: url('/graphics/backgrounds/square/bg6.svg');
+    }
+    &.about {
+      background-image: url('/graphics/backgrounds/square/bg7.svg');
+    }
+    &.apply {
+      background-image: url('/graphics/backgrounds/square/bg3.svg');
+    }
+    &.article {
+      background-image: url('/graphics/backgrounds/square/bg2.svg');
+    }
+    &.cookies {
+      background-image: url('/graphics/backgrounds/square/bg6.svg');
+    }
+  }
+}
 </style>
