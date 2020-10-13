@@ -20,7 +20,7 @@
             <p v-if="grant.lead">{{ grant.lead }}</p>
           </div>
           <div v-if="grant.relatedarticle.length" class="grant-article">
-            Artikkel:
+            {{ t.related }}:
             <NLink :to="grant.relatedarticle[0].uri" class="grant-article-link">{{ grant.relatedarticle[0].title }}</NLink>
           </div>
         </div>
@@ -40,11 +40,13 @@ export default {
       open: false,
       no: {
         show: 'Mer info',
-        hide: 'Skjul info'
+        hide: 'Skjul info',
+        related: 'Relatert artikkel'
       },
       en: {
         show: 'More info',
-        hide: 'Skjul info'
+        hide: 'Hide info',
+        related: 'Related article'
       }
     }
   },

@@ -7,7 +7,10 @@
       </div>
     </div>
     <div class="article-text">
-      <h2 class="article-title">{{ article.title }}</h2>
+      <span class="article-meta">{{ t.meta }}</span>
+      <h2 class="article-title">
+        {{ article.title }}
+      </h2>
       <p class="article-lead">{{ article.lead }}</p>
       <NLink :to="`/${article.uri}`" class="article-link read-more">Les artikkelen</NLink>
     </div>
@@ -18,7 +21,28 @@
 export default {
   props: {
     article: Object
-  }
+  },
+  data() {
+    return {
+      no: {
+        meta: "Relatert artikkel"
+      },
+      en: {
+        meta: "Related article"
+      },
+    }
+  },
+  computed: {
+    english() {
+      return this.$store.state.english
+    },
+    t() {
+      if (this.english) {
+        return this.en
+      }
+      return this.no
+    }
+  },
 }
 </script>
 
@@ -82,12 +106,22 @@ export default {
     margin-bottom: .5rem;
   }
 
+  &-meta {
+    display: block;
+    font-size: .9rem;
+    font-family: $sans-serif;
+    color: $color-darkgreen;
+    text-transform: uppercase;
+    letter-spacing: .016em;
+    font-weight: 500;
+    margin-bottom: .24rem;
+  }
+
   a {
     color: inherit;
     font-family: $sans-serif;
     font-weight: 700;
     display: block;
-    margin-top: 1rem;
   }
 }
 @media (max-width: $media-s) {
