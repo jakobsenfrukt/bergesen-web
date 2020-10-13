@@ -163,7 +163,22 @@ export default {
   border-top: 6px solid $color-green;
   display: inline-block;
 }
-
+@media (max-width: $media-m) {
+  .page-header {
+    &.split {
+      .text {
+        grid-column: 3 / span 8;
+        grid-template-columns: repeat(8, 1fr);
+        .page-title, .lead {
+          grid-column: 1 / span 8;
+        }
+      }
+      .image {
+        grid-column: 3 / span 8;
+      }
+    }
+  }
+}
 @media (max-width: $media-s) {
   .page-header {
     display: block;
