@@ -16,7 +16,7 @@
           <div v-if="grant.mainimage.length" class="grant-image">
             <img :src="grant.mainimage[0].url" :alt="grant.mainimage[0].alt" :title="grant.mainimage[0].credit" />
           </div>
-          <div class="grant-details-text" :class="{ noimage: !grant.mainimage}">
+          <div class="grant-details-text" :class="{ noimage: !grant.mainimage.length}">
             <p v-if="grant.lead">{{ grant.lead }}</p>
           </div>
           <div v-if="grant.relatedarticle.length" class="grant-article">

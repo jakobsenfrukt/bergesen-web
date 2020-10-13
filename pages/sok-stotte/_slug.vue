@@ -6,6 +6,7 @@
       <div v-if="entry.body" v-html="entry.body" class="page-body"></div>
       <FaqList v-if="entry.faq" :faq="entry.faq" />
       <DownloadList v-if="entry.downloadFiles" :files="entry.downloadFiles" />
+      <Button v-if="entry.showButton" :href="apply.applicationForm[0].url" text="Last ned søknadsskjema" />
     </div>
     <SideNav :menuItems="pages" parent="sok-stotte" parentTitle="Søk støtte" class="page-nav" />
   </main>
@@ -31,6 +32,7 @@ export default {
               title
               url
             }
+            showButton
             slug
             uri
           }
@@ -44,6 +46,13 @@ export default {
             }
             slug
             uri
+          }
+        }
+        apply: entry(type: "apply", site: "default") {
+          ... on apply_apply_Entry {
+            applicationForm {
+              url
+            }
           }
         }
         pages: entries(section: "applypages", site: "default") {

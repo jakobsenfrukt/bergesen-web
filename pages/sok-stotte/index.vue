@@ -5,6 +5,7 @@
       <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
       <div v-html="entry.body" class="page-body"></div>
       <DeadlineList v-if="entry.deadlines" :deadlines="entry.deadlines" />
+      <Button :href="entry.applicationForm[0].url" text="Last ned søknadsskjema" />
     </div>
     <SideNav :menuItems="pages" :parent="entry.uri" :parentTitle="entry.title" class="page-nav" />
   </main>
@@ -29,6 +30,9 @@ export default {
                 date
                 details
               }
+            }
+            applicationForm {
+              url
             }
             lead
             body

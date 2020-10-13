@@ -30,6 +30,7 @@ export default {
   border-radius: 2em;
   position: relative;
   font-size: 1.4rem;
+  font-weight: 400;
   transition: all .3s ease;
   font-family: $sans-serif;
 
