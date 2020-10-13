@@ -54,7 +54,9 @@ export default {
   data() {
     return {
       open: false,
-      mainmenu: []
+      mainmenu: {
+        menuitems: []
+      }
     }
   },
   computed: {

@@ -22,7 +22,7 @@
       <!--End mc_embed_signup-->
     </div>
     <p class="newsletter-privacy">
-      {{ footer.newsletterText }}
+      {{ t.footer.newsletterText }}
     </p>
   </div>
 </template>
@@ -36,33 +36,50 @@ export default {
         privacy: "Skriv inn din e-post for å holde deg oppdatert om søknadsfrister, tildelinger mm. Med dette samtykker du til å få informasjon fra oss på e-post. Du kan når som helst melde deg av.",
         placeholder: "Din e-postadresse",
         label: "E-post",
-        button: "Send inn"
+        button: "Send inn",
+        footer: {}
       },
       en: {
         privacy: "Sign up to receive updates on application deadlines, grants, etc. By signing up you agree to receiving information from us by e-mail. You can unsubscribe at any time.",
         placeholder: "Your e-mail",
         label: "E-mail",
-        button: "Sign up"
+        button: "Sign up",
+        footer: {}
       },
-      footer: {}
     }
   },
   computed: {
+    english() {
+      return this.$store.state.english
+    },
     t() {
-      if (this.$store.state.english) {
+      if (this.english) {
         return this.en
       }
       return this.no
     }
   },
   apollo: {
-    footer: gql`{
-      footer: globalSet(id: "1840") {
-        ... on footer_GlobalSet {
-          newsletterText
+    footer: {
+      query: gql`query {
+        footer: globalSet(id: "1840", site: "default") {
+          ... on footer_GlobalSet {
+            newsletterText
+          }
+        }
+        footerEn: globalSet(id: "1840", site: "bergesenstiftelsenEn") {
+          ... on footer_GlobalSet {
+            newsletterText
+          }
+        }
+      }`,
+      result ({ data, loading }) {
+        if (!loading) {
+          this.no.footer = data.footer
+          this.en.footer = data.footerEn
         }
       }
-    }`
+    }
   }
 }
 </script>
