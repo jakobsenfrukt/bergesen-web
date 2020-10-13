@@ -8,14 +8,12 @@
             <img v-if="person.image.length" :src="person.image[0].url" :alt="`Portrettbilde av ${person.fullname}`" :title="person.image[0].credit" />
           </div>
         </div>
-        <div class="person-text">
-          <h3 class="person-name">{{ person.fullname }}</h3>
-          <span class="person-role">{{ person.role }}</span>
-          <p class="person-contact">
-            <span class="person-phone">{{ person.phone }}</span>
-            <span class="person-email"><a :href="person.email" target="_blank">{{ person.email }}</a></span>
-          </p>
-        </div>
+        <h3 class="person-name">{{ person.fullname }}</h3>
+        <div class="person-role">{{ person.role }}</div>
+        <p class="person-contact">
+          <span class="person-phone">{{ person.phone }}</span>
+          <span class="person-email"><a :href="person.email" target="_blank">{{ person.email }}</a></span>
+        </p>
       </li>
     </ul>
   </section>
@@ -53,8 +51,12 @@ export default {
 .person {
   grid-column: span 2;
   margin: 0 0 $spacing-m;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.6;
 
   &-image {
+    width: 100%;
     .image-wrapper {
       width: 100%;
       padding-top: 150%;
@@ -92,11 +94,12 @@ export default {
     color: $color-red;
     font-family: $sans-serif;
     font-weight: 400;
-    line-height: 1;
+    line-height: 1.3;
+    margin-bottom: .24rem;
   }
 
   &-contact {
-    margin: 0;
+    margin: auto 0 0;
     span {
       display: block;
       font-family: $sans-serif;
