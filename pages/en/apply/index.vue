@@ -1,9 +1,11 @@
 <template>
   <main class="site-main site-main--with-aside">
-    <BackgroundShape page="about" />
+    <BackgroundShape page="apply" />
     <div class="page-content">
       <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
       <div v-html="entry.body" class="page-body"></div>
+      <DeadlineList v-if="entry.deadlines" :deadlines="entry.deadlines" />
+      <Button :href="entry.applicationForm[0].url" text="Download application form" />
     </div>
     <SideNav :menuItems="pages" :parent="entry.uri" :parentTitle="entry.title" class="page-nav" />
   </main>
@@ -12,7 +14,7 @@
 <script>
 import gql from 'graphql-tag'
 export default {
-  data: function() {
+  data() {
     return {
       entry: {}
     }
@@ -20,15 +22,24 @@ export default {
   async asyncData({ app, route }) {
     const { data } = await app.apolloProvider.defaultClient.query({
       query: gql`{
-        entry(type: "about", site: "bergesenstiftelsenEn") {
-          ... on about_about_Entry {
+        entry(type: "apply", site: "bergesenstiftelsenEn") {
+          ... on apply_apply_Entry {
             title
+            deadlines(limit: 5) {
+              ... on deadlines_deadline_BlockType {
+                date
+                details
+              }
+            }
+            applicationForm {
+              url
+            }
             lead
             body
             uri
           }
         }
-        pages: entries(section: "aboutpages", site: "bergesenstiftelsenEn") {
+        pages: entries(section: "applypages", site: "bergesenstiftelsenEn") {
           title
           slug
           uri

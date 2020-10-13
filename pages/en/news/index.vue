@@ -1,8 +1,7 @@
 <template>
   <main class="site-main">
-    <BackgroundShape page="cookies" />
     <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
-    <div v-html="entry.body" class="page-body"></div>
+    <NewsArticles :articles="entries" allowMore />
   </main>
 </template>
 
@@ -17,11 +16,29 @@ export default {
   async asyncData({ app, route }) {
     const { data } = await app.apolloProvider.defaultClient.query({
       query: gql`{
-        entry(type: "cookies", site: "bergesenstiftelsenEn") {
-          ... on cookies_cookies_Entry {
+        entry(type: "news", site: "bergesenstiftelsenEn") {
+          ... on news_news_Entry {
             title
             lead
-            body
+          }
+        }
+        entries(section: "newsarticles", site: "bergesenstiftelsenEn") {
+          ... on newsarticles_newsarticle_Entry {
+            title
+            lead
+            postDate
+            slug
+            uri
+            mainimage {
+              url(transform: "thumb")
+              ... on assets_Asset {
+                alt
+                credit
+              }
+            }
+            graphic {
+              url(transform: "thumb")
+            }
           }
         }
       }`

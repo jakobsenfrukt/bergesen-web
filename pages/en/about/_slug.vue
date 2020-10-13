@@ -1,12 +1,14 @@
 <template>
   <main class="site-main site-main--with-aside">
+    <BackgroundShape page="about" />
     <div class="page-content">
-      <PageHeader :heading="entry.title" :lead="entry.lead" />
+      <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
       <div v-if="entry.body" v-html="entry.body" class="page-body"></div>
       <BoardList v-if="entry.people" :people="board" />
+      <!--<PersonList v-if="entry.people" :people="admin" heading="Administrasjon" />-->
       <DownloadList v-if="entry.downloadFiles" :files="entry.downloadFiles" />
     </div>
-    <SideNav :menuItems="pages" parent="/en/about" parentTitle="About the foundation" class="page-nav" />
+    <SideNav :menuItems="pages" parent="om" parentTitle="Om stiftelsen" class="page-nav" />
   </main>
 </template>
 
@@ -36,6 +38,17 @@ export default {
     const { data } = await app.apolloProvider.defaultClient.query({
       query: gql`query GetEntryByUri($uri: String!) {
         entry(uri: [$uri], site: "bergesenstiftelsenEn") {
+          ... on applyPages_page_Entry {
+            title
+            lead
+            body
+            downloadFiles {
+              title
+              url
+            }
+            slug
+            uri
+          }
           ... on aboutPages_page_Entry {
             title
             lead
@@ -50,6 +63,7 @@ export default {
           ... on aboutPages_people_Entry {
             title
             lead
+            body
             people {
               ... on people_person_BlockType {
                 fullname

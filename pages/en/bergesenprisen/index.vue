@@ -1,8 +1,9 @@
 <template>
   <main class="site-main">
-    <BackgroundShape page="cookies" />
+    <BackgroundShape page="award" />
     <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
     <div v-html="entry.body" class="page-body"></div>
+    <WinnerList :winners="winners" heading="Mottakere av Bergesenprisen" />
   </main>
 </template>
 
@@ -17,11 +18,28 @@ export default {
   async asyncData({ app, route }) {
     const { data } = await app.apolloProvider.defaultClient.query({
       query: gql`{
-        entry(type: "cookies", site: "bergesenstiftelsenEn") {
-          ... on cookies_cookies_Entry {
+        entry(type: "award", site: "bergesenstiftelsenEn") {
+          ... on award_award_Entry {
             title
             lead
             body
+          }
+        }
+        winners: entries(section: "awardwinners", site: "bergesenstiftelsenEn") {
+          ... on awardwinners_awardwinner_Entry {
+            title
+            lead
+            body
+            mainimage {
+              url(transform: "thumb")
+              ... on assets_Asset {
+                alt
+                credit
+              }
+            }
+            postDate
+            slug
+            uri
           }
         }
       }`
