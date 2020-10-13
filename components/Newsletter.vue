@@ -22,12 +22,13 @@
       <!--End mc_embed_signup-->
     </div>
     <p class="newsletter-privacy">
-      {{ t.privacy }}
+      {{ footer.newsletterText }}
     </p>
   </div>
 </template>
 
 <script>
+import gql from 'graphql-tag'
 export default {
   data() {
     return {
@@ -42,7 +43,8 @@ export default {
         placeholder: "Your e-mail",
         label: "E-mail",
         button: "Sign up"
-      }
+      },
+      footer: {}
     }
   },
   computed: {
@@ -52,6 +54,15 @@ export default {
       }
       return this.no
     }
+  },
+  apollo: {
+    footer: gql`{
+      footer: globalSet(title: "footer") {
+        ... on footer_GlobalSet {
+          newsletterText
+        }
+      }
+    }`
   }
 }
 </script>

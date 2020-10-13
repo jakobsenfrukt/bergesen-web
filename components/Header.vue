@@ -105,7 +105,7 @@ export default {
   },
   apollo: {
     mainmenu: gql`{
-      mainmenu: globalSet(title: "mainmenu") {
+      mainmenu: globalSet(id: "44") {
         ... on mainmenu_GlobalSet {
           menuitems {
             title
