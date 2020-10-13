@@ -57,7 +57,7 @@ export default {
   },
   apollo: {
     footer: gql`{
-      footer: globalSet(title: "footer") {
+      footer: globalSet(id: "1840") {
         ... on footer_GlobalSet {
           newsletterText
         }
