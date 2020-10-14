@@ -52,7 +52,8 @@ export default {
             slug
             uri
             mainimage {
-              url(transform: "full")
+              url: url(transform: "full")
+              ogimage: url(transform: "ogimg")
               ... on assets_Asset {
                 alt
                 credit
@@ -79,6 +80,10 @@ export default {
           hid: 'description',
           name: 'description',
           content: this.entry.lead
+        },
+        {
+          property: 'og:image',
+          content: this.entry.mainimage[0].ogimage ? this.entry.mainimage[0].ogimage : '/ogimage.png'
         }
       ]
     }
