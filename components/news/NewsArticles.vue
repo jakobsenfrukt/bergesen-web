@@ -234,6 +234,9 @@ export default {
       margin: .5rem 0;
     }
   }
+  .viewall {
+    text-align: left;
+  }
 }
 @media (max-width: $media-l) {
   .front-page .news-grid {
