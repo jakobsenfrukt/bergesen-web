@@ -11,8 +11,8 @@
         <h3 class="person-name">{{ person.fullname }}</h3>
         <div class="person-role">{{ person.role }}</div>
         <p class="person-contact">
-          <span class="person-phone">{{ person.phone }}</span>
-          <span class="person-email"><a :href="person.email" target="_blank">{{ person.email }}</a></span>
+          <span class="person-phone"><a :href="`tel:${person.phone}`">{{ person.phone }}</a></span>
+          <span class="person-email"><a :href="`mailto:${person.email}`" target="_blank">{{ person.email }}</a></span>
         </p>
       </li>
     </ul>
@@ -108,6 +108,11 @@ export default {
     }
     a {
       color: inherit;
+    }
+    .person-phone {
+      a {
+        text-decoration: none;
+      }
     }
   }
 }
