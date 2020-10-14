@@ -1,6 +1,5 @@
 <template>
   <main class="site-main">
-    {{ ogimage }}
     <BackgroundShape page="award" />
     <PageHeader v-if="entry.mainimage.length" :heading="entry.title" :lead="entry.lead" :year="entry.postDate" :image="entry.mainimage[0]" />
     <PageHeader v-else :heading="entry.title" :lead="entry.lead" :year="entry.postDate" />
