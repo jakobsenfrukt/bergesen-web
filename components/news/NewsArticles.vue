@@ -26,6 +26,9 @@
       </NLink>
     </div>
     <LoadMore v-if="!hideShowMore && allowMore && hasMore" @click.native="loadMore" />
+    <div class="viewall">
+      <NLink v-if="index && link" :to="link">{{ t.viewall }}</NLink>
+    </div>
   </div>
 </template>
 
@@ -36,12 +39,19 @@ export default {
     heading: String,
     link: String,
     allowMore: Boolean,
+    index: Boolean
   },
   data() {
     return {
       hideShowMore: false,
       limit: 12,
-      currentLimit: 12
+      currentLimit: 12,
+      no: {
+        viewall: 'Vis alle artikler'
+      },
+      en: {
+        viewall: 'View all articles'
+      }
     }
   },
   computed: {
@@ -53,6 +63,15 @@ export default {
         return this.articles
       }
       return this.articles.slice(0, this.currentLimit)
+    },
+    english() {
+      return this.$store.state.english
+    },
+    t() {
+      if (this.english) {
+        return this.en
+      }
+      return this.no
     }
   },
   methods: {
@@ -146,6 +165,31 @@ export default {
     opacity: .5;
     font-family: $sans-serif;
     font-size: .9rem;
+  }
+}
+.viewall {
+  display: block;
+  margin: -2rem 0 2rem auto;
+  color: $color-darkgreen;
+  font-family: $sans-serif;
+  font-weight: 700;
+  text-align: right;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    display: inline-block;
+    position: relative;
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: -.1em;
+      left: 0;
+      height: 2px;
+      width: 100%;
+      background: $color-darkgreen;
+    }
   }
 }
 @media (min-width: $media-l) {

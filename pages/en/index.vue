@@ -1,7 +1,7 @@
 <template>
   <main class="site-main front-page">
     <Hero :lead="entry.lead" :deadline="nextDeadline" :link="apply.uri" />
-    <NewsArticles v-if="news.length" :articles="news" heading="Latest news" link="/news" />
+    <NewsArticles v-if="news.length" :articles="news" heading="Latest news" link="/news" index />
     <section class="apply" :class="{ nonews: !news.length }">
       <div class="content">
         <h2 class="section-title">

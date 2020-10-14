@@ -1,7 +1,7 @@
 <template>
   <main class="site-main front-page">
     <Hero :lead="entry.lead" :deadline="nextDeadline" :link="apply.uri" />
-    <NewsArticles :articles="news" heading="Aktuelt" link="/aktuelt" />
+    <NewsArticles :articles="news" heading="Aktuelt" link="/aktuelt" index />
     <section class="apply">
       <div class="content">
         <h2 class="section-title">
