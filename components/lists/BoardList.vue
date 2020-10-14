@@ -28,7 +28,7 @@ export default {
         board: "Styret"
       },
       en: {
-        board: "Board members"
+        board: "Board Members"
       }
     }
   },
