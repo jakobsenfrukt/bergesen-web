@@ -46,7 +46,8 @@ export default {
                 lead
                 postDate
                 mainimage {
-                  url(transform: "thumb")
+                  url: url(transform: "thumb")
+                  ogimage: url(transform: "ogimg")
                   ... on assets_Asset {
                     alt
                     credit
