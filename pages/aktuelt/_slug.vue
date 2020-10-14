@@ -18,6 +18,14 @@ export default {
       entry: {}
     }
   },
+  computed: {
+    ogimage() {
+      if (this.entry.mainimage[0].ogimage) {
+        return this.entry.mainimage[0].ogimage
+      }
+      return '/ogimage.png'
+    }
+  },
   async asyncData({ app, route }) {
     const { data } = await app.apolloProvider.defaultClient.query({
       query: gql`query GetEntryByUri($uri: String!) {
@@ -83,7 +91,7 @@ export default {
         },
         {
           property: 'og:image',
-          content: this.entry.mainimage[0].ogimage ? this.entry.mainimage[0].ogimage : '/ogimage.png'
+          content: this.ogimage
         }
       ]
     }
