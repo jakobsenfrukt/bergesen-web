@@ -2,7 +2,7 @@
   <main class="site-main front-page">
     <Hero :lead="entry.lead" :deadline="nextDeadline" :link="apply.uri" />
     <NewsArticles v-if="news.length" :articles="news" heading="Latest news" link="/news" />
-    <section class="apply">
+    <section class="apply" :class="{ nonews: !news.length }">
       <div class="content">
         <h2 class="section-title">
           <NLink :to="apply.uri">{{ apply.title }}</NLink>
@@ -139,6 +139,12 @@ section {
     .button {
       background-color: $color-green;
       font-weight: 400;
+    }
+    &.nonews {
+      background: $color-background;
+      .button {
+        background-color: $color-lightgreen;
+      }
     }
   }
 }
