@@ -16,8 +16,8 @@
         </div>
       </div>
     </div>
-    <div v-if="entry.body" v-html="entry.body" class="page-body"></div>
     <PersonList v-if="people" :people="admin" heading="Administrasjon" class="people" contactpage />
+    <div v-if="entry.body" v-html="entry.body" class="page-body downloads"></div>
     <div class="address">
       <div class="address-text">
         <h2>Besøksadresse</h2>
@@ -204,8 +204,12 @@ export default {
 }
 .people {
   grid-column: 3 / span 6;
-  margin: 0 0 2rem;
+  margin: 0;
 }
+.page-body.downloads {
+  margin-top: 0;
+}
+
 @media (max-width: $media-m) {
   .contact-info {
     grid-column: 3 / span 8;

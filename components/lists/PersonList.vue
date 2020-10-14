@@ -46,6 +46,7 @@ export default {
 
   &.contactpage {
     grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 1rem;
   }
 }
 .person {
