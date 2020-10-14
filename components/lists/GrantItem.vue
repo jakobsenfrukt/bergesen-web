@@ -21,7 +21,7 @@
           </div>
           <div v-if="grant.relatedarticle.length" class="grant-article">
             {{ t.related }}:
-            <NLink :to="grant.relatedarticle[0].uri" class="grant-article-link">{{ grant.relatedarticle[0].title }}</NLink>
+            <NLink :to="`/${grant.relatedarticle[0].uri}`" class="grant-article-link">{{ grant.relatedarticle[0].title }}</NLink>
           </div>
         </div>
       </div>
