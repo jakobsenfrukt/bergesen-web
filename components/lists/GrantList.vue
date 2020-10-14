@@ -92,7 +92,7 @@ export default {
       const zeroPad = (num, places) => String(num).padStart(places, '0')
       const year = this.year && parseInt(this.year)
       if (year) {
-        return ["and", `>= ${year}-01-01T00:00:00Z`, `< ${year + 1}-01-01T00:00:00Z`]
+        return ["and", `>= ${year}-01-01`, `<= ${year}-12-31`]
       }
       return []
     },

@@ -8,6 +8,7 @@
 
 <script>
 import gql from 'graphql-tag'
+import moment from 'moment'
 export default {
   data: function() {
     return {
@@ -17,8 +18,8 @@ export default {
   computed: {
     filterableYears() {
       const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step));
-      const first = Number(this.earliest[0].date.slice(0, 4))
-      const last = Number(this.latest[0].date.slice(0, 4))
+      const first = moment(this.earliest[0].date).year()
+      const last = moment(this.latest[0].date).year()
       return range(first, last, 1)
     }
   },
