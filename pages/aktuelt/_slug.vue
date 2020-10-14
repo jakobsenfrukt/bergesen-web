@@ -20,7 +20,7 @@ export default {
   },
   computed: {
     ogimage() {
-      if (this.entry.mainimage[0].ogimage) {
+      if (this.entry.mainimage.length) {
         return this.entry.mainimage[0].ogimage
       }
       return '/ogimage.png'
