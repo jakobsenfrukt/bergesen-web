@@ -37,6 +37,10 @@ export default {
           hid: 'description',
           name: 'description',
           content: this.entry.lead
+        },
+        {
+          property: 'og:image',
+          content: '/ogimage.png'
         }
       ]
     }
