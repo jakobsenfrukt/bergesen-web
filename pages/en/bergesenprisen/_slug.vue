@@ -35,6 +35,7 @@ export default {
             body
             mainimage {
               url(transform: "full")
+              ogimage: url(transform: "ogimg")
               ... on assets_Asset {
                 alt
                 credit
@@ -47,7 +48,6 @@ export default {
                 postDate
                 mainimage {
                   url: url(transform: "thumb")
-                  ogimage: url(transform: "ogimg")
                   ... on assets_Asset {
                     alt
                     credit

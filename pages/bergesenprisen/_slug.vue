@@ -1,5 +1,6 @@
 <template>
   <main class="site-main">
+    {{ ogimage }}
     <BackgroundShape page="award" />
     <PageHeader v-if="entry.mainimage.length" :heading="entry.title" :lead="entry.lead" :year="entry.postDate" :image="entry.mainimage[0]" />
     <PageHeader v-else :heading="entry.title" :lead="entry.lead" :year="entry.postDate" />
@@ -35,6 +36,7 @@ export default {
             body
             mainimage {
               url(transform: "full")
+              ogimage: url(transform: "ogimg")
               ... on assets_Asset {
                 alt
                 credit
@@ -47,7 +49,6 @@ export default {
                 postDate
                 mainimage {
                   url: url(transform: "thumb")
-                  ogimage: url(transform: "ogimg")
                   ... on assets_Asset {
                     alt
                     credit
