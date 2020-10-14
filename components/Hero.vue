@@ -14,7 +14,7 @@
     <div class="hero-text">
       <div class="hero-text-wrapper">
         <div class="clear"></div>
-        <div class="hero-lead">
+        <div class="hero-lead" :class="{ english: english }">
           <p>{{ lead }}</p>
         </div>
         <div class="hero-deadline">
@@ -125,6 +125,10 @@ export default {
     padding: 0 2rem;
     font-family: $serif-fine;
     color: $color-white;
+
+    &.english {
+      font-size: 1.8rem;
+    }
   }
   &-deadline {
     text-align: center;
@@ -178,6 +182,13 @@ export default {
     }
   }
 }
+@media (max-width: 1400px) {
+  .hero {
+    &-lead.english {
+      font-size: 1.6rem;
+    }
+  }
+}
 @media (max-width: $media-m) {
   .hero {
     &-background {
@@ -195,6 +206,9 @@ export default {
       .clear {
         display: none;
       }
+    }
+    &-lead.english {
+      font-size: 1.6rem;
     }
   }
 }
@@ -239,6 +253,9 @@ export default {
       right: 0;
       display: flex;
       align-items: center;
+      &.english {
+        font-size: 1.8rem;
+      }
     }
     &-deadline {
       &-wrapper {
