@@ -7,7 +7,7 @@ const fragmentMatcher = new IntrospectionFragmentMatcher({
 
 export default () => {
   return {
-    httpEndpoint: 'https://test.bergesen-cms.444.no/api',
+    httpEndpoint: 'https://cms.bergesenstiftelsen.no/api',
     cache: new InMemoryCache({ fragmentMatcher })
   }
 }
