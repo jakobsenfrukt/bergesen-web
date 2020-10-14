@@ -283,7 +283,6 @@ export default {
         font-family: inherit;
         font-size: inherit;
         font-weight: 700;
-        text-transform: lowercase;
 
         &-time {
           display: inline;
