@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       monthnames: {
-        no: ["Januar", "Februar", "Mars", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Desember"],
+        no: ["januar", "februar", "mars", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"],
         en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
       },
       no: {
@@ -145,7 +145,6 @@ export default {
       font-size: 1.8rem;
       font-weight: 700;
       line-height: 1.4;
-      text-transform: lowercase;
 
       &-time {
         display: block;
