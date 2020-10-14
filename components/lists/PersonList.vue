@@ -126,9 +126,23 @@ export default {
     }
   }
 }
+@media (max-width: $media-m) {
+  .person-list {
+    grid-column: 2 / span 8;
+    &.contactpage {
+      grid-template-columns: repeat(8, 1fr);
+    }
+    .person {
+      grid-column: span 4;
+    }
+  }
+}
 @media (max-width: $media-s) {
   .person-list {
     grid-template-columns: 1fr 1fr;
+    &.contactpage {
+      grid-template-columns: repeat(2, 1fr);
+    }
     .person {
       grid-column: span 1;
     }
