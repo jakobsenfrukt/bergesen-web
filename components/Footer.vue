@@ -114,6 +114,7 @@ footer {
   font-family: $sans-serif;
   font-weight: 700;
   position: relative;
+  z-index: 10;
 
   .logo {
     grid-column: 1 / span 2;
