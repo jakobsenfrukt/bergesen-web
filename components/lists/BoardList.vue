@@ -117,19 +117,12 @@ export default {
     }
   }
 }
-@media (min-width: $media-l) {
-  .person-list {
-    grid-template-columns: repeat(6, 1fr);
-    &.contactpage {
-      grid-template-columns: repeat(6, 1fr);
-    }
-  }
-}
 @media (max-width: $media-s) {
   .person-list {
-    grid-template-columns: 1fr 1fr;
     .person {
-      grid-column: span 1;
+      &-image {
+        width: 100px;
+      }
     }
   }
 }
