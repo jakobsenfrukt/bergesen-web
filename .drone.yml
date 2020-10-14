@@ -46,7 +46,7 @@ steps:
       hosts:
         - banana.444.no
       source: ./dist/
-      target: ~/www/test.bergesenstiftelsen.no/public/
+      target: ~/www/bergesenstiftelsen.no/public/
       secrets: ["bergesen_ssh_key"]
 
 volumes:
