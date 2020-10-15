@@ -67,6 +67,7 @@ export default {
     }
   },
   generate: {
+    fallback: true,
     routes: function () {
       const config = getApolloConfig()
       const uri = config.httpEndpoint
