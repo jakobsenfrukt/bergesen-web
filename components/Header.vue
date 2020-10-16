@@ -70,7 +70,10 @@ export default {
       return this.mainmenu.menuitems
     },
     currentPath() {
-      return this.$route.path.slice(1)
+      const stripTrailingSlash = (str) => {
+        return str.endsWith('/') ? str.slice(0, -1) : str
+      }
+      return stripTrailingSlash(this.$route.path.slice(1))
     },
     newPath() {
       if (this.$route.path === "/") {
