@@ -8,7 +8,7 @@
       <DownloadList v-if="entry.downloadFiles" :files="entry.downloadFiles" />
       <Button v-if="entry.showButton" :href="apply.applicationForm[0].url" text="Download application form" />
     </div>
-    <SideNav :menuItems="pages" parent="sok-stotte" parentTitle="Søk støtte" class="page-nav" />
+    <SideNav :menuItems="pages" parent="en/apply" parentTitle="Applications" class="page-nav" />
   </main>
 </template>
 
