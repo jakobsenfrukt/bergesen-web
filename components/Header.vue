@@ -140,7 +140,7 @@ header {
   align-items: center;
   font-family: $sans-serif;
   position: relative;
-  z-index: 1;
+  z-index: 100;
 }
 .logo {
   width: 6rem;
