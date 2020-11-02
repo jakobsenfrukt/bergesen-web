@@ -25,7 +25,7 @@ export default {
         entry(type: "apply", site: "bergesenstiftelsenEn") {
           ... on apply_apply_Entry {
             title
-            deadlines(limit: 5) {
+            deadlines {
               ... on deadlines_deadline_BlockType {
                 date
                 details

@@ -11,7 +11,7 @@
     </div>
     <h2>{{ t.comingDeadlines }}</h2>
     <ul class="deadline-list">
-      <li v-for="(deadline, index) in futureDeadlines" :key="index" class="deadline">
+      <li v-for="(deadline, index) in futureDeadlines.slice(0, 4)" :key="index" class="deadline">
         <div class="date">
           <span class="date-day">{{ formatDate(deadline.date).day }}.</span>
           <span class="date-month">{{ formatDate(deadline.date).month }}</span>
