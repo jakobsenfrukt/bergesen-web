@@ -1,14 +1,7 @@
 <template>
   <section class="hero">
-    <div class="hero-background">
+    <div class="hero-background single">
       <div class="image-wrapper">
-        <img src="/graphics/hero/bergesen-hero-1.svg" alt="Grafiske former i Bergesenstiftelsens farger" />
-      </div>
-      <div class="image-wrapper">
-        <img src="/graphics/hero/bergesen-hero-2.svg" alt="Grafiske former i Bergesenstiftelsens farger" />
-      </div>
-      <div class="image-wrapper">
-        <img src="/graphics/hero/bergesen-hero-3.svg" alt="Grafiske former i Bergesenstiftelsens farger" />
       </div>
     </div>
     <div class="hero-text">
@@ -124,7 +117,7 @@ export default {
     margin: 0 auto;
     padding: 0 2rem;
     font-family: $serif-fine;
-    color: $color-white;
+    color: $color-text;
 
     &.english {
       font-size: 1.8rem;
@@ -165,7 +158,6 @@ export default {
     .image-wrapper {
       padding-top: 63%;
       position: relative;
-      overflow: hidden;
     }
 
     img {
@@ -180,6 +172,18 @@ export default {
       object-fit: cover;
       object-position: top;
     }
+
+    &.single {
+      display: block;
+      .image-wrapper {
+        width: 100%;
+        padding-top: 21%;
+        background: url(/graphics/hero/xmas/Hero-desember.svg);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: 0 0;
+      }
+    }
   }
 }
 @media (max-width: 1400px) {
@@ -192,10 +196,25 @@ export default {
 @media (max-width: $media-m) {
   .hero {
     &-background {
-      grid-template-columns: 1fr 1fr;
+      display: block;
       .image-wrapper {
         &:first-of-type {
           display: none;
+        }
+      }
+      &.single {
+        display: block;
+
+        .image-wrapper {
+          width: 100%;
+          padding-top: 32%;
+          background: url(/graphics/hero/xmas/Hero-desember.svg);
+          background-repeat: no-repeat;
+          background-size: auto 100%;
+          background-position: 100% 0;
+          &:first-of-type {
+            display: block;
+          }
         }
       }
     }
@@ -217,11 +236,17 @@ export default {
     margin: 0 -1rem 2rem;
     &-background {
       display: block;
-      .image-wrapper {
-        width: 100%;
-        &:first-of-type,
-        &:last-of-type {
-          display: none;
+      &.single {
+        .image-wrapper {
+          width: 100%;
+          padding-top: 63%;
+          background: url(/graphics/hero/xmas/Hero-desember.svg);
+          background-repeat: no-repeat;
+          background-size: auto 100%;
+          background-position: 50% 0;
+          &:first-of-type {
+            display: block;
+          }
         }
       }
     }
@@ -261,8 +286,8 @@ export default {
       &-wrapper {
         font-family: $sans-serif;
         font-size: 1.3rem;
-        background: $color-green;
-        color: $color-text;
+        background: $color-text;
+        color: $color-white;
         display: block;
         padding: 1rem 1rem 1.2rem;
         margin: 0 auto;
