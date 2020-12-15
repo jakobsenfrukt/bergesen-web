@@ -1,17 +1,17 @@
 <template>
   <section class="hero">
-    <div class="hero-background single">
+    <div class="hero-background single" :style="cssVars">
       <div class="image-wrapper">
       </div>
     </div>
     <div class="hero-text">
       <div class="hero-text-wrapper">
         <div class="clear"></div>
-        <div class="hero-lead" :class="{ english: english }">
+        <div class="hero-lead" :class="leadClasses">
           <p>{{ lead }}</p>
         </div>
         <div class="hero-deadline">
-          <NLink :to="link" class="hero-deadline-wrapper">
+          <NLink :to="link" class="hero-deadline-wrapper" :class="colorDate">
             <h2 class="hero-deadline-title">{{ t.nextDeadline }}</h2>
             <div class="date">
               <span class="date-day">{{ date.day }}.</span>
@@ -30,7 +30,10 @@ export default {
   props: {
     lead: String,
     deadline: Object,
-    link: String
+    link: String,
+    banner: String,
+    colorText: String,
+    colorDate: String
   },
   data() {
     return {
@@ -75,6 +78,24 @@ export default {
         return this.en
       }
       return this.no
+    },
+    cssVars() {
+      if (this.banner) {
+        return {
+          '--background-image': 'url(' + this.banner + ')'
+        }
+      }
+    },
+    leadClasses() {
+      if (this.english && this.colorText) {
+        return ['english', this.colorText]
+      }
+      if (this.english) {
+        return 'english'
+      }
+      if (this.colorText) {
+        return this.colorText
+      }
     }
   }
 }
@@ -83,6 +104,8 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/css/variables.scss';
 .hero {
+  --background-image: url(/graphics/hero/xmas/Hero-desember.svg);
+
   margin: 0 -2rem;
   grid-column: 1 / span 12;
   position: relative;
@@ -122,6 +145,12 @@ export default {
     &.english {
       font-size: 1.8rem;
     }
+    &.white {
+      color: $color-white;
+    }
+    &.darkblue {
+      color: $color-text;
+    }
   }
   &-deadline {
     text-align: center;
@@ -132,6 +161,15 @@ export default {
       margin: 0 auto;
       text-decoration: none;
       color: inherit;
+
+      &.white {
+        background: $color-white;
+        color: $color-text;
+      }
+      &.darkblue {
+        background: $color-text;
+        color: $color-white;
+      }
     }
     &-title {
       margin-bottom: 0;
@@ -178,7 +216,7 @@ export default {
       .image-wrapper {
         width: 100%;
         padding-top: 21%;
-        background: url(/graphics/hero/xmas/Hero-desember.svg);
+        background: var(--background-image);
         background-repeat: no-repeat;
         background-size: 100% 100%;
         background-position: 0 0;
@@ -208,7 +246,7 @@ export default {
         .image-wrapper {
           width: 100%;
           padding-top: 32%;
-          background: url(/graphics/hero/xmas/Hero-desember.svg);
+          background: var(--background-image);
           background-repeat: no-repeat;
           background-size: auto 100%;
           background-position: 100% 0;
@@ -240,7 +278,7 @@ export default {
         .image-wrapper {
           width: 100%;
           padding-top: 63%;
-          background: url(/graphics/hero/xmas/Hero-desember.svg);
+          background: var(--background-image);
           background-repeat: no-repeat;
           background-size: auto 100%;
           background-position: 50% 0;

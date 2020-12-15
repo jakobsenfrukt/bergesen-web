@@ -1,6 +1,13 @@
 <template>
   <main class="site-main front-page">
-    <Hero :lead="entry.lead" :deadline="nextDeadline" :link="apply.uri" />
+    <Hero
+      :lead="entry.lead"
+      :deadline="nextDeadline"
+      :link="apply.uri"
+      :banner="entry.banner[0].url"
+      :colorText="entry.colorText"
+      :colorDate="entry.colorDate"
+    />
     <NewsArticles :articles="news" heading="Aktuelt" link="/aktuelt" index />
     <section class="apply">
       <div class="content">
@@ -41,6 +48,11 @@ export default {
           ... on home_home_Entry {
             title
             lead
+            banner {
+              url
+            }
+            colorText
+            colorDate
           }
         }
         news: entries(section: "newsarticles", limit: 4, site: "default") {
