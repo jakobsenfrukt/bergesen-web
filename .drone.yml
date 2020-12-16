@@ -11,7 +11,8 @@ trigger:
 
 steps:
   - name: restore-cache
-    image: drillster/drone-volume-cache
+    image: drillster/drone-volume-cache:latest
+    pull: if-not-exists
     settings:
       restore: true
       mount:
@@ -27,7 +28,8 @@ steps:
       - npm run generate
 
   - name: rebuild-cache
-    image: drillster/drone-volume-cache
+    image: drillster/drone-volume-cache:latest
+    pull: if-not-exists
     settings:
       rebuild: true
       mount:
@@ -37,7 +39,8 @@ steps:
         path: /cache
 
   - name: deploy
-    image: drillster/drone-rsync
+    image: drillster/drone-rsync:latest
+    pull: if-not-exists
     environment:
       RSYNC_KEY:
         from_secret: bergesen_ssh_key
