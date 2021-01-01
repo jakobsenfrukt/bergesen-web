@@ -7,6 +7,7 @@
       :banner="entry.banner[0].url"
       :colorText="entry.colorText"
       :colorDate="entry.colorDate"
+      :colorDateMobile="entry.colorDateMobile"
     />
     <NewsArticles v-if="news.length" :articles="news" heading="Latest news" link="/news" index />
     <section class="apply" :class="{ nonews: !news.length }">
@@ -53,6 +54,7 @@ export default {
             }
             colorText
             colorDate
+            colorDateMobile
           }
         }
         news: entries(section: "newsarticles", limit: 4, site: "bergesenstiftelsenEn") {

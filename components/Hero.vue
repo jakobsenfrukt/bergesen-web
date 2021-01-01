@@ -11,7 +11,7 @@
           <p>{{ lead }}</p>
         </div>
         <div class="hero-deadline">
-          <NLink :to="link" class="hero-deadline-wrapper" :class="colorDate">
+          <NLink :to="link" class="hero-deadline-wrapper" :class="dateClasses">
             <h2 class="hero-deadline-title">{{ t.nextDeadline }}</h2>
             <div class="date">
               <span class="date-day">{{ date.day }}.</span>
@@ -33,7 +33,8 @@ export default {
     link: String,
     banner: String,
     colorText: String,
-    colorDate: String
+    colorDate: String,
+    colorDateMobile: String
   },
   data() {
     return {
@@ -95,6 +96,17 @@ export default {
       }
       if (this.colorText) {
         return this.colorText
+      }
+    },
+    dateClasses() {
+      if (this.colorDateMobile && this.colorDate) {
+        return [this.colorDateMobile, this.colorDate]
+      }
+      if (this.colorDateMobile) {
+        return this.colorDateMobile
+      }
+      if (this.colorDate) {
+        return this.colorDate
       }
     }
   }
@@ -337,6 +349,18 @@ export default {
         &.darkblue {
           background: $color-text;
           color: $color-white;
+        }
+        &.whiteMobile,
+        &.whiteMobile.white,
+        &.whiteMobile.darkblue {
+          background: $color-text;
+          color: $color-white;
+        }
+        &.greenMobile,
+        &.greenMobile.white,
+        &.greenMobile.darkblue {
+          background: $color-green;
+          color: $color-text;
         }
       }
       &-title {

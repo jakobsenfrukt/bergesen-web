@@ -7,6 +7,7 @@
       :banner="entry.banner[0].url"
       :colorText="entry.colorText"
       :colorDate="entry.colorDate"
+      :colorDateMobile="entry.colorDateMobile"
     />
     <NewsArticles :articles="news" heading="Aktuelt" link="/aktuelt" index />
     <section class="apply">
@@ -53,6 +54,7 @@ export default {
             }
             colorText
             colorDate
+            colorDateMobile
           }
         }
         news: entries(section: "newsarticles", limit: 4, site: "default") {
