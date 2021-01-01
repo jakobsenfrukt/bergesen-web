@@ -330,6 +330,14 @@ export default {
         padding: 1rem 1rem 1.2rem;
         margin: 0 auto;
         text-decoration: none;
+        &.white {
+          background: $color-text;
+          color: $color-white;
+        }
+        &.darkblue {
+          background: $color-text;
+          color: $color-white;
+        }
       }
       &-title {
         font-family: inherit;
