@@ -44,6 +44,7 @@ export default {
                 answer
               }
             }
+            showButton
             slug
             uri
           }

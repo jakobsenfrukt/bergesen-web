@@ -19,6 +19,6 @@ export default {
 .faq-list {
   width: 100%;
   list-style: none;
-  margin: 0 auto $spacing-l;
+  margin: 0 auto $spacing-m;
 }
 </style>
