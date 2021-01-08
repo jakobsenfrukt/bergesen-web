@@ -20,7 +20,7 @@ export default {
       const range = (start, stop, step) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step));
       const first = moment(this.earliest[0].date).year()
       const last = moment(this.latest[0].date).year()
-      return range(first, last, 1)
+      return range(first, last, 1).sort((a, b) => (b - a))
     }
   },
   async asyncData({ app, route }) {
