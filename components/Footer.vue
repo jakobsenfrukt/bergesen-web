@@ -13,7 +13,7 @@
           <a :href="`mailto:${email.address}`" target="_blank">{{ email.address }}</a>
         </div>
         <div class="email-block">
-          For søknader
+          {{t.applicationLabel}}
           <a :href="t.applicationPortal.urlFull" target="_blank">{{t.applicationPortal.linkText}}</a>
         </div>
       </div>
@@ -70,6 +70,7 @@ export default {
         orgNr: "Organisasjonsnummer",
         cookies: "Personvern og cookies",
         credit: "Design og nettside",
+        applicationLabel: "For søknader",
         applicationPortal: {}
       },
       en: {
@@ -82,6 +83,7 @@ export default {
         orgNr: "Organisation number",
         cookies: "Privacy and cookies",
         credit: "Design and website",
+        applicationLabel: "For applications",
         applicationPortal: {}
       }
     }
