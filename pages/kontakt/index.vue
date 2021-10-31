@@ -9,6 +9,10 @@
             <h3>{{ email.label }}</h3>
             <a :href="`mailto:${email.address}`" target="_blank">{{ email.address }}</a>
           </div>
+          <div class="email-block">
+            <h3>For søknader</h3>
+            <a :href="applicationPortal.urlFull" target="_blank">{{ applicationPortal.linkText }}</a>
+          </div>
         </div>
         <div class="phone">
           <h3>Telefon</h3>
@@ -82,6 +86,13 @@ export default {
                 email
               }
             }
+          }
+        }
+        applicationPortal: globalSet(id: "5066", site: "default") {
+          ... on applicationPortal_GlobalSet {
+            urlFull
+            buttonText
+            linkText
           }
         }
       }`

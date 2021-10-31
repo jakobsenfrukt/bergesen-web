@@ -6,7 +6,7 @@
       <div v-if="entry.body" v-html="entry.body" class="page-body"></div>
       <FaqList v-if="entry.faq" :faq="entry.faq" />
       <DownloadList v-if="entry.downloadFiles" :files="entry.downloadFiles" />
-      <Button v-if="entry.showButton" :href="apply.applicationForm[0].url" text="Download application form" />
+      <ApplyButton />
     </div>
     <SideNav :menuItems="pages" parent="en/apply" parentTitle="Applications" class="page-nav" />
   </main>
@@ -14,7 +14,12 @@
 
 <script>
 import gql from 'graphql-tag'
+import ApplyButton from '@/components/ApplyButton.vue'
+
 export default {
+  components: {
+    ApplyButton
+  },
   data() {
     return {
       entry: {}
@@ -47,13 +52,6 @@ export default {
             showButton
             slug
             uri
-          }
-        }
-        apply: entry(type: "apply", site: "bergesenstiftelsenEn") {
-          ... on apply_apply_Entry {
-            applicationForm {
-              url
-            }
           }
         }
         pages: entries(section: "applypages", site: "bergesenstiftelsenEn") {
