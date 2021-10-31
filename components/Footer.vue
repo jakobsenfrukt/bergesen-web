@@ -12,6 +12,10 @@
           {{ email.label }}
           <a :href="`mailto:${email.address}`" target="_blank">{{ email.address }}</a>
         </div>
+        <div class="email-block">
+          For søknader
+          <a :href="t.applicationPortal.urlFull" target="_blank">{{t.applicationPortal.linkText}}</a>
+        </div>
       </div>
       <div class="phone">
         {{ t.phone }}
@@ -51,6 +55,8 @@
 </template>
 
 <script>
+import gql from 'graphql-tag'
+
 export default {
   data() {
     return {
@@ -63,7 +69,8 @@ export default {
         map: "Se i kart",
         orgNr: "Organisasjonsnummer",
         cookies: "Personvern og cookies",
-        credit: "Design og nettside"
+        credit: "Design og nettside",
+        applicationPortal: {}
       },
       en: {
         newsletter: "Stay updated",
@@ -74,7 +81,8 @@ export default {
         map: "View on map",
         orgNr: "Organisation number",
         cookies: "Privacy and cookies",
-        credit: "Design and website"
+        credit: "Design and website",
+        applicationPortal: {}
       }
     }
   },
@@ -94,6 +102,32 @@ export default {
         return this.en
       }
       return this.no
+    }
+  },
+  apollo: {
+    applicationPortal: {
+      query: gql`query {
+        applicationPortal: globalSet(id: "5066", site: "default") {
+          ... on applicationPortal_GlobalSet {
+            urlFull
+            buttonText
+            linkText
+          }
+        }
+        applicationPortalEn: globalSet(id: "5066", site: "bergesenstiftelsenEn") {
+          ... on applicationPortal_GlobalSet {
+            urlFull
+            buttonText
+            linkText
+          }
+        }
+      }`,
+      result ({ data, loading }) {
+        if (!loading) {
+          this.no.applicationPortal = data.applicationPortal
+          this.en.applicationPortal = data.applicationPortalEn
+        }
+      }
     }
   }
 }

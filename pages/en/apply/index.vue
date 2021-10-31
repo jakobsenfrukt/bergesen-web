@@ -5,7 +5,7 @@
       <PageHeaderSimple :heading="entry.title" :lead="entry.lead" />
       <div v-html="entry.body" class="page-body"></div>
       <DeadlineList v-if="entry.deadlines" :deadlines="entry.deadlines" />
-      <Button :href="entry.applicationForm[0].url" text="Download application form" />
+      <ApplyButton />
     </div>
     <SideNav :menuItems="pages" :parent="entry.uri" :parentTitle="entry.title" class="page-nav" />
   </main>
@@ -13,7 +13,12 @@
 
 <script>
 import gql from 'graphql-tag'
+import ApplyButton from '@/components/ApplyButton.vue'
+
 export default {
+  components: {
+    ApplyButton
+  },
   data() {
     return {
       entry: {}
@@ -30,9 +35,6 @@ export default {
                 date
                 details
               }
-            }
-            applicationForm {
-              url
             }
             lead
             body

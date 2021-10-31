@@ -33,6 +33,7 @@ export default {
   font-weight: 400;
   transition: all .3s ease;
   font-family: $sans-serif;
+  cursor: pointer;
 
   &.secondary {
     background: $color-lightgreen;
