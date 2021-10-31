@@ -17,7 +17,7 @@
         </h2>
         <p class="apply-lead">{{ apply.lead }}</p>
         <div v-if="apply.body" v-html="apply.body" class="apply-body"></div>
-        <Button :href="apply.applicationForm[0].url" text="Download application form" />
+        <ApplyButton />
       </div>
       <SideNav :menuItems="applypages" :parent="apply.uri" :parentTitle="apply.title" class="side-nav" />
     </section>
@@ -26,7 +26,12 @@
 
 <script>
 import gql from 'graphql-tag'
+import ApplyButton from '@/components/ApplyButton.vue'
+
 export default {
+  components: {
+    ApplyButton
+  },
   data: function() {
     return {
       entry: {}
@@ -84,9 +89,6 @@ export default {
               ... on deadlines_deadline_BlockType {
                 date
               }
-            }
-            applicationForm {
-              url
             }
             uri
           }
