@@ -25,7 +25,7 @@ export default {
       entry: {}
     }
   },
-  async asyncData({ app, route }) {
+  async asyncData({ app, route, error }) {
     const { data } = await app.apolloProvider.defaultClient.query({
       query: gql`query GetEntryByUri($uri: String!) {
         entry(uri: [$uri], site: "default") {
@@ -64,6 +64,10 @@ export default {
         uri: route.path.slice(1)
       }
     })
+    if (data.entry === null) {
+      error({ statusCode: 404, message: 'Page not found' })
+      return {}
+    }
     return data
   },
   fetchOnServer: true,
