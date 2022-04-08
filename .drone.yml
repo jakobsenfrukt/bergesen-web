@@ -50,6 +50,7 @@ steps:
         - banana.444.no
       source: ./dist/
       target: ~/www/bergesenstiftelsen.no/public/
+      args: "--delete-after"
       secrets: ["bergesen_ssh_key"]
 
 volumes:
