@@ -8,13 +8,18 @@
       <DownloadList v-if="entry.downloadFiles" :files="entry.downloadFiles" />
       <ApplyButton />
     </div>
-    <SideNav :menuItems="pages" parent="sok-stotte" parentTitle="Søk støtte" class="page-nav" />
+    <SideNav
+      :menuItems="pages"
+      parent="sok-stotte"
+      :parentTitle="parent.title"
+      class="page-nav"
+    />
   </main>
 </template>
 
 <script>
-import gql from 'graphql-tag'
-import ApplyButton from '@/components/ApplyButton.vue'
+import gql from "graphql-tag";
+import ApplyButton from "@/components/ApplyButton.vue";
 
 export default {
   components: {
@@ -23,65 +28,72 @@ export default {
   data() {
     return {
       entry: {}
-    }
+    };
   },
   async asyncData({ app, route }) {
     const { data } = await app.apolloProvider.defaultClient.query({
-      query: gql`query GetEntryByUri($uri: String!) {
-        entry(uri: [$uri], site: "default") {
-          ... on applyPages_page_Entry {
-            title
-            lead
-            body
-            downloadFiles {
+      query: gql`
+        query GetEntryByUri($uri: String!) {
+          entry(uri: [$uri], site: "default") {
+            ... on applyPages_page_Entry {
               title
-              url
-            }
-            showButton
-            slug
-            uri
-          }
-          ... on applyPages_faq_Entry {
-            title
-            faq {
-              ... on faq_questionBlock_BlockType {
-                question
-                answer
+              lead
+              body
+              downloadFiles {
+                title
+                url
               }
+              showButton
+              slug
+              uri
             }
-            showButton
+            ... on applyPages_faq_Entry {
+              title
+              faq {
+                ... on faq_questionBlock_BlockType {
+                  question
+                  answer
+                }
+              }
+              showButton
+              slug
+              uri
+            }
+          }
+          pages: entries(section: "applypages", site: "default") {
+            title
             slug
             uri
           }
+          parent: entry(type: "apply", site: "default") {
+            ... on apply_apply_Entry {
+              title
+            }
+          }
         }
-        pages: entries(section: "applypages", site: "default") {
-          title
-          slug
-          uri
-        }
-      }`,
-      variables: {
+      `,
+      variables: {
         uri: route.path.slice(1)
       }
-    })
-    return data
+    });
+    return data;
   },
   fetchOnServer: true,
   head() {
     return {
-      title: this.entry.title + ' | Bergesenstiftelsen',
+      title: this.entry.title + " | Bergesenstiftelsen",
       meta: [
         {
-          hid: 'description',
-          name: 'description',
+          hid: "description",
+          name: "description",
           content: this.entry.lead
         },
         {
-          property: 'og:image',
-          content: '/ogimage.png'
+          property: "og:image",
+          content: "/ogimage.png"
         }
       ]
-    }
+    };
   }
-}
+};
 </script>
