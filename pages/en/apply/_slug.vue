@@ -11,7 +11,7 @@
     <SideNav
       :menuItems="pages"
       parent="en/apply"
-      parentTitle="Apply for Funding"
+      :parentTitle="parent.title"
       class="page-nav"
     />
   </main>
@@ -64,6 +64,11 @@ export default {
             title
             slug
             uri
+          }
+          parent: entry(type: "apply", site: "bergesenstiftelsenEn") {
+            ... on apply_apply_Entry {
+              title
+            }
           }
         }
       `,
