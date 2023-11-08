@@ -16,12 +16,24 @@
     <nav v-if="mainmenu" class="site-nav" :class="{ open: open }">
       <ul class="main-nav">
         <template v-if="english">
-          <li v-for="(item, index) in menu" :key="index" @click="open = false" :class="item.slug">
-            <NLink :to="`/${item.localized[0].uri}`">{{ item.localized[0].title }}</NLink>
+          <li
+            v-for="(item, index) in menu"
+            :key="index"
+            @click="open = false"
+            :class="item.slug"
+          >
+            <NLink :to="`/${item.localized[0].uri}`">{{
+              item.localized[0].title
+            }}</NLink>
           </li>
         </template>
         <template v-else>
-          <li v-for="(item, index) in menu" :key="index" @click="open = false"  :class="item.slug">
+          <li
+            v-for="(item, index) in menu"
+            :key="index"
+            @click="open = false"
+            :class="item.slug"
+          >
             <NLink :to="`/${item.uri}`">{{ item.title }}</NLink>
           </li>
         </template>
@@ -30,10 +42,15 @@
         <div class="translate" @click="open = false">
           <template v-if="!english && newPath">
             <span>NO</span> /
-            <span @click="switchLanguage()" class="link"><NLink :to="newPath">EN</NLink></span>
+            <span @click="switchLanguage()" class="link"
+              ><NLink :to="newPath">EN</NLink></span
+            >
           </template>
           <template v-if="english && newPath">
-            <span @click="switchLanguage()" class="link"><NLink :to="newPath">NO</NLink></span> /
+            <span @click="switchLanguage()" class="link"
+              ><NLink :to="newPath">NO</NLink></span
+            >
+            /
             <span>EN</span>
           </template>
         </div>
@@ -49,7 +66,7 @@
 </template>
 
 <script>
-import gql from 'graphql-tag'
+import gql from "graphql-tag";
 export default {
   data() {
     return {
@@ -57,82 +74,90 @@ export default {
       mainmenu: {
         menuitems: []
       }
-    }
+    };
   },
   computed: {
     english() {
-      return this.$store.state.english
+      return this.$store.state.english;
     },
     menu() {
       if (this.english) {
-        return this.mainmenu.menuitems.filter(item => item.localized.length)
+        return this.mainmenu.menuitems.filter(item => item.localized.length);
       }
-      return this.mainmenu.menuitems
+      return this.mainmenu.menuitems;
     },
     currentPath() {
-      const stripTrailingSlash = (str) => {
-        return str.endsWith('/') ? str.slice(0, -1) : str
-      }
-      return stripTrailingSlash(this.$route.path.slice(1))
+      const stripTrailingSlash = str => {
+        return str.endsWith("/") ? str.slice(0, -1) : str;
+      };
+      return stripTrailingSlash(this.$route.path.slice(1));
     },
     newPath() {
       if (this.$route.path === "/") {
-        return "/en/"
+        return "/en/";
       } else if (this.english && this.$route.path.length < 5) {
-        return "/"
+        return "/";
       }
       if (this.english) {
-        const entry = this.$store.state.entries.find(entry => entry.localized.length && entry.localized[0].uri === this.currentPath)
+        const entry = this.$store.state.entries.find(
+          entry =>
+            entry.localized.length &&
+            entry.localized[0].uri === this.currentPath
+        );
         if (!entry) {
-          return false
+          return false;
         }
-        return '/' + entry.uri
+        return "/" + entry.uri;
       }
-      const entry = this.$store.state.entries.find(entry => entry.uri === this.currentPath)
+      const entry = this.$store.state.entries.find(
+        entry => entry.uri === this.currentPath
+      );
       if (!entry) {
-        return false
+        return false;
       }
       if (entry.localized.length) {
-        return '/' + entry.localized[0].uri
+        return "/" + entry.localized[0].uri;
       }
-      return false
+      return false;
     }
   },
   methods: {
     switchLanguage() {
-      this.$store.commit('setLanguage', !this.$store.state.english);
+      this.$store.commit("setLanguage", !this.$store.state.english);
     }
   },
   beforeMount() {
     if (this.$route.path.substring(0, 3) === "/en") {
-      this.$store.commit('setLanguage', true);
+      this.$store.commit("setLanguage", true);
     }
   },
   apollo: {
-    mainmenu: gql`{
-      mainmenu: globalSet(id: "44") {
-        ... on mainmenu_GlobalSet {
-          menuitems {
-            title
-            slug
-            uri
-            localized {
+    mainmenu: gql`
+      {
+        mainmenu: globalSet(id: "44") {
+          ... on mainmenu_GlobalSet {
+            menuitems {
               title
               slug
               uri
+              localized {
+                title
+                slug
+                uri
+              }
             }
+            instagram
+            facebook
           }
-          instagram
-          facebook
         }
       }
-    }`
+    `
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/css/variables.scss';
+@import "@/assets/css/variables.scss";
 header {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -166,7 +191,7 @@ header {
   .main-nav {
     li {
       display: inline-block;
-      margin: 0 1rem .5rem;
+      margin: 0 1rem 0.5rem;
       vertical-align: middle;
       position: relative;
       line-height: 1.2;
@@ -176,7 +201,7 @@ header {
     color: inherit;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: .016em;
+    letter-spacing: 0.016em;
   }
 }
 .some-icon {
@@ -233,17 +258,17 @@ header {
           content: "";
           display: block;
           position: absolute;
-          bottom: -.1em;
+          bottom: -0.1em;
           left: 0;
           height: 2px;
           width: 0;
           background: $color-blue;
-          transition: width .1s ease;
+          transition: width 0.1s ease;
         }
         &:hover {
           &:after {
             width: 100%;
-            transition: width .36s ease;
+            transition: width 0.36s ease;
           }
         }
         &.sok-stotte {
@@ -264,11 +289,11 @@ header {
     align-items: center;
   }
   .translate {
-    margin-right: .6rem;
+    margin-right: 0.6rem;
     line-height: 1;
   }
   .some-icon {
-    margin-left: .5rem;
+    margin-left: 0.5rem;
   }
 }
 @media (max-width: $media-m) {
@@ -277,7 +302,7 @@ header {
   }
   .menu-toggle {
     display: block;
-    transition: color .2s ease;
+    transition: color 0.2s ease;
 
     &.open {
       color: $color-background;
@@ -297,14 +322,14 @@ header {
     font-size: 2.4rem;
     transform: translateX(100%);
     opacity: 0;
-    transition: all .2s ease;
+    transition: all 0.2s ease;
 
     .main-nav {
       display: flex;
       flex-direction: column;
       li {
         display: block;
-        margin: .5rem 0 .75rem;
+        margin: 0.5rem 0 0.75rem;
         &.sok-stotte {
           order: -1;
         }
@@ -313,7 +338,7 @@ header {
       a {
         display: block;
         &:hover {
-          opacity: .5;
+          opacity: 0.5;
         }
       }
     }
@@ -344,6 +369,9 @@ header {
   }
 }
 @media (max-width: $media-s) {
+  header {
+    display: block;
+  }
   .logo-svg {
     width: 4.2rem;
   }
