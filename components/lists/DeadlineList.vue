@@ -4,14 +4,20 @@
       <h2 class="deadline-title">{{ t.nextDeadline }}</h2>
       <div class="date date-next">
         <span class="date-day">{{ formatDate(nextDeadline.date).day }}.</span>
-        <span class="date-month">{{ formatDate(nextDeadline.date).month }}</span>
+        <span class="date-month">{{
+          formatDate(nextDeadline.date).month
+        }}</span>
         <span class="date-time">{{ t.hour }}</span>
       </div>
-      <span class="deadline-details">{{ nextDeadline.details}}</span>
+      <span class="deadline-details">{{ nextDeadline.details }}</span>
     </div>
     <h2>{{ t.comingDeadlines }}</h2>
     <ul class="deadline-list">
-      <li v-for="(deadline, index) in futureDeadlines.slice(0, 4)" :key="index" class="deadline">
+      <li
+        v-for="(deadline, index) in futureDeadlines.slice(0, 4)"
+        :key="index"
+        class="deadline"
+      >
         <div class="date">
           <span class="date-day">{{ formatDate(deadline.date).day }}.</span>
           <span class="date-month">{{ formatDate(deadline.date).month }}</span>
@@ -30,20 +36,46 @@ export default {
   data() {
     return {
       monthnames: {
-        no: ["januar", "februar", "mars", "april", "mai", "juni", "juli", "august", "september", "oktober", "november", "desember"],
-        en: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+        no: [
+          "januar",
+          "februar",
+          "mars",
+          "april",
+          "mai",
+          "juni",
+          "juli",
+          "august",
+          "september",
+          "oktober",
+          "november",
+          "desember"
+        ],
+        en: [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"
+        ]
       },
       no: {
-        nextDeadline: 'Neste søknadsfrist',
-        comingDeadlines: 'Kommende søknadsfrister',
-        hour: 'kl. 12.00'
+        nextDeadline: "Neste søknadsfrist",
+        comingDeadlines: "Kommende søknadsfrist",
+        hour: "kl. 12.00"
       },
       en: {
-        nextDeadline: 'Next deadline',
-        comingDeadlines: 'Coming deadlines',
-        hour: '12:00'
+        nextDeadline: "Next deadline",
+        comingDeadlines: "Upcoming deadline",
+        hour: "12:00"
       }
-    }
+    };
   },
   computed: {
     futureDeadlines() {
@@ -54,16 +86,16 @@ export default {
       });
     },
     nextDeadline() {
-      return this.futureDeadlines[0]
+      return this.futureDeadlines[0];
     },
     english() {
-      return this.$store.state.english
+      return this.$store.state.english;
     },
     t() {
       if (this.english) {
-        return this.en
+        return this.en;
       }
-      return this.no
+      return this.no;
     }
   },
   methods: {
@@ -72,26 +104,27 @@ export default {
       const year = dateObject.getFullYear();
       const month = dateObject.getMonth();
       const day = dateObject.getDate();
-      const monthnumber = dateObject.getMonth() +1;
+      const monthnumber = dateObject.getMonth() + 1;
       if (this.english) {
         return {
           day: day,
           month: this.monthnames.en[month]
-        }
+        };
       } else {
         return {
           day: day,
           month: this.monthnames.no[month]
-        }
+        };
       }
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/css/variables.scss';
-.deadlines h2, .deadline-details {
+@import "@/assets/css/variables.scss";
+.deadlines h2,
+.deadline-details {
   font-family: $sans-serif;
   font-weight: 400;
 }
@@ -106,8 +139,8 @@ export default {
     margin-bottom: 1rem;
     &:before {
       content: url(/graphics/shapes/Bergesen2.svg);
-      width: .6em;
-      height: .6em;
+      width: 0.6em;
+      height: 0.6em;
       display: block;
       position: absolute;
       top: 0;
@@ -126,7 +159,7 @@ export default {
   width: 100%;
 
   &-title {
-    margin-bottom: .5rem;
+    margin-bottom: 0.5rem;
     font-family: $sans-serif;
     font-size: 2rem;
     color: $color-text;
@@ -148,7 +181,7 @@ export default {
       font-family: $sans-serif;
       font-size: 2rem;
       font-weight: 700;
-      margin-bottom: .6rem;
+      margin-bottom: 0.6rem;
 
       .date-time {
         display: inline;
@@ -167,7 +200,7 @@ export default {
   .deadline {
     display: block;
     &-next {
-      padding: 1rem 1.5rem;;
+      padding: 1rem 1.5rem;
     }
   }
 }
