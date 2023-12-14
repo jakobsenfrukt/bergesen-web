@@ -25,7 +25,7 @@ steps:
     image: node:14.11
     commands:
       - npm install --prefer-offline --no-audit --progress=false
-      - npm run generate
+      - "NODE_OPTIONS=--max-old-space-size=4096 npm run generate"
 
   - name: rebuild-cache
     image: drillster/drone-volume-cache:latest
