@@ -15,7 +15,7 @@
         <h2 class="section-title">
           <NLink :to="apply.uri">{{ apply.title }}</NLink>
         </h2>
-        <p class="apply-lead">{{ apply.lead }}</p>
+        <p class="apply-lead" v-html="applyLead"></p>
         <div v-if="apply.body" v-html="apply.body" class="apply-body"></div>
         <ApplyButton />
       </div>
@@ -45,6 +45,9 @@ export default {
         return deadlineDate >= today;
       });
       return deadlines[0]
+    },
+    applyLead() {
+      return this.apply.lead ? this.apply.lead.trim().replace(/\n/g, "<br />") : ""
     }
   },
   async asyncData({ app, route }) {

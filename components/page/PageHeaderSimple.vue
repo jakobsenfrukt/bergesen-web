@@ -6,9 +6,7 @@
           <span v-if="year">{{ t.winnerheading }} <Date :rawDate="year" yearonly class="winner-year" /></span>
           {{ heading }}
         </h1>
-        <p v-if="lead" class="lead">
-          {{ lead }}
-        </p>
+        <p v-if="lead" class="lead" v-html="leadAsHtml"></p>
         <Date v-if="date" short :rawDate="date" class="date" />
       </div>
     </div>
@@ -43,7 +41,10 @@ export default {
         return this.en
       }
       return this.no
-    }
+    },
+    leadAsHtml() {
+      return this.lead ? this.lead.trim().replace(/\n/g, "<br />") : null
+    },
   }
 }
 </script>
