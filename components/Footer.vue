@@ -2,24 +2,43 @@
   <footer>
     <div class="logo">
       <NLink :to="english ? '/en/' : '/'">
-        <img src="/graphics/logo-w.svg" class="logo-svg" alt="Bergesenstiftelsen logo" />
+        <img
+          src="/graphics/logo-w.svg"
+          class="logo-svg"
+          alt="Bergesenstiftelsen logo"
+        />
       </NLink>
     </div>
     <div class="contact">
       <h2>{{ t.contact }}</h2>
       <div class="email">
-        <div v-for="(email, index) in contact.email" :key="index" class="email-block">
+        <div
+          v-for="(email, index) in contact.email"
+          :key="index"
+          class="email-block"
+        >
           {{ email.label }}
-          <a :href="`mailto:${email.address}`" target="_blank">{{ email.address }}</a>
+          <a :href="`mailto:${email.address}`" target="_blank">{{
+            email.address
+          }}</a>
         </div>
         <div class="email-block">
-          {{t.applicationLabel}}
-          <a :href="t.applicationPortal.urlFull" target="_blank">{{t.applicationPortal.linkText}}</a>
+          {{ t.applicationLabel }}
+          <a :href="t.applicationPortal.urlFull" target="_blank">{{
+            t.applicationPortal.linkText
+          }}</a>
         </div>
       </div>
       <div class="phone">
-        {{ t.phone }}
-        <a :href="`tel:${contact.phone}`">{{ contact.phone }}</a>
+        <div
+          v-for="(phone, index) in contact.phone"
+          :key="index"
+          class="phone-block"
+        >
+          {{ t.phone }}
+          <a :href="`tel:${phone.number}`">{{ phone.number }}</a>
+          <pre>{{ phone.time }}</pre>
+        </div>
       </div>
     </div>
     <div class="address">
@@ -27,7 +46,9 @@
       <div class="address-visitor">
         {{ t.addressVisitor }}
         <pre>{{ contact.addressVisitor }}</pre>
-        <a href="https://goo.gl/maps/j6osNkyAc3Esf5gx8" target="_blank">{{ t.map }}</a>
+        <a href="https://goo.gl/maps/j6osNkyAc3Esf5gx8" target="_blank">{{
+          t.map
+        }}</a>
       </div>
       <div class="address-postal">
         {{ t.addressPostal }}
@@ -44,22 +65,27 @@
       </a>
     </div>
     <div class="meta">
-      {{ t.orgNr }}:
-      <strong>{{ contact.orgNumber }}</strong><br />
-      <NLink :to="`${ english ? '/en/cookies' : '/cookies'}`" class="cookies">{{ t.cookies }}</NLink><br />
+      {{ t.orgNr }}: <strong>{{ contact.orgNumber }}</strong
+      ><br />
+      <NLink :to="`${english ? '/en/cookies' : '/cookies'}`" class="cookies">{{
+        t.cookies
+      }}</NLink
+      ><br />
       <div class="credit">
-        {{ t.credit }}: <a href="https://bransjen.no" target="_blank">Bransjen</a> + <a href="https://jakobsenfrukt.no" target="_blank">JF&amp;G</a>
+        {{ t.credit }}:
+        <a href="https://bransjen.no" target="_blank">Bransjen</a> +
+        <a href="https://jakobsenfrukt.no" target="_blank">JF&amp;G</a>
       </div>
     </div>
   </footer>
 </template>
 
 <script>
-import gql from 'graphql-tag'
+import gql from "graphql-tag";
 
 export default {
   data() {
-    return {
+    return {
       no: {
         newsletter: "Få informasjon",
         contact: "Kontakt oss",
@@ -86,58 +112,64 @@ export default {
         applicationLabel: "For applications",
         applicationPortal: {}
       }
-    }
+    };
   },
   computed: {
     english() {
-      return this.$store.state.english
+      return this.$store.state.english;
     },
     contact() {
       if (this.english) {
-        const entry = this.$store.state.entries.find(entry => entry.slug === 'kontakt');
-        return entry.localized[0]
+        const entry = this.$store.state.entries.find(
+          entry => entry.slug === "kontakt"
+        );
+        return entry.localized[0];
       }
-      return this.$store.state.entries.find(entry => entry.slug === 'kontakt');
+      return this.$store.state.entries.find(entry => entry.slug === "kontakt");
     },
     t() {
       if (this.english) {
-        return this.en
+        return this.en;
       }
-      return this.no
+      return this.no;
     }
   },
   apollo: {
     applicationPortal: {
-      query: gql`query {
-        applicationPortal: globalSet(id: "5066", site: "default") {
-          ... on applicationPortal_GlobalSet {
-            urlFull
-            buttonText
-            linkText
+      query: gql`
+        query {
+          applicationPortal: globalSet(id: "5066", site: "default") {
+            ... on applicationPortal_GlobalSet {
+              urlFull
+              buttonText
+              linkText
+            }
+          }
+          applicationPortalEn: globalSet(
+            id: "5066"
+            site: "bergesenstiftelsenEn"
+          ) {
+            ... on applicationPortal_GlobalSet {
+              urlFull
+              buttonText
+              linkText
+            }
           }
         }
-        applicationPortalEn: globalSet(id: "5066", site: "bergesenstiftelsenEn") {
-          ... on applicationPortal_GlobalSet {
-            urlFull
-            buttonText
-            linkText
-          }
-        }
-      }`,
-      result ({ data, loading }) {
+      `,
+      result({ data, loading }) {
         if (!loading) {
-          this.no.applicationPortal = data.applicationPortal
-          this.en.applicationPortal = data.applicationPortalEn
+          this.no.applicationPortal = data.applicationPortal;
+          this.en.applicationPortal = data.applicationPortalEn;
         }
       }
     }
   }
-}
+};
 </script>
 
-
 <style lang="scss" scoped>
-@import '@/assets/css/variables.scss';
+@import "@/assets/css/variables.scss";
 footer {
   background: $color-blue;
   color: $color-white;
@@ -164,7 +196,9 @@ footer {
     font-size: 1.8rem;
   }
 
-  strong, a, pre {
+  strong,
+  a,
+  pre {
     display: block;
     font-family: $sans-serif;
     font-weight: 500;
@@ -172,7 +206,7 @@ footer {
   }
 
   a {
-    transition: all .3s ease;
+    transition: all 0.3s ease;
     &:hover {
       color: $color-green;
     }
@@ -202,15 +236,18 @@ footer {
   .meta {
     grid-column: 3 / span 8;
     width: 100%;
-    opacity: .6;
+    opacity: 0.6;
     margin-top: 6rem;
     font-weight: 500;
 
-    strong, a, .credit {
+    strong,
+    a,
+    .credit {
       display: inline-block;
       font-weight: 500;
     }
-    strong, .cookies {
+    strong,
+    .cookies {
       &:after {
         content: "|";
         display: inline-block;
@@ -238,7 +275,7 @@ footer {
 }
 @media (max-width: 1352px) {
   footer {
-     .meta {
+    .meta {
       .cookies:after {
         display: none;
       }
@@ -253,7 +290,9 @@ footer {
     .logo {
       grid-column: 1 / span 2;
     }
-    .logo, .contact, .address {
+    .logo,
+    .contact,
+    .address {
       margin-bottom: 2rem;
     }
     .contact {

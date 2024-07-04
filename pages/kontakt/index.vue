@@ -5,23 +5,48 @@
     <div class="page-body contact">
       <div class="contact-info">
         <div class="email">
-          <div v-for="(email, index) in entry.email" :key="index" class="email-block">
+          <div
+            v-for="(email, index) in entry.email"
+            :key="index"
+            class="email-block"
+          >
             <h3>{{ email.label }}</h3>
-            <a :href="`mailto:${email.address}`" target="_blank">{{ email.address }}</a>
+            <a :href="`mailto:${email.address}`" target="_blank">{{
+              email.address
+            }}</a>
           </div>
           <div class="email-block">
             <h3>For søknader</h3>
-            <a :href="applicationPortal.urlFull" target="_blank">{{ applicationPortal.linkText }}</a>
+            <a :href="applicationPortal.urlFull" target="_blank">{{
+              applicationPortal.linkText
+            }}</a>
           </div>
         </div>
         <div class="phone">
-          <h3>Telefon</h3>
-          <a :href="`tel:${entry.phone}`">{{ entry.phone }}</a>
+          <div
+            v-for="(phone, index) in entry.phone"
+            :key="index"
+            class="phone-block"
+          >
+            <h3>Telefon</h3>
+            <a :href="`tel:${phone.number}`">{{ phone.number }}</a>
+            <p>{{ phone.time }}</p>
+          </div>
         </div>
       </div>
     </div>
-    <PersonList v-if="people" :people="admin" heading="Administrasjon" class="people" contactpage />
-    <div v-if="entry.body" v-html="entry.body" class="page-body downloads"></div>
+    <PersonList
+      v-if="people"
+      :people="admin"
+      heading="Administrasjon"
+      class="people"
+      contactpage
+    />
+    <div
+      v-if="entry.body"
+      v-html="entry.body"
+      class="page-body downloads"
+    ></div>
     <div class="address">
       <div class="address-text">
         <h2>Besøksadresse</h2>
@@ -30,109 +55,126 @@
         <pre>{{ entry.addressPostal }}</pre>
       </div>
       <div class="address-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.926715618733!2d10.6913284160961!3d59.91676358186823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416dcb35f01549%3A0x1e04e8f4336a18e6!2sFr%C3%B8yas%20gate%2015%2C%200273%20Oslo!5e0!3m2!1sen!2sno!4v1600883898718!5m2!1sen!2sno" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.926715618733!2d10.6913284160961!3d59.91676358186823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416dcb35f01549%3A0x1e04e8f4336a18e6!2sFr%C3%B8yas%20gate%2015%2C%200273%20Oslo!5e0!3m2!1sen!2sno!4v1600883898718!5m2!1sen!2sno"
+          width="600"
+          height="450"
+          frameborder="0"
+          style="border:0;"
+          allowfullscreen=""
+          aria-hidden="false"
+          tabindex="0"
+        ></iframe>
       </div>
     </div>
   </main>
 </template>
 
 <script>
-import gql from 'graphql-tag'
+import gql from "graphql-tag";
 export default {
   data: function() {
     return {
       entry: {}
-    }
+    };
   },
   computed: {
     admin() {
       if (!this.people) {
-        return
+        return;
       }
       return this.people.people.filter(person => person.group === "admin");
     }
   },
   async asyncData({ app, route }) {
     const { data } = await app.apolloProvider.defaultClient.query({
-      query: gql`{
-        entry(type: "contact", site: "default") {
-          ... on contact_contact_Entry {
-            title
-            lead
-            body
-            email {
-              ... on email_emailBlock_BlockType {
-                address
-                label
-              }
-            }
-            addressPostal
-            addressVisitor
-            orgNumber
-            phone
-          }
-        }
-        people: entry(id: "295", site: "default") {
-          ... on aboutPages_people_Entry {
-            people {
-              ... on people_person_BlockType {
-                fullname
-                role
-                group
-                image {
-                  url
+      query: gql`
+        {
+          entry(type: "contact", site: "default") {
+            ... on contact_contact_Entry {
+              title
+              lead
+              body
+              email {
+                ... on email_emailBlock_BlockType {
+                  address
+                  label
                 }
-                phone
-                email
+              }
+              addressPostal
+              addressVisitor
+              orgNumber
+              phone {
+                ... on phone_phoneItem_BlockType {
+                  number
+                  time
+                }
               }
             }
           }
-        }
-        applicationPortal: globalSet(id: "5066", site: "default") {
-          ... on applicationPortal_GlobalSet {
-            urlFull
-            buttonText
-            linkText
+          people: entry(id: "295", site: "default") {
+            ... on aboutPages_people_Entry {
+              people {
+                ... on people_person_BlockType {
+                  fullname
+                  role
+                  group
+                  image {
+                    url
+                  }
+                  phone
+                  email
+                }
+              }
+            }
+          }
+          applicationPortal: globalSet(id: "5066", site: "default") {
+            ... on applicationPortal_GlobalSet {
+              urlFull
+              buttonText
+              linkText
+            }
           }
         }
-      }`
-    })
-    return data
+      `
+    });
+    return data;
   },
   fetchOnServer: true,
   head() {
     return {
-      title: this.entry.title + ' | Bergesenstiftelsen',
+      title: this.entry.title + " | Bergesenstiftelsen",
       meta: [
         {
-          hid: 'description',
-          name: 'description',
+          hid: "description",
+          name: "description",
           content: this.entry.lead
         },
         {
-          property: 'og:image',
-          content: '/ogimage.png'
+          property: "og:image",
+          content: "/ogimage.png"
         }
       ]
-    }
+    };
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/css/variables.scss';
+@import "@/assets/css/variables.scss";
 .page-body.contact {
   grid-column: 1 / span 12;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   grid-column-gap: 2rem;
 }
-.contact-info, .address {
+.contact-info,
+.address {
   grid-column: 1 / span 12;
   font-family: $sans-serif;
 
   h2 {
-    margin-bottom: .25rem;
+    margin-bottom: 0.25rem;
     font-size: 1em;
     font-family: $sans-serif;
     font-weight: 700;
@@ -146,7 +188,7 @@ export default {
   grid-column-gap: 2rem;
 
   h2 {
-    margin: 0 0 .5rem;
+    margin: 0 0 0.5rem;
   }
 
   .email,
@@ -180,12 +222,13 @@ export default {
     grid-column: 7 / span 2;
   }
 
-  strong, a {
+  strong,
+  a {
     font-weight: 700;
     color: inherit;
   }
   a {
-    transition: color .3s ease;
+    transition: color 0.3s ease;
     &:hover {
       color: $color-green;
     }
@@ -225,6 +268,13 @@ export default {
   margin-top: 0;
 }
 
+.phone-block {
+  p {
+    margin-top: 0;
+    font-weight: 400;
+  }
+}
+
 @media (max-width: $media-m) {
   .contact-info {
     grid-column: 3 / span 8;
@@ -245,7 +295,8 @@ export default {
     }
   }
   .address {
-    &-text, &-map {
+    &-text,
+    &-map {
       grid-column: 1 / span 12;
     }
     &-text {

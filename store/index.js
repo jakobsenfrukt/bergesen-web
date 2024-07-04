@@ -39,7 +39,12 @@ export const actions = {
             addressPostal
             addressVisitor
             orgNumber
-            phone
+            phone {
+                ... on phone_phoneItem_BlockType {
+                  number
+                  time
+                }
+              }
           }
         }
         ... on contact_contact_Entry {
@@ -52,7 +57,12 @@ export const actions = {
           addressPostal
           addressVisitor
           orgNumber
-          phone
+          phone {
+                ... on phone_phoneItem_BlockType {
+                  number
+                  time
+                }
+              }
         }
       }
     }`;
