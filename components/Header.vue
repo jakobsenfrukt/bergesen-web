@@ -4,6 +4,9 @@
       <NLink :to="english ? '/en/' : '/'">
         <img src="/logo.svg" class="logo-svg" alt="Bergesenstiftelsen logo" />
       </NLink>
+      <div class="anniversary">
+        <span>50 år</span> <span>1975&ndash;2025</span>
+      </div>
     </div>
     <div class="menu-toggle" @click="open = !open" :class="{ open: open }">
       <div v-if="open" class="menu-toggle-icon">
@@ -178,6 +181,16 @@ header {
     width: 100%;
   }
 }
+.anniversary {
+  width: 7rem;
+  margin-left: -.5rem;
+  text-align: center;
+  line-height: 1.2;
+  span {
+    text-transform: uppercase;
+    font-size: 14px;
+  }
+}
 .site-nav {
   grid-column: 3 / span 10;
   display: flex;
@@ -297,8 +310,22 @@ header {
   }
 }
 @media (max-width: $media-m) {
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    width: 50dvw;
+  }
   .logo-svg {
     width: 5.4rem;
+  }
+  .anniversary {
+    vertical-align: center;
+    text-align: left;
+    margin: 0;
+    span {
+      display: block;
+    }
   }
   .menu-toggle {
     display: block;
@@ -376,7 +403,7 @@ header {
     width: 4.2rem;
   }
   .menu-toggle {
-    padding: 1rem 2rem;
+    padding: 1.5rem 2rem;
   }
   .site-nav {
     font-size: 1.6rem;
