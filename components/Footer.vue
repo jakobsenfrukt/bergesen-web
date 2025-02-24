@@ -55,10 +55,6 @@
         <pre>{{ contact.addressPostal }}</pre>
       </div>
     </div>
-    <div class="newsletter-wrapper">
-      <h2>{{ t.newsletter }}</h2>
-      <Newsletter />
-    </div>
     <div class="mf-logo-wrapper">
       <a href="https://www.miljofyrtarn.no/" target="_blank" class="mf-logo">
         <img src="/graphics/mf-logo.svg" alt="Miljøfyrtårn logo" />
