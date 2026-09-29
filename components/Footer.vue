@@ -40,7 +40,7 @@
       <div class="address-visitor">
         {{ t.addressVisitor }}
         <pre>{{ contact.addressVisitor }}</pre>
-        <a href="https://goo.gl/maps/j6osNkyAc3Esf5gx8" target="_blank">{{
+        <a href="https://maps.app.goo.gl/uBoVqztcp2bxoaUTA" target="_blank">{{
           t.map
         }}</a>
       </div>

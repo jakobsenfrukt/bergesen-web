@@ -56,7 +56,7 @@
       </div>
       <div class="address-map">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1999.926715618733!2d10.6913284160961!3d59.91676358186823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416dcb35f01549%3A0x1e04e8f4336a18e6!2sFr%C3%B8yas%20gate%2015%2C%200273%20Oslo!5e0!3m2!1sen!2sno!4v1600883898718!5m2!1sen!2sno"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d348.5481377987485!2d10.758134418738882!3d59.92867344627371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46416f006efd2473%3A0x3fee42626375dfda!2sSannergate%202!5e0!3m2!1sen!2sno!4v1790687958438!5m2!1sen!2sno"
           width="600"
           height="450"
           frameborder="0"
