@@ -22,12 +22,6 @@
             email.address
           }}</a>
         </div>
-        <div class="email-block">
-          {{ t.applicationLabel }}
-          <a :href="t.applicationPortal.urlFull" target="_blank">{{
-            t.applicationPortal.linkText
-          }}</a>
-        </div>
       </div>
       <div class="phone">
         <div
