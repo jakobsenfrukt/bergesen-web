@@ -15,12 +15,6 @@
               email.address
             }}</a>
           </div>
-          <div class="email-block">
-            <h3>For søknader</h3>
-            <a :href="applicationPortal.urlFull" target="_blank">{{
-              applicationPortal.linkText
-            }}</a>
-          </div>
         </div>
         <div class="phone">
           <div
@@ -203,7 +197,7 @@ export default {
   }
 
   .email {
-    grid-column: 1 / span 6;
+    grid-column: 1 / span 3;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-column-gap: 2rem;
@@ -219,7 +213,7 @@ export default {
     }
   }
   .phone {
-    grid-column: 7 / span 2;
+    grid-column: 4 / span 3;
   }
 
   strong,
